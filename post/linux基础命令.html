@@ -1,0 +1,3003 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="自从遇见你，人生苦短，甜长  linux常规操作">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux基础命令">
+<meta property="og:url" content="http://ashercode.github.io/post/linux基础命令.html">
+<meta property="og:site_name" content="王小建">
+<meta property="og:description" content="自从遇见你，人生苦短，甜长  linux常规操作">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/linux_file.jpg">
+<meta property="og:updated_time" content="2018-02-05T02:03:00.130Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux基础命令">
+<meta name="twitter:description" content="自从遇见你，人生苦短，甜长  linux常规操作">
+<meta name="twitter:image" content="http://oyx66gbka.bkt.clouddn.com/linux_file.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'I14VESP3SJ',
+      apiKey: 'a817c1ce9320d227f97800013070f068',
+      indexName: 'AsherCode',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入关键字","hits_empty":"根本找不到好吗: ${query}","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ashercode.github.io/post/linux基础命令.html"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "c9e4f89d"
+    });
+  daovoice('update');
+  </script>
+
+  <title>linux基础命令 | 王小建</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?df44f8c13996af363c362aad197f9bef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+	
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsherCode" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王小建</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">AsherCode的个人小站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ashercode.github.io/post/linux基础命令.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AsherCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小建">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">linux基础命令</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T09:34:37+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/post/linux基础命令.html" class="leancloud_visitors" data-flag-title="linux基础命令">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,223
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  29
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>自从遇见你，人生苦短，甜长</p>
+</blockquote>
+<div class="note default"><p>linux常规操作 </p></div>
+<a id="more"></a>
+<h1 id="虚拟机搭建环境"><a href="#虚拟机搭建环境" class="headerlink" title="虚拟机搭建环境"></a>虚拟机搭建环境</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">centos minimal</span><br><span class="line">Host-only---网络地址转换----桥接网卡</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line">    ONBOOT=yes</span><br><span class="line">    IPADDR=192.168.56.101 </span><br><span class="line">    BOOTPROTO=static</span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth1</span><br><span class="line">    ONBOOT=yes </span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth1    </span><br><span class="line">    ONBOOT=yes </span><br><span class="line">service network restart    </span><br><span class="line">service iptables stop</span><br><span class="line">chkconfig --del iptables</span><br><span class="line">yum install gcc gcc-c++ -y</span><br><span class="line">yum install kernel</span><br><span class="line">yum install kernel-devel 增强功能</span><br></pre></td></tr></table></figure>
+<h1 id="xshell"><a href="#xshell" class="headerlink" title="xshell"></a>xshell</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ctrl+a		命令行首部</span><br><span class="line">ctrl+e		命令行首部</span><br><span class="line">ctrl+l		清屏</span><br><span class="line">alt+enter       全屏</span><br><span class="line">File-properties-terminal-encoding-utf-8</span><br></pre></td></tr></table></figure>
+<h2 id="配色方案"><a href="#配色方案" class="headerlink" title="配色方案"></a>配色方案</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[Names]</span><br><span class="line">count=1</span><br><span class="line">name0=SolarizedDark</span><br><span class="line">[SolarizedDark]</span><br><span class="line">text(bold)=839496</span><br><span class="line">magenta(bold)=6c71c4</span><br><span class="line">text=00ff40</span><br><span class="line">white(bold)=fdf6e3</span><br><span class="line">green=859900</span><br><span class="line">red(bold)=cb4b16</span><br><span class="line">green(bold)=586e75</span><br><span class="line">black(bold)=073642</span><br><span class="line">red=dc322f</span><br><span class="line">blue=268bd2</span><br><span class="line">black=002b36</span><br><span class="line">blue(bold)=839496</span><br><span class="line">yellow(bold)=657b83</span><br><span class="line">cyan(bold)=93a1a1</span><br><span class="line">yellow=b58900</span><br><span class="line">magenta=dd3682</span><br><span class="line">background=042028</span><br><span class="line">white=eee8d5</span><br><span class="line">cyan=2aa198</span><br></pre></td></tr></table></figure>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>netstat -apn &#124; grep 8080</td>
+<td>获取8080端口的进程</td>
+</tr>
+<tr>
+<td>netstat -latupn &#124;grep 22</td>
+<td>列出所有tcp.udp的pid进程非别名显示</td>
+</tr>
+<tr>
+<td>kill -9 pid</td>
+<td>强制杀死指定pid进程</td>
+</tr>
+<tr>
+<td>top</td>
+<td>实时显示进程状态</td>
+</tr>
+<tr>
+<td>iptables -L</td>
+<td>查看防火墙设置</td>
+</tr>
+<tr>
+<td>route -n</td>
+<td>路由表</td>
+</tr>
+<tr>
+<td>netstat -s</td>
+<td>查看网络统计信息</td>
+</tr>
+<tr>
+<td>netstat -antp</td>
+<td>查看所有已经建立的连接</td>
+</tr>
+<tr>
+<td>service iptables stop/start</td>
+<td>防火墙开关</td>
+</tr>
+<tr>
+<td>chkconfig iptables on/off</td>
+<td>开机启动防火墙</td>
+</tr>
+<tr>
+<td>systemctl stop firewalld.service</td>
+<td>停止            </td>
+</tr>
+<tr>
+<td>systemctl disable firewalld.service</td>
+<td>禁用</td>
+</tr>
+<tr>
+<td>yum search ssh</td>
+<td>查找需要安装的相关软件</td>
+</tr>
+<tr>
+<td>yum install ufw</td>
+<td>安装防火墙简易版</td>
+</tr>
+<tr>
+<td>service ufw start/stop</td>
+<td>启动关闭防火墙</td>
+</tr>
+<tr>
+<td>ufw enable/disable/status</td>
+<td>查看状态</td>
+</tr>
+<tr>
+<td>ufw allow/deny smtp/from 192.168.56.12/53</td>
+<td>只打开使用tcp/ip协议ip的53端口：</td>
+</tr>
+<tr>
+<td>ufw delete allow smtp</td>
+<td>删除已经添加过的规则</td>
+</tr>
+<tr>
+<td>ip addr</td>
+<td>查看网卡详情  </td>
+</tr>
+<tr>
+<td>ip -s link</td>
+<td>统计数据</td>
+</tr>
+</tbody>
+</table>
+<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lsof -i :22</td>
+<td>列出当前系统打开占用22端口文件</td>
+</tr>
+<tr>
+<td>lsmod</td>
+<td>列出加载的内核模块</td>
+</tr>
+<tr>
+<td>dmesg</td>
+<td>查看启动信息</td>
+</tr>
+<tr>
+<td>fdisk -l</td>
+<td>查看所有分区</td>
+</tr>
+<tr>
+<td>uptime</td>
+<td>查看系统运行时间，用户数，负载</td>
+</tr>
+<tr>
+<td>vmstat</td>
+<td>内存使用 </td>
+</tr>
+<tr>
+<td>env</td>
+<td>环境变量</td>
+</tr>
+<tr>
+<td>free -m</td>
+<td>交换区及内存</td>
+</tr>
+<tr>
+<td>grep MemTotal /proc/meminfo</td>
+<td>查看内存总量</td>
+</tr>
+<tr>
+<td>grep MemFree /proc/meminfo</td>
+<td>查看内存空闲</td>
+</tr>
+<tr>
+<td>echo $PATH</td>
+<td>显示变量内容</td>
+</tr>
+<tr>
+<td>echo $version</td>
+<td>获得版本</td>
+</tr>
+<tr>
+<td>PATH=”$PATH”:/home/bin;</td>
+<td>追加变量，export PATH变量转化为环境变量</td>
+</tr>
+<tr>
+<td>unset name</td>
+<td>取消变量</td>
+</tr>
+<tr>
+<td>uname -a</td>
+<td>查看系统版本</td>
+</tr>
+<tr>
+<td>hostname</td>
+<td>查看系统名称</td>
+</tr>
+<tr>
+<td>export</td>
+<td>查看环境变量</td>
+</tr>
+<tr>
+<td>locale -a</td>
+<td>查看支持语系</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>查看安装语言</td>
+</tr>
+<tr>
+<td>echo $LANG</td>
+<td>查看当前语言</td>
+</tr>
+<tr>
+<td>yum install kde-l10n-Chinese yum reinstall glibc-common -y LANG=”zh_CN.UTF-8”</td>
+<td>解决centos乱码</td>
+</tr>
+<tr>
+<td>locale-gen zh_CN.UTF-8</td>
+<td>解决ubuntu乱码</td>
+</tr>
+<tr>
+<td>sync</td>
+<td>数据同步写入磁盘</td>
+</tr>
+<tr>
+<td>shutdown -h now</td>
+<td>立即关机，-h 20:25,-h +10,-r now,-r +30,-c取消,-h 10 “要关机了”</td>
+</tr>
+<tr>
+<td>poweroff</td>
+<td>关机</td>
+</tr>
+<tr>
+<td>init 0/6/3/5</td>
+<td>关机，重启，纯命令行，含图形界面</td>
+</tr>
+<tr>
+<td>df -h</td>
+<td>列出当前挂载,-a所有挂载，-m,-k </td>
+</tr>
+<tr>
+<td>du -h</td>
+<td>列出当前目录所有文件信息，-s总量，-m,-k</td>
+</tr>
+<tr>
+<td>fdisk /dev/zero</td>
+<td>操作磁盘 ,p输出目前磁盘状态，d选择磁盘准备删除，输入数字进行选择，    n新增分区，输入数字进行命名，如果是全新磁盘，选择p(primary)和e(extended)分区，如果分区后，选择1(logical)和p(primary)，输入+2048M表示2G，w写入分区表  </td>
+</tr>
+<tr>
+<td>mkfs -t ext3 /dev/hdc6</td>
+<td>格式化磁盘</td>
+</tr>
+<tr>
+<td>mkdir /mnt/raid,mount -t iso9660 /dev/cdrom /media/cdrom,mount -t vfat /dev/fd0 /media/floppy,mount -t vfat -o iocharset=cp950 /dev/sda1 /mnt/flash,mount /dev/md0 /mnt/raid</td>
+<td>挂载磁盘</td>
+</tr>
+<tr>
+<td>umount /dev/md0</td>
+<td>卸载磁盘</td>
+</tr>
+<tr>
+<td>mount –bind /home /mnt/home</td>
+<td>临时挂载</td>
+</tr>
+<tr>
+<td>mount -l</td>
+<td>查看目前已挂载 </td>
+</tr>
+<tr>
+<td>vim /etc/fstab</td>
+<td>开机自动挂载</td>
+</tr>
+<tr>
+<td>dd if=/dev/zero of=/home/loopdev bs=1M count=512</td>
+<td>创建512M的大文件，</td>
+</tr>
+<tr>
+<td>mount -o loop /home/loopdev /media/cdrom</td>
+<td>挂载大文件</td>
+</tr>
+<tr>
+<td>dd if=/etc/passwd of=/tmp/passwd.back</td>
+<td>备份</td>
+</tr>
+<tr>
+<td>dd if=/dev/hdc of=/tmp/mbr.back bs=512 Count=1</td>
+<td>将自己的磁盘第一个扇区备份下来</td>
+</tr>
+<tr>
+<td>dump -0u -f /backupdata/home.dump /home</td>
+<td>完整备份</td>
+</tr>
+<tr>
+<td>ps -ef &#124;grep tomcat</td>
+<td>查看指定进程，kill -9 2341杀死进程 </td>
+</tr>
+<tr>
+<td>ps axif</td>
+<td>程序树显示进程</td>
+</tr>
+<tr>
+<td>top -d 2</td>
+<td>每2秒显示进程</td>
+</tr>
+<tr>
+<td>kill -SIGHUP \$(ps aux&#124;grep ‘syslog’&#124;grep -v ‘grep’&#124;awk ‘{print $2}’)</td>
+<td>杀死syslog进程</td>
+</tr>
+<tr>
+<td>vmstat 5</td>
+<td>每5s监听内存信息r等待运作的程序数量，b不可被唤醒的程序数量，越多越忙碌，swpd虚拟内存被使用的容量，free未被使用的内存容量，buff用于缓冲存储器，cache用于高速缓存，si由磁盘将程序去除的量，so由于内存不足而将没用到的程序写入到磁盘的swap的容量，如果si/so数值太大，说明内存数据常在磁盘和主存储器之间传来传去，系统效能很差，bi由磁盘写入区块数量，bo写入到磁盘区的区块数量，数值越高，系统I/O越忙，in每秒被中断的程序次数，cs每秒钟进行的事件切换次数，数值越大，代表系统与接口设备的沟通频繁，us非何姓曾的CPU使用状态，sy核心层所使用CPU状态，id闲置的状态，wa等待I/O所耗费的CPU状态，st被虚拟机索道用的CPU使用状态</td>
+</tr>
+<tr>
+<td>free -m</td>
+<td>查看内存使用情况</td>
+</tr>
+</tbody>
+</table>
+<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ll -h</td>
+<td>友好查看列表详情</td>
+</tr>
+<tr>
+<td>mv -f a b</td>
+<td>如果同名强制覆盖</td>
+</tr>
+<tr>
+<td>rm -rf /*</td>
+<td>删除linux所有文件</td>
+</tr>
+<tr>
+<td>cp a.java /opt/b.java</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>></td>
+<td>代表重定向到哪里，例如：echo “123” &gt; /home/123.txt</td>
+</tr>
+<tr>
+<td>1</td>
+<td>表示stdout标准输出，系统默认值是1，所以”&gt;/dev/null”等同于”1&gt;/dev/null”</td>
+</tr>
+<tr>
+<td>2</td>
+<td>表示stderr标准错误</td>
+</tr>
+<tr>
+<td>&amp;</td>
+<td>表示等同于的意思，2&gt;&amp;1，表示2的输出重定向等同于1</td>
+</tr>
+<tr>
+<td>Command &gt; filename</td>
+<td>把标准输出重定向到一个新文件中</td>
+</tr>
+<tr>
+<td>Command &gt;&gt; filename</td>
+<td>把标准输出重定向到一个文件(追加)</td>
+</tr>
+<tr>
+<td>Command &gt; filename 2&gt;&amp;1</td>
+<td>把标准输出和错误一起重定向到一个文件中</td>
+</tr>
+<tr>
+<td>Command 2&gt; filename</td>
+<td>把标准错误重定向到一个文件中</td>
+</tr>
+<tr>
+<td>Command 2&gt;&gt; filename</td>
+<td>把标准错误重定向到一个文件中(追加)</td>
+</tr>
+<tr>
+<td>Command &gt;&gt; filename 2&gt;&amp;1</td>
+<td>把标准输出和错误一起重定向到一个文件中(追加) </td>
+</tr>
+<tr>
+<td>Command &lt; filename    Command</td>
+<td>命令以 filename 文件作为标准输入</td>
+</tr>
+<tr>
+<td>Command &lt; filename &gt; filename2</td>
+<td>Command 信不信以 filename 文件作为标准输入，以 filename 2  作为标准输出</td>
+</tr>
+<tr>
+<td>Command &lt;&lt; delimiter</td>
+<td>从标准输入中读入，以  delimiter 为结束符。这就是 Bash 的 HereDoc 用法</td>
+</tr>
+<tr>
+<td>Command  &gt;&amp;m</td>
+<td>把标准输出重定向到文件描述符 m 中，如 ls &gt;&amp;1 </td>
+</tr>
+<tr>
+<td>Command m&gt;&amp;n</td>
+<td>把往文件描述符 m 的输出重定向到文件描述符 n 上，2&gt;71。再如上面的完整写法是 1&gt;&amp;m</td>
+</tr>
+<tr>
+<td>Command &lt;&amp;-</td>
+<td>关闭标准输入</td>
+</tr>
+<tr>
+<td>Command 2&gt;&amp;-</td>
+<td>关闭标准错误输出，和 2&gt;/dev/null 有类似功效</td>
+</tr>
+<tr>
+<td>ls xxx &gt;out.txt 2&gt;&amp;1</td>
+<td>错误和输出都传到out.txt</td>
+</tr>
+<tr>
+<td>tar -zpcvf /tmp/etc.tar.gz /etc &gt; /tmp/log.txt 2&gt;&amp;1 &amp;</td>
+<td>将输出内容传到log.txt后丢到后台执行，zxvf解压缩，zcvf压缩，-C 指定解压路径</td>
+</tr>
+<tr>
+<td>jobs</td>
+<td>查看后台的项目，-标识正在运行，+标识停止运行</td>
+</tr>
+<tr>
+<td>ctrl+z 之后fg %1</td>
+<td>将后台第一个pid任务拿出来运行</td>
+</tr>
+<tr>
+<td>kill -9 %2</td>
+<td>杀死后台第二个pid任务</td>
+</tr>
+<tr>
+<td>nohup ./sleep500.sh &amp;</td>
+<td>即使关机也可在后台运行</td>
+</tr>
+<tr>
+<td>nohup /usr/local/node/bin/node /www/im/chat.js &gt;&gt; /usr/local/node/output.log 2&gt;&amp;1 &amp;</td>
+<td>通过ps -aux&#124;grep chat.js&#124; grep -v grep &#124; awk ‘{print $2}’查看进程ID　</td>
+</tr>
+<tr>
+<td>file a.sh</td>
+<td>查看文件类型</td>
+</tr>
+<tr>
+<td>touch -d “2 days ago” haha</td>
+<td>创建两天前的文件</td>
+</tr>
+<tr>
+<td>cat a.txt b.txt</td>
+<td>查看多文件</td>
+</tr>
+<tr>
+<td>echo “123”&gt;a.txt</td>
+<td>创建文件并写入</td>
+</tr>
+<tr>
+<td>touch     a.txt</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td>lsof -i:8090</td>
+<td>查看端口进程，kill -9  进程号</td>
+</tr>
+<tr>
+<td>ln -s /home/wangjian/PythonTest/ENV/ENV2.7/ ~/ENN2.7</td>
+<td>创建软连接</td>
+</tr>
+<tr>
+<td>apt-get install lrzsz</td>
+<td>上传</td>
+</tr>
+<tr>
+<td>man ls</td>
+<td>查看命令用法，d是目录，c是字符设备文件，b是块设备，l是链接</td>
+</tr>
+<tr>
+<td>dpkg -L python</td>
+<td>查看软件安装位置</td>
+</tr>
+<tr>
+<td>dpkg -l &#124; grep filename</td>
+<td>查看是否安装</td>
+</tr>
+<tr>
+<td>dpkg -s nano</td>
+<td>查看详细信息</td>
+</tr>
+<tr>
+<td>dpkg -P file</td>
+<td>完全卸载</td>
+</tr>
+<tr>
+<td>dpkg -l</td>
+<td>查看所有的包</td>
+</tr>
+<tr>
+<td>dpkg -S nano</td>
+<td>查看包详细内容</td>
+</tr>
+<tr>
+<td>dpkg -S .bashrc</td>
+<td>查看指定文件属于哪个包</td>
+</tr>
+<tr>
+<td>dpkg -s vim</td>
+<td>查询已安装包的详细信息</td>
+</tr>
+<tr>
+<td>dpkg -l&#124;grep -i  vim</td>
+<td>查看系统中已安装与vim相关联的包</td>
+</tr>
+<tr>
+<td>dpkg -P vim</td>
+<td>卸载包 </td>
+</tr>
+<tr>
+<td>apt-get upgrade</td>
+<td>更新安装包</td>
+</tr>
+<tr>
+<td>apt-get source</td>
+<td>下载包源码</td>
+</tr>
+<tr>
+<td>yum list</td>
+<td>列出 yum 朋务器上面提供的所有软件名称        </td>
+</tr>
+<tr>
+<td>yum list updates</td>
+<td>列出目前朋务器上可供本机迚行升级的软件有哪些</td>
+</tr>
+<tr>
+<td>yum remove pam-devel</td>
+<td>yum 移除软件</td>
+</tr>
+<tr>
+<td>rpm -qa&#124;grep ufw</td>
+<td>查看是否安装</td>
+</tr>
+<tr>
+<td>rpm -ivh ufw</td>
+<td>安装</td>
+</tr>
+<tr>
+<td>cat termcap*&gt;&gt;termcapback</td>
+<td>整合成一个文件</td>
+</tr>
+<tr>
+<td>cat &gt;a</td>
+<td>创建文件并写入 ctrl+d退出</td>
+</tr>
+<tr>
+<td>less -mN file</td>
+<td>分页显示标注行号，enter下一行，空格键下一页，b上一页，q退出</td>
+</tr>
+<tr>
+<td>tail -10 file</td>
+<td>查看后10行，同head</td>
+</tr>
+<tr>
+<td>rm -rf text</td>
+<td>强制删除</td>
+</tr>
+<tr>
+<td>more/less test</td>
+<td>分页查询</td>
+</tr>
+<tr>
+<td>head/tail -n 3 text</td>
+<td>查看文件前/后3行</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示当前目录</td>
+</tr>
+<tr>
+<td>mkdir -p 1/2/3/4</td>
+<td>创建多层文件夹  -m 711 test 创建drwx—x—x的文件夹</td>
+</tr>
+<tr>
+<td>rm -p 1/2/3/4</td>
+<td>联通上层空目录一通删掉，</td>
+</tr>
+<tr>
+<td>PATH=”$PATH”:/root</td>
+<td>任意目录可执行/root下的ls</td>
+</tr>
+<tr>
+<td>ln test test.ln</td>
+<td>创建文件硬链接，-s软连接</td>
+</tr>
+<tr>
+<td>compress -v test</td>
+<td>压缩，uncompress text.Z ,或者compress -c text&gt;text_1.Z </td>
+</tr>
+<tr>
+<td>gzip -v test</td>
+<td>压缩，-d解压缩，gzip -9 -c text&gt;text.gz 最佳压缩，zcat text.gz读取</td>
+</tr>
+<tr>
+<td>bzip2 -z test</td>
+<td>压缩，-d解压缩，bzcat test.bz2查看，bzip2 -9 -c test&gt;test.bz2 </td>
+</tr>
+<tr>
+<td>tar -zcvf 前名 后名</td>
+<td>压缩</td>
+</tr>
+<tr>
+<td>tar -xzvf 前名</td>
+<td>解压缩</td>
+</tr>
+<tr>
+<td>tar -zcvf tomcat.tar.gz –exclude=tomcat/logs –exclude=tomcat/libs –exclude=tomcat/xiaoshan.txttomcat</td>
+<td>压缩不包含</td>
+</tr>
+<tr>
+<td>bc</td>
+<td>进入计算器 scale=3        设置精度 quit        退出计算器</td>
+</tr>
+<tr>
+<td>date</td>
+<td>目前Linux系统的时间</td>
+</tr>
+<tr>
+<td>date +%Y/%m/%d/%H:%M</td>
+<td>规格化日期时间</td>
+</tr>
+<tr>
+<td>cal</td>
+<td>当月日历</td>
+</tr>
+<tr>
+<td>cal 2009</td>
+<td>整年日历</td>
+</tr>
+<tr>
+<td>cal 10 2008</td>
+<td>某年某月日历</td>
+</tr>
+</tbody>
+</table>
+<h1 id="用户"><a href="#用户" class="headerlink" title="用户"></a>用户</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cut -d: -f1 /etc/passwd</td>
+<td>查看所有用户</td>
+</tr>
+<tr>
+<td>cut -d: -f1 /etc/group</td>
+<td>查看所有组</td>
+</tr>
+<tr>
+<td>crontab -l</td>
+<td>查看当前用户计划任务</td>
+</tr>
+<tr>
+<td>w</td>
+<td>查看当前用户信息</td>
+</tr>
+<tr>
+<td>adduser wangjian</td>
+<td>添加用户</td>
+</tr>
+<tr>
+<td>passwd wangjian</td>
+<td>修改密码-S查看密码建立时间，最小天数，变更天数，警告日数</td>
+</tr>
+<tr>
+<td>passwd -x 60 -l 10 wj</td>
+<td>修改具有60天变更，10天密码失效的设定</td>
+</tr>
+<tr>
+<td>passwd -l wj</td>
+<td>使wj暂时失效，-u恢复使用</td>
+</tr>
+<tr>
+<td>chage -l wj</td>
+<td>查看密码详细参数</td>
+</tr>
+<tr>
+<td>userdel -r wangjian</td>
+<td>连通用户家目录一起删除</td>
+</tr>
+<tr>
+<td>usermod -c “wj” wj</td>
+<td>修改wj的passwd说明栏</td>
+</tr>
+<tr>
+<td>usermode -e “2019/12/31” wj</td>
+<td>使得wj在指定日期失效</td>
+</tr>
+<tr>
+<td>usermod wangjian -g root</td>
+<td>修改群组</td>
+</tr>
+<tr>
+<td>groupadd 名字</td>
+<td>新建群组</td>
+</tr>
+<tr>
+<td>groupdel 名字</td>
+<td>删除群组</td>
+</tr>
+<tr>
+<td>gpasswd mygroup</td>
+<td>为群组分配密码</td>
+</tr>
+<tr>
+<td>gpasswd -A wj mygroup</td>
+<td>添加群组管理员为wj，    </td>
+</tr>
+<tr>
+<td>gpasswd -a wj mygroup</td>
+<td>将wj加为mygroup的成员</td>
+</tr>
+<tr>
+<td>useradd -G mygroup1 -c “2nd user” myuser2</td>
+<td>新建账户为muuser2全名为2nd user加入mygroup1群组 </td>
+</tr>
+<tr>
+<td>groupmod -g 102 名字</td>
+<td>修改群组标志,若要rwx属性则4+2+1=7； 若要rw-属性则4+2=6； 若要r-x属性则4+1=7。a标识所有对应user,group,other的使用权</td>
+</tr>
+<tr>
+<td>chmod 771 file  &#124;chmod ug=rwx,o=x file</td>
+<td>相同</td>
+</tr>
+<tr>
+<td>chgrp group text</td>
+<td>修改为group所属文件用户组</td>
+</tr>
+<tr>
+<td>chown user text</td>
+<td>修改为user所有者</td>
+</tr>
+<tr>
+<td>chown root:root text</td>
+<td>修改文件用户组及所有者</td>
+</tr>
+<tr>
+<td>chmod 644 text</td>
+<td>修改为-rw-r—r—,r=4，w=2，x=1，-R 文件夹</td>
+</tr>
+<tr>
+<td>chmod u=rwx,go=rx text</td>
+<td>修改为-rwxr-xr-x，chmod g+s,o+t test;ll test    添加权限</td>
+</tr>
+<tr>
+<td>id root</td>
+<td>查看uid,gid,group</td>
+</tr>
+<tr>
+<td>useradd -G xuesheng wj</td>
+<td>添加用户到用户组</td>
+</tr>
+<tr>
+<td>/etc/passwd</td>
+<td>账号:密码:UID:GID:用户信息说明:家目录:shell</td>
+</tr>
+<tr>
+<td>/etc/shadow</td>
+<td>账号:密码:最近更动密码日期(距1970):密码不可被更动天数:密码需要重新变更的天数:密码需要变更前的警告天数:密码失效日:账户失效日</td>
+</tr>
+<tr>
+<td>/etc/group</td>
+<td>组名:群组密码:GID:此群组支持的账号名称</td>
+</tr>
+<tr>
+<td>/etc/gshadow</td>
+<td>组名:密码栏:群组管理员账号:群组的所属账号</td>
+</tr>
+<tr>
+<td>groups</td>
+<td>查看有效群组</td>
+</tr>
+<tr>
+<td>newgrp users</td>
+<td>添加新有效群组</td>
+</tr>
+<tr>
+<td>groupmod -g 201 -n mygroup group1</td>
+<td>将建立的group1更名为mygroup，GID为201</td>
+</tr>
+<tr>
+<td>useradd -u 700 -g users wj</td>
+<td>创建一个名为wj的uid为700的账号</td>
+</tr>
+<tr>
+<td>finger wj</td>
+<td>查看用户详细信息</td>
+</tr>
+<tr>
+<td>chsh</td>
+<td>修改当前账号信息</td>
+</tr>
+<tr>
+<td>visudo</td>
+<td>添加wj      ALL=(ALL)       ALL</td>
+</tr>
+<tr>
+<td>lastlog</td>
+<td>查看每个账号最近登入的时间</td>
+</tr>
+<tr>
+<td>mail wj -s ‘nihao’</td>
+<td>.结尾 发送邮件</td>
+</tr>
+<tr>
+<td>mail wj -s ‘nihao’ &lt;a.txt</td>
+<td>发送文件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>crontab -e添加定时任务  <em>/1 </em>  <em>  </em>  * echo “a” &gt;&gt;~/b.txt</td>
+<td>每分钟每时每天每月每星期执行命令</td>
+</tr>
+<tr>
+<td>/sbin/service crond restart</td>
+<td>重启crond服务，</td>
+</tr>
+<tr>
+<td>crontab -l</td>
+<td>查看定时任务,-r删除所有定时任务，将sh /root/a.sh 加入到/etc/rc.d/rc.local开机自启动</td>
+</tr>
+<tr>
+<td>chkconfig –list</td>
+<td>2~5为on标识自启动，查看自启动服务的列表，没有可以chkconfig -add mysqld添加或-del</td>
+</tr>
+<tr>
+<td>chkconfig mysqld on</td>
+<td>自启动mysql服务，chkconfig –level 2345 mysql on</td>
+</tr>
+<tr>
+<td>at 21:43 tomorrow  at now +5 minutes/+1 hour/+3 days/+2 weeks   at midnight/10:30 pm/23:59 12/31/2018 at 23:00 2018-03-17</td>
+<td>在at中写命令定时任务，ctrl+d退出</td>
+</tr>
+</tbody>
+</table>
+<h1 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alias lm=’ls -al &#124;more’</td>
+<td>定义别名</td>
+</tr>
+<tr>
+<td>find /boot -print</td>
+<td>列出所有文件</td>
+</tr>
+<tr>
+<td>find / -name “ENV3.5”</td>
+<td>按名称查找 find /root -name ‘a*’</td>
+</tr>
+<tr>
+<td>find . -size +1000000c -print</td>
+<td>#查长度大于1Mb的文件</td>
+</tr>
+<tr>
+<td>find /home -size -512k</td>
+<td>查小于512k的文件</td>
+</tr>
+<tr>
+<td>find /home -perm 0700</td>
+<td>查权限为700的文件或目录</td>
+</tr>
+<tr>
+<td>history 3</td>
+<td>前三行历史命令</td>
+</tr>
+<tr>
+<td>history -w</td>
+<td>历史记录写入histsize，echo $HISTSIZE</td>
+</tr>
+<tr>
+<td>!!</td>
+<td>执行上一个命令，!86执行第86个命令，!al执行al开头的命令</td>
+</tr>
+<tr>
+<td>echo $PATH &#124;cut -d “:” -f 3,5</td>
+<td>以:分割查看第3,5列</td>
+</tr>
+<tr>
+<td>export&#124;cut -c 12-13</td>
+<td>列出每行12到13的字符</td>
+</tr>
+<tr>
+<td>last &#124; grep root &#124;cut -d ‘ ‘ -f 1</td>
+<td>列出以空格分割的第1列</td>
+</tr>
+<tr>
+<td>cat /etc/passwd &#124; sort -t ‘:’ -k 3</td>
+<td>以第三列排序</td>
+</tr>
+<tr>
+<td>cat /etc/passwd&#124;wc</td>
+<td>行数，字数，字符数</td>
+</tr>
+<tr>
+<td>last&#124;cut -d ‘ ‘ -f 1 &#124;sort&#124;uniq</td>
+<td>查看第一列并去重</td>
+</tr>
+<tr>
+<td>cat ~/server.xml &#124;tee -a ~/a.xml</td>
+<td>more    将查看内容保存到a.xml追加</td>
+</tr>
+<tr>
+<td>ll &#124; tr ‘[a-z]’ ‘[A-Z]’</td>
+<td>查看内容转为大写</td>
+</tr>
+<tr>
+<td>cat /etc/passwd &#124; tr -d ‘:’</td>
+<td>查看内容删除: ,tr -d ‘0-9’删除数字，tr ‘\t’ ‘’删除制表符</td>
+</tr>
+<tr>
+<td>join -t “:” /etc/passwd /etc/shadow</td>
+<td>将两个文件第一字段相同的整合为一行</td>
+</tr>
+<tr>
+<td>find /sbin -perm +7000 &#124;xargs ls -l</td>
+<td>查找sbin下有特殊权限的文件及属性</td>
+</tr>
+<tr>
+<td>whereis/which ls</td>
+<td>查看Path命令的文件或目录名    </td>
+</tr>
+<tr>
+<td>locate a.sh</td>
+<td>全盘查找文件</td>
+</tr>
+<tr>
+<td>find / -mtime 0</td>
+<td>查看24小时内有改动的文件</td>
+</tr>
+<tr>
+<td>find /etc -newer /etc/passwd</td>
+<td>查找比passwd新的文件</td>
+</tr>
+<tr>
+<td>find /home -user wj</td>
+<td>查找属于wj的文件</td>
+</tr>
+<tr>
+<td>find / -nouser</td>
+<td>查找不属于任何人的文件</td>
+</tr>
+<tr>
+<td>find /var -type s</td>
+<td>查找Socket文件</td>
+</tr>
+<tr>
+<td>find /etc -name ‘<em>httpd</em>‘</td>
+<td>查找含有httpd的文件</td>
+</tr>
+<tr>
+<td>find / -user wj</td>
+<td>查找所有wj的文件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h1><h2 id="nano"><a href="#nano" class="headerlink" title="nano"></a>nano</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nano file</td>
+<td>使用nano</td>
+</tr>
+<tr>
+<td>ctrl+x</td>
+<td>退出</td>
+</tr>
+<tr>
+<td>ctrl+o</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>ctrl+y</td>
+<td>上一页</td>
+</tr>
+<tr>
+<td>ctrl+v</td>
+<td>下一页</td>
+</tr>
+<tr>
+<td>ctrl+k</td>
+<td>剪切整行</td>
+</tr>
+<tr>
+<td>ctrl+u</td>
+<td>粘贴整行</td>
+</tr>
+<tr>
+<td>Ctrl+E</td>
+<td>行的末尾</td>
+</tr>
+<tr>
+<td>Ctrl+A</td>
+<td>移到行的开始</td>
+</tr>
+<tr>
+<td>ctrl+c</td>
+<td>游标位置</td>
+</tr>
+<tr>
+<td>ctrl+G</td>
+<td>帮助</td>
+</tr>
+<tr>
+<td>ctrl+_</td>
+<td>直接输入行号，让光标快速移动到该行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I\i</td>
+<td>行首插入\所在处前插入</td>
+</tr>
+<tr>
+<td>A\a</td>
+<td>行尾插入\所在处后插入</td>
+</tr>
+<tr>
+<td>O\o</td>
+<td>插入上一行\插入下一行</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td>:w!</td>
+<td>文件只读时强制写入</td>
+</tr>
+<tr>
+<td>:x</td>
+<td>保存退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>不存储离开</td>
+</tr>
+<tr>
+<td>ZZ</td>
+<td>若没有更动，保存离开；若被更动，保存后离开</td>
+</tr>
+<tr>
+<td>:! ls</td>
+<td>暂时离开后执行命令 </td>
+</tr>
+<tr>
+<td>:sp[a.txt]</td>
+<td>同时编辑多个文件，ctrl+w选择编辑文件</td>
+</tr>
+<tr>
+<td>:set backup</td>
+<td>创建备份文件nobackup</td>
+</tr>
+<tr>
+<td>:set hlsearch</td>
+<td>设置查找是否高亮nohlsearch</td>
+</tr>
+<tr>
+<td>:set ruler</td>
+<td>显示右下角状态栏noruler</td>
+</tr>
+<tr>
+<td>:set showmode</td>
+<td>显示左下角状态栏noshowmode</td>
+</tr>
+<tr>
+<td>:set all</td>
+<td>显示所有环境参数设置值</td>
+</tr>
+<tr>
+<td>:syntax on</td>
+<td>依据语法显示颜色</td>
+</tr>
+<tr>
+<td>:set bg=dark</td>
+<td>显示不同颜色色调</td>
+</tr>
+<tr>
+<td>:x</td>
+<td>调到x行</td>
+</tr>
+<tr>
+<td>h ←</td>
+<td>向左移动</td>
+</tr>
+<tr>
+<td>j ↓</td>
+<td>向下移动</td>
+</tr>
+<tr>
+<td>k↑</td>
+<td>向上移动</td>
+</tr>
+<tr>
+<td>I →</td>
+<td>想右移动 </td>
+</tr>
+<tr>
+<td>10[space]</td>
+<td>后移10个字符</td>
+</tr>
+<tr>
+<td>0</td>
+<td>最前</td>
+</tr>
+<tr>
+<td>$</td>
+<td>最后</td>
+</tr>
+<tr>
+<td>H</td>
+<td>移到文首</td>
+</tr>
+<tr>
+<td>M</td>
+<td>移到中首</td>
+</tr>
+<tr>
+<td>L</td>
+<td>移动文尾首 </td>
+</tr>
+<tr>
+<td>10G</td>
+<td>移到第10行  </td>
+</tr>
+<tr>
+<td>10[enter]</td>
+<td>向下移动10行</td>
+</tr>
+<tr>
+<td>/string</td>
+<td>向下查找字符串</td>
+</tr>
+<tr>
+<td>?string</td>
+<td>向上查找字符串</td>
+</tr>
+<tr>
+<td>n</td>
+<td>重复前一个查找</td>
+</tr>
+<tr>
+<td>N</td>
+<td>反相前一个查找</td>
+</tr>
+<tr>
+<td>:1,10s/HELLO/hello/g</td>
+<td>在1到10行中查找替换HELLO为hello</td>
+</tr>
+<tr>
+<td>:1,$s/HELLO/hello/gc</td>
+<td>全文查找HELLO替换为hello,查询确认</td>
+</tr>
+<tr>
+<td>:set nu</td>
+<td>设置行号</td>
+</tr>
+<tr>
+<td>:set nonu</td>
+<td>取消行号</td>
+</tr>
+<tr>
+<td>:w test.txt</td>
+<td>另存一个文件     </td>
+</tr>
+<tr>
+<td>:r text.txt</td>
+<td>编辑同时，读入另一个文件</td>
+</tr>
+<tr>
+<td>:3,6 w text.txt</td>
+<td>将3，6行保存为text.txt文件</td>
+</tr>
+<tr>
+<td>10X/10x</td>
+<td>向前/后删除10个字符</td>
+</tr>
+<tr>
+<td>10dd</td>
+<td>想下删除10行</td>
+</tr>
+<tr>
+<td>10yy</td>
+<td>复制光标所在行向下10行</td>
+</tr>
+<tr>
+<td>y0/y$</td>
+<td>复制到行首/复制到行尾 </td>
+</tr>
+<tr>
+<td>p/P</td>
+<td>粘贴到上一行/粘贴到下一行 </td>
+</tr>
+<tr>
+<td>d0/d$/dG/d1G</td>
+<td>删除到行首/行尾/文尾/文首 </td>
+</tr>
+<tr>
+<td>v</td>
+<td>字符选择，y复制选择，d删除选择</td>
+</tr>
+<tr>
+<td>ctrl+v</td>
+<td>区域选择</td>
+</tr>
+<tr>
+<td>u</td>
+<td>复原前一个操作</td>
+</tr>
+<tr>
+<td>ctrl+r</td>
+<td>重做上一个操作 </td>
+</tr>
+<tr>
+<td>.</td>
+<td>重复前一个操作</td>
+</tr>
+<tr>
+<td>vim a.txt b.txt</td>
+<td>编辑多文件    :files                 列出当前编辑的文件    :n                     编辑下一个 :N                     编辑上一个</td>
+</tr>
+</tbody>
+</table>
+<p>乱码：/etc/vim/vimrc<br>    if has(“autocmd”)<br>      filetype plugin indent on<br>    endif<br>    set fileencodings=utf-8,gb2312,gbk,gb18030<br>    set termencoding=utf-8<br>    set encoding=prc</p>
+<h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   cat /etc/shells			查看本机shell，同chsh -l </span><br><span class="line">cat /etc/passwd			查看登陆默认shell </span><br><span class="line">chmod a+x a.sh;	./a.sh 	执行 </span><br><span class="line">sh -n a.sh 				检测语法问题，-x列出执行过程</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#!/bin/bash				加载bash配置</span><br><span class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin </span><br><span class="line">export PATH </span><br><span class="line"></span><br><span class="line">echo -e &quot;Hello World! \a \n&quot; 	输出HelloWorld</span><br><span class="line"></span><br><span class="line">read -p &quot;Please input your first number: &quot; firstnumber  </span><br><span class="line">read -p &quot;Please input your last number:  &quot; lastnumber   </span><br><span class="line">echo -e &quot;\nYour full name is: total=$(($firstnumber*$lastnumber))&quot; #结果输出</span><br></pre></td></tr></table></figure>
+<h2 id="批量新建文件"><a href="#批量新建文件" class="headerlink" title="批量新建文件"></a>批量新建文件</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;please input your filename:&quot; fileuser				</span><br><span class="line">filename=$&#123;fileuser:-&quot;filename&quot;&#125;</span><br><span class="line">date1=$(date --date=&quot;LAST MONTH&quot;  +&quot;%Y-%m&quot; )</span><br><span class="line">date2=$(date --date=&quot;LAST YEAR&quot;  +&quot;%Y-%m&quot; )</span><br><span class="line">date3=$(date +%Y%m%d)</span><br><span class="line">file1=$&#123;fileuser&#125;$&#123;date1&#125;</span><br><span class="line">file2=$&#123;fileuser&#125;$&#123;date2&#125;</span><br><span class="line">file3=$&#123;fileuser&#125;$&#123;date3&#125;</span><br><span class="line">touch &quot;$file1&quot;</span><br><span class="line">touch &quot;$file2&quot;</span><br><span class="line">touch &quot;$file3&quot;</span><br><span class="line">echo $&#123;fileuser:-&quot;filename&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="查看文件权限及类型"><a href="#查看文件权限及类型" class="headerlink" title="查看文件权限及类型"></a>查看文件权限及类型</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;Input a filename : &quot; filename 					</span><br><span class="line">test -z $filename &amp;&amp; echo &quot;You MUST input a filename.&quot; &amp;&amp; exit 0  </span><br><span class="line">test ! -e $filename &amp;&amp; echo &quot;The filename &apos;$filename&apos; DO NOT exist&quot; &amp;&amp; exit 0  </span><br><span class="line">test -f $filename &amp;&amp; filetype=&quot;regulare file&quot; </span><br><span class="line">test -d $filename &amp;&amp; filetype=&quot;directory&quot; </span><br><span class="line">test -r $filename &amp;&amp; perm=&quot;readable&quot; </span><br><span class="line">test -w $filename &amp;&amp; perm=&quot;$perm writable&quot; </span><br><span class="line">test -x $filename &amp;&amp; perm=&quot;$perm executable&quot;  </span><br><span class="line">echo &quot;The filename: $filename is a $filetype&quot; </span><br><span class="line">echo &quot;And the permissions are : $perm&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="三元表达式"><a href="#三元表达式" class="headerlink" title="三元表达式"></a>三元表达式</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;Please input (Y/N): &quot; yn 						</span><br><span class="line">[ &quot;$yn&quot; == &quot;Y&quot; -o &quot;$yn&quot; == &quot;y&quot; ] &amp;&amp; echo &quot;OK, continue&quot; &amp;&amp; exit 0</span><br><span class="line">[ &quot;$yn&quot; == &quot;N&quot; -o &quot;$yn&quot; == &quot;n&quot; ] &amp;&amp; echo &quot;Oh, interrupt!&quot; &amp;&amp; exit 0 </span><br><span class="line">echo &quot;I don&apos;t know what your choice is&quot; &amp;&amp; exit 0</span><br></pre></td></tr></table></figure>
+<h2 id="if判断"><a href="#if判断" class="headerlink" title="if判断"></a>if判断</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;Please input (Y/N): &quot; yn  						</span><br><span class="line">if [ &quot;$yn&quot; == &quot;Y&quot; ] || [ &quot;$yn&quot; == &quot;y&quot; ]; then echo &quot;OK, continue&quot;  </span><br><span class="line">exit 0 </span><br><span class="line">fi </span><br><span class="line">if [ &quot;$yn&quot; == &quot;N&quot; ] || [ &quot;$yn&quot; == &quot;n&quot; ]; then echo &quot;Oh, interrupt!&quot; </span><br><span class="line">exit 0 </span><br><span class="line">fi </span><br><span class="line">echo &quot;I don&apos;t know what your choice is&quot; &amp;&amp; exit 0</span><br></pre></td></tr></table></figure>
+<h2 id="多重判断"><a href="#多重判断" class="headerlink" title="多重判断"></a>多重判断</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if [ &quot;$1&quot; == &quot;hello&quot; ]; then 							</span><br><span class="line">	echo &quot;Hello, how are you ?&quot; </span><br><span class="line">elif [ &quot;$1&quot; == &quot;&quot; ]; then </span><br><span class="line">	echo &quot;You MUST input parameters, ex&gt; &#123;$0 someword&#125;&quot; </span><br><span class="line">else</span><br><span class="line">	echo &quot;The only parameter is &apos;hello&apos;, ex&gt; &#123;$0 hello&#125;&quot; </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h2 id="获取shell参数"><a href="#获取shell参数" class="headerlink" title="获取shell参数"></a>获取shell参数</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;The script name is        ==&gt; $0&quot; 			</span><br><span class="line">echo &quot;Total parameter number is ==&gt; $#&quot; </span><br><span class="line">echo &quot;Your whole parameter is   ==&gt; &apos;$@&apos;&quot; </span><br><span class="line">echo &quot;The 1st parameter         ==&gt; $1&quot; </span><br><span class="line">echo &quot;The 2nd parameter         ==&gt; $2&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="重启tomcat"><a href="#重启tomcat" class="headerlink" title="重启tomcat"></a>重启tomcat</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tomcat_home=/root/TJOpenCourse/apache-tomcat-7.0.79		</span><br><span class="line">SHUTDOWN=$tomcat_home/bin/shutdown.sh</span><br><span class="line">STARTTOMCAT=$tomcat_home/bin/startup.sh </span><br><span class="line">$SHUTDOWN</span><br><span class="line">ps -ef |grep tomcat |grep $tomcat_home |grep -v &apos;grep&apos;|awk &apos;&#123;print $2&#125;&apos; | xargs kill -9 </span><br><span class="line">rm  $tomcat_home/logs/* -rf </span><br><span class="line">rm  $tomcat_home/work/* -rf </span><br><span class="line">sleep 5 </span><br><span class="line">$STARTTOMCAT</span><br></pre></td></tr></table></figure>
+<h2 id="监听服务"><a href="#监听服务" class="headerlink" title="监听服务"></a>监听服务</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">testing=$(netstat -tuln | grep &quot;:80 &quot;)    				</span><br><span class="line">if [ &quot;$testing&quot; != &quot;&quot; ]; then 	</span><br><span class="line">	echo &quot;WWW is running in your system.&quot; </span><br><span class="line">fi </span><br><span class="line">testing=$(netstat -tuln | grep &quot;:22 &quot;)   </span><br><span class="line">if [ &quot;$testing&quot; != &quot;&quot; ]; then  </span><br><span class="line">	echo &quot;SSH is running in your system.&quot; </span><br><span class="line">fi </span><br><span class="line">testing=$(netstat -tuln | grep &quot;:21 &quot;)    </span><br><span class="line">if [ &quot;$testing&quot; != &quot;&quot; ]; then </span><br><span class="line">	echo &quot;FTP is running in your system.&quot; </span><br><span class="line">fi </span><br><span class="line">testing=$(netstat -tuln | grep &quot;:25 &quot;)    </span><br><span class="line">if [ &quot;$testing&quot; != &quot;&quot; ]; then </span><br><span class="line">	echo &quot;Mail is running in your system.&quot; </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h2 id="判断退伍日期"><a href="#判断退伍日期" class="headerlink" title="判断退伍日期"></a>判断退伍日期</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;Please input your demobilization date (YYYYMMDD ex&gt;20090401): &quot; date2  </span><br><span class="line">date_d=$(echo $date2 |grep &apos;[0-9]\&#123;8\&#125;&apos;)   				 </span><br><span class="line">if [ &quot;$date_d&quot; == &quot;&quot; ]; then </span><br><span class="line">	echo &quot;You input the wrong date format....&quot;  </span><br><span class="line">exit 1 </span><br><span class="line">fi</span><br><span class="line">declare -i date_dem=`date --date=&quot;$date2&quot; +%s`    	 </span><br><span class="line">declare -i date_now=`date +%s`                   		 </span><br><span class="line">declare -i date_total_s=$(($date_dem-$date_now))  		 </span><br><span class="line">declare -i date_d=$(($date_total_s/60/60/24))     		 </span><br><span class="line">if [ &quot;$date_total_s&quot; -lt &quot;0&quot; ]; then               			 </span><br><span class="line">	echo &quot;You had been demobilization before: &quot; $((-1*$date_d)) &quot; 	ago&quot; </span><br><span class="line">else </span><br><span class="line">	declare -i date_h=$(($(($date_total_s-$date_d*60*60*24))/60/60)) </span><br><span class="line">	echo &quot;You will demobilize after $date_d days and $date_h hours.&quot; </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h2 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">while [ &quot;$yn&quot; != &quot;yes&quot; -a &quot;$yn&quot; != &quot;YES&quot; ] 							</span><br><span class="line">do</span><br><span class="line">	read -p &quot;Please input yes/YES to stop this program: &quot; yn</span><br><span class="line">done</span><br><span class="line">echo &quot;OK! you input the correct answer.&quot;</span><br><span class="line"></span><br><span class="line">until [ &quot;$yn&quot; == &quot;yes&quot; -o &quot;$yn&quot; == &quot;YES&quot; ] </span><br><span class="line">do</span><br><span class="line">	read -p &quot;Please input yes/YES to stop this program: &quot; yn</span><br><span class="line">done</span><br><span class="line">echo &quot;OK! you input the correct answer.&quot;</span><br><span class="line"> </span><br><span class="line">for animal in dog cat elephant </span><br><span class="line">do </span><br><span class="line">	echo &quot;There are $&#123;animal&#125;s.... &quot; </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="求和"><a href="#求和" class="headerlink" title="求和"></a>求和</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;Please input a number, I will count for 1+2+...+your_input: &quot; nu </span><br><span class="line">s=0 </span><br><span class="line">for (( i=1; i&lt;=$nu; i=i+1 )) </span><br><span class="line">do </span><br><span class="line">	s=$(($s+$i)) </span><br><span class="line">done </span><br><span class="line">echo &quot;The result of &apos;1+2+3+...+$nu&apos; is ==&gt; $s&quot;</span><br><span class="line"></span><br><span class="line">s=0   </span><br><span class="line">i=0   </span><br><span class="line">while [ &quot;$i&quot; != &quot;100&quot; ] </span><br><span class="line">do  </span><br><span class="line">	i=$(($i+1))    </span><br><span class="line">	s=$(($s+$i))   </span><br><span class="line">done </span><br><span class="line">echo &quot;The result of &apos;1+2+3+...+100&apos; is ==&gt; $s&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="获取用户信息"><a href="#获取用户信息" class="headerlink" title="获取用户信息"></a>获取用户信息</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">users=$(cut -d &apos;:&apos; -f1 /etc/passwd)  </span><br><span class="line">for username in $users            </span><br><span class="line">do </span><br><span class="line">		id $username </span><br><span class="line">		finger $username </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="查看网络连通"><a href="#查看网络连通" class="headerlink" title="查看网络连通"></a>查看网络连通</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">network=&quot;192.168.56&quot;         </span><br><span class="line">for sitenu in $(seq 1 100)     </span><br><span class="line">do </span><br><span class="line">		ping -c 1 -w 1 $&#123;network&#125;.$&#123;sitenu&#125; &amp;&gt; /dev/null &amp;&amp; result=0 || result=1    </span><br><span class="line">		if [ &quot;$result&quot; == 0 ]; then 				</span><br><span class="line">				echo &quot;Server $&#123;network&#125;.$&#123;sitenu&#125; is UP.&quot; </span><br><span class="line">		else </span><br><span class="line">				echo &quot;Server $&#123;network&#125;.$&#123;sitenu&#125; is DOWN.&quot; </span><br><span class="line">		fi </span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="获取文件属性"><a href="#获取文件属性" class="headerlink" title="获取文件属性"></a>获取文件属性</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;Please input a directory: &quot; dir 	</span><br><span class="line">if [ &quot;$dir&quot; == &quot;&quot; -o ! -d &quot;$dir&quot; ]; then </span><br><span class="line">	echo &quot;The $dir is NOT exist in your system.&quot; </span><br><span class="line">exit 1 </span><br><span class="line">fi</span><br><span class="line">filelist=$(ls $dir)         </span><br><span class="line">for filename in $filelist </span><br><span class="line">do </span><br><span class="line">	perm=&quot;&quot; </span><br><span class="line">	test -r &quot;$dir/$filename&quot; &amp;&amp; perm=&quot;$perm readable&quot; </span><br><span class="line">	test -w &quot;$dir/$filename&quot; &amp;&amp; perm=&quot;$perm writable&quot; </span><br><span class="line">	test -x &quot;$dir/$filename&quot; &amp;&amp; perm=&quot;$perm executable&quot; </span><br><span class="line">	echo &quot;The file $dir/$filename&apos;s permission is $perm &quot; </span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-r 文件或目录对此（有效的）用户（effective user）或组是可读的</span><br><span class="line">-w 文件或目录对此（有效的）用户或组是可写的</span><br><span class="line">-x 文件或目录对此（有效的）用户或组是可执行的</span><br><span class="line">-o 文件或目录由本（有效的）用户所有</span><br><span class="line">-R 文件或目录对此用户(real user)或组是可读的</span><br><span class="line">-W 文件或目录对此用户或组是可写的</span><br><span class="line">-X 文件或目录对此用户或组是可执行的</span><br><span class="line">-O 文件或目录由本用户所有</span><br><span class="line">-e 文件或目录名存在</span><br><span class="line">-z 文件存在，大小为0（目录恒为false）</span><br><span class="line">-s 文件或目录存在，大小大于0（值为文件的大小，单位：字节）</span><br><span class="line">-f 为普通文本</span><br><span class="line">-d 为目录</span><br><span class="line">-l 为符号链接</span><br><span class="line">-S 为socket</span><br><span class="line">-p 为管道(Entry is a named pipe(a“fifo”))</span><br><span class="line">-b 为block-special 文件（如挂载磁盘）</span><br><span class="line">-c 为character-special 文件（如I/O 设备）</span><br><span class="line">-u setuid 的文件或目录</span><br><span class="line">-g setgid 的文件或目录</span><br><span class="line">-k File or directory has the sticky bit set</span><br><span class="line">-t 文件句柄为TTY(系统函数isatty()的返回结果；不能对文件名使用这个测试)</span><br><span class="line">-T 文件有些像“文本”文件</span><br><span class="line">-B 文件有些像“二进制”文件</span><br><span class="line">-M 修改的时间（单位：天）</span><br><span class="line">-A 访问的时间（单位：天）</span><br><span class="line">-C 索引节点修改时间（单位：天）</span><br></pre></td></tr></table></figure>
+<h2 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">if [ ! -e logical ]; then 								</span><br><span class="line">	touch logical </span><br><span class="line">	echo &quot;Just make a file logical&quot; </span><br><span class="line">exit 1  </span><br><span class="line">elif [ -e logical ] &amp;&amp; [ -f logical ]; then </span><br><span class="line">	rm logical </span><br><span class="line">	mkdir logical </span><br><span class="line">	echo &quot;remove file ==&gt; logical&quot; </span><br><span class="line">	echo &quot;and make directory logical&quot; </span><br><span class="line">	exit 1 </span><br><span class="line">elif [ -e logical ] &amp;&amp; [ -d logical ]; then </span><br><span class="line">	rm -rf logical </span><br><span class="line">	echo &quot;remove directory ==&gt; logical&quot; </span><br><span class="line">	exit 1 </span><br><span class="line">else </span><br><span class="line">	echo &quot;Does here have anything?&quot; </span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h2 id="批量创建用户"><a href="#批量创建用户" class="headerlink" title="批量创建用户"></a>批量创建用户</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if [ ! -f account.txt ]; then							</span><br><span class="line">       echo &quot;所需要的帳號檔案不存在，請建立 account1.txt ，每行一個帳號名稱&quot;</span><br><span class="line">       exit 1</span><br><span class="line">fi </span><br><span class="line">usernames=$(cat account.txt) </span><br><span class="line">for username in $usernames</span><br><span class="line">do</span><br><span class="line">	useradd $username</span><br><span class="line">	echo $username | passwd --stdin $username</span><br><span class="line">	chage -d 0 $username</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="批量删除用户"><a href="#批量删除用户" class="headerlink" title="批量删除用户"></a>批量删除用户</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">usernames=$(cat /etc/passwd | cut -d &apos;:&apos; -f 1|grep std0*)   </span><br><span class="line">for username in $usernames</span><br><span class="line">do </span><br><span class="line">	echo &quot;userdel -r $username&quot;  </span><br><span class="line">	userdel -r $username</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h2 id="批量添加并密码"><a href="#批量添加并密码" class="headerlink" title="批量添加并密码"></a>批量添加并密码</h2><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">groupadd quota											</span><br><span class="line">for username in quota1 quota2 quota3 quota4 quota5</span><br><span class="line">do</span><br><span class="line">	useradd -g quota $username</span><br><span class="line">	echo &quot;passwd&quot; |passwd --stdin $username</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+<h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[:alnum:]</td>
+<td>0-9A-Za-z</td>
+</tr>
+<tr>
+<td>[:alpha:]</td>
+<td>A-Za-z</td>
+</tr>
+<tr>
+<td>[:blank:]</td>
+<td>空格</td>
+</tr>
+<tr>
+<td>[:cntrl:]</td>
+<td>CR,LF,TAB,DEL</td>
+</tr>
+<tr>
+<td>[:digit:]</td>
+<td>0-9        grep -n ‘[[:digit:]]’ text</td>
+</tr>
+<tr>
+<td>[:graph:]</td>
+<td>除空格外所有按键</td>
+</tr>
+<tr>
+<td>[:lower:]</td>
+<td>a-z</td>
+</tr>
+<tr>
+<td>[:print:]</td>
+<td>可被打印字符</td>
+</tr>
+<tr>
+<td>[:punct:]</td>
+<td>标点符号</td>
+</tr>
+<tr>
+<td>[:upper:]</td>
+<td>A-Z</td>
+</tr>
+<tr>
+<td>[:space:]</td>
+<td>空白字符</td>
+</tr>
+<tr>
+<td>[:xdigit:]</td>
+<td>十六进制数据</td>
+</tr>
+<tr>
+<td>grep -n ‘[^a-z]oo’ text</td>
+<td>获取含oo且非小写字母开头的行，-i忽略大小写</td>
+</tr>
+<tr>
+<td>grep -n ‘^the’ text</td>
+<td>获取以the开头的行</td>
+</tr>
+<tr>
+<td>grep -n ‘\.$’ text</td>
+<td>获取以.结尾的行</td>
+</tr>
+<tr>
+<td>grep -v ‘^$’ b&#124;grep -v ‘^#’</td>
+<td>获取非空白行及非#行</td>
+</tr>
+<tr>
+<td>grep -n ‘g..d’ text</td>
+<td>获取g开头d结尾的行，’o{2,}‘ 含两个以上o的行 ‘go{2,5}g’ 接2-5个o,ooo*’至少两个o以上的字符串</td>
+</tr>
+<tr>
+<td>nl /etc/passwd &#124;sed ‘2,5d’</td>
+<td>列出删除2-5行的文件内容，’3,$d’删除到最后一行，’2,5c NO2-5’将2-5行改为NO 2-5</td>
+</tr>
+<tr>
+<td>nl /etc/passwd&#124;sed -n “5,7p”</td>
+<td>列出5-7行</td>
+</tr>
+<tr>
+<td>egrep -n ‘ht+p’ server.xml</td>
+<td>+至少1个，？至多1个</td>
+</tr>
+<tr>
+<td>egrep -n ‘gd&#124;good&#124;dog’ server.xml</td>
+<td>从server.xml查找含有gd或good或dog的行</td>
+</tr>
+<tr>
+<td>egrep -n ‘g(aa&#124;oo)d’ server.xml</td>
+<td>从server.xml查看含有good或gaad的行</td>
+</tr>
+<tr>
+<td>ll</td>
+<td>grep a  查看目录下所有含有a的文件</td>
+</tr>
+<tr>
+<td>last -n 5&#124;awk ‘{print $1 “\t” $3}’</td>
+<td>显示第1列及第3列</td>
+</tr>
+<tr>
+<td>diff a b</td>
+<td>比较文件</td>
+</tr>
+<tr>
+<td>cmp a b</td>
+<td>比较文件字节</td>
+</tr>
+<tr>
+<td>pr server.xml</td>
+<td>打印文件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><blockquote>
+<p>忘记root密码？<br>    重启时e进入grub，移动到kernel行，e进入编辑，最后行输入single，enter后b进入单用户维护模式，passwd修改密码。</p>
+</blockquote>
+<h1 id="常用软件"><a href="#常用软件" class="headerlink" title="常用软件"></a>常用软件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget -c http://soft.vpser.net/lnmp/lnmp1.4.tar.gz &amp;&amp; tar zxf lnmp1.4.tar.gz &amp;&amp; cd lnmp1.4 &amp;&amp; ./install.sh lnmp</span><br><span class="line">CTRL+ALT+T 	ubuntu打开终端</span><br><span class="line">sudo passwd  root 创建root密码</span><br><span class="line">apt-get install ssh 	/etc/init.d/ssh start安装启动ssh</span><br></pre></td></tr></table></figure>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>/etc:系统配置文件，防火墙，网络设置，jdk环境，mysql配置</li>
+<li>/usr:应用程序安装目录</li>
+<li>/root：系统管理员root的家目录</li>
+<li>d 文件夹，- 普通文件，l 链接文件</li>
+</ul>
+<p><img src="http://oyx66gbka.bkt.clouddn.com/linux_file.jpg" alt="image"></p>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>欢迎和博主一起玩耍呀-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/linux基础命令.html">linux基础命令</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
+  <p><span>发布时间:</span>2018年02月05日 - 09:02</p>
+  <p><span>最后更新:</span>2018年02月05日 - 10:02</p>
+  <p><span>原始链接:</span><a href="/post/linux基础命令.html" title="linux基础命令">http://ashercode.github.io/post/linux基础命令.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/linux基础命令.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃包辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="AsherCode 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="AsherCode 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i> linux</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/hexo搭建博客.html" rel="next" title="hexo搭建博客">
+                <i class="fa fa-chevron-left"></i> hexo搭建博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/redis基础操作.html" rel="prev" title="redis基础操作">
+                redis基础操作 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2152116" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg0MC8xMDM5Mw=="></div>
+    </div>
+
+  
+   
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AsherCode" />
+            
+              <p class="site-author-name" itemprop="name">AsherCode</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ashercode" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/u/5317695564/home" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ashercode.github.io" title="本站孪生地址" target="_blank">本站孪生地址</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机搭建环境"><span class="nav-number">1.</span> <span class="nav-text">虚拟机搭建环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xshell"><span class="nav-number">2.</span> <span class="nav-text">xshell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配色方案"><span class="nav-number">2.1.</span> <span class="nav-text">配色方案</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络"><span class="nav-number">3.</span> <span class="nav-text">网络</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统"><span class="nav-number">4.</span> <span class="nav-text">系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件"><span class="nav-number">5.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用户"><span class="nav-number">6.</span> <span class="nav-text">用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定时任务"><span class="nav-number">7.</span> <span class="nav-text">定时任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查找"><span class="nav-number">8.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑"><span class="nav-number">9.</span> <span class="nav-text">编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nano"><span class="nav-number">9.1.</span> <span class="nav-text">nano</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vim"><span class="nav-number">9.2.</span> <span class="nav-text">vim</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell"><span class="nav-number">10.</span> <span class="nav-text">shell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#批量新建文件"><span class="nav-number">10.1.</span> <span class="nav-text">批量新建文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看文件权限及类型"><span class="nav-number">10.2.</span> <span class="nav-text">查看文件权限及类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三元表达式"><span class="nav-number">10.3.</span> <span class="nav-text">三元表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#if判断"><span class="nav-number">10.4.</span> <span class="nav-text">if判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重判断"><span class="nav-number">10.5.</span> <span class="nav-text">多重判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取shell参数"><span class="nav-number">10.6.</span> <span class="nav-text">获取shell参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重启tomcat"><span class="nav-number">10.7.</span> <span class="nav-text">重启tomcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监听服务"><span class="nav-number">10.8.</span> <span class="nav-text">监听服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断退伍日期"><span class="nav-number">10.9.</span> <span class="nav-text">判断退伍日期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环语句"><span class="nav-number">10.10.</span> <span class="nav-text">循环语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#求和"><span class="nav-number">10.11.</span> <span class="nav-text">求和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取用户信息"><span class="nav-number">10.12.</span> <span class="nav-text">获取用户信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看网络连通"><span class="nav-number">10.13.</span> <span class="nav-text">查看网络连通</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取文件属性"><span class="nav-number">10.14.</span> <span class="nav-text">获取文件属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建文件"><span class="nav-number">10.15.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量创建用户"><span class="nav-number">10.16.</span> <span class="nav-text">批量创建用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量删除用户"><span class="nav-number">10.17.</span> <span class="nav-text">批量删除用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#批量添加并密码"><span class="nav-number">10.18.</span> <span class="nav-text">批量添加并密码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则表达式"><span class="nav-number">11.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见问题"><span class="nav-number">12.</span> <span class="nav-text">常见问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用软件"><span class="nav-number">13.</span> <span class="nav-text">常用软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">14.</span> <span class="nav-text">目录</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AsherCode</span>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共11.4k字</span>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("mvlpA2l2DQuXENSGQgGyvWEx-gzGzoHsz", "BPLBwOm9OSqs2LtI5jIHvcSW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: -30px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 40px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- ҳ������С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
