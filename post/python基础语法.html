@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！   python基本语法,函数,模块">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python基础语法">
+<meta property="og:url" content="http://ashercode.github.io/post/python基础语法.html">
+<meta property="og:site_name" content="王小建">
+<meta property="og:description" content="喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！   python基本语法,函数,模块">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/pythontime1.png">
+<meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/pythontime2.png">
+<meta property="og:updated_time" content="2018-02-05T05:06:56.808Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python基础语法">
+<meta name="twitter:description" content="喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！   python基本语法,函数,模块">
+<meta name="twitter:image" content="http://oyx66gbka.bkt.clouddn.com/pythontime1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'I14VESP3SJ',
+      apiKey: 'a817c1ce9320d227f97800013070f068',
+      indexName: 'AsherCode',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入关键字","hits_empty":"根本找不到好吗: ${query}","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ashercode.github.io/post/python基础语法.html"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "c9e4f89d"
+    });
+  daovoice('update');
+  </script>
+
+  <title>python基础语法 | 王小建</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?df44f8c13996af363c362aad197f9bef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+	
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsherCode" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王小建</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">AsherCode的个人小站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ashercode.github.io/post/python基础语法.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AsherCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小建">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">python基础语法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T12:52:38+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/语法/" itemprop="url" rel="index">
+                    <span itemprop="name">语法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/post/python基础语法.html" class="leancloud_visitors" data-flag-title="python基础语法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7,763
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  40
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！ </p>
+</blockquote>
+<div class="note danger"><p>python基本语法,函数,模块</p></div>
+<a id="more"></a>
+<p><a href="http://oyx66gbka.bkt.clouddn.com/python-3.5.2-amd64.exe" target="_blank" rel="noopener">python3.5.2</a></p>
+<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 hello.py</span><br><span class="line">#!/usr/bin/env python   环境变量python</span><br><span class="line">print(&quot;a=&quot;,str(3*4),&quot;$&quot;)    数字字符串不能自动拼接，数字转字符串</span><br><span class="line">print(&quot;a&quot;+&quot;b&quot;)</span><br><span class="line">5//2        整除</span><br><span class="line">5%2         取余</span><br><span class="line">2**10       幂指数</span><br><span class="line">((2+3)+3)*5 多运算</span><br><span class="line"># coding:utf-8</span><br><span class="line">name = u&quot;哈哈哈&quot; 转为unicode</span><br><span class="line"># 单行注释</span><br><span class="line">&apos;&apos;&apos; 包括表示多行注释或多行代码(code=&apos;&apos;&apos;a=2 \n b=3&apos;&apos;&apos;)</span><br><span class="line">print(input(&quot;age:&quot;))  控制台输入</span><br><span class="line">print(&quot;name:%s&quot; % name) 格式化输出</span><br><span class="line"></span><br><span class="line">age = int (input(&quot;age&quot;:))       字符串转数字</span><br><span class="line">if age == 1:</span><br><span class="line">    print(&quot;YES&quot;)</span><br><span class="line">elif age &gt;1:</span><br><span class="line">    print(&quot;haha&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;NO&quot;)</span><br><span class="line"></span><br><span class="line">if a&gt;b&gt;c:       多级比较    </span><br><span class="line">5&gt;3 or 6&lt;2      and,not运算，not&gt;and&gt;or,and前面true才运算后面，同true为true，or前面为true则不运算后面直接为true</span><br><span class="line">if age.isdigit():   判断数字</span><br><span class="line"></span><br><span class="line">while num&lt;10:       while True:</span><br><span class="line">    print(num)</span><br><span class="line">    if num == 3:</span><br><span class="line">        continue</span><br><span class="line"></span><br><span class="line">for i in range(3):      range(1,101)  range(1,101,2)</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">msg = &apos;&apos;&apos;       多行变量</span><br><span class="line">Name:%s         string</span><br><span class="line">Age:%d          digit</span><br><span class="line">salary:%f       float</span><br><span class="line">&apos;&apos;&apos; % (name,age,salary)</span><br><span class="line">    </span><br><span class="line">notepad++ 设置首选项，制表符设置转为4个空格</span><br><span class="line"></span><br><span class="line">product_list=[</span><br><span class="line">    (&apos;Mac&apos;,9000),</span><br><span class="line">    (&apos;kindle&apos;,800),</span><br><span class="line">    (&apos;tesla&apos;,900000),</span><br><span class="line">    (&apos;python book&apos;,105),</span><br><span class="line">    (&apos;bike&apos;,2000),</span><br><span class="line">]</span><br><span class="line">for i,v in enumerate(product_list,1):       序列分组后打印角标及内容(分成两个)</span><br><span class="line">        print(i,&apos;&gt;&gt;&gt;&gt;&apos;,v)</span><br></pre></td></tr></table></figure>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><pre><code>p1=copy.copy(person)    p2=person[:]    p3=list(person)     复制
+</code></pre><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;,[1,2,3],(2,3)]    b=list([1,2,3])  c=list((1,2,3))       可读写</span><br><span class="line">a[4]    a[1:2]      a[1:]       a[1:-1]     a[1:5:2]    a[1::2]     a[1:-1:-2]      a[5][2]</span><br><span class="line">a.append(&apos;f&apos;)   a.insert(1,&apos;z&apos;)  a[1]=&apos;k&apos;   a[1:3]=&apos;p&apos;  a[1:4]=[&apos;a&apos;,&apos;b&apos;]    a.remove(&apos;a&apos;)   a.remove(a[0])       a.pop(1)    del a[0]   del a</span><br><span class="line">a.count(&apos;a&apos;)    a.extend(b)     a.index(&apos;a&apos;)    a.reverse()     a.sort()    sorted(a)</span><br></pre></td></tr></table></figure>
+<h2 id="元祖"><a href="#元祖" class="headerlink" title="元祖"></a>元祖</h2><pre><code>a=(1,2,3,4)     只读
+a[1]    a[1:3]      
+</code></pre><h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">不可变类型：整形，字符串，元祖</span><br><span class="line">可变类型：列表,字典</span><br><span class="line">dic=&#123;&apos;name&apos;:&apos;wangjian&apos;,&apos;age&apos;:35,&apos;hobby&apos;:&#123;&apos;girl_name&apos;:&apos;xjh&apos;,&apos;age&apos;:&apos;18&apos;&#125;,&apos;is_man&apos;:True&#125;     字典键唯一(取后者)不可变无序</span><br><span class="line">dic=dict(((&apos;name&apos;:&apos;wangjian&apos;)))</span><br><span class="line">dic=dict(([&apos;name&apos;:&apos;wangjian&apos;]))</span><br><span class="line">dic=dict([[&apos;name&apos;:&apos;wangjian&apos;]])</span><br><span class="line">dic[&apos;name&apos;]     dic[1]      list(dic.keys())        list(dic.values())      list(dic.items())</span><br><span class="line">dic[&apos;age&apos;]=18   dic.setdefault(&apos;age&apos;,34) 常量并返回已有的值              </span><br><span class="line">dic1.update(dic2)    有则更新，无则追加        dic.clear()      del dic[&apos;name&apos;]     dic.pop(&apos;age&apos;)     dic.popitem() 随机删除     sorted(dic.items/values)  排序</span><br><span class="line">dic=dict.fromkeys([&apos;hosts&apos;,&apos;host2&apos;,&apos;host3&apos;],&apos;test&apos;)         生成字典</span><br><span class="line">dic=dict.fromkeys([&apos;hosts&apos;,&apos;host2&apos;,&apos;host3&apos;],[&apos;test1&apos;,&apos;test2&apos;])      生成字典</span><br><span class="line">dic.has_keys(5)     判断是否有5的key</span><br><span class="line">dic[&apos;host2&apos;][1]=&apos;test3&apos;         将修改所有元组的第二个元素</span><br><span class="line">for i,v in dic.items():</span><br><span class="line">    print(i,v)</span><br><span class="line">for i in dic:</span><br><span class="line">    print(i,dic[i])</span><br></pre></td></tr></table></figure>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">b=&apos;a&apos;*10</span><br><span class="line">print(&apos;hello&apos;[2:])</span><br><span class="line">print(&apos;el&apos; in &apos;hello&apos;)</span><br><span class="line">print(12 in [12,23,34])</span><br><span class="line">print(&apos;%s world&apos;%&apos;hello&apos;)</span><br><span class="line">c=&apos;,&apos;.join([&apos;a&apos;,&apos;1&apos;])</span><br><span class="line">c=&apos;,&apos;.join((&apos;a&apos;,&apos;1&apos;))</span><br><span class="line">st.count(&apos;a&apos;)       查找个数    </span><br><span class="line">st.capitalize()     首字母大写</span><br><span class="line">st.center(50,&apos;-&apos;)   中心拼接</span><br><span class="line">st.endswith(&apos;ty&apos;)   以。。结尾    st.startswith(&apos;he&apos;)   以。。开头</span><br><span class="line">st.expandtabs(tabsize=10)       将\t转为20空格</span><br><span class="line">st.find(&apos;t&apos;)        查找坐标，没有就-1</span><br><span class="line">st.index(&apos;t&apos;)        查找坐标,没有就报错</span><br><span class="line">st=&apos;hello &#123;name&#125; is &#123;age&#125;&apos;</span><br><span class="line">st.format(name=&apos;wj&apos;,age=12)</span><br><span class="line">st.format_map(&#123;&apos;name&apos;:&apos;wj&apos;,&apos;age&apos;:12&#125;)</span><br><span class="line">st.isalnum()        判断是否数字  st.isdecimal()十进制    st.isdigit()整型    str.isidentifier()是否非法字符     st.islower()   st.isspace()   st.lower()   st.isalpha()  st.swapcase()      st.rjust(10,&apos;*&apos;)     st.ljust(10,&apos;*&apos;)       st.strip()去除空格       </span><br><span class="line">st.replace(&apos;a&apos;,&apos;b&apos;)</span><br><span class="line">st.rfind(&apos;t&apos;)   </span><br><span class="line">st.split(&apos;,&apos;)       st.rsplit(&apos;,&apos;,1)分割一次      print(&apos;1+2\n+3+4&apos;.splitlines())分行分割</span><br><span class="line">print(&apos;lex li&apos;.zfill(50))       填充</span><br></pre></td></tr></table></figure>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">set([1,2,3])</span><br><span class="line">set1.intersection(set2)     取交集          set1 &amp; set2</span><br><span class="line">set1.union(set2)            取并集          set1 | set2</span><br><span class="line">set1.difference(set2)       set1有的set2没有的差集  set1 - set2</span><br><span class="line">set1.issubset(set2)         是否子集</span><br><span class="line">set1.isuperset(set2)        是否父集</span><br><span class="line">set1.symmetric_difference(set2) 反向差集，并集后去掉差集    set1 ^ set2 </span><br><span class="line">set1.isdisjoint(set2)       判断有无交集</span><br><span class="line"></span><br><span class="line">set1.add(5)</span><br><span class="line">set1.update([2,3,4])</span><br><span class="line">set1.remove(2)              不存在则报错</span><br><span class="line">len(set1)</span><br><span class="line">set1 in set2 </span><br><span class="line">set1 not in set2</span><br><span class="line">set1.copy()                 浅复制</span><br><span class="line">set1.pop()</span><br><span class="line">set1.discard(2)             不存在返回None</span><br></pre></td></tr></table></figure>
+<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">data = open(&quot;3LevelMenu.py&quot;,&apos;w&apos;,encoding=&quot;utf-8&quot;)只写     &apos;r&apos;只读    &apos;a&apos;追加  &apos;r+&apos;读写    &apos;w+&apos;写读  &apos;a+&apos;加读    &apos;rb&apos;二进制读，没有编码，data.write(&quot;a&quot;.encode())</span><br><span class="line">data.read()</span><br><span class="line">data.write(&quot;123\n&quot;)</span><br><span class="line">data.close()</span><br><span class="line">for i in range(5):</span><br><span class="line">    print(data.readline())      读一行</span><br><span class="line">for line in data.readlines():</span><br><span class="line">    print(line.strip())         去掉空格空行</span><br><span class="line">for index,line in enumerate(data.readlines()):</span><br><span class="line">    if index == 9:</span><br><span class="line">        print (&apos;第九行&apos;)</span><br><span class="line">        continue</span><br><span class="line">    print(line.strip())   </span><br><span class="line">for line in data:</span><br><span class="line">    print(line)</span><br><span class="line">print(data.tell())              获取句柄指针位置</span><br><span class="line">print(data.read(5))             读取5个字符</span><br><span class="line">print(data.tell())              获取句柄指针位置</span><br><span class="line">data.seek(0)                    调整句柄位置为0</span><br><span class="line">print(data.encoding)            查看文件编码</span><br><span class="line">print(data.name)                文件名</span><br><span class="line">data.flush()                    强制写入硬盘    </span><br><span class="line">for i in range(20):             进度条</span><br><span class="line">    sys.stdout.write(&quot;#&quot;)</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">data.truncate(10)               截断10字符</span><br><span class="line"></span><br><span class="line">f=open(&quot;a.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)    </span><br><span class="line">f_new=open(&quot;a.txt.bak&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;)</span><br><span class="line">for line in f:</span><br><span class="line">    if &quot;hello&quot; in line:</span><br><span class="line">        line = line.replace(&quot;hello&quot;,&quot;world&quot;)</span><br><span class="line">    f_new.write(line)</span><br><span class="line">f.close()</span><br><span class="line">f_new.close()</span><br><span class="line"></span><br><span class="line">with open(&quot;a.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f,\</span><br><span class="line">open(&quot;a.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f:   不用关闭</span><br><span class="line">    for line in f:</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
+<h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">xshell字符编码默认properties-terminal-Encoding改为utf-8</span><br><span class="line">#-*- coding:utf-8 -*-                       文件编码为utf-8 </span><br><span class="line">s1=&quot;你好&quot;.decode(&quot;utf-8&quot;).encode(&quot;gbk&quot;)        utf-8转为Unicode后转为gbk</span><br><span class="line">s2=s1.decode(&quot;gbk&quot;).encode(&quot;utf-8&quot;)             gbk解码为unicode后转为utf-8</span><br><span class="line">s3=u&quot;你好&quot;              unicode编码</span><br><span class="line">sys.getdefaultencoding()        系统默认编码2.7是ascii码,3.0默认unicode</span><br><span class="line">&quot;你好&quot;.encode(&quot;gbk&quot;)                 unicode转为gbk</span><br><span class="line">&quot;你好&quot;.encode()                   unicode转utf-8， 声明#-*- coding:utf-8 -*-，等同于&quot;你好&quot;.decode(&quot;gbk&quot;).encode(&quot;utf-8&quot;)</span><br><span class="line">s.encode(&quot;utf-8&quot;).decode(&quot;utf-8&quot;).encode(&quot;gb1312&quot;).decode(&quot;gb1312&quot;)</span><br></pre></td></tr></table></figure>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">无返回值return None,可多返回值，形参实参一一对应(除非有默认值参数)，func(y=1,x=2) 与位置无关</span><br><span class="line">位置参数在关键字参数前面func(1,2,y=3)，默认值参数非必须传递def func(1,2,y=3)</span><br><span class="line"></span><br><span class="line">def func(*args):    </span><br><span class="line">    print (args)</span><br><span class="line">test(1,2,3,4)  </span><br><span class="line"></span><br><span class="line">def func(**kwargs):     字典</span><br><span class="line">    print(kwargs)</span><br><span class="line">test(name=&apos;wj&apos;,age=3)    </span><br><span class="line"></span><br><span class="line">方法体内定义global a，将改变全局变量的值，而字典，列表，元祖都可以在函数中直接修改影响全局</span><br><span class="line"></span><br><span class="line">def add(x,y,f):</span><br><span class="line">    return f(x)+f(y)</span><br><span class="line">res=add(3,-6,abs)    </span><br><span class="line"></span><br><span class="line">局部函数只能在局部调用</span><br><span class="line"></span><br><span class="line">import time</span><br><span class="line">def bar():</span><br><span class="line">    time.sleep(3)</span><br><span class="line">    print(&apos;in the bar&apos;)</span><br><span class="line">def test2(func):</span><br><span class="line">    print(func)</span><br><span class="line">    return func</span><br><span class="line">bar=test2(bar)          函数即变量，test2(bar())传递返回值</span><br><span class="line">bar()</span><br></pre></td></tr></table></figure>
+<h2 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">def timmer(func):   # 定义装饰器</span><br><span class="line">    def warpper(*args,**kwargs):</span><br><span class="line">        start_time=time.time()</span><br><span class="line">        func()</span><br><span class="line">        stop_time=time.time()</span><br><span class="line">        print(&apos;the func run time is %s&apos; %(stop_time-start_time))</span><br><span class="line">    return warpper</span><br><span class="line"></span><br><span class="line">@timmer             # 声明装饰器</span><br><span class="line">def test1():</span><br><span class="line">    time.sleep(3)</span><br><span class="line">    print(&apos;in the test1&apos;)</span><br><span class="line"></span><br><span class="line">test1()             # 调用函数</span><br></pre></td></tr></table></figure>
+<h2 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a>嵌套函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">def timer(func):</span><br><span class="line">    def deco():</span><br><span class="line">        start_time=time.time()</span><br><span class="line">        func()</span><br><span class="line">        stop_time=time.time()</span><br><span class="line">        print(&quot;run time is %s&quot;%(stop_time-start_time))</span><br><span class="line">    return deco    </span><br><span class="line">def test1():</span><br><span class="line">    time.sleep(3)</span><br><span class="line">    print (&apos;test1&apos;)</span><br><span class="line">test1=timer(test1)   # 不改变原函数的调用方式和内容</span><br><span class="line">test1()</span><br></pre></td></tr></table></figure>
+<h2 id="函数参数案例"><a href="#函数参数案例" class="headerlink" title="函数参数案例"></a>函数参数案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import time                 </span><br><span class="line">def timer(func): </span><br><span class="line">    def deco(*args,**kwargs):</span><br><span class="line">        start_time=time.time()</span><br><span class="line">        func(*args,**kwargs)   </span><br><span class="line">        stop_time = time.time()</span><br><span class="line">        print(&quot;the func run time  is %s&quot; %(stop_time-start_time))</span><br><span class="line">    return deco</span><br><span class="line">@timer </span><br><span class="line">def test1():</span><br><span class="line">    time.sleep(1)</span><br><span class="line">    print(&apos;in the test1&apos;)</span><br><span class="line">@timer </span><br><span class="line">def test2(name,age):</span><br><span class="line">    print(&quot;test2:&quot;,name,age)</span><br><span class="line"></span><br><span class="line">test1()</span><br><span class="line">test2(&quot;alex&quot;,22)</span><br></pre></td></tr></table></figure>
+<h2 id="函数登录案例"><a href="#函数登录案例" class="headerlink" title="函数登录案例"></a>函数登录案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">user,passwd = &apos;alex&apos;,&apos;abc123&apos;</span><br><span class="line">def auth(auth_type):</span><br><span class="line">    print(&quot;auth func:&quot;,auth_type)</span><br><span class="line">    def outer_wrapper(func):        #func即home，bbs</span><br><span class="line">        def wrapper(*args, **kwargs):</span><br><span class="line">            print(&quot;wrapper func args:&quot;, *args, **kwargs)</span><br><span class="line">            if auth_type == &quot;local&quot;:</span><br><span class="line">                username = input(&quot;Username:&quot;).strip()</span><br><span class="line">                password = input(&quot;Password:&quot;).strip()</span><br><span class="line">                if user == username and passwd == password:</span><br><span class="line">                    print(&quot;\033[32;1mUser has passed authentication\033[0m&quot;)</span><br><span class="line">                    res = func(*args, **kwargs)</span><br><span class="line">                    print(&quot;---after authenticaion &quot;)</span><br><span class="line">                    return res</span><br><span class="line">                else:</span><br><span class="line">                    exit(&quot;\033[31;1mInvalid username or password\033[0m&quot;)</span><br><span class="line">            elif auth_type == &quot;ldap&quot;:</span><br><span class="line">                print(&quot;搞毛线ldap,不会。。。。&quot;)</span><br><span class="line">        return wrapper</span><br><span class="line">    return outer_wrapper</span><br><span class="line">def index():</span><br><span class="line">    print(&quot;welcome to index page&quot;)</span><br><span class="line">@auth(auth_type=&quot;local&quot;)</span><br><span class="line">def home():</span><br><span class="line">    print(&quot;welcome to home  page&quot;)</span><br><span class="line">    return &quot;from home&quot;</span><br><span class="line">@auth(auth_type=&quot;ldap&quot;)</span><br><span class="line">def bbs():</span><br><span class="line">    print(&quot;welcome to bbs  page&quot;)</span><br><span class="line">index()</span><br><span class="line">print(home())       #先执行auth后执行outer_wrapper里rec=func(*args, **kwargs)</span><br><span class="line">bbs()</span><br></pre></td></tr></table></figure>
+<h1 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from collection import Iterable</span><br><span class="line">isinstance([],Iterable)     判断[]是否可迭代</span><br><span class="line">from collection import Iterator</span><br><span class="line">isinstance((x for x in range(10)),Iteartor)     可以被next()调用不断返回下一个值的称为iterator</span><br><span class="line">列表字典字符串是iterable(可被for循环)，通过iter()转为Iterator(可调用next())</span><br></pre></td></tr></table></figure>
+<h1 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[i*2 for i in range(10)]</span><br><span class="line">b=(i*2 for i in range(10))</span><br><span class="line">b.__next__()</span><br><span class="line">for i in b:</span><br><span class="line">    print i</span><br><span class="line">    </span><br><span class="line">def fib(max):</span><br><span class="line">    n, a, b = 0, 0, 1</span><br><span class="line">    while n &lt; max:</span><br><span class="line">        yield b                 # 保存中断状态，跳到print(&apos;g:&apos;, x)</span><br><span class="line">        a, b = b, a + b</span><br><span class="line">        n = n + 1</span><br><span class="line">    return &apos;---done---&apos;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">g = fib(4)</span><br><span class="line">while True:</span><br><span class="line">    try:</span><br><span class="line">        x = next(g)             # 跳到while</span><br><span class="line">        print(&apos;g:&apos;, x)          # 跳到a, b = b, a + b</span><br><span class="line">    except StopIteration as e:</span><br><span class="line">        print(&apos;Generator return value:&apos;, e.value)</span><br><span class="line">        break</span><br></pre></td></tr></table></figure>
+<h2 id="生产者消费者"><a href="#生产者消费者" class="headerlink" title="生产者消费者"></a>生产者消费者</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">def consumer(name):         # 生产者</span><br><span class="line">    print(&quot;%s 准备吃包子啦!&quot; %name)</span><br><span class="line">    while True:</span><br><span class="line">       baozi = yield</span><br><span class="line">       print(&quot;包子[%s]来了,被[%s]吃了!&quot; %(baozi,name))</span><br><span class="line">       </span><br><span class="line">c = consumer(&quot;ChenRonghua&quot;)</span><br><span class="line">c.__next__()            # 进入yield</span><br><span class="line">c.send(&quot;韭菜馅&quot;)        # 传值给yield </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def producer(name):         # 消费者</span><br><span class="line">    c = consumer(&apos;A&apos;)</span><br><span class="line">    c2 = consumer(&apos;B&apos;)</span><br><span class="line">    c.__next__()</span><br><span class="line">    c2.__next__()</span><br><span class="line">    print(&quot;老子开始准备做包子啦!&quot;)</span><br><span class="line">    for i in range(10):</span><br><span class="line">        time.sleep(1)</span><br><span class="line">        print(&quot;做了1个包子,分两半!&quot;)</span><br><span class="line">        c.send(i)</span><br><span class="line">        c2.send(i)</span><br><span class="line"></span><br><span class="line">producer(&quot;alex&quot;)</span><br></pre></td></tr></table></figure>
+<h1 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all(iterable)</td>
+<td>所有可迭代对象为True则为True，有0或者False则为False</td>
+</tr>
+<tr>
+<td>any(iterable)</td>
+<td>任意一个可迭代对象为True则True</td>
+</tr>
+<tr>
+<td>ascii(object)</td>
+<td>将对象转为ascii码</td>
+</tr>
+<tr>
+<td>bin(x)</td>
+<td>十进制转二进制</td>
+</tr>
+<tr>
+<td>bool(x)</td>
+<td>判断True/False</td>
+</tr>
+<tr>
+<td>bytearray(“abcde”,encoding=”utf-8”)</td>
+<td>转为字节列表</td>
+</tr>
+<tr>
+<td>callable(func)</td>
+<td>判断是都可调用</td>
+</tr>
+<tr>
+<td>chr(87)</td>
+<td>返回ascii码对应字符</td>
+</tr>
+<tr>
+<td>c=compile(code,’e.log’,’exec’)</td>
+<td>执行字符串exec(c)则可以执行命令 code=”for i in range(10):print(i)”</td>
+</tr>
+<tr>
+<td>c=compile(code,’e.log’,’eval’)</td>
+<td>执行字符串eval(c)则可以执行命令 code=”1+8/2*3”</td>
+</tr>
+<tr>
+<td>dir(c)</td>
+<td>查看对象所有的方法</td>
+</tr>
+<tr>
+<td>(lambda n:print(n)(5)</td>
+<td>可定义cal=lambda n:print(n) cal(5)</td>
+</tr>
+<tr>
+<td>filter(lambda n:n&gt;5,range(10))</td>
+<td>过滤1~10大于5的数</td>
+</tr>
+<tr>
+<td>map(lambda n:n*n,range(10))</td>
+<td>把列表按照lambda函数执行[i*i for i in range(10)]</td>
+</tr>
+<tr>
+<td>functools.reduce(lambda x,y:x+y,range(10))</td>
+<td>相邻的列表对象相加</td>
+</tr>
+<tr>
+<td>frozenset([])</td>
+<td>定义不可变列表</td>
+</tr>
+<tr>
+<td>globals()</td>
+<td>当前程序的所有全局变量的key-value，通过globals().get(‘a’)</td>
+</tr>
+<tr>
+<td>hex(12)</td>
+<td>十进制转十六进制</td>
+</tr>
+<tr>
+<td>oct(1)</td>
+<td>十进制转八进制</td>
+</tr>
+<tr>
+<td>reversed(object)</td>
+<td>翻转迭代</td>
+</tr>
+<tr>
+<td>round(x)</td>
+<td>四舍五入</td>
+</tr>
+<tr>
+<td>sorted(a.items)</td>
+<td>字典按照key排序，sorted(a.items(),key=lambda x:x[1])按照value排序 </td>
+</tr>
+<tr>
+<td>slice(x,y)</td>
+<td>切片</td>
+</tr>
+<tr>
+<td>zip(list1,list2)</td>
+<td>一一对应拼接，按照少的为标准</td>
+</tr>
+<tr>
+<td>str(info)</td>
+<td>字典转字符串</td>
+</tr>
+<tr>
+<td>eval(str)</td>
+<td>将字符串转为有效表达式计算结果</td>
+</tr>
+</tbody>
+</table>
+<h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><pre><code>字典列表不能存入文件，只能转为byte或字符串，json/pickle
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import pickle                                   #使用json则可以open是w/r，完全替换pickle</span><br><span class="line">def sayhi(name):</span><br><span class="line">    print(&quot;hello&quot;,name)</span><br><span class="line">info=&#123;&quot;name&quot;:&quot;alex&quot;,&quot;age&quot;:22,&apos;func&apos;:sayhi&#125;       #内存数据对象存到硬盘</span><br><span class="line">f=open(&quot;text.text&quot;,&quot;wb&quot;)</span><br><span class="line">f.write(pickle.dumps(info))                  #序列化,等同pickle.dump(info,f)</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import pickle</span><br><span class="line">def sayhi(name):</span><br><span class="line">    print(&quot;hello&quot;,name)</span><br><span class="line">f=open(&quot;text.text&quot;,&quot;rb&quot;)</span><br><span class="line">data=pickle.loads(f.read()                # 反序列化,等同data=pickle.load(f)</span><br><span class="line">f.close()</span><br><span class="line">print(data[&apos;func&apos;](&apos;wj&apos;))</span><br></pre></td></tr></table></figure>
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1><h2 id="定义模块"><a href="#定义模块" class="headerlink" title="定义模块"></a>定义模块</h2><blockquote>
+<ul>
+<li>from package import module 不同文件夹必须要有<em>init</em>.py 声明这是一个包，用于import,本质执行<strong>init</strong>.py</li>
+<li>from module import func1,func2 as f,可以直接f()优化调用。同文件夹下可以import module1,module2,通过文件名直接调用属性及方法</li>
+<li><p>import package,通过package.module.func(),前提该package下_init__.py有from . import module</p>
+<p>sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(<strong>file</strong>))))<br>from pac1 import module             在pac2.module中导入pac1.module<br>help(module)                查看模块使用方法</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="时间模块"><a href="#时间模块" class="headerlink" title="时间模块"></a>时间模块</h2><p><img src="http://oyx66gbka.bkt.clouddn.com/pythontime1.png" alt="image"><br><img src="http://oyx66gbka.bkt.clouddn.com/pythontime2.png" alt="image"></p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time.time()</td>
+<td>返回时间戳</td>
+</tr>
+<tr>
+<td>x=time.localtime()</td>
+<td>元组显示，可传入时间戳转换，gmtime()以0时区为标准</td>
+</tr>
+<tr>
+<td>time.mktime(x)</td>
+<td>将元组时间转为时间戳</td>
+</tr>
+<tr>
+<td>time.asctime()</td>
+<td>获取年月日星期时间，可将元组转为字符串</td>
+</tr>
+<tr>
+<td>time.ctime()</td>
+<td>获取年月日星期时间，将时间戳转为字符串</td>
+</tr>
+<tr>
+<td>time.strftime(“%Y-%m:%d %H:%M:%S”,x)</td>
+<td>将元组时间格式化</td>
+</tr>
+<tr>
+<td>time.strptime(“2017-08:30 14:51:21”,”%Y-%m:%d %H:%M:%S”)</td>
+<td>格式化为元祖</td>
+</tr>
+<tr>
+<td>time.sleep(2)</td>
+<td>休眠2秒</td>
+</tr>
+<tr>
+<td>datetime.datetime.now()</td>
+<td>2016-08-19 12:47:03.941925，可以替换datetime.datetime.now().replace(minute=3,hour=2</td>
+</tr>
+<tr>
+<td>datetime.date.fromtimestamp(time.time())</td>
+<td>2016-08-19</td>
+</tr>
+<tr>
+<td>datetime.datetime.now() + datetime.timedelta(x)</td>
+<td>当前时间+x天，可以hours=3，minutes=30</td>
+</tr>
+</tbody>
+</table>
+<h2 id="随机模块"><a href="#随机模块" class="headerlink" title="随机模块"></a>随机模块</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>random.random()</td>
+<td>0~1随机小数</td>
+</tr>
+<tr>
+<td>random.randint(1,3)</td>
+<td>1~3随机整数</td>
+</tr>
+<tr>
+<td>random.randrange(1,3)</td>
+<td>大于等于1且小于3之间的整数</td>
+</tr>
+<tr>
+<td>random.choice([1,’23’,[4,5]])</td>
+<td>1或者23或者[4,5]</td>
+</tr>
+<tr>
+<td>random.sample([1,’23’,[4,5]],2)</td>
+<td>列表元素任意2个组合</td>
+</tr>
+<tr>
+<td>random.uniform(1,3)</td>
+<td>大于1小于3的小数</td>
+</tr>
+<tr>
+<td>random.shuffle([1,5,86,4])</td>
+<td>洗牌</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>案例：获取验证码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">def make_code(n):</span><br><span class="line">    res=&apos;&apos;</span><br><span class="line">    for i in range(n):</span><br><span class="line">        s1=chr(random.randint(65,90))</span><br><span class="line">        s2=str(random.randint(0,9))</span><br><span class="line">        res+=random.choice([s1,s2])</span><br><span class="line">    return res</span><br><span class="line"></span><br><span class="line">print(make_code(9))</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="os模块"><a href="#os模块" class="headerlink" title="os模块"></a>os模块</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>os.getcwd()</td>
+<td>获取当前工作目录，即当前python脚本工作的目录路径</td>
+</tr>
+<tr>
+<td>os.chdir(“dirname”)</td>
+<td>改变当前脚本工作目录；相当于shell下cd</td>
+</tr>
+<tr>
+<td>os.curdir</td>
+<td>返回当前目录: (‘.’)</td>
+</tr>
+<tr>
+<td>os.pardir</td>
+<td>获取当前目录的父目录字符串名：(‘..’)</td>
+</tr>
+<tr>
+<td>os.makedirs(‘dirname1/dirname2’)</td>
+<td>可生成多层递归目录</td>
+</tr>
+<tr>
+<td>os.removedirs(‘dirname1’)</td>
+<td>若目录为空，则删除，并递归到上一级目录，如若也为空，则删除，依此类推</td>
+</tr>
+<tr>
+<td>os.mkdir(‘dirname’)</td>
+<td>生成单级目录；相当于shell中mkdir dirname</td>
+</tr>
+<tr>
+<td>os.rmdir(‘dirname’)</td>
+<td>删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname</td>
+</tr>
+<tr>
+<td>os.listdir(‘dirname’)</td>
+<td>列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印</td>
+</tr>
+<tr>
+<td>os.remove()</td>
+<td>删除一个文件</td>
+</tr>
+<tr>
+<td>os.rename(“oldname”,”newname”)</td>
+<td>重命名文件/目录</td>
+</tr>
+<tr>
+<td>os.stat(‘path/filename’)</td>
+<td>获取文件/目录信息</td>
+</tr>
+<tr>
+<td>os.sep</td>
+<td>输出操作系统特定的路径分隔符，win下为”\“,Linux下为”/“</td>
+</tr>
+<tr>
+<td>os.linesep</td>
+<td>输出当前平台使用的行终止符，win下为”\t\n”,Linux下为”\n”</td>
+</tr>
+<tr>
+<td>os.pathsep</td>
+<td>输出用于分割文件路径的字符串 win下为;,Linux下为:</td>
+</tr>
+<tr>
+<td>os.name</td>
+<td>输出字符串指示当前使用平台。win-&gt;’nt’; Linux-&gt;’posix’</td>
+</tr>
+<tr>
+<td>os.system(“bash command”)</td>
+<td>运行shell命令，直接显示</td>
+</tr>
+<tr>
+<td>os.environ</td>
+<td>获取系统环境变量</td>
+</tr>
+<tr>
+<td>os.path.abspath(path)</td>
+<td>返回path规范化的绝对路径</td>
+</tr>
+<tr>
+<td>os.path.split(path)</td>
+<td>将path分割成目录和文件名二元组返回</td>
+</tr>
+<tr>
+<td>os.path.dirname(path)</td>
+<td>返回path的目录。其实就是os.path.split(path)的第一个元素</td>
+</tr>
+<tr>
+<td>os.path.basename(path)</td>
+<td>返回path最后的文件名。如何path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素</td>
+</tr>
+<tr>
+<td>os.path.exists(path)</td>
+<td>如果path存在，返回True；如果path不存在，返回False</td>
+</tr>
+<tr>
+<td>os.path.isabs(path)</td>
+<td>如果path是绝对路径，返回True</td>
+</tr>
+<tr>
+<td>os.path.isfile(path)</td>
+<td>如果path是一个存在的文件，返回True。否则返回False</td>
+</tr>
+<tr>
+<td>os.path.isdir(path)</td>
+<td>如果path是一个存在的目录，则返回True。否则返回False</td>
+</tr>
+<tr>
+<td>os.path.join(path1[, path2[, …]])</td>
+<td>将多个路径组合后返回，第一个绝对路径之前的参数将被忽略</td>
+</tr>
+<tr>
+<td>os.path.getatime(path)</td>
+<td>返回path所指向的文件或者目录的最后存取时间</td>
+</tr>
+<tr>
+<td>os.path.getmtime(path)</td>
+<td>返回path所指向的文件或者目录的最后修改时间</td>
+</tr>
+<tr>
+<td>os.path.getsize(path)</td>
+<td>返回path的大小</td>
+</tr>
+<tr>
+<td>os.path.normcase(‘c:/windows\system32\‘)</td>
+<td>规范化路径</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sys模块"><a href="#sys模块" class="headerlink" title="sys模块"></a>sys模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sys.version        获取Python解释程序的版本信息</span><br><span class="line">sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值</span><br><span class="line">sys.exit(n)        退出程序，正常退出时exit(0)</span><br><span class="line">sys.argv           命令行参数List，第一个元素是程序本身路径</span><br></pre></td></tr></table></figure>
+<h2 id="shutil模块"><a href="#shutil模块" class="headerlink" title="shutil模块"></a>shutil模块</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>shutil.copyfileobj(open(‘old.xml’,’r’), open(‘new.xml’, ‘w’))</td>
+<td>将文件内容拷贝到另一个文件中</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.copyfile(‘f1.log’, ‘f2.log’)</td>
+<td>#目标文件无需存在，直接拷贝文件</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.copymode(‘f1.log’, ‘f2.log’)</td>
+<td>#目标文件必须存在，仅拷贝权限。内容、组、用户均不变</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.copystat(‘f1.log’, ‘f2.log’)</td>
+<td>#目标文件必须存在仅拷贝状态的信息，包括：mode bits, atime, mtime, flags</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.copy(‘f1.log’, ‘f2.log’)</td>
+<td># 拷贝文件和权限</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.copy2(‘f1.log’, ‘f2.log’)</td>
+<td># 拷贝文件和状态信息</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.copytree(‘folder1’, ‘folder2’, ignore=shutil.ignore_patterns(‘<em>.pyc’, ‘tmp</em>‘))</td>
+<td>#目标目录不能存在，注意对folder2目录父级目录要有可写权限，ignore的意思是排除 递归的去拷贝文件夹</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.copytree(‘f1’, ‘f2’, symlinks=True, ignore=shutil.ignore_patterns(‘<em>.pyc’, ‘tmp</em>‘))</td>
+<td>拷贝软连接</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.rmtree(‘folder1’)</td>
+<td>递归删除文件</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.move(‘folder1’, ‘folder3’)</td>
+<td>递归的去移动文件</td>
+</tr>
+<tr>
+<td></td>
+<td>shutil.make_archive(“/tmp/data_bak”, ‘gztar’, root_dir=’/data’)</td>
+<td>#将 /data下的文件打包放置 /tmp/目录</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 压缩</span><br><span class="line">z = zipfile.ZipFile(&apos;laxi.zip&apos;, &apos;w&apos;)</span><br><span class="line">z.write(&apos;a.log&apos;)</span><br><span class="line">z.write(&apos;data.data&apos;)</span><br><span class="line">z.close()</span><br><span class="line"># 解压</span><br><span class="line">z = zipfile.ZipFile(&apos;laxi.zip&apos;, &apos;r&apos;)</span><br><span class="line">z.extractall(path=&apos;.&apos;)</span><br><span class="line">z.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 压缩</span><br><span class="line"> t=tarfile.open(&apos;/tmp/egon.tar&apos;,&apos;w&apos;)</span><br><span class="line"> t.add(&apos;/test1/a.py&apos;,arcname=&apos;a.bak&apos;)</span><br><span class="line"> t.add(&apos;/test1/b.py&apos;,arcname=&apos;b.bak&apos;)</span><br><span class="line"> t.close()</span><br><span class="line"># 解压</span><br><span class="line"> t=tarfile.open(&apos;/tmp/egon.tar&apos;,&apos;r&apos;)</span><br><span class="line"> t.extractall(&apos;/egon&apos;)</span><br><span class="line"> t.close()</span><br></pre></td></tr></table></figure>
+<h2 id="shelve模块"><a href="#shelve模块" class="headerlink" title="shelve模块"></a>shelve模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">k-v通过文件持久化任何pickle</span><br><span class="line"></span><br><span class="line">f=shelve.open(r&apos;sheve.txt&apos;)</span><br><span class="line"># f[&apos;stu1_info&apos;]=&#123;&apos;name&apos;:&apos;egon&apos;,&apos;age&apos;:18,&apos;hobby&apos;:[&apos;piao&apos;,&apos;smoking&apos;,&apos;drinking&apos;]&#125;</span><br><span class="line"># f[&apos;stu2_info&apos;]=&#123;&apos;name&apos;:&apos;gangdan&apos;,&apos;age&apos;:53&#125;</span><br><span class="line"># f[&apos;school_info&apos;]=&#123;&apos;website&apos;:&apos;http://www.pypy.org&apos;,&apos;city&apos;:&apos;beijing&apos;&#125;</span><br><span class="line">print(f[&apos;stu1_info&apos;][&apos;hobby&apos;])</span><br><span class="line">print(f..get(&apos;stu1_info&apos;).get(&quot;name&quot;))</span><br><span class="line">f.close()</span><br></pre></td></tr></table></figure>
+<h2 id="xml模块"><a href="#xml模块" class="headerlink" title="xml模块"></a>xml模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">import xml.etree.ElementTree as ET</span><br><span class="line">tree = ET.parse(&quot;xmltest.xml&quot;)</span><br><span class="line">root = tree.getroot()</span><br><span class="line">print(root.tag)</span><br><span class="line"> </span><br><span class="line">#遍历xml文档</span><br><span class="line">for child in root:</span><br><span class="line">    print(&apos;========&gt;&apos;,child.tag,child.attrib,child.attrib[&apos;name&apos;])</span><br><span class="line">    for i in child:</span><br><span class="line">        print(i.tag,i.attrib,i.text)</span><br><span class="line"> </span><br><span class="line">#只遍历year 节点</span><br><span class="line">for node in root.iter(&apos;year&apos;):</span><br><span class="line">    print(node.tag,node.text)</span><br><span class="line"> </span><br><span class="line">#修改</span><br><span class="line">for node in root.iter(&apos;year&apos;):</span><br><span class="line">    new_year=int(node.text)+1</span><br><span class="line">    node.text=str(new_year)</span><br><span class="line">    node.set(&apos;updated&apos;,&apos;yes&apos;)</span><br><span class="line">    node.set(&apos;version&apos;,&apos;1.0&apos;)</span><br><span class="line">tree.write(&apos;test.xml&apos;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#删除node</span><br><span class="line">for country in root.findall(&apos;country&apos;):</span><br><span class="line">   rank = int(country.find(&apos;rank&apos;).text)</span><br><span class="line">   if rank &gt; 50:</span><br><span class="line">     root.remove(country) </span><br><span class="line">tree.write(&apos;output.xml&apos;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#在country内添加（append）节点year2</span><br><span class="line">for country in root.findall(&apos;country&apos;):</span><br><span class="line">for year in country.findall(&apos;year&apos;):</span><br><span class="line">    if int(year.text) &gt; 2000:</span><br><span class="line">        year2=ET.Element(&apos;year2&apos;)</span><br><span class="line">        year2.text=&apos;新年&apos;</span><br><span class="line">        year2.attrib=&#123;&apos;update&apos;:&apos;yes&apos;&#125;</span><br><span class="line">        country.append(year2) #往country节点下添加子节点</span><br><span class="line">tree.write(&apos;a.xml.swap&apos;)</span><br><span class="line"></span><br><span class="line">#代码创建xml</span><br><span class="line">import xml.etree.ElementTree as ET</span><br><span class="line">new_xml = ET.Element(&quot;namelist&quot;)</span><br><span class="line">name = ET.SubElement(new_xml,&quot;name&quot;,attrib=&#123;&quot;enrolled&quot;:&quot;yes&quot;&#125;)</span><br><span class="line">age = ET.SubElement(name,&quot;age&quot;,attrib=&#123;&quot;checked&quot;:&quot;no&quot;&#125;)</span><br><span class="line">sex = ET.SubElement(name,&quot;sex&quot;)</span><br><span class="line">sex.text = &apos;33&apos;</span><br><span class="line">name2 = ET.SubElement(new_xml,&quot;name&quot;,attrib=&#123;&quot;enrolled&quot;:&quot;no&quot;&#125;)</span><br><span class="line">age = ET.SubElement(name2,&quot;age&quot;)</span><br><span class="line">age.text = &apos;19&apos;</span><br><span class="line"> </span><br><span class="line">et = ET.ElementTree(new_xml) #生成文档对象</span><br><span class="line">et.write(&quot;test.xml&quot;, encoding=&quot;utf-8&quot;,xml_declaration=True)</span><br><span class="line"> </span><br><span class="line">ET.dump(new_xml) #打印生成的格式</span><br></pre></td></tr></table></figure>
+<h2 id="ConfigParser模块"><a href="#ConfigParser模块" class="headerlink" title="ConfigParser模块"></a>ConfigParser模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">生成和修改常见配置文档</span><br><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config[&quot;DEFAULT&quot;] = &#123;&apos;ServerAliveInterval&apos;: &apos;45&apos;,</span><br><span class="line">                      &apos;Compression&apos;: &apos;yes&apos;,</span><br><span class="line">                     &apos;CompressionLevel&apos;: &apos;9&apos;&#125;</span><br><span class="line"> </span><br><span class="line">config[&apos;bitbucket.org&apos;] = &#123;&#125;</span><br><span class="line">config[&apos;bitbucket.org&apos;][&apos;User&apos;] = &apos;hg&apos;</span><br><span class="line">config[&apos;topsecret.server.com&apos;] = &#123;&#125;</span><br><span class="line">topsecret = config[&apos;topsecret.server.com&apos;]</span><br><span class="line">topsecret[&apos;Host Port&apos;] = &apos;50022&apos;     # mutates the parser</span><br><span class="line">topsecret[&apos;ForwardX11&apos;] = &apos;no&apos;  # same here</span><br><span class="line">config[&apos;DEFAULT&apos;][&apos;ForwardX11&apos;] = &apos;yes&apos;</span><br><span class="line">with open(&apos;example.ini&apos;, &apos;w&apos;) as configfile:</span><br><span class="line">   config.write(configfile)</span><br><span class="line"></span><br><span class="line">读取配置文档</span><br><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config.read(&apos;example.ini&apos;)</span><br><span class="line">config.sections()</span><br><span class="line">&apos;bitbucket.org&apos; in config</span><br><span class="line">config[&apos;bitbucket.org&apos;][&apos;User&apos;]</span><br><span class="line">for key in config[&apos;bitbucket.org&apos;]: print(key)</span><br><span class="line"></span><br><span class="line">增删改查</span><br><span class="line">config = ConfigParser.ConfigParser()</span><br><span class="line">config.read(&apos;i.cfg&apos;)</span><br><span class="line">  </span><br><span class="line"># ####### 读 #######</span><br><span class="line">#secs = config.sections()</span><br><span class="line">#options = config.options(&apos;group2&apos;)</span><br><span class="line">  </span><br><span class="line">#item_list = config.items(&apos;group2&apos;)</span><br><span class="line">  </span><br><span class="line">#val = config.get(&apos;group1&apos;,&apos;key&apos;)</span><br><span class="line">#val = config.getint(&apos;group1&apos;,&apos;key&apos;)</span><br><span class="line">  </span><br><span class="line"># ####### 改写 #######</span><br><span class="line">#sec = config.remove_section(&apos;group1&apos;)</span><br><span class="line">#config.write(open(&apos;i.cfg&apos;, &quot;w&quot;))</span><br><span class="line">  </span><br><span class="line">#sec = config.has_section(&apos;wupeiqi&apos;)</span><br><span class="line">#sec = config.add_section(&apos;wupeiqi&apos;)</span><br><span class="line">#config.write(open(&apos;i.cfg&apos;, &quot;w&quot;))</span><br><span class="line">  </span><br><span class="line">#config.set(&apos;group2&apos;,&apos;k1&apos;,11111)</span><br><span class="line">#config.write(open(&apos;i.cfg&apos;, &quot;w&quot;))</span><br><span class="line">  </span><br><span class="line">#config.remove_option(&apos;group2&apos;,&apos;age&apos;)</span><br><span class="line">#config.write(open(&apos;i.cfg&apos;, &quot;w&quot;))</span><br></pre></td></tr></table></figure>
+<h2 id="hashlib-hmac模块"><a href="#hashlib-hmac模块" class="headerlink" title="hashlib/hmac模块"></a>hashlib/hmac模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">m = hashlib.md5()       //hashlib.sha1()/hashlib.sha256()/hashlib.sha384()/hashlib.sha512()</span><br><span class="line">m.update(b&quot;Hello&quot;)</span><br><span class="line">m.update(b&quot;It&apos;s me&quot;)</span><br><span class="line">print(m.digest())</span><br><span class="line"></span><br><span class="line">m2=hashlib.md5()</span><br><span class="line">m2.update(b&quot;HelloIt&apos;s me&quot;)</span><br><span class="line">print(m.digest())</span><br><span class="line"></span><br><span class="line">h = hmac.new(b&apos;天王盖地虎&apos;, &apos;宝塔镇河妖&apos;.encode(encoding=&quot;utf-8&quot;))      </span><br><span class="line">print(h.digest())</span><br><span class="line">print(h.hexdigest()</span><br></pre></td></tr></table></figure>
+<h2 id="re模块"><a href="#re模块" class="headerlink" title="re模块"></a>re模块</h2><table>
+<thead>
+<tr>
+<th>语法格式</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘.’</td>
+<td>默认匹配除\n之外的任意一个字符，若指定flag DOTALL,则匹配任意字符，包括换行</td>
+</tr>
+<tr>
+<td>‘^’</td>
+<td>匹配字符开头，若指定flags MULTILINE,这种也可以匹配上(r”^a”,”\nabc\neee”,flags=re.MULTILINE)</td>
+</tr>
+<tr>
+<td>‘$’</td>
+<td>匹配字符结尾，或e.search(“foo$”,”bfoo\nsdfsf”,flags=re.MULTILINE).group()也可以</td>
+</tr>
+<tr>
+<td>‘*’</td>
+<td>匹配<em>号前的字符0次或多次，re.findall(“ab</em>“,”cabb3abcbbac”)  结果为[‘abb’, ‘ab’, ‘a’]</td>
+</tr>
+<tr>
+<td>‘+’</td>
+<td>匹配前一个字符1次或多次，re.findall(“ab+”,”ab+cd+abb+bba”) 结果[‘ab’, ‘abb’]</td>
+</tr>
+<tr>
+<td>‘?’</td>
+<td>匹配前一个字符1次或0次</td>
+</tr>
+<tr>
+<td>‘{m}’</td>
+<td>匹配前一个字符m次</td>
+</tr>
+<tr>
+<td>‘{n,m}’</td>
+<td>匹配前一个字符n到m次，re.findall(“ab{1,3}”,”abb abc abbcbbb”) 结果’abb’, ‘ab’, ‘abb’]</td>
+</tr>
+<tr>
+<td>‘\</td>
+<td>‘</td>
+<td>匹配\</td>
+<td>左或\</td>
+<td>右的字符，re.search(“abc\</td>
+<td>ABC”,”ABCBabcCD”).group() 结果’ABC’</td>
+</tr>
+<tr>
+<td>‘(…)’</td>
+<td>分组匹配，re.search(“(abc){2}a(123\</td>
+<td>456)c”, “abcabca456c”).group() 结果 abcabca456c</td>
+</tr>
+<tr>
+<td>‘\A’</td>
+<td>只从字符开头匹配，re.search(“\Aabc”,”alexabc”) 是匹配不到的</td>
+</tr>
+<tr>
+<td>‘\Z’</td>
+<td>匹配字符结尾，同$</td>
+</tr>
+<tr>
+<td>‘\d’</td>
+<td>匹配数字0-9</td>
+</tr>
+<tr>
+<td>‘\D’</td>
+<td>匹配非数字</td>
+</tr>
+<tr>
+<td>‘\w’</td>
+<td>匹配[A-Za-z0-9]</td>
+</tr>
+<tr>
+<td>‘\W’</td>
+<td>匹配非[A-Za-z0-9]</td>
+</tr>
+<tr>
+<td>‘s’</td>
+<td>匹配空白字符、\t、\n、\r , re.search(“\s+”,”ab\tc1\n3”).group() 结果 ‘\t’</td>
+</tr>
+<tr>
+<td>‘(?P<name>…)’</name></td>
+<td>分组匹配 re.search(“(?P<province>[0-9]{4})(?P<city>[0-9]{2})(?P<birthday>[0-9]{4})”,”371481199306143242”).groupdict(“city”) 结果{‘province’: ‘3714’, ‘city’: ‘81’, ‘birthday’: ‘1993’}</birthday></city></province></td>
+</tr>
+<tr>
+<td>re.match</td>
+<td>从头开始匹配</td>
+</tr>
+<tr>
+<td>re.search</td>
+<td>匹配包含,有groupdict()</td>
+</tr>
+<tr>
+<td>re.findall</td>
+<td>把所有匹配到的字符放到以列表中的元素返回,无group()</td>
+</tr>
+<tr>
+<td>re.splitall</td>
+<td>以匹配到的字符当做列表分隔符</td>
+</tr>
+<tr>
+<td>re.sub</td>
+<td>匹配字符并替换</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">res = re.match(&quot;^Chen\d+&quot;,&quot;Chen123chui989&quot;)  </span><br><span class="line">res.group() ======&gt;  Chen123</span><br><span class="line">re.split(&quot;[0-9]+&quot;,&quot;asd12qwe87qw213asd&quot;)      数字分割</span><br><span class="line">re.sub(&quot;[0-9]+&quot;,&quot;|&quot;,&quot;asd12qwe87qw213asd&quot;)       替换</span><br></pre></td></tr></table></figure>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Role(object):</span><br><span class="line">    def __init__(self,name,role,weapon,life_value=100,money=15000):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.role = role</span><br><span class="line">        self.weapon = weapon</span><br><span class="line">        self.life_value = life_value</span><br><span class="line">        self.money = money</span><br><span class="line"> </span><br><span class="line">    def shot(self):</span><br><span class="line">        print(&quot;shooting...&quot;)</span><br><span class="line"> </span><br><span class="line">    def got_shot(self):</span><br><span class="line">        print(&quot;ah...,I got shot...&quot;)</span><br><span class="line"> </span><br><span class="line">    def buy_gun(self,gun_name):</span><br><span class="line">        print(&quot;just bought %s&quot; %gun_name)</span><br><span class="line"> </span><br><span class="line">r1 = Role(&apos;Alex&apos;,&apos;police&apos;,&apos;AK47’) #生成一个角色</span><br><span class="line">r1.name=&quot;wj&quot;</span><br><span class="line">r1.buy_gun(&quot;AK57&quot;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>实例属性： 最好在<strong>init</strong>(self,…)中初始化，内部调用时都需要加上self.，外部调用时用instancename.propertyname     </li>
+<li>类属性：在<strong>init</strong>()外初始化，　在内部用classname.类属性名调用，外部既可以用classname.类属性名又可以用instancename.类属性名来调用</li>
+<li>私有属性：单下划线_开头：只是告诉别人这是私有属性，外部依然可以访问更改；双下划线__开头：外部不可通过instancename.propertyname来访问或者更改</li>
+<li>普通类方法：def fun_name(self,…):pass　　外部用实例调用</li>
+<li>静态方法：@staticmethod ,　不能访问实例属性,参数不能传入self,与类相关但是不依赖类与实例的方法</li>
+<li>类方法：@classmethod,不能访问实例属性,参数必须传入cls,cls.类属性名</li>
+<li>静态方法与类方法都可以通过类或者实例来调用,不能够调用实例属性</li>
+<li><strong>del</strong>析构函数，del 删除对象时，会调用他本身的析构函数，当对象在某个作用域中调用完毕，在跳出其作用域的同时析构函数也会被调用一次</li>
+</ul>
+</blockquote>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br></pre></td><td class="code"><pre><span class="line">   #!_*_coding:utf-8_*_</span><br><span class="line">   class SchoolMember(object):</span><br><span class="line">	&apos;&apos;&apos;类描述信息&apos;&apos;&apos;		</span><br><span class="line">	# SchoolMember.__doc___打印类描述信息，__module__当前操作对象的哪个模块，</span><br><span class="line">	# __class__当前年操作对象的类是什么,__dict__查看类或实例中所有成员</span><br><span class="line">	# __init__ 对象初始化是调用,__call__则是Teacher()()调用定义的__call__方法,__str__返回被打印对象的方法</span><br><span class="line">       members = 0 #初始学校人数为0</span><br><span class="line">       def __init__(self,name,age):</span><br><span class="line">           self.name = name</span><br><span class="line">           self.age = age</span><br><span class="line">       def  tell(self):</span><br><span class="line">           pass</span><br><span class="line">       def enroll(self):</span><br><span class="line">           &apos;&apos;&apos;注册&apos;&apos;&apos;</span><br><span class="line">           SchoolMember.members +=1</span><br><span class="line">           print(&quot;\033[32;1mnew member [%s] is enrolled,now there are [%s] members.\033[0m &quot; %(self.name,SchoolMember.members))</span><br><span class="line">       def __del__(self):</span><br><span class="line">           &apos;&apos;&apos;析构方法&apos;&apos;&apos;</span><br><span class="line">           print(&quot;\033[31;1mmember [%s] is dead!\033[0m&quot; %self.name)</span><br><span class="line">   class Teacher(SchoolMember):            # 可以多继承</span><br><span class="line">       def __init__(self,name,age,course,salary):</span><br><span class="line">           super(Teacher,self).__init__(name,age)      # SchoolMember.__init__(self,name,age)</span><br><span class="line">           self.course = course</span><br><span class="line">           self.salary = salary</span><br><span class="line">           self.enroll()</span><br><span class="line">       def teaching(self):</span><br><span class="line">           &apos;&apos;&apos;讲课方法&apos;&apos;&apos;</span><br><span class="line">           print(&quot;Teacher [%s] is teaching [%s] for class [%s]&quot; %(self.name,self.course,&apos;s12&apos;))</span><br><span class="line">    </span><br><span class="line">       def tell(self):</span><br><span class="line">           &apos;&apos;&apos;自我介绍方法&apos;&apos;&apos;</span><br><span class="line">           msg = &apos;&apos;&apos;Hi, my name is [%s], works for [%s] as a [%s] teacher !&apos;&apos;&apos; %(self.name,&apos;Oldboy&apos;, self.course)</span><br><span class="line">           print(msg)</span><br><span class="line">   class Student(SchoolMember):</span><br><span class="line">       def __init__(self, name,age,grade,sid):</span><br><span class="line">           super(Student,self).__init__(name,age)</span><br><span class="line">           self.grade = grade</span><br><span class="line">           self.sid = sid</span><br><span class="line">           self.enroll()</span><br><span class="line">    </span><br><span class="line">       def tell(self):</span><br><span class="line">           &apos;&apos;&apos;自我介绍方法&apos;&apos;&apos;</span><br><span class="line">           msg = &apos;&apos;&apos;Hi, my name is [%s], I&apos;m studying [%s] in [%s]!&apos;&apos;&apos; %(self.name, self.grade,&apos;Oldboy&apos;)</span><br><span class="line">           print(msg)</span><br><span class="line">   if __name__ == &apos;__main__&apos;:</span><br><span class="line">       t1 = Teacher(&quot;Alex&quot;,22,&apos;Python&apos;,20000)</span><br><span class="line">       t2 = Teacher(&quot;TengLan&quot;,29,&apos;Linux&apos;,3000)</span><br><span class="line">       s1 = Student(&quot;Qinghua&quot;, 24,&quot;Python S12&quot;,1483)</span><br><span class="line">       s2 = Student(&quot;SanJiang&quot;, 26,&quot;Python S12&quot;,1484)</span><br><span class="line">       t1.teaching()</span><br><span class="line">       t2.teaching()</span><br><span class="line">       t1.tell()</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">class School(object):</span><br><span class="line">	def __init__(self,name,addr):</span><br><span class="line">		self.name = name</span><br><span class="line">		self.addr = addr</span><br><span class="line">		self.students =[]</span><br><span class="line">		self.staffs =[]</span><br><span class="line">	def enroll(self,stu_obj):</span><br><span class="line">		print(&quot;为学员%s 办理注册手续&quot;%stu_obj.name )</span><br><span class="line">		self.students.append(stu_obj)</span><br><span class="line">	def hire(self,staff_obj):</span><br><span class="line">		self.staffs.append(staff_obj)</span><br><span class="line">		print(&quot;雇佣新员工%s&quot; % staff_obj.name)</span><br><span class="line">class SchoolMember(object):</span><br><span class="line">	def __init__(self,name,age,sex):</span><br><span class="line">		self.name = name</span><br><span class="line">		self.age = age</span><br><span class="line">		self.sex = sex</span><br><span class="line">	def tell(self):</span><br><span class="line">		pass</span><br><span class="line">class Teacher(SchoolMember):</span><br><span class="line">	def __init__(self,name,age,sex,salary,course):</span><br><span class="line">		super(Teacher,self).__init__(name,age,sex)# 继承父类属性</span><br><span class="line">		self.salary = salary</span><br><span class="line">		self.course = course</span><br><span class="line">	def tell(self):</span><br><span class="line">		print(&apos;&apos;&apos;</span><br><span class="line">		---- info of Teacher:%s ----</span><br><span class="line">		Name:%s</span><br><span class="line">		Age:%s</span><br><span class="line">		Sex:%s</span><br><span class="line">		Salary:%s</span><br><span class="line">		Course:%s</span><br><span class="line">		&apos;&apos;&apos;%(self.name,self.name,self.age,self.sex,self.salary,self.course))</span><br><span class="line">	def teach(self):</span><br><span class="line">		print(&quot;%s is teaching course [%s]&quot; %(self.name,self.course))</span><br><span class="line">class Student(SchoolMember):</span><br><span class="line">	def __init__(self,name,age,sex,stu_id,grade):	# 先覆盖父类init</span><br><span class="line">		super(Student,self).__init__(name,age,sex)	# 再继承父类函数，或者self.schoolMember=SchoolMember(self,job)</span><br><span class="line">		self.stu_id = stu_id		# 再添加属性</span><br><span class="line">		self.grade = grade</span><br><span class="line">		</span><br><span class="line">	&apos;&apos;&apos;</span><br><span class="line">	def __init__(self,name,age,sex,salary,course,school_obj):</span><br><span class="line">		super(Teacher,self).__init__(name,age,sex)</span><br><span class="line">		self.school = school_obj</span><br><span class="line">	&apos;&apos;&apos;		</span><br><span class="line">	def tell(self):</span><br><span class="line">		print(&apos;&apos;&apos;</span><br><span class="line">		---- info of Student:%s ----</span><br><span class="line">		Name:%s</span><br><span class="line">		Age:%s</span><br><span class="line">		Sex:%s</span><br><span class="line">		Stu_id:%s</span><br><span class="line">		Grade:%s</span><br><span class="line">		&apos;&apos;&apos; % (self.name, self.name, self.age, self.sex, self.stu_id, self.grade))</span><br><span class="line">	def pay_tuition(self,amount):</span><br><span class="line">		print(&quot;%s has paid tution for $%s&quot;% (self.name,amount) )</span><br><span class="line">if __name__ == &apos;__main__&apos;:		</span><br><span class="line">	school = School(&quot;老男孩IT&quot;,&quot;沙河&quot;)</span><br><span class="line">	t1 = Teacher(&quot;Oldboy&quot;,56,&quot;MF&quot;,200000,&quot;Linux&quot;)</span><br><span class="line">	t2 = Teacher(&quot;Alex&quot;,22,&quot;M&quot;,3000,&quot;PythonDevOps&quot;)</span><br><span class="line">	s1 = Student(&quot;ChenRonghua&quot;,36,&quot;MF&quot;,1001,&quot;PythonDevOps&quot;)</span><br><span class="line">	s2 = Student(&quot;徐良伟&quot;,19,&quot;M&quot;,1002,&quot;Linux&quot;)</span><br><span class="line">	t1.tell()</span><br><span class="line">	s1.tell()</span><br><span class="line">	school.hire(t1)</span><br><span class="line">	school.enroll(s1)</span><br><span class="line">	school.enroll(s2)</span><br><span class="line">	print(school.students)</span><br><span class="line">	print(school.staffs)</span><br><span class="line">	school.staffs[0].teach()</span><br><span class="line">	for stu in school.students:</span><br><span class="line">		stu.pay_tuition(5000)</span><br></pre></td></tr></table></figure>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Animal:</span><br><span class="line">	name = &quot;huazai&quot;</span><br><span class="line">	def __init__(self, name):  </span><br><span class="line">		self.name = name</span><br><span class="line">	def talk(self):  </span><br><span class="line">		pass </span><br><span class="line">	@staticmethod	# 与类无关，</span><br><span class="line">	def animal_talk(obj):</span><br><span class="line">		obj.talk()</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">class Cat(Animal):</span><br><span class="line">	def talk(self):</span><br><span class="line">		print(&apos;Meow!&apos;)</span><br><span class="line">class Dog(Animal):</span><br><span class="line">	def talk(self):</span><br><span class="line">		print(&apos;Woof! Woof!&apos;)</span><br><span class="line">d = Dog(&quot;陈荣华&quot;)</span><br><span class="line">c = Cat(&quot;徐良伟&quot;)</span><br><span class="line">Animal.animal_talk(c)</span><br><span class="line">Animal.animal_talk(d)	</span><br><span class="line">Animal.eat(d)</span><br><span class="line">Animal.tell(d)</span><br></pre></td></tr></table></figure>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def bulk(self):</span><br><span class="line">	print(&quot;%s is yelling....&quot; %self.name)</span><br><span class="line">class Dog(object):</span><br><span class="line">	def __init__(self,name):</span><br><span class="line">		self.name = name</span><br><span class="line">	def eat(self,food):</span><br><span class="line">		print(&quot;%s is eating...&quot;%self.name,food)</span><br><span class="line">d = Dog(&quot;NiuHanYang&quot;)</span><br><span class="line">choice = input(&quot;&gt;&gt;:&quot;).strip()</span><br><span class="line">if hasattr(d,choice):	# 判断对象d是否有choice的字符</span><br><span class="line">	getattr(d,choice)	# 根据字符串获取obj对象里对应的方法内存地址</span><br><span class="line">else:</span><br><span class="line">	setattr(d,choice,bulk) #d.talk = bulk</span><br><span class="line">	func = getattr(d, choice)	# 则具有bulk功能</span><br><span class="line">	func(d)</span><br></pre></td></tr></table></figure>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">try:</span><br><span class="line">	open(&quot;tes.txt&quot;)</span><br><span class="line">except (KeyError,IndexError) as e :</span><br><span class="line">	print(&quot;没有这个key&quot;,e)</span><br><span class="line">except IndexError as e :</span><br><span class="line">	print(&quot;列表操作错误&quot;,e)</span><br><span class="line">except BaseException as e:</span><br><span class="line">	print(&quot;未知错误&quot;,e)</span><br><span class="line">else:</span><br><span class="line">	print(&quot;一切正常&quot;)</span><br><span class="line">finally:</span><br><span class="line">	print(&quot;不管有没有错，都执行&quot;)</span><br><span class="line">	</span><br><span class="line">class AlexError(Exception):</span><br><span class="line">	def __init__(self, msg):</span><br><span class="line">		self.message = msg</span><br><span class="line">	# def __str__(self):</span><br><span class="line">	#     return &apos;sdfsf&apos;</span><br><span class="line">try:</span><br><span class="line">	raise AlexError(&apos;数据库连不上&apos;) # 触发异常</span><br><span class="line">except AlexError as e:	# 返回__str__的实例</span><br><span class="line">	print(e)</span><br></pre></td></tr></table></figure>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">class Dog(object):</span><br><span class="line">	def __init__(self,name):</span><br><span class="line">		self.name = name</span><br><span class="line">		self.__food = None</span><br><span class="line">	@staticmethod #实际上跟类没什么关系了</span><br><span class="line">	def eat(self):</span><br><span class="line">		print(&quot;%s is eating %s&quot; %(self.name,&apos;dd&apos;))</span><br><span class="line">	@classmethod</span><br><span class="line">	def tell(self):		# d.tell() 获取类变量数据</span><br><span class="line">		print(&quot;%s is talking %s&quot; %(self.name,&apos;dd&apos;))	</span><br><span class="line">	@property 			# d.eat 方法变成静态属性</span><br><span class="line">	def eat(self):</span><br><span class="line">		print(&quot;%s is eating %s&quot; %(self.name,self.__food))		</span><br><span class="line">	@eat.setter			# 属性赋值</span><br><span class="line">	def eat(self,food):</span><br><span class="line">		print(&quot;set to food:&quot;,food)</span><br><span class="line">		self.__food = food</span><br><span class="line">	@eat.deleter		#属性删值</span><br><span class="line">	def eat(self):</span><br><span class="line">		del self.__food</span><br><span class="line">		print(&quot;删完了&quot;)</span><br><span class="line">	def talk(self):</span><br><span class="line">		print(&quot;%s is talking&quot;% self.name)</span><br><span class="line">d = Dog(&quot;ChenRonghua&quot;)</span><br><span class="line">d.eat(d)</span><br><span class="line">d.talk()</span><br><span class="line"></span><br><span class="line">class Flight(object):</span><br><span class="line">	def __init__(self,name):</span><br><span class="line">		self.flight_name = name</span><br><span class="line">	def checking_status(self):</span><br><span class="line">		print(&quot;checking flight %s status &quot; % self.flight_name)</span><br><span class="line">		return  0</span><br><span class="line">	@property</span><br><span class="line">	def flight_status(self):</span><br><span class="line">		status = self.checking_status()</span><br><span class="line">		if status == 0 :</span><br><span class="line">			print(&quot;flight got canceled...&quot;)</span><br><span class="line">		elif status == 1 :</span><br><span class="line">			print(&quot;flight is arrived...&quot;)</span><br><span class="line">		elif status == 2:</span><br><span class="line">			print(&quot;flight has departured already...&quot;)</span><br><span class="line">		else:</span><br><span class="line">			print(&quot;cannot confirm the flight status...,please check later&quot;)</span><br><span class="line">	@flight_status.setter</span><br><span class="line">	def flight_status(self,status):</span><br><span class="line">		print(&quot;flight %s has changed status to %s&quot; %(self.flight_name,status))</span><br><span class="line">f = Flight(&quot;CA980&quot;)</span><br><span class="line">f.flight_status</span><br><span class="line">f.flight_status = 2</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">class Foo(object):</span><br><span class="line">	def __init__(self):</span><br><span class="line">		self.data = &#123;&#125;</span><br><span class="line">	def __getitem__(self, key):</span><br><span class="line">		print(&apos;__getitem__&apos;, key)</span><br><span class="line">		return self.data.get(key)</span><br><span class="line">	def __setitem__(self, key, value):</span><br><span class="line">		print(&apos;__setitem__&apos;, key, value)</span><br><span class="line">		self.data[key] =value</span><br><span class="line">	def __delitem__(self, key):</span><br><span class="line">		print(&apos;__delitem__&apos;, key)</span><br><span class="line">obj = Foo()</span><br><span class="line">obj[&apos;name&apos;] = &quot;alex&quot;</span><br><span class="line"># print(obj[&apos;name&apos;])</span><br><span class="line"># print(obj.data)</span><br><span class="line">del obj[&quot;sdfdsf&quot;]</span><br><span class="line"># result = obj[&apos;k1&apos;]  # 自动触发执行 __getitem__</span><br><span class="line"># obj[&apos;k2&apos;] = &apos;alex&apos;  # 自动触发执行 __setitem__</span><br><span class="line"># del obj[&apos;k1&apos;]	</span><br><span class="line"></span><br><span class="line">class Foo(object):		# 创建类1</span><br><span class="line">	def __init__(self, name):</span><br><span class="line">		self.name = name</span><br><span class="line">f = Foo(&quot;alex&quot;)</span><br><span class="line">print(type(f))</span><br><span class="line">print(type(Foo))</span><br><span class="line"></span><br><span class="line">def func(self):</span><br><span class="line">	print(&apos;hello %s&apos; %self.name)</span><br><span class="line">def __init__(self,name,age):</span><br><span class="line">	self.name = name</span><br><span class="line">	self.age = age</span><br><span class="line">Foo = type(&apos;Foo&apos;, (object,), &#123;&apos;talk&apos;: func,&apos;__init__&apos;:__init__&#125;)		# 创建类2</span><br><span class="line">f = Foo(&quot;Chrn&quot;,22)</span><br><span class="line">f.talk()</span><br><span class="line">print(type(Foo))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class MyType(type):</span><br><span class="line">	def __init__(self, what, bases=None, dict=None):			#1</span><br><span class="line">		print(&quot;--MyType init---&quot;)</span><br><span class="line">		super(MyType, self).__init__(what, bases, dict)</span><br><span class="line">	def __call__(self, *args, **kwargs):						#2</span><br><span class="line">		print(&quot;--MyType call---&quot;)</span><br><span class="line">		obj = self.__new__(self, *args, **kwargs)</span><br><span class="line">		obj.data = &#123;&quot;name&quot;:111&#125;</span><br><span class="line">		self.__init__(obj, *args, **kwargs)</span><br><span class="line">class Foo(object):</span><br><span class="line">	__metaclass__ = MyType</span><br><span class="line">	def __init__(self, name):									#4</span><br><span class="line">		self.name = name</span><br><span class="line">		print(&quot;Foo ---init__&quot;)</span><br><span class="line">	def __new__(cls, *args, **kwargs):							#3</span><br><span class="line">		print(&quot;Foo --new--&quot;)</span><br><span class="line">		return object.__new__(cls) #继承父亲的__new__方法</span><br><span class="line"># 第一阶段：解释器从上到下执行代码创建Foo类</span><br><span class="line"># 第二阶段：通过Foo类创建obj对象</span><br><span class="line">obj = Foo(&quot;Alex&quot;)							#	创建类3</span><br><span class="line">print(obj.name)</span><br></pre></td></tr></table></figure>
+<h2 id="socket-模块"><a href="#socket-模块" class="headerlink" title="socket    模块"></a>socket    模块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">client = socket.socket() #声明socket类型，同时生成socket连接对象</span><br><span class="line">client.connect((&apos;localhost&apos;,6969))</span><br><span class="line"># f = open(&quot;a.txt&quot;,&quot;wb&quot;)</span><br><span class="line">while True:</span><br><span class="line">	msg = input(&quot;&gt;&gt;:&quot;).strip()</span><br><span class="line">	if len(msg) == 0:continue</span><br><span class="line">	client.send(msg.encode(&quot;utf-8&quot;))</span><br><span class="line">	data = client.recv(10240)	# 声明字节数</span><br><span class="line">	print(&quot;recv:&quot;,data.decode())</span><br><span class="line">	#   f.write(data) f.flush()</span><br><span class="line">client.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import socket</span><br><span class="line">server = socket.socket()</span><br><span class="line">server.bind((&apos;localhost&apos;,6969)) #绑定要监听端口</span><br><span class="line">server.listen(5) #监听</span><br><span class="line">print(&quot;我要开始等电话了&quot;)</span><br><span class="line">while True:</span><br><span class="line">	conn, addr = server.accept()  # 等电话打进来</span><br><span class="line">	# conn就是客户端连过来而在服务器端为其生成的一个连接实例，返回标志位，地址</span><br><span class="line">	print(conn, addr)</span><br><span class="line">	print(&quot;电话来了&quot;)</span><br><span class="line">	count = 0</span><br><span class="line">	while True:</span><br><span class="line">		data = conn.recv(1024)</span><br><span class="line">		print(&quot;recv:&quot;,data)</span><br><span class="line">		if not data:</span><br><span class="line">			print(&quot;client has lost...&quot;)</span><br><span class="line">			break</span><br><span class="line">		# res = os.popen(data).read()	conn.send(res)</span><br><span class="line">		# data=open(&quot;a.txt&quot;).read()  conn.sendall(data)</span><br><span class="line">		conn.send(data.upper())</span><br><span class="line">		count+=1</span><br><span class="line">		if count &gt;10:break</span><br><span class="line">server.close()</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>欢迎和博主一起玩耍呀-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/python基础语法.html">python基础语法</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
+  <p><span>发布时间:</span>2018年02月05日 - 12:02</p>
+  <p><span>最后更新:</span>2018年02月05日 - 13:02</p>
+  <p><span>原始链接:</span><a href="/post/python基础语法.html" title="python基础语法">http://ashercode.github.io/post/python基础语法.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/python基础语法.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃包辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="AsherCode 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="AsherCode 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/python从0到1.html" rel="next" title="python从0到1">
+                <i class="fa fa-chevron-left"></i> python从0到1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/elasticsearch搭建搜索引擎.html" rel="prev" title="elasticsearch搭建搜索引擎">
+                elasticsearch搭建搜索引擎 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2152116" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg0MC8xMDM5Mw=="></div>
+    </div>
+
+  
+   
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AsherCode" />
+            
+              <p class="site-author-name" itemprop="name">AsherCode</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ashercode" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/u/5317695564/home" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ashercode.github.io" title="本站孪生地址" target="_blank">本站孪生地址</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本语法"><span class="nav-number">1.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构"><span class="nav-number">2.</span> <span class="nav-text">数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">2.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元祖"><span class="nav-number">2.2.</span> <span class="nav-text">元祖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典"><span class="nav-number">2.3.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">2.4.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合"><span class="nav-number">2.5.</span> <span class="nav-text">集合</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件"><span class="nav-number">3.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编码"><span class="nav-number">4.</span> <span class="nav-text">编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数"><span class="nav-number">5.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器"><span class="nav-number">5.1.</span> <span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套函数"><span class="nav-number">5.2.</span> <span class="nav-text">嵌套函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数参数案例"><span class="nav-number">5.3.</span> <span class="nav-text">函数参数案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数登录案例"><span class="nav-number">5.4.</span> <span class="nav-text">函数登录案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迭代器"><span class="nav-number">6.</span> <span class="nav-text">迭代器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成器"><span class="nav-number">7.</span> <span class="nav-text">生成器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#生产者消费者"><span class="nav-number">7.1.</span> <span class="nav-text">生产者消费者</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内置函数"><span class="nav-number">8.</span> <span class="nav-text">内置函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列化"><span class="nav-number">9.</span> <span class="nav-text">序列化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反序列化"><span class="nav-number">10.</span> <span class="nav-text">反序列化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块"><span class="nav-number">11.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义模块"><span class="nav-number">11.1.</span> <span class="nav-text">定义模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间模块"><span class="nav-number">11.2.</span> <span class="nav-text">时间模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机模块"><span class="nav-number">11.3.</span> <span class="nav-text">随机模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os模块"><span class="nav-number">11.4.</span> <span class="nav-text">os模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys模块"><span class="nav-number">11.5.</span> <span class="nav-text">sys模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shutil模块"><span class="nav-number">11.6.</span> <span class="nav-text">shutil模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shelve模块"><span class="nav-number">11.7.</span> <span class="nav-text">shelve模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xml模块"><span class="nav-number">11.8.</span> <span class="nav-text">xml模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConfigParser模块"><span class="nav-number">11.9.</span> <span class="nav-text">ConfigParser模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hashlib-hmac模块"><span class="nav-number">11.10.</span> <span class="nav-text">hashlib/hmac模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#re模块"><span class="nav-number">11.11.</span> <span class="nav-text">re模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类"><span class="nav-number">11.12.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">11.12.1.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多态"><span class="nav-number">11.12.2.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反射"><span class="nav-number">11.12.3.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number">11.12.4.</span> <span class="nav-text">异常处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法"><span class="nav-number">11.13.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#socket-模块"><span class="nav-number">11.14.</span> <span class="nav-text">socket    模块</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AsherCode</span>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共55.7k字</span>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("mvlpA2l2DQuXENSGQgGyvWEx-gzGzoHsz", "BPLBwOm9OSqs2LtI5jIHvcSW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: -30px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 40px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- ҳ������С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
