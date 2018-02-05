@@ -96,20 +96,20 @@
 
 
 
-<meta name="description" content="老虎不发威，你当我…当我女朋友吧  redis 环境搭建,配置,基础命令,持久化,事务,主从复制 优点  基于内存，读写快，键值可以是字符串，列表，散列，集合，有序集合，HyperLogLog 持久化将内存数据保存到硬盘里，方便数据备份和恢复 发布和订阅，消息同时分发多个客户端，构件广播系统 过期键，到期自动删除 事务功能，提供乐观锁，保证处理数据的安全性 Lua脚本，在服务器原子地执行多个操作，">
+<meta name="description" content="老虎不发威，你当我…当我女朋友吧  redis环境搭建,配置,基础命令,持久化,事务,主从复制">
 <meta name="keywords" content="redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis基础操作">
 <meta property="og:url" content="http://ashercode.github.io/post/redis基础操作.html">
 <meta property="og:site_name" content="王小建">
-<meta property="og:description" content="老虎不发威，你当我…当我女朋友吧  redis 环境搭建,配置,基础命令,持久化,事务,主从复制 优点  基于内存，读写快，键值可以是字符串，列表，散列，集合，有序集合，HyperLogLog 持久化将内存数据保存到硬盘里，方便数据备份和恢复 发布和订阅，消息同时分发多个客户端，构件广播系统 过期键，到期自动删除 事务功能，提供乐观锁，保证处理数据的安全性 Lua脚本，在服务器原子地执行多个操作，">
+<meta property="og:description" content="老虎不发威，你当我…当我女朋友吧  redis环境搭建,配置,基础命令,持久化,事务,主从复制">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/mysql_pic.jpg">
 <meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/redis-pic.jpg">
-<meta property="og:updated_time" content="2018-02-05T02:10:17.192Z">
+<meta property="og:updated_time" content="2018-02-05T02:30:20.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis基础操作">
-<meta name="twitter:description" content="老虎不发威，你当我…当我女朋友吧  redis 环境搭建,配置,基础命令,持久化,事务,主从复制 优点  基于内存，读写快，键值可以是字符串，列表，散列，集合，有序集合，HyperLogLog 持久化将内存数据保存到硬盘里，方便数据备份和恢复 发布和订阅，消息同时分发多个客户端，构件广播系统 过期键，到期自动删除 事务功能，提供乐观锁，保证处理数据的安全性 Lua脚本，在服务器原子地执行多个操作，">
+<meta name="twitter:description" content="老虎不发威，你当我…当我女朋友吧  redis环境搭建,配置,基础命令,持久化,事务,主从复制">
 <meta name="twitter:image" content="http://oyx66gbka.bkt.clouddn.com/mysql_pic.jpg">
 
 
@@ -478,7 +478,8 @@
       
         <blockquote class="blockquote-center"><p>老虎不发威，你当我…当我女朋友吧</p>
 </blockquote>
-<div class="note default"><p>redis 环境搭建,配置,基础命令,持久化,事务,主从复制</p></div>
+<div class="note success"><p>redis环境搭建,配置,基础命令,持久化,事务,主从复制</p></div>
+<a id="more"></a>
 <h1 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h1><blockquote>
 <ul>
 <li>基于内存，读写快，键值可以是字符串，列表，散列，集合，有序集合，HyperLogLog</li>
@@ -856,7 +857,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="gt-共同好友"><a href="#gt-共同好友" class="headerlink" title="&gt; 共同好友"></a>&gt; 共同好友</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">set it_user:id:1:username wangjian</span><br><span class="line">set it_user:id:1:age 12</span><br><span class="line">set it_user:id:2:username lijian</span><br><span class="line">set it_user:id:1:age 13</span><br><span class="line">set it_user:id:3:username lujian</span><br><span class="line">set it_user:id:1:age 14</span><br><span class="line">set it_user:id:4:username huangjian</span><br><span class="line">set it_user:id:1:age 15</span><br><span class="line">sadd set:user:id:3:friend 1 </span><br><span class="line">sadd set:user:id:3:friend 2</span><br><span class="line">smembers set:user:id:3:friend  3号有1号和2号的好友</span><br><span class="line">sadd set:user:id:4:friend 2</span><br><span class="line">smembers set:user:id:4:friend   4号有2号的好友</span><br><span class="line">sinter set:user:id:3:friend set:user:id:4:friend 查找3，4号共同的好友</span><br><span class="line">sunion set:user:id:3:friend set:user:id:4:friend 查找3，4号所有的好友</span><br><span class="line">sdiff set:user:id:3:friend set:user:id:4:friend  3号给4号推荐好友</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>共同好友<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">set it_user:id:1:username wangjian</span><br><span class="line">set it_user:id:1:age 12</span><br><span class="line">set it_user:id:2:username lijian</span><br><span class="line">set it_user:id:1:age 13</span><br><span class="line">set it_user:id:3:username lujian</span><br><span class="line">set it_user:id:1:age 14</span><br><span class="line">set it_user:id:4:username huangjian</span><br><span class="line">set it_user:id:1:age 15</span><br><span class="line">sadd set:user:id:3:friend 1 </span><br><span class="line">sadd set:user:id:3:friend 2</span><br><span class="line">smembers set:user:id:3:friend  3号有1号和2号的好友</span><br><span class="line">sadd set:user:id:4:friend 2</span><br><span class="line">smembers set:user:id:4:friend   4号有2号的好友</span><br><span class="line">sinter set:user:id:3:friend set:user:id:4:friend 查找3，4号共同的好友</span><br><span class="line">sunion set:user:id:3:friend set:user:id:4:friend 查找3，4号所有的好友</span><br><span class="line">sdiff set:user:id:3:friend set:user:id:4:friend  3号给4号推荐好友</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 <h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><hr>
 <pre><code>key---value(键值对)
 </code></pre><table>
@@ -1013,7 +1016,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="gt-案例"><a href="#gt-案例" class="headerlink" title="&gt; 案例"></a>&gt; 案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">zadd class:phpRank 1 asion</span><br><span class="line">zadd class:phpRank 5 mark</span><br><span class="line">zadd class:phpRank 2 ruby</span><br><span class="line">zadd class:phpRank 4 lily</span><br><span class="line">zrange class:phpRank 0 -1 [withscores] 获取所有[按照权重显示]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>案例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">zadd class:phpRank 1 asion</span><br><span class="line">zadd class:phpRank 5 mark</span><br><span class="line">zadd class:phpRank 2 ruby</span><br><span class="line">zadd class:phpRank 4 lily</span><br><span class="line">zrange class:phpRank 0 -1 [withscores] 获取所有[按照权重显示]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
 <h1 id="php-redis"><a href="#php-redis" class="headerlink" title="php_redis"></a>php_redis</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   复制 5.5.12版本 php_redis.dll php_igbinary.dll到D:\wamp\bin\php\php5.5.12\ext下</span><br><span class="line">   修改php.ini 添加</span><br><span class="line">       extension=php_igbinary.dll</span><br><span class="line">       extension=php_redis.dll</span><br><span class="line">   新建php文件测试    </span><br><span class="line">   &lt;?php</span><br><span class="line">   	$redis = new Redis();</span><br><span class="line">   	$host = &apos;192.168.56.104&apos;;</span><br><span class="line">   	$port = 6379;</span><br><span class="line">   	$redis-&gt;connect($host,$port);</span><br><span class="line">   	$redis-&gt;set(&apos;windows&apos;,&apos;windows testing&apos;);</span><br><span class="line">   	$data = $redis-&gt;get(&apos;windows&apos;);</span><br><span class="line">   	echo $data;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 <h1 id="发布订阅"><a href="#发布订阅" class="headerlink" title="发布订阅"></a>发布订阅</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">publish my1 &apos;hello&apos; 发布</span><br><span class="line">subscribe my1   订阅my1</span><br><span class="line">publish my1 &apos;world&apos;</span><br><span class="line">psubscribe my*   批量订阅</span><br></pre></td></tr></table></figure>
 <h1 id="基于快照的持久化rdb"><a href="#基于快照的持久化rdb" class="headerlink" title="基于快照的持久化rdb"></a>基于快照的持久化rdb</h1><blockquote>
@@ -1204,6 +1209,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/post/lucence搜索引擎.html" rel="prev" title="lucence搜索引擎">
+                lucence搜索引擎 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -1315,7 +1324,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1326,7 +1335,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1337,7 +1346,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1400,7 +1409,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优点"><span class="nav-number">1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conf配置"><span class="nav-number">3.</span> <span class="nav-text">conf配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础命令"><span class="nav-number">4.</span> <span class="nav-text">基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#key"><span class="nav-number">4.1.</span> <span class="nav-text">key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">4.2.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">4.3.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">4.4.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-共同好友"><span class="nav-number">4.5.</span> <span class="nav-text">&gt; 共同好友</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">4.6.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zset"><span class="nav-number">4.7.</span> <span class="nav-text">zset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gt-案例"><span class="nav-number">4.8.</span> <span class="nav-text">&gt; 案例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php-redis"><span class="nav-number">5.</span> <span class="nav-text">php_redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布订阅"><span class="nav-number">6.</span> <span class="nav-text">发布订阅</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于快照的持久化rdb"><span class="nav-number">7.</span> <span class="nav-text">基于快照的持久化rdb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于文件追加方式持久化aof"><span class="nav-number">8.</span> <span class="nav-text">基于文件追加方式持久化aof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-number">9.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sub-pub"><span class="nav-number">10.</span> <span class="nav-text">sub_pub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主从复制"><span class="nav-number">11.</span> <span class="nav-text">主从复制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一主多从"><span class="nav-number">11.1.</span> <span class="nav-text">一主多从</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写"><span class="nav-number">11.1.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读"><span class="nav-number">11.1.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读"><span class="nav-number">11.1.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#薪火相传"><span class="nav-number">11.2.</span> <span class="nav-text">薪火相传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写-1"><span class="nav-number">11.2.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读-1"><span class="nav-number">11.2.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读-1"><span class="nav-number">11.2.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反客为主"><span class="nav-number">11.3.</span> <span class="nav-text">反客为主</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写-2"><span class="nav-number">11.3.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读-2"><span class="nav-number">11.3.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读-2"><span class="nav-number">11.3.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哨兵模式"><span class="nav-number">11.4.</span> <span class="nav-text">哨兵模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写-3"><span class="nav-number">11.4.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读-3"><span class="nav-number">11.4.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读-3"><span class="nav-number">11.4.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#优点"><span class="nav-number">1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#conf配置"><span class="nav-number">3.</span> <span class="nav-text">conf配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础命令"><span class="nav-number">4.</span> <span class="nav-text">基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#key"><span class="nav-number">4.1.</span> <span class="nav-text">key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#string"><span class="nav-number">4.2.</span> <span class="nav-text">string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#list"><span class="nav-number">4.3.</span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set"><span class="nav-number">4.4.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hash"><span class="nav-number">4.5.</span> <span class="nav-text">Hash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zset"><span class="nav-number">4.6.</span> <span class="nav-text">zset</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php-redis"><span class="nav-number">5.</span> <span class="nav-text">php_redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布订阅"><span class="nav-number">6.</span> <span class="nav-text">发布订阅</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于快照的持久化rdb"><span class="nav-number">7.</span> <span class="nav-text">基于快照的持久化rdb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于文件追加方式持久化aof"><span class="nav-number">8.</span> <span class="nav-text">基于文件追加方式持久化aof</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务"><span class="nav-number">9.</span> <span class="nav-text">事务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sub-pub"><span class="nav-number">10.</span> <span class="nav-text">sub_pub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主从复制"><span class="nav-number">11.</span> <span class="nav-text">主从复制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一主多从"><span class="nav-number">11.1.</span> <span class="nav-text">一主多从</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写"><span class="nav-number">11.1.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读"><span class="nav-number">11.1.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读"><span class="nav-number">11.1.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#薪火相传"><span class="nav-number">11.2.</span> <span class="nav-text">薪火相传</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写-1"><span class="nav-number">11.2.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读-1"><span class="nav-number">11.2.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读-1"><span class="nav-number">11.2.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反客为主"><span class="nav-number">11.3.</span> <span class="nav-text">反客为主</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写-2"><span class="nav-number">11.3.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读-2"><span class="nav-number">11.3.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读-2"><span class="nav-number">11.3.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哨兵模式"><span class="nav-number">11.4.</span> <span class="nav-text">哨兵模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6379可读写-3"><span class="nav-number">11.4.1.</span> <span class="nav-text">6379可读写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6380可读-3"><span class="nav-number">11.4.2.</span> <span class="nav-text">6380可读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6381可读-3"><span class="nav-number">11.4.3.</span> <span class="nav-text">6381可读</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1428,7 +1437,7 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">AsherCode</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共11.4k字</span>
+  <span class="post-count">博客全站共33.5k字</span>
 </div>
   
 </div>

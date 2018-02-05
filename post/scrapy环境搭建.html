@@ -85,7 +85,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="scrapy," />
 
 
 
@@ -96,16 +96,18 @@
 
 
 
-<meta name="description" content="本是青灯不归客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王小建">
-<meta property="og:url" content="http://ashercode.github.io/tags/redis/index.html">
+<meta name="description" content="今天学了很多撩妹的话，以后说给你听啊   scrapy基础环境搭建及相关语法">
+<meta name="keywords" content="scrapy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrapy环境搭建">
+<meta property="og:url" content="http://ashercode.github.io/post/scrapy环境搭建.html">
 <meta property="og:site_name" content="王小建">
-<meta property="og:description" content="本是青灯不归客">
+<meta property="og:description" content="今天学了很多撩妹的话，以后说给你听啊   scrapy基础环境搭建及相关语法">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-05T03:08:12.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王小建">
-<meta name="twitter:description" content="本是青灯不归客">
+<meta name="twitter:title" content="scrapy环境搭建">
+<meta name="twitter:description" content="今天学了很多撩妹的话，以后说给你听啊   scrapy基础环境搭建及相关语法">
 
 
 
@@ -135,7 +137,7 @@
 
 
 
-  <link rel="canonical" href="http://ashercode.github.io/tags/redis/"/>
+  <link rel="canonical" href="http://ashercode.github.io/post/scrapy环境搭建.html"/>
 
 
 
@@ -150,7 +152,7 @@
   daovoice('update');
   </script>
 
-  <title>标签: redis | 王小建</title>
+  <title>scrapy环境搭建 | 王小建</title>
   
 
 
@@ -181,7 +183,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
 <a href="https://github.com/AsherCode" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
@@ -325,110 +327,475 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>redis<small>标签</small>
-        </h2>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ashercode.github.io/post/scrapy环境搭建.html">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AsherCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小建">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/post/scrapy分布式爬虫.html" itemprop="url">
-              
-                <span itemprop="name">scrapy分布式爬虫</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">scrapy环境搭建</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-05T11:48:09+08:00"
-              content="2018-02-05" >
-          02-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T11:08:11+08:00">
+                2018-02-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/post/scrapy环境搭建.html" class="leancloud_visitors" data-flag-title="scrapy环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,706
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/post/反爬虫及存储.html" itemprop="url">
-              
-                <span itemprop="name">反爬虫及存储</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-05T11:30:50+08:00"
-              content="2018-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/post/redis基础操作.html" itemprop="url">
-              
-                <span itemprop="name">redis基础操作</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-05T09:39:31+08:00"
-              content="2018-02-05" >
-          02-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <blockquote class="blockquote-center"><p>今天学了很多撩妹的话，以后说给你听啊 </p>
+</blockquote>
+<div class="note warning"><p>scrapy基础环境搭建及相关语法</p></div>
+<a id="more"></a>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>windows:<a href="https://download.jetbrains.8686c.com/python/pycharm-professional-2017.3.2.exe" target="_blank" rel="noopener">pycharm</a></p>
+<p>linux: <a href="https://download.jetbrains.8686c.com/python/pycharm-professional-2017.3.2.tar.gz" target="_blank" rel="noopener">pycharm</a></p>
+<blockquote>
+<p>vim ~/.bashrc &amp;&amp; 添加 alias pycharm=”bash /home/pycharm-2017.3.2/bin/pycharm.sh”<br>    source ~/.bashrc</p>
+</blockquote>
+<p>先安装<a href="https://www.python.org/ftp/python/3.5.0/python-3.5.0-amd64.exe" target="_blank" rel="noopener">python3.5</a>,在安装<a href="https://www.python.org/ftp/python/2.7.14/python-2.7.14.amd64.msi" target="_blank" rel="noopener">python2.7 </a>   </p>
+<h2 id="虚拟环境virtualenv"><a href="#虚拟环境virtualenv" class="headerlink" title="虚拟环境virtualenv"></a>虚拟环境virtualenv</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv</span><br><span class="line">pip  install  -i  https://pypi.doubanio.com/simple/  --trusted-host pypi.doubanio.com  django   最新django只支持python3</span><br><span class="line">pip uninstall django    卸载django </span><br><span class="line">virtualenv scrapytest   默认环境创建虚拟环境</span><br><span class="line">cd scrapytest/Scripts &amp;&amp;  activate.bat &amp;&amp; python 进入3.5虚拟环境</span><br><span class="line">virtualenv -p D:\Python27\python.exe scrapytest</span><br><span class="line">cd scrapytest/Scripts &amp;&amp;  activate.bat &amp;&amp; python 进入2.7虚拟环境</span><br><span class="line">deactivate.bat          退出虚拟环境</span><br><span class="line"></span><br><span class="line">apt-get install python-virtualenv       安装虚拟环境</span><br><span class="line">virtualenv py2 &amp;&amp; cd py2 &amp;&amp; cd bin &amp;&amp; source activate &amp;&amp; python 进入2.7虚拟环境</span><br><span class="line">virtualenv -p /usr/bin/python3 py3 &amp;&amp; &amp;&amp; cd py3 &amp;&amp; cd bin &amp;&amp; source activate &amp;&amp; python  进入3.5虚拟环境</span><br></pre></td></tr></table></figure>
+<h2 id="虚拟环境virtualenvwrapper"><a href="#虚拟环境virtualenvwrapper" class="headerlink" title="虚拟环境virtualenvwrapper"></a>虚拟环境virtualenvwrapper</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenvwrapper或者virtualenvwrapper-win</span><br><span class="line">workon  列出所有虚拟环境</span><br><span class="line">mkvirtualenv py3scrapy  新建并进入虚拟环境，可以更换新建环境变量WORKON_HOME=D:\Envs</span><br><span class="line">deactivate          退出虚拟环境</span><br><span class="line">workon py3scrapy        进入指定虚拟环境</span><br><span class="line">    pip install -i https://pypi.douban.com/simple scrapy    安装scrapy源</span><br><span class="line">    若缺少lxml出错https://www.lfd.uci.edu/~gohlke/pythonlibs/寻找对应版本的lxml的whl源</span><br><span class="line">    python -m pip install --upgrade pip     更新pip</span><br><span class="line">    pip install lxml-4.1.1-cp35-cp35m-win_amd64.whl</span><br><span class="line">    若缺少Twisted出错http://www.lfd.uci.edu/~gohlke/pythonlibs/#lxml搜对应版本Twisted</span><br><span class="line">    pip install Twisted‑17.9.0‑cp35‑cp35m‑win_amd64.whl</span><br><span class="line">mkvirtualenv --python=D:\Python27\python.exe py2scrapy      一般不会出问题</span><br><span class="line">    pip install -i https://pypi.douban.com/simple scrapy</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">pip install virtualenvwrapper    </span><br><span class="line">    find / -name virualenvwrapper.sh</span><br><span class="line">    vim ~/.bashrc</span><br><span class="line">        export WORKON_HOME=$HOME/.virtualenvs</span><br><span class="line">        source /home/wj/.local/bin/virtualenvwrapper.sh</span><br><span class="line">    source ~/.bashrc    </span><br><span class="line">mkvirtualenv py2scrapy          指向生成~/.virtualenv</span><br><span class="line">deactivate          退出虚拟环境</span><br><span class="line">mkdirtualenv --python=/usr/bin/python3 py3scrapy</span><br></pre></td></tr></table></figure>
+<h1 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">windows:</span><br><span class="line">s=&quot;你好&quot;</span><br><span class="line">su=u&quot;你好&quot;</span><br><span class="line">s.encode(&quot;utf-8&quot;)       报错</span><br><span class="line">s.decode(&quot;gb1312&quot;).encode(&quot;utf8&quot;)</span><br><span class="line">su.encode(&quot;utf8&quot;)</span><br><span class="line"></span><br><span class="line">linux:</span><br><span class="line">s=&quot;你好&quot;</span><br><span class="line">s.encode(&quot;utf-8&quot;)       报错</span><br><span class="line">s.decode(&quot;utf8&quot;).encode(&quot;utf8&quot;)</span><br><span class="line"></span><br><span class="line">sys.getdefaultencoding()    获取默认编码</span><br></pre></td></tr></table></figure>
+<h3 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h3><p><a href="http://www.w3school.com.cn/cssref/css_selectors.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/cssref/css_selectors.asp</a></p>
+<h3 id="xpath选择器"><a href="#xpath选择器" class="headerlink" title="xpath选择器"></a>xpath选择器</h3><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nodename</td>
+<td>选取此节点的所有子节点。</td>
+</tr>
+<tr>
+<td>/</td>
+<td>从根节点选取。</td>
+</tr>
+<tr>
+<td>//</td>
+<td>从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</td>
+</tr>
+<tr>
+<td>.</td>
+<td>选取当前节点。</td>
+</tr>
+<tr>
+<td>..</td>
+<td>选取当前节点的父节点。</td>
+</tr>
+<tr>
+<td>@</td>
+<td>选取属性。</td>
+</tr>
+<tr>
+<td>bookstore</td>
+<td>选取 bookstore 元素的所有子节点。</td>
+</tr>
+<tr>
+<td>/bookstore</td>
+<td>选取根元素 bookstore。注释：假如路径起始于正斜杠( / )，则此路径始终代表到某元素的绝对路径！</td>
+</tr>
+<tr>
+<td>bookstore/book</td>
+<td>选取属于 bookstore 的子元素的所有 book 元素。</td>
+</tr>
+<tr>
+<td>//book</td>
+<td>选取所有 book 子元素，而不管它们在文档中的位置。</td>
+</tr>
+<tr>
+<td>bookstore//book</td>
+<td>选择属于 bookstore 元素的后代的所有 book 元素，而不管它们位于 bookstore 之下的什么位置。</td>
+</tr>
+<tr>
+<td>//@lang</td>
+<td>选取名为 lang 的所有属性。</td>
+</tr>
+<tr>
+<td>/bookstore/book[1]</td>
+<td>选取属于 bookstore 子元素的第一个 book 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()]</td>
+<td>选取属于 bookstore 子元素的最后一个 book 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book[last()-1]</td>
+<td>选取属于 bookstore 子元素的倒数第二个 book 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book[position()&lt;3]</td>
+<td>选取最前面的两个属于 bookstore 元素的子元素的 book 元素。</td>
+</tr>
+<tr>
+<td>//title[@lang]</td>
+<td>选取所有拥有名为 lang 的属性的 title 元素。</td>
+</tr>
+<tr>
+<td>//title[@lang=’eng’]</td>
+<td>选取所有 title 元素，且这些元素拥有值为 eng 的 lang 属性。</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]</td>
+<td>选取 bookstore 元素的所有 book 元素，且其中的 price 元素的值须大于 35.00。</td>
+</tr>
+<tr>
+<td>/bookstore/book[price&gt;35.00]/title</td>
+<td>选取 bookstore 元素中的 book 元素的所有 title 元素，且其中的 price 元素的值须大于 35.00。</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配任何元素节点。</td>
+</tr>
+<tr>
+<td>@*</td>
+<td>匹配任何属性节点。</td>
+</tr>
+<tr>
+<td>node()</td>
+<td>匹配任何类型的节点。</td>
+</tr>
+<tr>
+<td>/bookstore/*</td>
+<td>选取 bookstore 元素的所有子元素。</td>
+</tr>
+<tr>
+<td>//*</td>
+<td>选取文档中的所有元素。</td>
+</tr>
+<tr>
+<td>//title[@*]</td>
+<td>选取所有带有属性的 title 元素。</td>
+</tr>
+<tr>
+<td>//book/title &#124; //book/price</td>
+<td>选取 book 元素的所有 title 和 price 元素。</td>
+</tr>
+<tr>
+<td>//title &#124; //price</td>
+<td>选取文档中的所有 title 和 price 元素。</td>
+</tr>
+<tr>
+<td>/bookstore/book/title &#124; //price</td>
+<td>选取属于 bookstore 元素的 book 元素的所有 title 元素，以及文档中所有的 price 元素。</td>
+</tr>
+<tr>
+<td>//span[contains(@class,’vote-post-up’)]</td>
+<td>含有指定class的span元素</td>
+</tr>
+</tbody>
+</table>
+<p><a href="http://www.w3school.com.cn/xpath/xpath_functions.asp" target="_blank" rel="noopener">xpath函数</a></p>
+<h3 id="基本应用"><a href="#基本应用" class="headerlink" title="基本应用"></a>基本应用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenvwrapper </span><br><span class="line">mkvirtualenv --python=D:\Python35\python.exe article_spider</span><br><span class="line">pip install Twisted-17.9.0-cp35-cp35m-win_amd64.whl</span><br><span class="line">pip install -i https://pypi.douban.com/simple/ scrapy</span><br><span class="line">scrapy startproject ArticleSpider</span><br><span class="line">cd ArticleSpider</span><br><span class="line">scrapy genspider jobbole blog.jobbole.com</span><br><span class="line">scrapy genspider zhihu www.zhihu.com</span><br><span class="line">scrapy genspider --list</span><br><span class="line">scrapy genspider -t crawl lagou www.lagou.com</span><br><span class="line"></span><br><span class="line">//pycharm--新建项目---Pure Python---Interpreter为D:\Envs\article_spider\Scripts\python.exe</span><br><span class="line">pycharm--打开---ArticleSpider,修改settings--project Interpreter为D:\Envs\article_spider</span><br><span class="line">http://www.xicidaili.com/nn/</span><br><span class="line">pip list</span><br><span class="line">pip install -i https://pypi.douban.com/simple pypiwin32</span><br><span class="line">pip install pillow</span><br><span class="line">pip install requests</span><br><span class="line">pip install redis</span><br><span class="line">pip install mysqlclient</span><br><span class="line">pip install fake-useragent</span><br><span class="line">或者pip install -i https://pypi.douban.com/simple mysqlclient</span><br><span class="line">出错apt-get install libmysqlclient-dev</span><br><span class="line">或者yum install python-devel mysql-devel</span><br><span class="line">scrapy crawl jobbole</span><br><span class="line">修改settings.py     ROBOTSTXT_OBEY = False</span><br><span class="line"></span><br><span class="line">scrapy shell http://blog.jobbole.com/       可以在脚本中调试xpath或者chrome浏览器右键copy xpath,chrome浏览器右键copy selector</span><br><span class="line">scrapy shell -s USER_AGENT=&quot;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0&quot; https://www.zhihu.com/question/56320032</span><br><span class="line">    with open(&quot;a.html&quot;,&quot;wb&quot;) as f:</span><br><span class="line">        f.write(response.text.encode(&quot;utf-8&quot;))</span><br><span class="line"></span><br><span class="line">re_selector = response.xpath(&quot;//*[@id=&apos;widgets-homepage-fullwidth&apos;]/div[1]/div[2]/div[2]/p/a[1]&quot;)</span><br><span class="line">re_selector.extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()        去除空格</span><br><span class="line">response.xpath(&quot;//span[contains(@class,&apos;vote-post-up&apos;)]&quot;)       含有指定class的span元素</span><br><span class="line">re_selector.xpath(&quot;//*&quot;)</span><br><span class="line">response.css(&quot;#widgets-homepage-fullwidth &gt;div:nth-child(2)&gt;div:nth-child(2)&gt;div.post-meta&gt;p&gt;a.meta-title&quot;)</span><br><span class="line"></span><br><span class="line">class JobboleSpider(scrapy.Spider):</span><br><span class="line">    name = &apos;jobbole&apos;</span><br><span class="line">    allowed_domains = [&apos;blog.jobbole.com&apos;]</span><br><span class="line">    start_urls = [&apos;http://blog.jobbole.com/110287/&apos;]</span><br><span class="line">    def parse(self, response):</span><br><span class="line">    </span><br><span class="line">        title = response.xpath(&quot;//div[@class=&apos;entry-header&apos;]/h1/text()&quot;).extract()[0]</span><br><span class="line">        create_date = response.xpath(&quot;//p[@class=&apos;entry-meta-hide-on-mobile&apos;]/text()&quot;).extract()[0].strip().replace(&apos;·&apos;,&quot;&quot;).strip()</span><br><span class="line">        praise_nums = response.xpath(&quot;//span[contains(@class,&apos;vote-post-up&apos;)]/h10/text()&quot;).extract()[0]</span><br><span class="line">        fav_nums = reponse.xpath(&quot;//span[contains(@class,&apos;bookmark-btn&apos;)]/text()&quot;).extract()[0]</span><br><span class="line">        match_re = re.math(&quot;.*?(\d+).*&quot;,fav_nums)</span><br><span class="line">        if match_re:</span><br><span class="line">            fav_nums = match_re.group(1)</span><br><span class="line">        comment_nums = response.xpath(&quot;//a[@href=&apos;#article-comment&apos;]/span/text()&quot;).extract()</span><br><span class="line">        match_re = re.match(&quot;.*?(\d+).*&quot;,comment_nums)</span><br><span class="line">        if match_re:</span><br><span class="line">            comment_nums = match_re.group(1)</span><br><span class="line">        content = response.xpath(&quot;//div[@class=&apos;entry&apos;]&quot;).extract()[0]</span><br><span class="line">        create_date = response.xpath(&quot;//p[@class=&apos;entry-meta-hide-on-mobile&apos;]/a/text()&quot;).extract()</span><br><span class="line">        tag_list = response.xpath(&quot;//p[@class=&apos;entry-meta-hide-on-mobile&apos;]/a/text()&quot;).extract()</span><br><span class="line">        tag_list = [element for element in tag_list if not element.strip().endswith(&quot;评论&quot;)]    #去除list中含有评论字符</span><br><span class="line">        tags=&quot;,&quot;.join(tag_list)</span><br><span class="line"> </span><br><span class="line">        title = response.css(&quot;.entry-header h1::text&quot;).extract()[0]         #extract_first()不用异常处理</span><br><span class="line">        create_date = response.css(&quot;p.entry-meta-hide-on-mobile:text&quot;).extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()</span><br><span class="line">        parise_nums = response.css(&quot;.vote-post-up h10:text&quot;).extract()[0]</span><br><span class="line">        fav_nums = reponse.css(&quot;.bookmark-btn::text&quot;).extract()[0]</span><br><span class="line">        match_re = re.math(&quot;.*?(\d+).*&quot;,fav_nums)</span><br><span class="line">        if match_re:</span><br><span class="line">            fav_nums = match_re.group(1)</span><br><span class="line">        comment_nums = reponse.css(&quot;a[href=&apos;#article-comment&apos;] span::text&quot;).extract()[0]</span><br><span class="line">        match_re = re.match(&quot;.*?(\d+).*&quot;,comment_nums)</span><br><span class="line">        if match_re:</span><br><span class="line">            comment_nums = match_re.group(1)</span><br><span class="line">        content = reponse.css(&quot;div.entry&quot;).extract()[0]</span><br><span class="line">        tags = reponse.css(&quot;p.entry-meta-hide-on-mobile a::text&quot;).extract()</span><br><span class="line">        tag_list = [element for element in tag_list if not element.strip().endswith(&quot;评论&quot;)]    #去除list中含有评论字符</span><br><span class="line">        tags=&quot;,&quot;.join(tag_list)</span><br></pre></td></tr></table></figure>
 
       
     </div>
+    
+    
+    
 
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>欢迎和博主一起玩耍呀-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/scrapy环境搭建.html">scrapy环境搭建</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
+  <p><span>发布时间:</span>2018年02月05日 - 11:02</p>
+  <p><span>最后更新:</span>2018年02月05日 - 11:02</p>
+  <p><span>原始链接:</span><a href="/post/scrapy环境搭建.html" title="scrapy环境搭建">http://ashercode.github.io/post/scrapy环境搭建.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/scrapy环境搭建.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃包辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="AsherCode 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="AsherCode 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/scrapy/" rel="tag"><i class="fa fa-tag"></i> scrapy</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/linux常用软件.html" rel="next" title="linux常用软件">
+                <i class="fa fa-chevron-left"></i> linux常用软件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/可爱的脚本.html" rel="prev" title="可爱的脚本">
+                可爱的脚本 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2152116" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
 
 
           </div>
@@ -436,6 +803,16 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg0MC8xMDM5Mw=="></div>
+    </div>
+
+  
+   
+
+
 
         </div>
         
@@ -456,8 +833,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -551,6 +937,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟环境virtualenv"><span class="nav-number">1.1.</span> <span class="nav-text">虚拟环境virtualenv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟环境virtualenvwrapper"><span class="nav-number">1.2.</span> <span class="nav-text">虚拟环境virtualenvwrapper</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编码"><span class="nav-number">2.</span> <span class="nav-text">编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#css选择器"><span class="nav-number">2.0.1.</span> <span class="nav-text">css选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xpath选择器"><span class="nav-number">2.0.2.</span> <span class="nav-text">xpath选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本应用"><span class="nav-number">2.0.3.</span> <span class="nav-text">基本应用</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -723,6 +1125,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -751,6 +1157,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="scrapy,mysql," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="花开城南望君归,望君无恙归城南   scrapy,爬虫,伯乐在线,xpath,css">
+<meta name="keywords" content="scrapy,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrapy伯乐在线爬虫">
+<meta property="og:url" content="http://ashercode.github.io/post/scrapy伯乐在线爬虫.html">
+<meta property="og:site_name" content="王小建">
+<meta property="og:description" content="花开城南望君归,望君无恙归城南   scrapy,爬虫,伯乐在线,xpath,css">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/jobbole_article.jpg">
+<meta property="og:updated_time" content="2018-02-05T03:38:45.851Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scrapy伯乐在线爬虫">
+<meta name="twitter:description" content="花开城南望君归,望君无恙归城南   scrapy,爬虫,伯乐在线,xpath,css">
+<meta name="twitter:image" content="http://oyx66gbka.bkt.clouddn.com/jobbole_article.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'I14VESP3SJ',
+      apiKey: 'a817c1ce9320d227f97800013070f068',
+      indexName: 'AsherCode',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入关键字","hits_empty":"根本找不到好吗: ${query}","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ashercode.github.io/post/scrapy伯乐在线爬虫.html"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "c9e4f89d"
+    });
+  daovoice('update');
+  </script>
+
+  <title>scrapy伯乐在线爬虫 | 王小建</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?df44f8c13996af363c362aad197f9bef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+	
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsherCode" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王小建</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">AsherCode的个人小站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ashercode.github.io/post/scrapy伯乐在线爬虫.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AsherCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小建">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">scrapy伯乐在线爬虫</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-05T11:36:49+08:00">
+                2018-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/post/scrapy伯乐在线爬虫.html" class="leancloud_visitors" data-flag-title="scrapy伯乐在线爬虫">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,749
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>花开城南望君归,望君无恙归城南 </p>
+</blockquote>
+<div class="note primary"><p>scrapy,爬虫,伯乐在线,xpath,css</p></div>
+<a id="more"></a>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv --python=D:\Python35\pythonw.exe ArticleSpider	创建虚拟环境</span><br><span class="line">pip install Twisted-17.9.0-cp35-cp35m-win_amd64.whl</span><br><span class="line">pip install -i https://pypi.douban.com/simple scrapy	安装scrapy包</span><br><span class="line">scrapy startproject ArticleSpider			创建项目</span><br><span class="line">pycharm-open-ArticleSpider              打开项目</span><br><span class="line">setting-Project Intercepter-Add Local-D:\Envs\ArticleSpider\Scripts\python.exe  设置环境</span><br><span class="line">workon ArticleSpider                    进入虚拟环境</span><br><span class="line">scrapy genspider jobbole blog.jobbole.com       新建爬虫</span><br><span class="line"></span><br><span class="line">pip install -i https://pypi.douban.com/simple pypiwin32</span><br><span class="line">scrapy crawl jobble     启动爬虫,和py的name一致</span><br><span class="line">新建D:\PycharmProjects\ArticleSpider\main.py</span><br><span class="line">    sys.path.append(os.path.dirname(os.path.abspath(__file__)))</span><br><span class="line">    execute([&quot;scrapy&quot;, &quot;crawl&quot;, &quot;jobbole&quot;]) #等同于scrapy crawl jobbole</span><br><span class="line">    </span><br><span class="line">修改setting.py </span><br><span class="line">    ROBOTSTXT_OBEY = False      #不遵循robots协议，方便爬取</span><br><span class="line"></span><br><span class="line">scrapy shell http://blog.jobbole.com/    在shell测试获取元素</span><br><span class="line">    title = response.xpath(&apos;//div[@class=&quot;entry-header&quot;]/h1/text()&apos;)</span><br><span class="line">    title.extract()[0]</span><br><span class="line">    create_date = response.xpath(&quot;//p[@class=&apos;entry-meta-hide-on-mobile&apos;]/text()&quot;).extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()</span><br></pre></td></tr></table></figure>
+<h1 id="针对指定文章分析爬取"><a href="#针对指定文章分析爬取" class="headerlink" title="针对指定文章分析爬取"></a>针对指定文章分析爬取</h1><h2 id="jobbole-py"><a href="#jobbole-py" class="headerlink" title="jobbole.py"></a>jobbole.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">start_urls = [&apos;http://blog.jobbole.com/110287&apos;] </span><br><span class="line">def parse(self, response):</span><br><span class="line">    # xpath选择器</span><br><span class="line">    #re_selector = response.xpath(&apos;//*[@id=&quot;widgets-homepage-fullwidth&quot;]/div[1]/div[3]/div[2]/p/a[1]/text()&apos;) #右键copy Xpath,text()获取值</span><br><span class="line">    title = response.xpath(&apos;//div[@class=&quot;entry-header&quot;]/h1/text()&apos;).extract_first(&quot;&quot;)</span><br><span class="line">    create_date = response.xpath(&quot;//p[@class=&apos;entry-meta-hide-on-mobile&apos;]/text()&quot;).extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()</span><br><span class="line">    praise_nums = response.xpath(&quot;//span[contains(@class, &apos;vote-post-up&apos;)]/h10/text()&quot;).extract()[0]</span><br><span class="line">    fav_nums = response.xpath(&quot;//span[contains(@class, &apos;bookmark-btn&apos;)]/text()&quot;).extract()[0]</span><br><span class="line">    match_re = re.match(&quot;.*?(\d+).*&quot;, fav_nums)</span><br><span class="line">    if match_re:</span><br><span class="line">        fav_nums = match_re.group(1)</span><br><span class="line">    comment_nums = response.xpath(&quot;//a[@href=&apos;#article-comment&apos;]/span/text()&quot;).extract()[0]</span><br><span class="line">    match_re = re.match(&quot;.*?(\d+).*&quot;, comment_nums)</span><br><span class="line">    if match_re:</span><br><span class="line">        comment_nums = match_re.group(1)</span><br><span class="line">    content = response.xpath(&quot;//div[@class=&apos;entry&apos;]&quot;).extract()[0]</span><br><span class="line">    tag_list = response.xpath(&quot;//p[@class=&apos;entry-meta-hide-on-mobile&apos;]/a/text()&quot;).extract()</span><br><span class="line">    tag_list = [element for element in tag_list if not element.strip().endswith(&quot;评论&quot;)] #过滤评论</span><br><span class="line">    tags = &quot;,&quot;.join(tag_list) #,分割标签</span><br><span class="line">    </span><br><span class="line">    # css选择器</span><br><span class="line">    title = response.css(&quot;.entry-header h1::text&quot;).extract()[0]</span><br><span class="line">    create_date = response.css(&quot;p.entry-meta-hide-on-mobile::text&quot;).extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()</span><br><span class="line">    praise_nums = response.css(&quot;.vote-post-up h10::text&quot;).extract()[0]</span><br><span class="line">    fav_nums = response.css(&quot;.bookmark-btn::text&quot;).extract()[0]</span><br><span class="line">    match_re = re.match(&quot;.*?(\d+).*&quot;, fav_nums)</span><br><span class="line">    if match_re:</span><br><span class="line">        fav_nums = int(match_re.group(1))</span><br><span class="line">    else:</span><br><span class="line">        fav_nums = 0</span><br><span class="line">    comment_nums = response.css(&quot;a[href=&apos;#article-comment&apos;] span::text&quot;).extract()[0]</span><br><span class="line">    match_re = re.match(&quot;.*?(\d+).*&quot;, comment_nums)</span><br><span class="line">    if match_re:</span><br><span class="line">        comment_nums = int(match_re.group(1))</span><br><span class="line">    else:</span><br><span class="line">        comment_nums = 0</span><br><span class="line">    content = response.css(&quot;div.entry&quot;).extract()[0]</span><br><span class="line">    tag_list = response.css(&quot;p.entry-meta-hide-on-mobile a::text&quot;).extract()</span><br><span class="line">    tag_list = [element for element in tag_list if not element.strip().endswith(&quot;评论&quot;)]</span><br><span class="line">    tags = &quot;,&quot;.join(tag_list)</span><br><span class="line">右键main.py运行程序</span><br></pre></td></tr></table></figure>
+<h1 id="获取分页所有数据"><a href="#获取分页所有数据" class="headerlink" title="获取分页所有数据"></a>获取分页所有数据</h1><h2 id="jobbole-py-1"><a href="#jobbole-py-1" class="headerlink" title="jobbole.py"></a>jobbole.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from scrapy.http import Request</span><br><span class="line">from urllib import parse</span><br><span class="line">start_urls = [&apos;http://blog.jobbole.com/all-posts/&apos;]    </span><br><span class="line">def parse(self, response):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    1. 获取文章列表页中的文章url并交给scrapy下载后并进行解析</span><br><span class="line">    2. 获取下一页的url并交给scrapy进行下载， 下载完成后交给parse</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    post_urls = response.css(&quot;#archive .floated-thumb .post-thumb a::attr(href)&quot;).extract()</span><br><span class="line">    for post_url in post_urls:</span><br><span class="line">        yield Request(url=parse.urljoin(response.url, post_url),callback=self.parse_detail)</span><br><span class="line">    #提取下一页并交给scrapy进行下载</span><br><span class="line">    next_url = response.css(&quot;.next.page-numbers::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">    if next_url:</span><br><span class="line">        yield Request(url=parse.urljoin(response.url, next_url), callback=self.parse)</span><br><span class="line"></span><br><span class="line">def parse_detail(self, response):</span><br><span class="line">    title = response.css(&quot;.entry-header h1::text&quot;).extract()[0]</span><br><span class="line">    create_date = response.css(&quot;p.entry-meta-hide-on-mobile::text&quot;).extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()</span><br><span class="line">    praise_nums = response.css(&quot;.vote-post-up h10::text&quot;).extract()[0]</span><br><span class="line">    fav_nums = response.css(&quot;.bookmark-btn::text&quot;).extract()[0]</span><br><span class="line">    match_re = re.match(&quot;.*?(\d+).*&quot;, fav_nums)</span><br><span class="line">    if match_re:</span><br><span class="line">        fav_nums = int(match_re.group(1))</span><br><span class="line">    else:</span><br><span class="line">        fav_nums = 0</span><br><span class="line">    comment_nums = response.css(&quot;a[href=&apos;#article-comment&apos;] span::text&quot;).extract()[0]</span><br><span class="line">    match_re = re.match(&quot;.*?(\d+).*&quot;, comment_nums)</span><br><span class="line">    if match_re:</span><br><span class="line">        comment_nums = int(match_re.group(1))</span><br><span class="line">    else:</span><br><span class="line">        comment_nums = 0</span><br><span class="line">    content = response.css(&quot;div.entry&quot;).extract()[0]</span><br><span class="line">    tag_list = response.css(&quot;p.entry-meta-hide-on-mobile a::text&quot;).extract()</span><br><span class="line">    tag_list = [element for element in tag_list if not element.strip().endswith(&quot;评论&quot;)]</span><br><span class="line">    tags = &quot;,&quot;.join(tag_list)</span><br></pre></td></tr></table></figure>
+<h1 id="实例化属性"><a href="#实例化属性" class="headerlink" title="实例化属性"></a>实例化属性</h1><h2 id="jobbole-py-2"><a href="#jobbole-py-2" class="headerlink" title="jobbole.py"></a>jobbole.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">def parse(self, response):</span><br><span class="line">       &quot;&quot;&quot;</span><br><span class="line">       1. 获取文章列表页中的文章url并交给scrapy下载后并进行解析</span><br><span class="line">       2. 获取下一页的url并交给scrapy进行下载， 下载完成后交给parse</span><br><span class="line">       &quot;&quot;&quot;</span><br><span class="line">       post_nodes = response.css(&quot;#archive .floated-thumb .post-thumb a&quot;)</span><br><span class="line">       for post_node in post_nodes:</span><br><span class="line">           image_url = post_node.css(&quot;img::attr(src)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">           post_url = post_node.css(&quot;::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">           yield Request(url=parse.urljoin(response.url, post_url), meta=&#123;&quot;front_image_url&quot;:image_url&#125;, callback=self.parse_detail) #response获取meta</span><br><span class="line"></span><br><span class="line">       #提取下一页并交给scrapy进行下载</span><br><span class="line">       next_url = response.css(&quot;.next.page-numbers::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">       if next_url:</span><br><span class="line">           yield Request(url=parse.urljoin(response.url, post_url), callback=self.parse)</span><br><span class="line">def parse_detail(self, response):</span><br><span class="line">       article_item = JobBoleArticleItem() # 实例化</span><br><span class="line">	        front_image_url = response.meta.get(&quot;front_image_url&quot;, &quot;&quot;)  #文章封面图，get方法不抛异常</span><br><span class="line">       title = response.css(&quot;.entry-header h1::text&quot;).extract()[0]</span><br><span class="line">       create_date = response.css(&quot;p.entry-meta-hide-on-mobile::text&quot;).extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()</span><br><span class="line">       praise_nums = response.css(&quot;.vote-post-up h10::text&quot;).extract()[0]</span><br><span class="line">       fav_nums = response.css(&quot;.bookmark-btn::text&quot;).extract()[0]</span><br><span class="line">       match_re = re.match(&quot;.*?(\d+).*&quot;, fav_nums)</span><br><span class="line">       if match_re:</span><br><span class="line">           fav_nums = int(match_re.group(1))</span><br><span class="line">       else:</span><br><span class="line">           fav_nums = 0</span><br><span class="line">       comment_nums = response.css(&quot;a[href=&apos;#article-comment&apos;] span::text&quot;).extract()[0]</span><br><span class="line">       match_re = re.match(&quot;.*?(\d+).*&quot;, comment_nums)</span><br><span class="line">       if match_re:</span><br><span class="line">           comment_nums = int(match_re.group(1))</span><br><span class="line">       else:</span><br><span class="line">           comment_nums = 0</span><br><span class="line">       content = response.css(&quot;div.entry&quot;).extract()[0]</span><br><span class="line">       tag_list = response.css(&quot;p.entry-meta-hide-on-mobile a::text&quot;).extract()</span><br><span class="line">       tag_list = [element for element in tag_list if not element.strip().endswith(&quot;评论&quot;)]</span><br><span class="line">       tags = &quot;,&quot;.join(tag_list)</span><br><span class="line"></span><br><span class="line">       # 向实例化对象塞数据</span><br><span class="line">       article_item[&quot;url_object_id&quot;] = get_md5(response.url)</span><br><span class="line">       article_item[&quot;title&quot;] = title</span><br><span class="line">       article_item[&quot;url&quot;] = response.url</span><br><span class="line">       try:</span><br><span class="line">           create_date = datetime.datetime.strptime(create_date, &quot;%Y/%m/%d&quot;).date()</span><br><span class="line">       except Exception as e:</span><br><span class="line">           create_date = datetime.datetime.now().date()</span><br><span class="line">       article_item[&quot;create_date&quot;] = create_date</span><br><span class="line">       article_item[&quot;front_image_url&quot;] = [front_image_url] #settings配置的IMAGES_URLS_FIELD是数组</span><br><span class="line">       article_item[&quot;praise_nums&quot;] = praise_nums</span><br><span class="line">       article_item[&quot;comment_nums&quot;] = comment_nums</span><br><span class="line">       article_item[&quot;fav_nums&quot;] = fav_nums</span><br><span class="line">       article_item[&quot;tags&quot;] = tags</span><br><span class="line">       article_item[&quot;content&quot;] = content </span><br><span class="line"></span><br><span class="line">       yield article_item #将传到piplines中</span><br></pre></td></tr></table></figure>
+<h2 id="common-py"><a href="#common-py" class="headerlink" title="common.py"></a>common.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def get_md5(url):</span><br><span class="line">	if isinstance(url, str):	#若是unicode则转为utf-8，# unicode不支持hashlib.md5编码</span><br><span class="line">		url = url.encode(&quot;utf-8&quot;)</span><br><span class="line">	m = hashlib.md5()</span><br><span class="line">	m.update(url)</span><br><span class="line">	return m.hexdigest() </span><br><span class="line">def extract_num(text):</span><br><span class="line">	#从字符串中提取出数字</span><br><span class="line">	match_re = re.match(&quot;.*?(\d+).*&quot;, text)</span><br><span class="line">	if match_re:</span><br><span class="line">		nums = int(match_re.group(1))</span><br><span class="line">	else:</span><br><span class="line">		nums = 0 </span><br><span class="line">	return nums</span><br><span class="line">class DateEncoder(json.JSONEncoder):</span><br><span class="line">	# json.dumps无法序列化datetime，新写函数实现</span><br><span class="line">	def default(self, obj):</span><br><span class="line">		if isinstance(obj, datetime):</span><br><span class="line">			return obj.strftime(&apos;%Y-%m-%d %H:%M:%S&apos;)</span><br><span class="line">		elif isinstance(obj, date):</span><br><span class="line">			return obj.strftime(&quot;%Y-%m-%d&quot;)</span><br><span class="line">		else:</span><br><span class="line">			return json.JSONEncoder.default(self, obj)</span><br></pre></td></tr></table></figure>
+<h2 id="items-py"><a href="#items-py" class="headerlink" title="items.py"></a>items.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">def date_convert(value):</span><br><span class="line">	try:</span><br><span class="line">		create_date = datetime.datetime.strptime(value, &quot;%Y/%m/%d&quot;).date()</span><br><span class="line">	except Exception as e:</span><br><span class="line">		create_date = datetime.datetime.now().date()</span><br><span class="line"></span><br><span class="line">	return create_date </span><br><span class="line">def get_nums(value):</span><br><span class="line">	match_re = re.match(&quot;.*?(\d+).*&quot;, value)</span><br><span class="line">	if match_re:</span><br><span class="line">		nums = int(match_re.group(1))</span><br><span class="line">	else:</span><br><span class="line">		nums = 0 </span><br><span class="line">	return nums</span><br><span class="line">def return_value(value):</span><br><span class="line">	return value </span><br><span class="line"></span><br><span class="line">def remove_comment_tags(value):</span><br><span class="line">	#去掉tag中提取的评论</span><br><span class="line">	if &quot;评论&quot; in value:</span><br><span class="line">		return &quot;&quot;</span><br><span class="line">	else:</span><br><span class="line">		return value</span><br><span class="line">class JobBoleArticleItem(scrapy.Item):</span><br><span class="line">	title = scrapy.Field()</span><br><span class="line">	create_date = scrapy.Field()</span><br><span class="line">	url = scrapy.Field()</span><br><span class="line">	url_object_id = scrapy.Field()</span><br><span class="line">	front_image_url = scrapy.Field()</span><br><span class="line">	front_image_path = scrapy.Field()</span><br><span class="line">	praise_nums = scrapy.Field()</span><br><span class="line">	comment_nums = scrapy.Field()</span><br><span class="line">	fav_nums = scrapy.Field()</span><br><span class="line">	tags = scrapy.Field()</span><br><span class="line">	content = scrapy.Field()</span><br></pre></td></tr></table></figure>
+<h2 id="settings-py"><a href="#settings-py" class="headerlink" title="settings.py"></a>settings.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   &apos;ArticleSpider.pipelines.ArticlespiderPipeline&apos;: 1,  # yield将自动跳转到piplines.py的ArticlespiderPipeline中，数字标识pipline执行顺序</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">USER_AGENT = &quot;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:51.0) Gecko/20100101 Firefox/51.0&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="导出文章封面图"><a href="#导出文章封面图" class="headerlink" title="导出文章封面图"></a>导出文章封面图</h1><pre><code>pip install -i https://pypi.douban.com/simple pillow
+</code></pre><h2 id="settings-py-1"><a href="#settings-py-1" class="headerlink" title="settings.py"></a>settings.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   &apos;ArticleSpider.pipelines.ArticlespiderPipeline&apos;: 1,</span><br><span class="line">	&apos;scrapy.pipelines.images.ImagesPipeline&apos;: 2,#自动下载图片，数字是优先顺序</span><br><span class="line">&#125;</span><br><span class="line">IMAGES_URLS_FIELD = &quot;front_image_url&quot;</span><br><span class="line">project_dir = os.path.abspath(os.path.dirname(__file__))</span><br><span class="line">IMAGES_STORE = os.path.join(project_dir, &apos;images&apos;)</span><br></pre></td></tr></table></figure>
+<h1 id="自定义图片填充路径"><a href="#自定义图片填充路径" class="headerlink" title="自定义图片填充路径"></a>自定义图片填充路径</h1><h2 id="settings-py-2"><a href="#settings-py-2" class="headerlink" title="settings.py"></a>settings.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   &apos;ArticleSpider.pipelines.ArticlespiderPipeline&apos;: 1,</span><br><span class="line">	#&apos;scrapy.pipelines.images.ImagesPipeline&apos;: 2,#自动下载图片，数字是优先顺序</span><br><span class="line">	&apos;ArticleSpider.pipelines.ArticleImagePipeline&apos;: 2,#自定义的图片pipline</span><br><span class="line">&#125;</span><br><span class="line">IMAGES_URLS_FIELD = &quot;front_image_url&quot;</span><br><span class="line">project_dir = os.path.abspath(os.path.dirname(__file__))</span><br><span class="line">IMAGES_STORE = os.path.join(project_dir, &apos;images&apos;)</span><br><span class="line"></span><br><span class="line"># IMAGES_MIN_HEIGHT = 100 设置图片最小值</span><br><span class="line"># IMAGES_MIN_WIDTH = 100</span><br></pre></td></tr></table></figure>
+<h2 id="piplines-py"><a href="#piplines-py" class="headerlink" title="piplines.py"></a>piplines.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class ArticleImagePipeline(ImagesPipeline):</span><br><span class="line">	def item_completed(self, results, item, info):</span><br><span class="line">		if &quot;front_image_url&quot; in item:</span><br><span class="line">			for ok, value in results:</span><br><span class="line">				image_file_path = value[&quot;path&quot;]</span><br><span class="line">			item[&quot;front_image_path&quot;] = image_file_path #填充自定义路径</span><br><span class="line"></span><br><span class="line">		return item</span><br></pre></td></tr></table></figure>
+<h1 id="自定义json文件导出"><a href="#自定义json文件导出" class="headerlink" title="自定义json文件导出"></a>自定义json文件导出</h1><h2 id="piplines-py-1"><a href="#piplines-py-1" class="headerlink" title="piplines.py"></a>piplines.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class JsonWithEncodingPipeline(object):</span><br><span class="line">	#自定义json文件的导出</span><br><span class="line">	def __init__(self):</span><br><span class="line">		self.file = codecs.open(&apos;article.json&apos;, &apos;w&apos;, encoding=&quot;utf-8&quot;)</span><br><span class="line">	def process_item(self, item, spider):</span><br><span class="line">		lines = json.dumps(dict(item), ensure_ascii=False, cls=DateEncoder) + &quot;\n&quot;#序列化，ensure_ascii利于中文,json没法序列化date格式，需要新写函数</span><br><span class="line">		self.file.write(lines)</span><br><span class="line">		return item</span><br><span class="line">	def spider_closed(self, spider):</span><br><span class="line">		self.file.close()</span><br></pre></td></tr></table></figure>
+<h2 id="settings-py-3"><a href="#settings-py-3" class="headerlink" title="settings.py"></a>settings.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   &apos;ArticleSpider.pipelines.ArticlespiderPipeline&apos;: 1,</span><br><span class="line">	&apos;ArticleSpider.pipelines.JsonWithEncodingPipeline&apos;: 2,#自动写入json文件</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="导出为多种格式"><a href="#导出为多种格式" class="headerlink" title="导出为多种格式"></a>导出为多种格式</h1><h2 id="setting-py"><a href="#setting-py" class="headerlink" title="setting.py"></a>setting.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">     &apos;ArticleSpider.pipelines.JsonExporterPipleline&apos;: 2,#自动写入json文件，多[]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="piplines-py-2"><a href="#piplines-py-2" class="headerlink" title="piplines.py"></a>piplines.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class JsonExporterPipleline(object):</span><br><span class="line">	#调用scrapy提供的json export导出json文件</span><br><span class="line">	def __init__(self):</span><br><span class="line">		self.file = open(&apos;articleexport.json&apos;, &apos;wb&apos;)</span><br><span class="line">		self.exporter = JsonItemExporter(self.file, encoding=&quot;utf-8&quot;, ensure_ascii=False)</span><br><span class="line">		self.exporter.start_exporting()</span><br><span class="line"></span><br><span class="line">	def close_spider(self, spider):</span><br><span class="line">		self.exporter.finish_exporting()</span><br><span class="line">		self.file.close()</span><br><span class="line"></span><br><span class="line">	def process_item(self, item, spider):</span><br><span class="line">		self.exporter.export_item(item)</span><br><span class="line">		return item</span><br></pre></td></tr></table></figure>
+<h1 id="数据库设计与插入"><a href="#数据库设计与插入" class="headerlink" title="数据库设计与插入"></a>数据库设计与插入</h1><p><img src="http://oyx66gbka.bkt.clouddn.com/jobbole_article.jpg" alt="job_article表设计"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.douban.com/simple mysqlclient</span><br><span class="line">ubuntu:apt-get install libmysqlclient-dev</span><br><span class="line">centos:yum install python-devel mysql-devel</span><br></pre></td></tr></table></figure></p>
+<h2 id="piplines-py-3"><a href="#piplines-py-3" class="headerlink" title="piplines.py"></a>piplines.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class MysqlPipeline(object):</span><br><span class="line">	#采用同步的机制写入mysql</span><br><span class="line">	def __init__(self):</span><br><span class="line">		self.conn = MySQLdb.connect(&apos;127.0.0.1&apos;, &apos;root&apos;, &apos;123456&apos;, &apos;article_spider&apos;, charset=&quot;utf8&quot;, use_unicode=True)</span><br><span class="line">		self.cursor = self.conn.cursor()</span><br><span class="line"></span><br><span class="line">	def process_item(self, item, spider):</span><br><span class="line">		insert_sql = &quot;&quot;&quot;</span><br><span class="line">			insert into jobbole_article(title, url, create_date, fav_nums)</span><br><span class="line">			VALUES (%s, %s, %s, %s)</span><br><span class="line">		&quot;&quot;&quot;</span><br><span class="line">		self.cursor.execute(insert_sql, (item[&quot;title&quot;], item[&quot;url&quot;], item[&quot;create_date&quot;], item[&quot;fav_nums&quot;]))</span><br><span class="line">		self.conn.commit()</span><br></pre></td></tr></table></figure>
+<h2 id="settings-py-4"><a href="#settings-py-4" class="headerlink" title="settings.py"></a>settings.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   &apos;ArticleSpider.pipelines.ArticlespiderPipeline&apos;: 1,</span><br><span class="line">	&apos;ArticleSpider.pipelines.MysqlPipeline&apos;: 2,	#定义数据库连接</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="连接池插入"><a href="#连接池插入" class="headerlink" title="连接池插入"></a>连接池插入</h1><h2 id="pipelines-py"><a href="#pipelines-py" class="headerlink" title="pipelines.py"></a>pipelines.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class MysqlTwistedPipline(object):</span><br><span class="line">	#异步连接池插入数据库，不会阻塞</span><br><span class="line">	def __init__(self, dbpool):</span><br><span class="line">		self.dbpool = dbpool </span><br><span class="line">		</span><br><span class="line">	@classmethod</span><br><span class="line">	def from_settings(cls, settings):# 初始化时即被调用settings.py</span><br><span class="line">		dbparms = dict(</span><br><span class="line">			host = settings[&quot;MYSQL_HOST&quot;],#setttings中定义</span><br><span class="line">			db = settings[&quot;MYSQL_DBNAME&quot;],</span><br><span class="line">			user = settings[&quot;MYSQL_USER&quot;],</span><br><span class="line">			passwd = settings[&quot;MYSQL_PASSWORD&quot;],</span><br><span class="line">			charset=&apos;utf8&apos;,</span><br><span class="line">			cursorclass=MySQLdb.cursors.DictCursor,</span><br><span class="line">			use_unicode=True,</span><br><span class="line">		)</span><br><span class="line">		dbpool = adbapi.ConnectionPool(&quot;MySQLdb&quot;, **dbparms) </span><br><span class="line">		return cls(dbpool)</span><br><span class="line"></span><br><span class="line">	def process_item(self, item, spider):</span><br><span class="line">		#使用twisted将mysql插入变成异步执行</span><br><span class="line">		query = self.dbpool.runInteraction(self.do_insert, item)</span><br><span class="line">		query.addErrback(self.handle_error, item, spider) #处理异常</span><br><span class="line"></span><br><span class="line">	def handle_error(self, failure, item, spider):</span><br><span class="line">		#处理异步插入的异常</span><br><span class="line">		print (failure)</span><br><span class="line"></span><br><span class="line">	def do_insert(self, cursor, item):</span><br><span class="line">		#执行具体的插入，不具体的如MysqlPipeline.process_item()</span><br><span class="line">		#根据不同的item 构建不同的sql语句并插入到mysql中</span><br><span class="line">		insert_sql, params = item.get_insert_sql()</span><br><span class="line">		cursor.execute(insert_sql, params)</span><br></pre></td></tr></table></figure>
+<h2 id="settings-py-5"><a href="#settings-py-5" class="headerlink" title="settings.py"></a>settings.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">   &apos;ArticleSpider.pipelines.ArticlespiderPipeline&apos;: 1,</span><br><span class="line">   &apos;ArticleSpider.pipelines.MysqlTwistedPipline&apos;: 2,#连接池异步插入</span><br><span class="line">&#125;</span><br><span class="line">MYSQL_HOST = &quot;127.0.0.1&quot;</span><br><span class="line">MYSQL_DBNAME = &quot;article_spider&quot;</span><br><span class="line">MYSQL_USER = &quot;root&quot;</span><br><span class="line">MYSQL_PASSWORD = &quot;123456&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SQL_DATETIME_FORMAT = &quot;%Y-%m-%d %H:%M:%S&quot;</span><br><span class="line">SQL_DATE_FORMAT = &quot;%Y-%m-%d&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="items-py-1"><a href="#items-py-1" class="headerlink" title="items.py"></a>items.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def get_insert_sql(self):	# 在JobBoleArticleItem中定义，防止主键重复</span><br><span class="line">       insert_sql = &quot;&quot;&quot;</span><br><span class="line">           insert into jobbole_article(title, url, create_date, fav_nums)</span><br><span class="line">           VALUES (%s, %s, %s, %s) ON DUPLICATE KEY UPDATE content=VALUES(fav_nums)</span><br><span class="line">       &quot;&quot;&quot;</span><br><span class="line">       params = (self[&quot;title&quot;], self[&quot;url&quot;], self[&quot;create_date&quot;], self[&quot;fav_nums&quot;])</span><br><span class="line"></span><br><span class="line">       return insert_sql, params</span><br></pre></td></tr></table></figure>
+<h1 id="自定义ItemLoder实例化对象"><a href="#自定义ItemLoder实例化对象" class="headerlink" title="自定义ItemLoder实例化对象"></a>自定义ItemLoder实例化对象</h1><h2 id="items-py-2"><a href="#items-py-2" class="headerlink" title="items.py"></a>items.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class JobBoleArticleItem(scrapy.Item):</span><br><span class="line">	title = scrapy.Field()</span><br><span class="line">	create_date = scrapy.Field(</span><br><span class="line">		input_processor=MapCompose(date_convert),#传递进来可以预处理</span><br><span class="line">	)</span><br><span class="line">	url = scrapy.Field()</span><br><span class="line">	url_object_id = scrapy.Field()</span><br><span class="line">	front_image_url = scrapy.Field(</span><br><span class="line">		output_processor=MapCompose(return_value) #本身不是list,覆盖default_output_processor</span><br><span class="line">	)</span><br><span class="line">	front_image_path = scrapy.Field()</span><br><span class="line">	praise_nums = scrapy.Field(</span><br><span class="line">		input_processor=MapCompose(get_nums)</span><br><span class="line">	)</span><br><span class="line">	comment_nums = scrapy.Field(</span><br><span class="line">		input_processor=MapCompose(get_nums)</span><br><span class="line">	)</span><br><span class="line">	fav_nums = scrapy.Field(</span><br><span class="line">		input_processor=MapCompose(get_nums)</span><br><span class="line">	)</span><br><span class="line">	tags = scrapy.Field(</span><br><span class="line">		input_processor=MapCompose(remove_comment_tags),</span><br><span class="line">		output_processor=Join(&quot;,&quot;)</span><br><span class="line">	)</span><br><span class="line">	content = scrapy.Field()</span><br><span class="line">	</span><br><span class="line">class ArticleItemLoader(ItemLoader):</span><br><span class="line">	#自定义itemloader，不用默认list，获取第0个</span><br><span class="line">	default_output_processor = TakeFirst()</span><br></pre></td></tr></table></figure>
+<h2 id="jobble-py"><a href="#jobble-py" class="headerlink" title="jobble.py"></a>jobble.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#通过item loader加载item</span><br><span class="line">   front_image_url = response.meta.get(&quot;front_image_url&quot;, &quot;&quot;)  # 文章封面图</span><br><span class="line">   item_loader = ArticleItemLoader(item=JobBoleArticleItem(), response=response)#默认ItemLoader是一个list，自定义TakeFirst()</span><br><span class="line">   item_loader.add_css(&quot;title&quot;, &quot;.entry-header h1::text&quot;)</span><br><span class="line">   item_loader.add_value(&quot;url&quot;, response.url)</span><br><span class="line">   item_loader.add_value(&quot;url_object_id&quot;, get_md5(response.url))</span><br><span class="line">   item_loader.add_css(&quot;create_date&quot;, &quot;p.entry-meta-hide-on-mobile::text&quot;)</span><br><span class="line">   item_loader.add_value(&quot;front_image_url&quot;, [front_image_url])</span><br><span class="line">   item_loader.add_css(&quot;praise_nums&quot;, &quot;.vote-post-up h10::text&quot;)</span><br><span class="line">   item_loader.add_css(&quot;comment_nums&quot;, &quot;a[href=&apos;#article-comment&apos;] span::text&quot;)</span><br><span class="line">   item_loader.add_css(&quot;fav_nums&quot;, &quot;.bookmark-btn::text&quot;)</span><br><span class="line">   item_loader.add_css(&quot;tags&quot;, &quot;p.entry-meta-hide-on-mobile a::text&quot;)</span><br><span class="line">   item_loader.add_css(&quot;content&quot;, &quot;div.entry&quot;)</span><br><span class="line"></span><br><span class="line">   article_item = item_loader.load_item()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>欢迎和博主一起玩耍呀-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/scrapy伯乐在线爬虫.html">scrapy伯乐在线爬虫</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
+  <p><span>发布时间:</span>2018年02月05日 - 11:02</p>
+  <p><span>最后更新:</span>2018年02月05日 - 11:02</p>
+  <p><span>原始链接:</span><a href="/post/scrapy伯乐在线爬虫.html" title="scrapy伯乐在线爬虫">http://ashercode.github.io/post/scrapy伯乐在线爬虫.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/scrapy伯乐在线爬虫.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃包辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="AsherCode 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="AsherCode 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/scrapy/" rel="tag"><i class="fa fa-tag"></i> scrapy</a>
+          
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/反爬虫及存储.html" rel="next" title="反爬虫及存储">
+                <i class="fa fa-chevron-left"></i> 反爬虫及存储
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/scrapy拉勾爬虫.html" rel="prev" title="scrapy拉勾爬虫">
+                scrapy拉勾爬虫 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2152116" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg0MC8xMDM5Mw=="></div>
+    </div>
+
+  
+   
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AsherCode" />
+            
+              <p class="site-author-name" itemprop="name">AsherCode</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ashercode" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/u/5317695564/home" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ashercode.github.io" title="本站孪生地址" target="_blank">本站孪生地址</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#针对指定文章分析爬取"><span class="nav-number">2.</span> <span class="nav-text">针对指定文章分析爬取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jobbole-py"><span class="nav-number">2.1.</span> <span class="nav-text">jobbole.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取分页所有数据"><span class="nav-number">3.</span> <span class="nav-text">获取分页所有数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jobbole-py-1"><span class="nav-number">3.1.</span> <span class="nav-text">jobbole.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例化属性"><span class="nav-number">4.</span> <span class="nav-text">实例化属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#jobbole-py-2"><span class="nav-number">4.1.</span> <span class="nav-text">jobbole.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#common-py"><span class="nav-number">4.2.</span> <span class="nav-text">common.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#items-py"><span class="nav-number">4.3.</span> <span class="nav-text">items.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-py"><span class="nav-number">4.4.</span> <span class="nav-text">settings.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导出文章封面图"><span class="nav-number">5.</span> <span class="nav-text">导出文章封面图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-py-1"><span class="nav-number">5.1.</span> <span class="nav-text">settings.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义图片填充路径"><span class="nav-number">6.</span> <span class="nav-text">自定义图片填充路径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-py-2"><span class="nav-number">6.1.</span> <span class="nav-text">settings.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#piplines-py"><span class="nav-number">6.2.</span> <span class="nav-text">piplines.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义json文件导出"><span class="nav-number">7.</span> <span class="nav-text">自定义json文件导出</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#piplines-py-1"><span class="nav-number">7.1.</span> <span class="nav-text">piplines.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-py-3"><span class="nav-number">7.2.</span> <span class="nav-text">settings.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导出为多种格式"><span class="nav-number">8.</span> <span class="nav-text">导出为多种格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setting-py"><span class="nav-number">8.1.</span> <span class="nav-text">setting.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#piplines-py-2"><span class="nav-number">8.2.</span> <span class="nav-text">piplines.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库设计与插入"><span class="nav-number">9.</span> <span class="nav-text">数据库设计与插入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#piplines-py-3"><span class="nav-number">9.1.</span> <span class="nav-text">piplines.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-py-4"><span class="nav-number">9.2.</span> <span class="nav-text">settings.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连接池插入"><span class="nav-number">10.</span> <span class="nav-text">连接池插入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pipelines-py"><span class="nav-number">10.1.</span> <span class="nav-text">pipelines.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-py-5"><span class="nav-number">10.2.</span> <span class="nav-text">settings.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#items-py-1"><span class="nav-number">10.3.</span> <span class="nav-text">items.py</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义ItemLoder实例化对象"><span class="nav-number">11.</span> <span class="nav-text">自定义ItemLoder实例化对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#items-py-2"><span class="nav-number">11.1.</span> <span class="nav-text">items.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jobble-py"><span class="nav-number">11.2.</span> <span class="nav-text">jobble.py</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AsherCode</span>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共33.5k字</span>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("mvlpA2l2DQuXENSGQgGyvWEx-gzGzoHsz", "BPLBwOm9OSqs2LtI5jIHvcSW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: -30px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 40px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- ҳ������С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
