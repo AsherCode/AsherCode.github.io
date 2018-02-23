@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/pythontime1.png">
 <meta property="og:image" content="http://oyx66gbka.bkt.clouddn.com/pythontime2.png">
-<meta property="og:updated_time" content="2018-02-05T05:06:56.808Z">
+<meta property="og:updated_time" content="2018-02-23T00:38:01.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python基础语法">
 <meta name="twitter:description" content="喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！   python基本语法,函数,模块">
@@ -439,7 +439,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  7,763
+                  7,766
                 </span>
               
 
@@ -482,11 +482,10 @@
 <a id="more"></a>
 <p><a href="http://oyx66gbka.bkt.clouddn.com/python-3.5.2-amd64.exe" target="_blank" rel="noopener">python3.5.2</a></p>
 <h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 hello.py</span><br><span class="line">#!/usr/bin/env python   环境变量python</span><br><span class="line">print(&quot;a=&quot;,str(3*4),&quot;$&quot;)    数字字符串不能自动拼接，数字转字符串</span><br><span class="line">print(&quot;a&quot;+&quot;b&quot;)</span><br><span class="line">5//2        整除</span><br><span class="line">5%2         取余</span><br><span class="line">2**10       幂指数</span><br><span class="line">((2+3)+3)*5 多运算</span><br><span class="line"># coding:utf-8</span><br><span class="line">name = u&quot;哈哈哈&quot; 转为unicode</span><br><span class="line"># 单行注释</span><br><span class="line">&apos;&apos;&apos; 包括表示多行注释或多行代码(code=&apos;&apos;&apos;a=2 \n b=3&apos;&apos;&apos;)</span><br><span class="line">print(input(&quot;age:&quot;))  控制台输入</span><br><span class="line">print(&quot;name:%s&quot; % name) 格式化输出</span><br><span class="line"></span><br><span class="line">age = int (input(&quot;age&quot;:))       字符串转数字</span><br><span class="line">if age == 1:</span><br><span class="line">    print(&quot;YES&quot;)</span><br><span class="line">elif age &gt;1:</span><br><span class="line">    print(&quot;haha&quot;)</span><br><span class="line">else:</span><br><span class="line">    print(&quot;NO&quot;)</span><br><span class="line"></span><br><span class="line">if a&gt;b&gt;c:       多级比较    </span><br><span class="line">5&gt;3 or 6&lt;2      and,not运算，not&gt;and&gt;or,and前面true才运算后面，同true为true，or前面为true则不运算后面直接为true</span><br><span class="line">if age.isdigit():   判断数字</span><br><span class="line"></span><br><span class="line">while num&lt;10:       while True:</span><br><span class="line">    print(num)</span><br><span class="line">    if num == 3:</span><br><span class="line">        continue</span><br><span class="line"></span><br><span class="line">for i in range(3):      range(1,101)  range(1,101,2)</span><br><span class="line">    print(i)</span><br><span class="line"></span><br><span class="line">msg = &apos;&apos;&apos;       多行变量</span><br><span class="line">Name:%s         string</span><br><span class="line">Age:%d          digit</span><br><span class="line">salary:%f       float</span><br><span class="line">&apos;&apos;&apos; % (name,age,salary)</span><br><span class="line">    </span><br><span class="line">notepad++ 设置首选项，制表符设置转为4个空格</span><br><span class="line"></span><br><span class="line">product_list=[</span><br><span class="line">    (&apos;Mac&apos;,9000),</span><br><span class="line">    (&apos;kindle&apos;,800),</span><br><span class="line">    (&apos;tesla&apos;,900000),</span><br><span class="line">    (&apos;python book&apos;,105),</span><br><span class="line">    (&apos;bike&apos;,2000),</span><br><span class="line">]</span><br><span class="line">for i,v in enumerate(product_list,1):       序列分组后打印角标及内容(分成两个)</span><br><span class="line">        print(i,&apos;&gt;&gt;&gt;&gt;&apos;,v)</span><br></pre></td></tr></table></figure>
-<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><pre><code>p1=copy.copy(person)    p2=person[:]    p3=list(person)     复制
-</code></pre><h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;,[1,2,3],(2,3)]    b=list([1,2,3])  c=list((1,2,3))       可读写</span><br><span class="line">a[4]    a[1:2]      a[1:]       a[1:-1]     a[1:5:2]    a[1::2]     a[1:-1:-2]      a[5][2]</span><br><span class="line">a.append(&apos;f&apos;)   a.insert(1,&apos;z&apos;)  a[1]=&apos;k&apos;   a[1:3]=&apos;p&apos;  a[1:4]=[&apos;a&apos;,&apos;b&apos;]    a.remove(&apos;a&apos;)   a.remove(a[0])       a.pop(1)    del a[0]   del a</span><br><span class="line">a.count(&apos;a&apos;)    a.extend(b)     a.index(&apos;a&apos;)    a.reverse()     a.sort()    sorted(a)</span><br></pre></td></tr></table></figure>
-<h2 id="元祖"><a href="#元祖" class="headerlink" title="元祖"></a>元祖</h2><pre><code>a=(1,2,3,4)     只读
-a[1]    a[1:3]      
-</code></pre><h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">不可变类型：整形，字符串，元祖</span><br><span class="line">可变类型：列表,字典</span><br><span class="line">dic=&#123;&apos;name&apos;:&apos;wangjian&apos;,&apos;age&apos;:35,&apos;hobby&apos;:&#123;&apos;girl_name&apos;:&apos;xjh&apos;,&apos;age&apos;:&apos;18&apos;&#125;,&apos;is_man&apos;:True&#125;     字典键唯一(取后者)不可变无序</span><br><span class="line">dic=dict(((&apos;name&apos;:&apos;wangjian&apos;)))</span><br><span class="line">dic=dict(([&apos;name&apos;:&apos;wangjian&apos;]))</span><br><span class="line">dic=dict([[&apos;name&apos;:&apos;wangjian&apos;]])</span><br><span class="line">dic[&apos;name&apos;]     dic[1]      list(dic.keys())        list(dic.values())      list(dic.items())</span><br><span class="line">dic[&apos;age&apos;]=18   dic.setdefault(&apos;age&apos;,34) 常量并返回已有的值              </span><br><span class="line">dic1.update(dic2)    有则更新，无则追加        dic.clear()      del dic[&apos;name&apos;]     dic.pop(&apos;age&apos;)     dic.popitem() 随机删除     sorted(dic.items/values)  排序</span><br><span class="line">dic=dict.fromkeys([&apos;hosts&apos;,&apos;host2&apos;,&apos;host3&apos;],&apos;test&apos;)         生成字典</span><br><span class="line">dic=dict.fromkeys([&apos;hosts&apos;,&apos;host2&apos;,&apos;host3&apos;],[&apos;test1&apos;,&apos;test2&apos;])      生成字典</span><br><span class="line">dic.has_keys(5)     判断是否有5的key</span><br><span class="line">dic[&apos;host2&apos;][1]=&apos;test3&apos;         将修改所有元组的第二个元素</span><br><span class="line">for i,v in dic.items():</span><br><span class="line">    print(i,v)</span><br><span class="line">for i in dic:</span><br><span class="line">    print(i,dic[i])</span><br></pre></td></tr></table></figure>
+<h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p1=copy.copy(person)    p2=person[:]    p3=list(person)     复制</span><br></pre></td></tr></table></figure>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;,[1,2,3],(2,3)]    b=list([1,2,3])  c=list((1,2,3))       可读写</span><br><span class="line">a[4]    a[1:2]      a[1:]       a[1:-1]     a[1:5:2]    a[1::2]     a[1:-1:-2]      a[5][2]</span><br><span class="line">a.append(&apos;f&apos;)   a.insert(1,&apos;z&apos;)  a[1]=&apos;k&apos;   a[1:3]=&apos;p&apos;  a[1:4]=[&apos;a&apos;,&apos;b&apos;]    a.remove(&apos;a&apos;)   a.remove(a[0])       a.pop(1)    del a[0]   del a</span><br><span class="line">a.count(&apos;a&apos;)    a.extend(b)     a.index(&apos;a&apos;)    a.reverse()     a.sort()    sorted(a)</span><br></pre></td></tr></table></figure>
+<h2 id="元祖"><a href="#元祖" class="headerlink" title="元祖"></a>元祖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=(1,2,3,4)     只读</span><br><span class="line">a[1]    a[1:3]</span><br></pre></td></tr></table></figure>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">不可变类型：整形，字符串，元祖</span><br><span class="line">可变类型：列表,字典</span><br><span class="line">dic=&#123;&apos;name&apos;:&apos;wangjian&apos;,&apos;age&apos;:35,&apos;hobby&apos;:&#123;&apos;girl_name&apos;:&apos;xjh&apos;,&apos;age&apos;:&apos;18&apos;&#125;,&apos;is_man&apos;:True&#125;     字典键唯一(取后者)不可变无序</span><br><span class="line">dic=dict(((&apos;name&apos;:&apos;wangjian&apos;)))</span><br><span class="line">dic=dict(([&apos;name&apos;:&apos;wangjian&apos;]))</span><br><span class="line">dic=dict([[&apos;name&apos;:&apos;wangjian&apos;]])</span><br><span class="line">dic[&apos;name&apos;]     dic[1]      list(dic.keys())        list(dic.values())      list(dic.items())</span><br><span class="line">dic[&apos;age&apos;]=18   dic.setdefault(&apos;age&apos;,34) 常量并返回已有的值              </span><br><span class="line">dic1.update(dic2)    有则更新，无则追加        dic.clear()      del dic[&apos;name&apos;]     dic.pop(&apos;age&apos;)     dic.popitem() 随机删除     sorted(dic.items/values)  排序</span><br><span class="line">dic=dict.fromkeys([&apos;hosts&apos;,&apos;host2&apos;,&apos;host3&apos;],&apos;test&apos;)         生成字典</span><br><span class="line">dic=dict.fromkeys([&apos;hosts&apos;,&apos;host2&apos;,&apos;host3&apos;],[&apos;test1&apos;,&apos;test2&apos;])      生成字典</span><br><span class="line">dic.has_keys(5)     判断是否有5的key</span><br><span class="line">dic[&apos;host2&apos;][1]=&apos;test3&apos;         将修改所有元组的第二个元素</span><br><span class="line">for i,v in dic.items():</span><br><span class="line">    print(i,v)</span><br><span class="line">for i in dic:</span><br><span class="line">    print(i,dic[i])</span><br></pre></td></tr></table></figure>
 <h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">b=&apos;a&apos;*10</span><br><span class="line">print(&apos;hello&apos;[2:])</span><br><span class="line">print(&apos;el&apos; in &apos;hello&apos;)</span><br><span class="line">print(12 in [12,23,34])</span><br><span class="line">print(&apos;%s world&apos;%&apos;hello&apos;)</span><br><span class="line">c=&apos;,&apos;.join([&apos;a&apos;,&apos;1&apos;])</span><br><span class="line">c=&apos;,&apos;.join((&apos;a&apos;,&apos;1&apos;))</span><br><span class="line">st.count(&apos;a&apos;)       查找个数    </span><br><span class="line">st.capitalize()     首字母大写</span><br><span class="line">st.center(50,&apos;-&apos;)   中心拼接</span><br><span class="line">st.endswith(&apos;ty&apos;)   以。。结尾    st.startswith(&apos;he&apos;)   以。。开头</span><br><span class="line">st.expandtabs(tabsize=10)       将\t转为20空格</span><br><span class="line">st.find(&apos;t&apos;)        查找坐标，没有就-1</span><br><span class="line">st.index(&apos;t&apos;)        查找坐标,没有就报错</span><br><span class="line">st=&apos;hello &#123;name&#125; is &#123;age&#125;&apos;</span><br><span class="line">st.format(name=&apos;wj&apos;,age=12)</span><br><span class="line">st.format_map(&#123;&apos;name&apos;:&apos;wj&apos;,&apos;age&apos;:12&#125;)</span><br><span class="line">st.isalnum()        判断是否数字  st.isdecimal()十进制    st.isdigit()整型    str.isidentifier()是否非法字符     st.islower()   st.isspace()   st.lower()   st.isalpha()  st.swapcase()      st.rjust(10,&apos;*&apos;)     st.ljust(10,&apos;*&apos;)       st.strip()去除空格       </span><br><span class="line">st.replace(&apos;a&apos;,&apos;b&apos;)</span><br><span class="line">st.rfind(&apos;t&apos;)   </span><br><span class="line">st.split(&apos;,&apos;)       st.rsplit(&apos;,&apos;,1)分割一次      print(&apos;1+2\n+3+4&apos;.splitlines())分行分割</span><br><span class="line">print(&apos;lex li&apos;.zfill(50))       填充</span><br></pre></td></tr></table></figure>
 <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">set([1,2,3])</span><br><span class="line">set1.intersection(set2)     取交集          set1 &amp; set2</span><br><span class="line">set1.union(set2)            取并集          set1 | set2</span><br><span class="line">set1.difference(set2)       set1有的set2没有的差集  set1 - set2</span><br><span class="line">set1.issubset(set2)         是否子集</span><br><span class="line">set1.isuperset(set2)        是否父集</span><br><span class="line">set1.symmetric_difference(set2) 反向差集，并集后去掉差集    set1 ^ set2 </span><br><span class="line">set1.isdisjoint(set2)       判断有无交集</span><br><span class="line"></span><br><span class="line">set1.add(5)</span><br><span class="line">set1.update([2,3,4])</span><br><span class="line">set1.remove(2)              不存在则报错</span><br><span class="line">len(set1)</span><br><span class="line">set1 in set2 </span><br><span class="line">set1 not in set2</span><br><span class="line">set1.copy()                 浅复制</span><br><span class="line">set1.pop()</span><br><span class="line">set1.discard(2)             不存在返回None</span><br></pre></td></tr></table></figure>
 <h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">data = open(&quot;3LevelMenu.py&quot;,&apos;w&apos;,encoding=&quot;utf-8&quot;)只写     &apos;r&apos;只读    &apos;a&apos;追加  &apos;r+&apos;读写    &apos;w+&apos;写读  &apos;a+&apos;加读    &apos;rb&apos;二进制读，没有编码，data.write(&quot;a&quot;.encode())</span><br><span class="line">data.read()</span><br><span class="line">data.write(&quot;123\n&quot;)</span><br><span class="line">data.close()</span><br><span class="line">for i in range(5):</span><br><span class="line">    print(data.readline())      读一行</span><br><span class="line">for line in data.readlines():</span><br><span class="line">    print(line.strip())         去掉空格空行</span><br><span class="line">for index,line in enumerate(data.readlines()):</span><br><span class="line">    if index == 9:</span><br><span class="line">        print (&apos;第九行&apos;)</span><br><span class="line">        continue</span><br><span class="line">    print(line.strip())   </span><br><span class="line">for line in data:</span><br><span class="line">    print(line)</span><br><span class="line">print(data.tell())              获取句柄指针位置</span><br><span class="line">print(data.read(5))             读取5个字符</span><br><span class="line">print(data.tell())              获取句柄指针位置</span><br><span class="line">data.seek(0)                    调整句柄位置为0</span><br><span class="line">print(data.encoding)            查看文件编码</span><br><span class="line">print(data.name)                文件名</span><br><span class="line">data.flush()                    强制写入硬盘    </span><br><span class="line">for i in range(20):             进度条</span><br><span class="line">    sys.stdout.write(&quot;#&quot;)</span><br><span class="line">    sys.stdout.flush()</span><br><span class="line">    time.sleep(0.1)</span><br><span class="line">data.truncate(10)               截断10字符</span><br><span class="line"></span><br><span class="line">f=open(&quot;a.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;)    </span><br><span class="line">f_new=open(&quot;a.txt.bak&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;)</span><br><span class="line">for line in f:</span><br><span class="line">    if &quot;hello&quot; in line:</span><br><span class="line">        line = line.replace(&quot;hello&quot;,&quot;world&quot;)</span><br><span class="line">    f_new.write(line)</span><br><span class="line">f.close()</span><br><span class="line">f_new.close()</span><br><span class="line"></span><br><span class="line">with open(&quot;a.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f,\</span><br><span class="line">open(&quot;a.txt&quot;,&quot;r&quot;,encoding=&quot;utf-8&quot;) as f:   不用关闭</span><br><span class="line">    for line in f:</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
@@ -865,57 +864,46 @@ a[1]    a[1:3]
 </thead>
 <tbody>
 <tr>
-<td></td>
 <td>shutil.copyfileobj(open(‘old.xml’,’r’), open(‘new.xml’, ‘w’))</td>
 <td>将文件内容拷贝到另一个文件中</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.copyfile(‘f1.log’, ‘f2.log’)</td>
 <td>#目标文件无需存在，直接拷贝文件</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.copymode(‘f1.log’, ‘f2.log’)</td>
 <td>#目标文件必须存在，仅拷贝权限。内容、组、用户均不变</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.copystat(‘f1.log’, ‘f2.log’)</td>
 <td>#目标文件必须存在仅拷贝状态的信息，包括：mode bits, atime, mtime, flags</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.copy(‘f1.log’, ‘f2.log’)</td>
 <td># 拷贝文件和权限</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.copy2(‘f1.log’, ‘f2.log’)</td>
 <td># 拷贝文件和状态信息</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.copytree(‘folder1’, ‘folder2’, ignore=shutil.ignore_patterns(‘<em>.pyc’, ‘tmp</em>‘))</td>
 <td>#目标目录不能存在，注意对folder2目录父级目录要有可写权限，ignore的意思是排除 递归的去拷贝文件夹</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.copytree(‘f1’, ‘f2’, symlinks=True, ignore=shutil.ignore_patterns(‘<em>.pyc’, ‘tmp</em>‘))</td>
 <td>拷贝软连接</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.rmtree(‘folder1’)</td>
 <td>递归删除文件</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.move(‘folder1’, ‘folder3’)</td>
 <td>递归的去移动文件</td>
 </tr>
 <tr>
-<td></td>
 <td>shutil.make_archive(“/tmp/data_bak”, ‘gztar’, root_dir=’/data’)</td>
 <td>#将 /data下的文件打包放置 /tmp/目录</td>
 </tr>
@@ -967,17 +955,12 @@ a[1]    a[1:3]
 <td>匹配前一个字符n到m次，re.findall(“ab{1,3}”,”abb abc abbcbbb”) 结果’abb’, ‘ab’, ‘abb’]</td>
 </tr>
 <tr>
-<td>‘\</td>
-<td>‘</td>
-<td>匹配\</td>
-<td>左或\</td>
-<td>右的字符，re.search(“abc\</td>
-<td>ABC”,”ABCBabcCD”).group() 结果’ABC’</td>
+<td>‘&#124;’</td>
+<td>匹配&#124;左或&#124;右的字符，re.search(“abc&#124;ABC”,”ABCBabcCD”).group() 结果’ABC’</td>
 </tr>
 <tr>
 <td>‘(…)’</td>
-<td>分组匹配，re.search(“(abc){2}a(123\</td>
-<td>456)c”, “abcabca456c”).group() 结果 abcabca456c</td>
+<td>分组匹配，re.search(“(abc){2}a(123&#124;456)c”, “abcabca456c”).group() 结果 abcabca456c</td>
 </tr>
 <tr>
 <td>‘\A’</td>
@@ -1082,7 +1065,7 @@ a[1]    a[1:3]
   <p><span>本文标题:</span><a href="/post/python基础语法.html">python基础语法</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
   <p><span>发布时间:</span>2018年02月05日 - 12:02</p>
-  <p><span>最后更新:</span>2018年02月05日 - 13:02</p>
+  <p><span>最后更新:</span>2018年02月23日 - 08:02</p>
   <p><span>原始链接:</span><a href="/post/python基础语法.html" title="python基础语法">http://ashercode.github.io/post/python基础语法.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/python基础语法.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -1296,7 +1279,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1318,7 +1301,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1409,7 +1392,7 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">AsherCode</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.7k字</span>
+  <span class="post-count">博客全站共62.3k字</span>
 </div>
   
 </div>

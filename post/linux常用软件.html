@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="王小建">
 <meta property="og:description" content="你知道乌鸦为什么像写字台吗   linux服务器搭建,nginx,jdk,tomcat,mysql,samba,redis,ftp,ssh,c++,python">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T03:01:50.866Z">
+<meta property="og:updated_time" content="2018-02-23T00:43:13.345Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux常用软件">
 <meta name="twitter:description" content="你知道乌鸦为什么像写字台吗   linux服务器搭建,nginx,jdk,tomcat,mysql,samba,redis,ftp,ssh,c++,python">
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,753
+                  1,940
                 </span>
               
 
@@ -452,7 +452,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -477,220 +477,21 @@
 </blockquote>
 <div class="note warning"><p>linux服务器搭建,nginx,jdk,tomcat,mysql,samba,redis,ftp,ssh,c++,python</p></div>
 <a id="more"></a>
-<h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="安装的几种方式"><a href="#安装的几种方式" class="headerlink" title="安装的几种方式"></a>安装的几种方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    cd /usr/local/</span><br><span class="line">    wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.gz</span><br><span class="line">    tar -zxvf pcre-8.36.tar.gz</span><br><span class="line">    rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">    yum install nginx</span><br><span class="line">    service nginx start </span><br><span class="line">    </span><br><span class="line">    apt-add-repository ppa:nginx/development	获取最新的个人软件包档案源，将其添加至当前apt库中，并自动导入公钥。</span><br><span class="line">    apt-get update</span><br><span class="line">    apt-get install nginx	</span><br><span class="line">``</span><br><span class="line">##	反向代理</span><br></pre></td></tr></table></figure>
-<pre><code>映射10.5.224.31:85为本地的127.0.0.1:8080端口，服务器域名为devsso225.codyy.cn
-
-worker_processes  1;
-
-events {
-    worker_connections  1024;
-}
-
-
-http {
-    include       mime.types;
-    default_type  application/octet-stream;
-    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
-                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
-                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
-    sendfile        on;
-    keepalive_timeout  65;
-    upstream backend {
-        server 10.5.224.31:85 max_fails=1 fail_timeout=3600s;
-    }
-
-
-    server {
-        listen      8080;
-        server_name devsso225.codyy.cn;
-
-        location / {
-            proxy_set_header Host $host;
-            proxy_set_header X-Real-IP $remote_addr;
-            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-            proxy_buffering off;
-            proxy_pass http://backend; 
-        }
-
-        location = /50x.html {
-            root   html;
-        }
-    }
-}    
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># java&amp;tomcat</span><br><span class="line"></span><br><span class="line">## 安装</span><br></pre></td></tr></table></figure>
-<pre><code>mkdir TJOpenCourse
-cd TJOpenCourse/
-rz
-tar -xzvf apache-tomcat-7.0.79.tar.gz -C .ust/local/tomcat
-tar -xzvf jdk-7u79-linux-x64.tar.gz  
-cd apache-tomcat-7.0.79
-pwd
-vim /etc/profile
-    JAVA_HOME=/root/TJOpenCourse/jdk1.7.0_79
-    PATH=/root/TJOpenCourse/jdk1.7.0_79/bin:$PATH
-    CLASSPATH=.:/root/TJOpenCourse/jdk1.7.0_79/lib/dt.jar:/root/TJOpenCourse/jdk1.7.0_79/lib/tools.jar
-    CATALINA_HOME=/root/TJOpenCourse/apache-tomcat-7.0.79 
-    export JAVA_HOME PATH CLASSPATH CATALINA_HOME
-source /etc/profile
-java -version
-javac
-cd bin
-./startup.sh  
-vim a.html 
-cd ../../bin
-./shutdown.sh 
-./startup.sh 
-访问 localhost:8080/a.html
-/sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT    开启端口访问
-/etc/rc.d/init.d/iptables save
-
-ln -s ~/TJOpenCourse/apache-tomcat-7.0.79/bin/startup.sh startTomcat.sh
-ln -s ~/TJOpenCourse/apache-tomcat-7.0.79/bin/shutdown.sh stopTomcat.sh
-将war包放到apache-tomcat-7.0.79/webapps下
-在server.xml的HOST中添加
-&lt;Context docBase=&quot;/root/TJOpenCourse/apache-tomcat-7.0.79/webapps/TJOpenCourse&quot; path=&quot;/TJOpenCourse&quot; reloadable=&quot;true&quot;/&gt;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># apache</span><br></pre></td></tr></table></figure>
-<pre><code>yum -y install httpd
-service httpd start
-
-apt-get install apache2
-cd /var/www/html/
-/etc/apache2/apache2.conf
-    KeepAlive Off
-service httpd start 启动
-service httpd restart 重新启动
-service httpd stop 停止服务
-/etc/init.d/apache2 restart 重启apache
-a2dismod mpm_event
-a2enmod mpm_prefork
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># php&amp;redis</span><br></pre></td></tr></table></figure>
-<pre><code>yum install php.x86_64 -y
-yum install wget -y
-yum install gcc gcc-c++ kernel-devel  
-wget http://download.redis.io/releases/redis-3.2.0.tar.gz
-tar xzf redis-3.2.0.tar.gz
-cd redis-3.2.0
-make MALLOC=libc
-./src/redis-server redis.conf &amp;
-ps -ef |grep redis
-./src/redis-cli   
-./src/redis-cli shutdown
-
-yum install php-devel  -y 
-wget https://github.com/nicolasff/phpredis/archive/master.zip  
-yum install unzip -y
-unzip master.zip
-cd phpredis-master/
-phpize
-./configure 
-make &amp;&amp; make install    出现/usr/lib64/php/modules/redis.so
-vi /etc/php.ini  添加   extension=redis.so 
-/var/www/html存放apache目录 查看&lt;?php phpinfo ?&gt; 找到有redis模块
-pkill -9 httpd
-
-apt-get install php7.0-cli php7.0-cgi php7.0-fpm
-apt-get install libapache2-mod-php7.0 配置php及apache
-apt-get install php7.0-dev      配置redis
-git clone https://github.com/phpredis/phpredis
-cd phpredis
-phpize
-./configure --with-php-config=/usr/bin/php-config
-make &amp;&amp; make install
-vim /etc/php/7.0/apache2/php.ini
-    extension=redis.so
-/etc/init.d/apache2 restart 查看phpinfo是否有redis模块 
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># mysql</span><br></pre></td></tr></table></figure>
-<pre><code>rpm -e --nodeps mysql-*         删除mysql
-rpm -ivh MYSQL-server-5.5.49-1.linux2.6.i386.rpm    安装服务端
-rpm -ivh MYSQL-client-5.5.49-1.linux2.6.i386.rpm    安装客户端
-
-apt-get install mysql-server php7.0-mysql
-mysql_secure_installation   安全验证
-/usr/bin/mysqladmin -u root password &apos;123456&apos;
-chkconfig -add mysql    加入系统服务
-chkconfig mysql on  自动启动
-grant all privileges on *.* to &apos;root&apos; @ &apos;%&apos; identified by &apos;123456&apos;
-flush privileges;
-/sbin/ipteables -I INPUT -p tcp --dport 3306 -j ACCEPT
-/etc/rc.d/init.d/iptables save
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># samba</span><br></pre></td></tr></table></figure>
-<pre><code>apt-get install samba -y 
-apt-get install smbclient -y
-mkdir /var/www/htdocs
-chmod 1777 /var/www/htdocs
-setfacl -m d:u:root:rwx -R /var/www/htdocs 设置可操作的权限
-ufw enable|disable
-vim /etc/samba/smb.conf
-    [web]
-       comment = htdocs
-       path = /var/www/htdocs
-       public = yes
-       browseable = yes
-       guest ok = yes
-       writable = yes 
-/etc/init.d/samba start/start/restart
-smbpasswd -a root   添加用户
-smbpasswd -e root   激活用户
-apt-get remove --purge samba
-apt-get remove --purge smbclient
-本机映射网络映射器\\192.168.56.101\web
-telnet 192.168.56.101 445 端口是否开通     
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># githooks自动部署</span><br><span class="line">## 服务器</span><br></pre></td></tr></table></figure>
-<pre><code>sudo apt-get install git
-sudo apt-get install openssh-server openssh-client
-sudo /etc/init.d/ssh start
-cd ~
-mkdir .ssh
-vim authorized_keys
-    本地 ssh-keygen -t rsa -C &quot;j1051103813@gmail.com&quot;生成的id_rsa.pub
-    ssh root@115.159.161.132复制id_rsa.pub到authorized_keys
-chmod 600 ~/.ssh/authorized_keys //权限不要出错
-chmod 755 ~/.ssh    
-mkdir repos
-cd repos/
-git init --bare BRIDGE_REPO.git
-cd ~/repos/BRIDGE_REPO.git/hooks/
-vim post-receive
-    #!/bin/sh
-    unset GIT_DIR 
-    NowPath=`pwd`
-    DeployPath=&quot;/var/www/html/www&quot; 
-    cd $DeployPath
-    git pull origin master 
-    cd $NowPath
-    exit 0 
-
-cd /var/www/html/
-mkdir www
-cd www 
-git init
-git remote add origin ~/repos/BRIDGE_REPO.git/
-git fetch
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## 本地</span><br></pre></td></tr></table></figure>
-<pre><code>git init
-git remote add deploy root@115.159.161.132:~/repos/BRIDGE_REPO.git
-touch a
-git add a
-git commit -m &apos;a&apos;
-git push deploy master    
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># ftp</span><br></pre></td></tr></table></figure>
-<pre><code>yum install vsftpd.x86_64
-vi /etc/vsftpd/vsftpd.conf
-    anonymous_enable=NO
-    userlist_enable=NO
-vi /etc/selinux/config   关闭selinux 
-    userlist_enable=NO
-/etc/vsftpd/ftpusers：位于/etc目录下。它指定了哪些用户账户不能访问FTP服务器，例如root等。  
-/etc/vsftpd/user_list:该文件里的用户账户在默认情况下也不能访问FTP服务器，仅当vsftpd .conf配置文件里启用userlist_enable=NO选项时才允许访问。
-chkconfig --level 35 iptables off  关闭指定防火墙
-service vsftpd restart
-
-ftp 192.168.56.104访问，或者ftp://192.168.56.104/
-</code></pre><h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql</span><br><span class="line">wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">	</span><br><span class="line">yum install mysql-community-server</span><br><span class="line">service mysqld restart</span><br><span class="line"></span><br><span class="line">sudo apt-get install mysql-server</span><br><span class="line">apt-get install mysql-client</span><br><span class="line">apt-get install libmysqlclient-dev</span><br><span class="line">netstat -tap | grep mysql</span><br><span class="line">/etc/init.d/mysql restart</span><br><span class="line">vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line">	#bind-address = 127.0.0.1</span><br></pre></td></tr></table></figure>
+<h1 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h1><h2 id="安装的几种方式"><a href="#安装的几种方式" class="headerlink" title="安装的几种方式"></a>安装的几种方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/</span><br><span class="line">wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.36.tar.gz</span><br><span class="line">tar -zxvf pcre-8.36.tar.gz</span><br><span class="line">rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">yum install nginx</span><br><span class="line">service nginx start </span><br><span class="line"></span><br><span class="line">apt-add-repository ppa:nginx/development	获取最新的个人软件包档案源，将其添加至当前apt库中，并自动导入公钥。</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install nginx</span><br></pre></td></tr></table></figure>
+<h2 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">映射10.5.224.31:85为本地的127.0.0.1:8080端口，服务器域名为devsso225.codyy.cn</span><br><span class="line">   </span><br><span class="line">   worker_processes  1;</span><br><span class="line">   </span><br><span class="line">   events &#123;</span><br><span class="line">       worker_connections  1024;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   </span><br><span class="line">   http &#123;</span><br><span class="line">       include       mime.types;</span><br><span class="line">       default_type  application/octet-stream;</span><br><span class="line">       log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                         &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                         &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line">       sendfile        on;</span><br><span class="line">       keepalive_timeout  65;</span><br><span class="line">       upstream backend &#123;</span><br><span class="line">       	server 10.5.224.31:85 max_fails=1 fail_timeout=3600s;</span><br><span class="line">       &#125;</span><br><span class="line">      </span><br><span class="line">   </span><br><span class="line">   	server &#123;</span><br><span class="line">   		listen      8080;</span><br><span class="line">   		server_name devsso225.codyy.cn;</span><br><span class="line">   		 </span><br><span class="line">   		location / &#123;</span><br><span class="line">   			proxy_set_header Host $host;</span><br><span class="line">   			proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">   			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">   			proxy_buffering off;</span><br><span class="line">   			proxy_pass http://backend; </span><br><span class="line">   		&#125;</span><br><span class="line">   </span><br><span class="line">   		location = /50x.html &#123;</span><br><span class="line">   			root   html;</span><br><span class="line">   		&#125;</span><br><span class="line">   	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="java-amp-tomcat"><a href="#java-amp-tomcat" class="headerlink" title="java&amp;tomcat"></a>java&amp;tomcat</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">mkdir TJOpenCourse</span><br><span class="line">   cd TJOpenCourse/</span><br><span class="line">   rz</span><br><span class="line">   tar -xzvf apache-tomcat-7.0.79.tar.gz -C .ust/local/tomcat</span><br><span class="line">   tar -xzvf jdk-7u79-linux-x64.tar.gz  </span><br><span class="line">   cd apache-tomcat-7.0.79</span><br><span class="line">   pwd</span><br><span class="line">   vim /etc/profile</span><br><span class="line">   	JAVA_HOME=/root/TJOpenCourse/jdk1.7.0_79</span><br><span class="line">   	PATH=/root/TJOpenCourse/jdk1.7.0_79/bin:$PATH</span><br><span class="line">   	CLASSPATH=.:/root/TJOpenCourse/jdk1.7.0_79/lib/dt.jar:/root/TJOpenCourse/jdk1.7.0_79/lib/tools.jar</span><br><span class="line">   	CATALINA_HOME=/root/TJOpenCourse/apache-tomcat-7.0.79 </span><br><span class="line">   	export JAVA_HOME PATH CLASSPATH CATALINA_HOME</span><br><span class="line">   source /etc/profile</span><br><span class="line">   java -version</span><br><span class="line">   javac</span><br><span class="line">   cd bin</span><br><span class="line">   ./startup.sh  </span><br><span class="line">   vim a.html </span><br><span class="line">   cd ../../bin</span><br><span class="line">   ./shutdown.sh </span><br><span class="line">   ./startup.sh </span><br><span class="line">   访问 localhost:8080/a.html</span><br><span class="line">   /sbin/iptables -I INPUT -p tcp --dport 8080 -j ACCEPT	开启端口访问</span><br><span class="line">   /etc/rc.d/init.d/iptables save</span><br><span class="line"></span><br><span class="line">ln -s ~/TJOpenCourse/apache-tomcat-7.0.79/bin/startup.sh startTomcat.sh</span><br><span class="line">   ln -s ~/TJOpenCourse/apache-tomcat-7.0.79/bin/shutdown.sh stopTomcat.sh</span><br><span class="line">   将war包放到apache-tomcat-7.0.79/webapps下</span><br><span class="line">   在server.xml的HOST中添加</span><br><span class="line">   &lt;Context docBase=&quot;/root/TJOpenCourse/apache-tomcat-7.0.79/webapps/TJOpenCourse&quot; path=&quot;/TJOpenCourse&quot; reloadable=&quot;true&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="apache"><a href="#apache" class="headerlink" title="apache"></a>apache</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">yum -y install httpd</span><br><span class="line">   service httpd start</span><br><span class="line">   </span><br><span class="line">   apt-get install apache2</span><br><span class="line">   cd /var/www/html/</span><br><span class="line">   /etc/apache2/apache2.conf</span><br><span class="line">       KeepAlive Off</span><br><span class="line">   service httpd start 启动</span><br><span class="line">   service httpd restart 重新启动</span><br><span class="line">   service httpd stop 停止服务</span><br><span class="line">   /etc/init.d/apache2 restart 重启apache</span><br><span class="line">   a2dismod mpm_event</span><br><span class="line">   a2enmod mpm_prefork</span><br></pre></td></tr></table></figure>
+<h1 id="php-amp-redis"><a href="#php-amp-redis" class="headerlink" title="php&amp;redis"></a>php&amp;redis</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">yum install php.x86_64 -y</span><br><span class="line">   yum install wget -y</span><br><span class="line">   yum install gcc gcc-c++ kernel-devel  </span><br><span class="line">   wget http://download.redis.io/releases/redis-3.2.0.tar.gz</span><br><span class="line">   tar xzf redis-3.2.0.tar.gz</span><br><span class="line">   cd redis-3.2.0</span><br><span class="line">   make MALLOC=libc</span><br><span class="line">   ./src/redis-server redis.conf &amp;</span><br><span class="line">   ps -ef |grep redis</span><br><span class="line">   ./src/redis-cli   </span><br><span class="line">   ./src/redis-cli shutdown</span><br><span class="line"></span><br><span class="line">   yum install php-devel  -y </span><br><span class="line">   wget https://github.com/nicolasff/phpredis/archive/master.zip  </span><br><span class="line">   yum install unzip -y</span><br><span class="line">   unzip master.zip</span><br><span class="line">   cd phpredis-master/</span><br><span class="line">   phpize</span><br><span class="line">   ./configure </span><br><span class="line">   make &amp;&amp; make install    出现/usr/lib64/php/modules/redis.so</span><br><span class="line">   vi /etc/php.ini  添加   extension=redis.so </span><br><span class="line">   /var/www/html存放apache目录 查看&lt;?php phpinfo ?&gt; 找到有redis模块</span><br><span class="line">   pkill -9 httpd</span><br><span class="line">    </span><br><span class="line">   apt-get install php7.0-cli php7.0-cgi php7.0-fpm</span><br><span class="line">   apt-get install libapache2-mod-php7.0 配置php及apache</span><br><span class="line">   apt-get install php7.0-dev      配置redis</span><br><span class="line">   git clone https://github.com/phpredis/phpredis</span><br><span class="line">   cd phpredis</span><br><span class="line">   phpize</span><br><span class="line">   ./configure --with-php-config=/usr/bin/php-config</span><br><span class="line">   make &amp;&amp; make install</span><br><span class="line">   vim /etc/php/7.0/apache2/php.ini</span><br><span class="line">       extension=redis.so</span><br><span class="line">   /etc/init.d/apache2 restart 查看phpinfo是否有redis模块</span><br></pre></td></tr></table></figure>
+<h1 id="mysql"><a href="#mysql" class="headerlink" title="mysql"></a>mysql</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rpm -e --nodeps mysql-*         删除mysql</span><br><span class="line">   rpm -ivh MYSQL-server-5.5.49-1.linux2.6.i386.rpm    安装服务端</span><br><span class="line">   rpm -ivh MYSQL-client-5.5.49-1.linux2.6.i386.rpm    安装客户端</span><br><span class="line"></span><br><span class="line">   apt-get install mysql-server php7.0-mysql</span><br><span class="line">   mysql_secure_installation   安全验证</span><br><span class="line">   /usr/bin/mysqladmin -u root password &apos;123456&apos;</span><br><span class="line">   chkconfig -add mysql    加入系统服务</span><br><span class="line">   chkconfig mysql on  自动启动</span><br><span class="line">   grant all privileges on *.* to &apos;root&apos; @ &apos;%&apos; identified by &apos;123456&apos;</span><br><span class="line">   flush privileges;</span><br><span class="line">   /sbin/ipteables -I INPUT -p tcp --dport 3306 -j ACCEPT</span><br><span class="line">   /etc/rc.d/init.d/iptables save</span><br></pre></td></tr></table></figure>
+<h1 id="samba"><a href="#samba" class="headerlink" title="samba"></a>samba</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">apt-get install samba -y </span><br><span class="line">apt-get install smbclient -y</span><br><span class="line">mkdir /var/www/htdocs</span><br><span class="line">chmod 1777 /var/www/htdocs</span><br><span class="line">setfacl -m d:u:root:rwx -R /var/www/htdocs 设置可操作的权限</span><br><span class="line">ufw enable|disable</span><br><span class="line">vim /etc/samba/smb.conf</span><br><span class="line">    [web]</span><br><span class="line">       comment = htdocs</span><br><span class="line">       path = /var/www/htdocs</span><br><span class="line">       public = yes</span><br><span class="line">       browseable = yes</span><br><span class="line">       guest ok = yes</span><br><span class="line">       writable = yes </span><br><span class="line">/etc/init.d/samba start/start/restart</span><br><span class="line">smbpasswd -a root   添加用户</span><br><span class="line">smbpasswd -e root   激活用户</span><br><span class="line">apt-get remove --purge samba</span><br><span class="line">apt-get remove --purge smbclient</span><br><span class="line">本机映射网络映射器\\192.168.56.101\web</span><br><span class="line">telnet 192.168.56.101 445 端口是否开通</span><br></pre></td></tr></table></figure>
+<h1 id="githooks自动部署"><a href="#githooks自动部署" class="headerlink" title="githooks自动部署"></a>githooks自动部署</h1><h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br><span class="line">sudo apt-get install openssh-server openssh-client</span><br><span class="line">sudo /etc/init.d/ssh start</span><br><span class="line">cd ~</span><br><span class="line">mkdir .ssh</span><br><span class="line">vim authorized_keys</span><br><span class="line">	本地 ssh-keygen -t rsa -C &quot;j1051103813@gmail.com&quot;生成的id_rsa.pub</span><br><span class="line">	ssh root@115.159.161.132复制id_rsa.pub到authorized_keys</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys //权限不要出错</span><br><span class="line">chmod 755 ~/.ssh	</span><br><span class="line">mkdir repos</span><br><span class="line">cd repos/</span><br><span class="line">git init --bare BRIDGE_REPO.git</span><br><span class="line">cd ~/repos/BRIDGE_REPO.git/hooks/</span><br><span class="line">vim post-receive</span><br><span class="line">	#!/bin/sh</span><br><span class="line">	unset GIT_DIR </span><br><span class="line">	NowPath=`pwd`</span><br><span class="line">	DeployPath=&quot;/var/www/html/www&quot; </span><br><span class="line">	cd $DeployPath</span><br><span class="line">	git pull origin master </span><br><span class="line">	cd $NowPath</span><br><span class="line">	exit 0 </span><br><span class="line">	</span><br><span class="line">cd /var/www/html/</span><br><span class="line">mkdir www</span><br><span class="line">cd www </span><br><span class="line">git init</span><br><span class="line">git remote add origin ~/repos/BRIDGE_REPO.git/</span><br><span class="line">git fetch</span><br></pre></td></tr></table></figure>
+<h2 id="本地"><a href="#本地" class="headerlink" title="本地"></a>本地</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add deploy root@115.159.161.132:~/repos/BRIDGE_REPO.git</span><br><span class="line">touch a</span><br><span class="line">git add a</span><br><span class="line">git commit -m &apos;a&apos;</span><br><span class="line">git push deploy master</span><br></pre></td></tr></table></figure>
+<h1 id="ftp"><a href="#ftp" class="headerlink" title="ftp"></a>ftp</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">yum install vsftpd.x86_64</span><br><span class="line">   vi /etc/vsftpd/vsftpd.conf</span><br><span class="line">       anonymous_enable=NO</span><br><span class="line">       userlist_enable=NO</span><br><span class="line">   vi /etc/selinux/config   关闭selinux </span><br><span class="line">       userlist_enable=NO</span><br><span class="line">   /etc/vsftpd/ftpusers：位于/etc目录下。它指定了哪些用户账户不能访问FTP服务器，例如root等。  </span><br><span class="line">   /etc/vsftpd/user_list:该文件里的用户账户在默认情况下也不能访问FTP服务器，仅当vsftpd .conf配置文件里启用userlist_enable=NO选项时才允许访问。</span><br><span class="line">   chkconfig --level 35 iptables off  关闭指定防火墙</span><br><span class="line">   service vsftpd restart</span><br><span class="line">   </span><br><span class="line">   ftp 192.168.56.104访问，或者ftp://192.168.56.104/</span><br></pre></td></tr></table></figure>
+<h1 id="mysql-1"><a href="#mysql-1" class="headerlink" title="mysql"></a>mysql</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">yum install mysql</span><br><span class="line">wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br><span class="line">	</span><br><span class="line">yum install mysql-community-server</span><br><span class="line">service mysqld restart</span><br><span class="line"></span><br><span class="line">sudo apt-get install mysql-server</span><br><span class="line">apt-get install mysql-client</span><br><span class="line">apt-get install libmysqlclient-dev</span><br><span class="line">netstat -tap | grep mysql</span><br><span class="line">/etc/init.d/mysql restart</span><br><span class="line">vim /etc/mysql/mysql.conf.d/mysqld.cnf</span><br><span class="line">	#bind-address = 127.0.0.1</span><br></pre></td></tr></table></figure>
 <h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br><span class="line">mysql&gt; use mysql; </span><br><span class="line">mysql&gt; update user set password=password(&apos;123&apos;) where user=&apos;root&apos; and host=&apos;localhost&apos;; </span><br><span class="line">mysql&gt; flush privileges;</span><br></pre></td></tr></table></figure>
 <h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/etc/my.cnf</span><br><span class="line">[mysql]</span><br><span class="line">default-character-set =utf8  #和/usr/share/mysql/charsets/Index.xml一致</span><br></pre></td></tr></table></figure>
 <h2 id="远程连接分配权限"><a href="#远程连接分配权限" class="headerlink" title="远程连接分配权限"></a>远程连接分配权限</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql_upgrade -u root -p 123456</span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;update user set Host=&apos;%&apos; where User=&apos;root&apos;;</span><br><span class="line">mysql&gt;GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;%&apos;IDENTIFIED BY &apos;123456&apos; WITH GRANT OPTION;</span><br><span class="line">mysql&gt;FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-<h1 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">yum install openssh-server</span><br><span class="line">   chkconfig --list sshd			查看开机启动项是有有ssh</span><br><span class="line">   chkconfig --level 2345 sshd on	开机启动 </span><br><span class="line">   service sshd restart</span><br><span class="line">   netstat -antp |grep sshd</span><br><span class="line">   </span><br><span class="line">   vim /etc/ssh/sshd_config</span><br><span class="line">	port 22</span><br><span class="line">	listenAddress 192.168.0.2</span><br><span class="line">	permitEmptyPasswords no</span><br><span class="line">	passwordAuthentication yes</span><br><span class="line">	denyUsers wj</span><br></pre></td></tr></table></figure>
+<h1 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h1><h2 id="安装-2"><a href="#安装-2" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">yum install openssh-server</span><br><span class="line">   chkconfig --list sshd			查看开机启动项是有有ssh</span><br><span class="line">   chkconfig --level 2345 sshd on	开机启动 </span><br><span class="line">   service sshd restart</span><br><span class="line">   netstat -antp |grep sshd</span><br><span class="line">   </span><br><span class="line">   vim /etc/ssh/sshd_config</span><br><span class="line">	port 22</span><br><span class="line">	listenAddress 192.168.0.2</span><br><span class="line">	permitEmptyPasswords no</span><br><span class="line">	passwordAuthentication yes</span><br><span class="line">	denyUsers wj</span><br></pre></td></tr></table></figure>
 <h2 id="登录-1"><a href="#登录-1" class="headerlink" title="登录"></a>登录</h2><pre><code>ssh 115.159.161.132
 </code></pre><h1 id="文件传输"><a href="#文件传输" class="headerlink" title="文件传输"></a>文件传输</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum install lrzsz </span><br><span class="line">rz			上传</span><br><span class="line"></span><br><span class="line">   scp ~/a.txt root@115.159.161.132:~/		将当前用户的文件传给root</span><br><span class="line">   scp -r /home root@192.168.0.2:/root		将当前用户的文件夹传给root</span><br><span class="line">   </span><br><span class="line">   sftp root@115.159.161.132</span><br><span class="line">   lpwd/lls/lcd对本地操作</span><br><span class="line">   ls/pwd/cd/rm/mkdir对远程操作</span><br><span class="line">   get /root/a.txt /home/wangjian/a.txt	下载文件</span><br><span class="line">   put /home/wangjian/a.txt /root/a.txt	上传文件</span><br></pre></td></tr></table></figure>
 <h1 id="多python"><a href="#多python" class="headerlink" title="多python"></a>多python</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python-pip</span><br><span class="line">pip install virtualenv</span><br><span class="line">virtualenv -p /usr/bin//python2.7 ENV2.7</span><br><span class="line">virtualenv -p /usr/bin//python3.5 ENV3.5</span><br><span class="line">cd ENV2.7	</span><br><span class="line">source ./bin/activate</span><br><span class="line">python --version</span><br><span class="line">cd ../ENV3.5</span><br><span class="line">source ./bin/activate</span><br><span class="line">python --version</span><br><span class="line">deactivate 关闭</span><br></pre></td></tr></table></figure>
@@ -724,7 +525,7 @@ ftp 192.168.56.104访问，或者ftp://192.168.56.104/
   <p><span>本文标题:</span><a href="/post/linux常用软件.html">linux常用软件</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
   <p><span>发布时间:</span>2018年02月05日 - 10:02</p>
-  <p><span>最后更新:</span>2018年02月05日 - 11:02</p>
+  <p><span>最后更新:</span>2018年02月23日 - 08:02</p>
   <p><span>原始链接:</span><a href="/post/linux常用软件.html" title="linux常用软件">http://ashercode.github.io/post/linux常用软件.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/linux常用软件.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -938,7 +739,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -960,7 +761,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1023,7 +824,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx"><span class="nav-number">1.</span> <span class="nav-text">nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装的几种方式"><span class="nav-number">1.1.</span> <span class="nav-text">安装的几种方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql"><span class="nav-number">2.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">2.2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程连接分配权限"><span class="nav-number">2.4.</span> <span class="nav-text">远程连接分配权限</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh"><span class="nav-number">3.</span> <span class="nav-text">ssh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-1"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录-1"><span class="nav-number">3.2.</span> <span class="nav-text">登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件传输"><span class="nav-number">4.</span> <span class="nav-text">文件传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多python"><span class="nav-number">5.</span> <span class="nav-text">多python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可视化VNC"><span class="nav-number">6.</span> <span class="nav-text">可视化VNC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c"><span class="nav-number">7.</span> <span class="nav-text">c++</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#nginx"><span class="nav-number">1.</span> <span class="nav-text">nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装的几种方式"><span class="nav-number">1.1.</span> <span class="nav-text">安装的几种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向代理"><span class="nav-number">1.2.</span> <span class="nav-text">反向代理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-amp-tomcat"><span class="nav-number">2.</span> <span class="nav-text">java&amp;tomcat</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">2.1.</span> <span class="nav-text">安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apache"><span class="nav-number">3.</span> <span class="nav-text">apache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#php-amp-redis"><span class="nav-number">4.</span> <span class="nav-text">php&amp;redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql"><span class="nav-number">5.</span> <span class="nav-text">mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#samba"><span class="nav-number">6.</span> <span class="nav-text">samba</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#githooks自动部署"><span class="nav-number">7.</span> <span class="nav-text">githooks自动部署</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器"><span class="nav-number">7.1.</span> <span class="nav-text">服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#本地"><span class="nav-number">7.2.</span> <span class="nav-text">本地</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ftp"><span class="nav-number">8.</span> <span class="nav-text">ftp</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql-1"><span class="nav-number">9.</span> <span class="nav-text">mysql</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-1"><span class="nav-number">9.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">9.2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">9.3.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#远程连接分配权限"><span class="nav-number">9.4.</span> <span class="nav-text">远程连接分配权限</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh"><span class="nav-number">10.</span> <span class="nav-text">ssh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-2"><span class="nav-number">10.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录-1"><span class="nav-number">10.2.</span> <span class="nav-text">登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件传输"><span class="nav-number">11.</span> <span class="nav-text">文件传输</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多python"><span class="nav-number">12.</span> <span class="nav-text">多python</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#可视化VNC"><span class="nav-number">13.</span> <span class="nav-text">可视化VNC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#c"><span class="nav-number">14.</span> <span class="nav-text">c++</span></a></li></ol></div>
             
 
           </div>
@@ -1051,7 +852,7 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">AsherCode</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.7k字</span>
+  <span class="post-count">博客全站共62.3k字</span>
 </div>
   
 </div>

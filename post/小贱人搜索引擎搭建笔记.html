@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="redis,scrapy,mysql,selenium,Django,ElasticSearch," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="小豆泥说，我吃过的所有猪肉，都来报仇了   scrapy,mysql,selenium搭建爬虫项目">
+<meta name="keywords" content="redis,scrapy,mysql,selenium,Django,ElasticSearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小贱人搜索引擎搭建笔记">
+<meta property="og:url" content="http://ashercode.github.io/post/小贱人搜索引擎搭建笔记.html">
+<meta property="og:site_name" content="王小建">
+<meta property="og:description" content="小豆泥说，我吃过的所有猪肉，都来报仇了   scrapy,mysql,selenium搭建爬虫项目">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-23T00:47:23.420Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小贱人搜索引擎搭建笔记">
+<meta name="twitter:description" content="小豆泥说，我吃过的所有猪肉，都来报仇了   scrapy,mysql,selenium搭建爬虫项目">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'I14VESP3SJ',
+      apiKey: 'a817c1ce9320d227f97800013070f068',
+      indexName: 'AsherCode',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入关键字","hits_empty":"根本找不到好吗: ${query}","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ashercode.github.io/post/小贱人搜索引擎搭建笔记.html"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "c9e4f89d"
+    });
+  daovoice('update');
+  </script>
+
+  <title>小贱人搜索引擎搭建笔记 | 王小建</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?df44f8c13996af363c362aad197f9bef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+	
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsherCode" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王小建</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">AsherCode的个人小站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ashercode.github.io/post/小贱人搜索引擎搭建笔记.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AsherCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小建">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">小贱人搜索引擎搭建笔记</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-23T08:25:04+08:00">
+                2018-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/搜索引擎/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索引擎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/post/小贱人搜索引擎搭建笔记.html" class="leancloud_visitors" data-flag-title="小贱人搜索引擎搭建笔记">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  6,395
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  36
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>小豆泥说，我吃过的所有猪肉，都来报仇了 </p>
+</blockquote>
+<div class="note success"><p>scrapy,mysql,selenium搭建爬虫项目</p></div>
+<a id="more"></a>
+<h1 id="伯乐在线"><a href="#伯乐在线" class="headerlink" title="伯乐在线"></a>伯乐在线</h1><blockquote>
+<ul>
+<li>获取<a href="http://blog.jobbole.com/all-posts/" target="_blank" rel="noopener">http://blog.jobbole.com/all-posts/</a> 当前页的所有item，循环遍历详情url地址yield到parse_detail中,<br>  遍历结束则获取下一页地址并yield到parse,递归爬取</li>
+<li>parse_detail中获取详情页相关内容并通过JobBoleArticleItem的实例填充处理后参数，最终yield到pipline中的mysql数据库</li>
+</ul>
+</blockquote>
+<h2 id="parse代码"><a href="#parse代码" class="headerlink" title="parse代码"></a>parse代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">post_nodes = response.css(&quot;#archive .floated-thumb .post-thumb a&quot;)</span><br><span class="line">for post_node in post_nodes:</span><br><span class="line">    image_url = post_node.css(&quot;img::attr(src)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">    post_url = post_node.css(&quot;::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">    yield Request(url=parse.urljoin(response.url, post_url),meta=&#123;&quot;front_image_url&quot;:image_url&#125;, callback=self.parse_detail) #response获取meta</span><br><span class="line"></span><br><span class="line">#提取下一页并交给scrapy进行下载</span><br><span class="line">next_url = response.css(&quot;.next.page-numbers::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">if next_url:</span><br><span class="line">    print(next_url)</span><br><span class="line">    yield Request(url=parse.urljoin(response.url, next_url),callback=self.parse)</span><br></pre></td></tr></table></figure>
+<h2 id="parse-detail代码"><a href="#parse-detail代码" class="headerlink" title="parse_detail代码"></a>parse_detail代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">article_item = JobBoleArticleItem() # 实例化</span><br><span class="line">front_image_url = response.meta.get(&quot;front_image_url&quot;, &quot;&quot;)</span><br><span class="line">title = response.css(&quot;.entry-header h1::text&quot;).extract()[0]</span><br><span class="line">create_date = response.css(&quot;p.entry-meta-hide-on-mobile::text&quot;).extract()[0].strip().replace(&quot;·&quot;,&quot;&quot;).strip()</span><br><span class="line">match_re = re.match(&quot;.*?(\d+).*&quot;, comment_nums)</span><br><span class="line">if match_re:</span><br><span class="line">    comment_nums = int(match_re.group(1))</span><br><span class="line">else:</span><br><span class="line">    comment_nums = 0</span><br><span class="line">tag_list = response.css(&quot;p.entry-meta-hide-on-mobile a::text&quot;).extract()</span><br><span class="line">tag_list = [element for element in tag_list if not element.strip().endswith(&quot;评论&quot;)]</span><br><span class="line">tags = &quot;,&quot;.join(tag_list)	</span><br><span class="line">try:</span><br><span class="line">    create_date = datetime.datetime.strptime(create_date, &quot;%Y/%m/%d&quot;).date()</span><br><span class="line">except Exception as e:</span><br><span class="line">    create_date = datetime.datetime.now().date()</span><br><span class="line">article_item[&quot;create_date&quot;] = str(create_date)</span><br><span class="line">article_item[&quot;front_image_url&quot;] = [front_image_url] #settings配置的IMAGES_URLS_FIELD是数组</span><br><span class="line">article_item[&quot;tags&quot;] = tags</span><br><span class="line">yield article_item</span><br></pre></td></tr></table></figure>
+<h1 id="拉勾网"><a href="#拉勾网" class="headerlink" title="拉勾网"></a>拉勾网</h1><blockquote>
+<ul>
+<li>使用CrawlSpider模板全栈爬取，设置custom_settings添加cookie及下载延迟等</li>
+<li>添加rules规则爬取哪些前缀的页面,follow判断是否递归深入爬取</li>
+</ul>
+</blockquote>
+<h2 id="parse-job代码"><a href="#parse-job代码" class="headerlink" title="parse_job代码"></a>parse_job代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">custom_settings = &#123;  # 优先并覆盖项目，避免被重定向</span><br><span class="line">    &quot;COOKIES_ENABLED&quot;: False,  # 关闭cookies</span><br><span class="line">    &quot;DOWNLOAD_DELAY&quot;: 5,</span><br><span class="line">    &apos;DEFAULT_REQUEST_HEADERS&apos;: &#123;</span><br><span class="line">        &apos;Accept&apos;: &apos;application/json, text/javascript, */*; q=0.01&apos;,</span><br><span class="line">        &apos;Accept-Encoding&apos;: &apos;gzip, deflate, br&apos;,</span><br><span class="line">        &apos;Accept-Language&apos;: &apos;zh-CN,zh;q=0.8&apos;,</span><br><span class="line">        &apos;Connection&apos;: &apos;keep-alive&apos;,</span><br><span class="line">        &apos;Cookie&apos;:&apos;user_trace_token=20180113120608-47baf311-32d1-42bd-b7bd-e295a0ddf211; _ga=GA1.2.1935054305.1515816368; LGUID=20180113120609-16068441-f817-11e7-9429-525400f775ce; index_location_city=%E5%85%A8%E5%9B%BD; JSESSIONID=ABAAABAABEEAAJA83B6C797B4B4E28CF19CCC1154448377; _gid=GA1.2.498277084.1518311553; _gat=1; LGSID=20180211091235-a4e08259-0ec8-11e8-838e-525400f775ce; PRE_UTM=; PRE_HOST=; PRE_SITE=; PRE_LAND=https%3A%2F%2Fwww.lagou.com%2F; Hm_lvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1517882987,1517883024,1517910297,1518311555; Hm_lpvt_4233e74dff0ae5bd0a3d81c6ccf756e6=1518311556; LGRID=20180211091238-a67f391c-0ec8-11e8-afdf-5254005c3644&apos;,</span><br><span class="line">        &apos;Host&apos;:&apos;www.lagou.com&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">rules = (</span><br><span class="line">    Rule(LinkExtractor(allow=(&quot;zhaopin/.*&quot;,)), follow=True),</span><br><span class="line">    Rule(LinkExtractor(allow=(&quot;gongsi/j\d+.html&quot;,)), follow=True),</span><br><span class="line">    Rule(LinkExtractor(allow=r&apos;jobs/\d+.html&apos;), callback=&apos;parse_job&apos;, follow=True),# follow深入爬取</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">item_loader = XiaojianrenItemLoader(item=LagouJobItem(), response=response)</span><br><span class="line">item_loader.add_css(&quot;title&quot;, &quot;.job-name::attr(title)&quot;)</span><br><span class="line">item_loader.add_value(&quot;url&quot;, response.url)</span><br><span class="line">item_loader.add_value(&quot;url_object_id&quot;, get_md5(response.url))</span><br><span class="line">item_loader.add_css(&quot;salary&quot;, &quot;.job_request .salary::text&quot;)</span><br><span class="line">item_loader.add_value(&quot;crawl_time&quot;, datetime.datetime.now())</span><br><span class="line">job_item = item_loader.load_item()</span><br><span class="line">return job_item</span><br></pre></td></tr></table></figure>
+<h2 id="items代码"><a href="#items代码" class="headerlink" title="items代码"></a>items代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">degree_need = scrapy.Field(</span><br><span class="line">    input_processor = MapCompose(remove_splash),# 调用自定义方法输入参数时进行处理</span><br><span class="line">)</span><br><span class="line">job_addr = scrapy.Field(</span><br><span class="line">    input_processor=MapCompose(remove_tags, handle_jobaddr), #去除html的tags，多个方法逐次处理</span><br><span class="line">)</span><br><span class="line">tags = scrapy.Field(</span><br><span class="line">    input_processor = Join(&quot;,&quot;)	#list数据逗号拼接</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="boss直聘"><a href="#boss直聘" class="headerlink" title="boss直聘"></a>boss直聘</h1><blockquote>
+<ul>
+<li>采用CrawlSpider模板定义规则，全栈爬取<h2 id="parse-job代码-1"><a href="#parse-job代码-1" class="headerlink" title="parse_job代码"></a>parse_job代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rules = (</span><br><span class="line">    Rule(LinkExtractor(allow=r&apos;job_detail/\d+.html&apos;), callback=&apos;parse_job&apos;, follow=True),  # follow深入爬取</span><br><span class="line">)</span><br><span class="line">item_loader = XiaojianrenItemLoader(item=ZhipinItem(), response=response)</span><br><span class="line">item_loader.add_css(&quot;title&quot;, &quot;div.name::text&quot;)</span><br><span class="line">item_loader.add_value(&quot;url&quot;, response.url)</span><br><span class="line">item_loader.add_value(&quot;url_object_id&quot;, get_md5(response.url))</span><br><span class="line">item_loader.add_value(&quot;crawl_time&quot;, datetime.datetime.now())</span><br><span class="line">job_item = item_loader.load_item()</span><br><span class="line">return job_item</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h2 id="item代码"><a href="#item代码" class="headerlink" title="item代码"></a>item代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">job_desc = scrapy.Field(</span><br><span class="line">    input_processor=MapCompose(Null_if),</span><br><span class="line">    output_processor = Join(),# 定义输出参数output_processor=Join(&quot;,&quot;)则逗号拼接，不采用默认的TakeFirst()</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h1 id="80s"><a href="#80s" class="headerlink" title="80s"></a>80s</h1><blockquote>
+<ul>
+<li>先获取所有页数，yield到parse_list解析list列表的item,yield到parse_detail中，若解析完成则拼接下一页地址递归list数据<h2 id="获取总页数"><a href="#获取总页数" class="headerlink" title="获取总页数"></a>获取总页数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">last_url = response.css(&quot;#block3 &gt; div.clearfix.noborder.block1 &gt; div &gt; a:nth-child(7)&quot;).css(&quot;a::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">last_code_re = re.search(&quot;.*?(\d+)&quot;, last_url)</span><br><span class="line">last_code = last_code_re.group(1)</span><br><span class="line">yield Request(url=response.url,meta=&#123;&quot;last_code&quot;:last_code&#125;,callback=self.parse_list)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h2 id="获取item元数据"><a href="#获取item元数据" class="headerlink" title="获取item元数据"></a>获取item元数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">last_code = response.meta.get(&quot;last_code&quot;, &quot;421&quot;)</span><br><span class="line">post_nodes = response.css(&quot;#block3 &gt; div.clearfix.noborder.block1 &gt; ul.me1.clearfix &gt; li&quot;)</span><br><span class="line">for post_node in post_nodes:</span><br><span class="line">    image_url = post_node.css(&quot;img::attr(_src)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">    post_url = post_node.css(&quot;li&gt;a::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">    yield Request(url=parse.urljoin(response.url, post_url), meta=&#123;&quot;front_image_url&quot;: image_url&#125;,</span><br><span class="line">                  callback=self.parse_detail)  # response获取meta</span><br><span class="line">for i in range(1, int(last_code)):</span><br><span class="line">    i+=1</span><br><span class="line">    next_url = &quot;/movie/list/-----p&quot;+str(i)</span><br><span class="line">    yield Request(url=parse.urljoin(response.url, next_url),meta=&#123;&quot;last_code&quot;:last_code&#125;,callback=self.parse_list)</span><br></pre></td></tr></table></figure>
+<h2 id="解析详情页"><a href="#解析详情页" class="headerlink" title="解析详情页"></a>解析详情页</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">movie_item = XiaojianrenItemLoader() # 实例化</span><br><span class="line">front_image_url = response.meta.get(&quot;front_image_url&quot;, &quot;&quot;)  # 文章封面图</span><br><span class="line">item_loader = XiaojianrenItemLoader(item=movie80sItem(), response=response)#默认ItemLoader是一个list，自定义TakeFirst()</span><br><span class="line">item_loader.add_css(&quot;title&quot;, &quot;#minfo &gt; div.info &gt; h1::text&quot;)</span><br><span class="line">item_loader.add_value(&quot;url&quot;, response.url)</span><br><span class="line">item_loader.add_value(&quot;url_object_id&quot;, get_md5(response.url))</span><br><span class="line">item_loader.add_xpath(&quot;create_date&quot;, &apos;//*[@id=&quot;minfo&quot;]/div[2]/div[1]/span[5]/text()&apos;)</span><br><span class="line">item_loader.add_value(&quot;front_image_url&quot;, [front_image_url])</span><br><span class="line">movie_item = item_loader.load_item()</span><br><span class="line">yield movie_item #将传到piplines中</span><br></pre></td></tr></table></figure>
+<h1 id="迅影网"><a href="#迅影网" class="headerlink" title="迅影网"></a>迅影网</h1><blockquote>
+<ul>
+<li>获取<a href="http://www.xunyingwang.com/movie/列表item，yield到parse_detail通过item_loader传递到piplines中，获取完毕item则查找下一页url递归爬取" target="_blank" rel="noopener">http://www.xunyingwang.com/movie/列表item，yield到parse_detail通过item_loader传递到piplines中，获取完毕item则查找下一页url递归爬取</a><h2 id="核心代码"><a href="#核心代码" class="headerlink" title="核心代码"></a>核心代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">post_nodes = response.css(&quot;body &gt; div:nth-child(3) &gt; div.row &gt; div.col-xs-12 &gt; div &gt; div&quot;)</span><br><span class="line">for post_node in post_nodes:</span><br><span class="line">    image_url = post_node.css(&quot;a img::attr(data-original)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">    post_url = post_node.css(&quot;a::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">    tags = post_node.css(&quot;.otherinfo a::text&quot;).extract()</span><br><span class="line">    yield Request(url=parse.urljoin(response.url, post_url), meta=&#123;&quot;front_image_url&quot;: image_url,&quot;tags&quot;:tags&#125;,</span><br><span class="line">                  callback=self.parse_detail)  # response获取meta</span><br><span class="line"># 提取下一页并交给scrapy进行下载</span><br><span class="line">next_url = response.xpath(&quot;//a[contains(@rel, &apos;next&apos;)]&quot;).css(&quot;::attr(href)&quot;).extract_first(&quot;&quot;)</span><br><span class="line">if next_url:</span><br><span class="line">    print(next_url)</span><br><span class="line">    yield Request(url=parse.urljoin(response.url, next_url), callback=self.parse)</span><br><span class="line"></span><br><span class="line"># 解析详情页	</span><br><span class="line">if response.url == &apos;http://www.xunyingwang.com/movie/&apos;:</span><br><span class="line">    print(&quot;------------------url为www.xunyingwang.com/movie------------------&quot;)</span><br><span class="line">    return None</span><br><span class="line">movie_item = XiaojianrenItemLoader()  # 实例化</span><br><span class="line">front_image_url = response.meta.get(&quot;front_image_url&quot;, &quot;&quot;)  # 文章封面图</span><br><span class="line">tags = response.meta.get(&quot;tags&quot;, &quot;&quot;)</span><br><span class="line">item_loader = XiaojianrenItemLoader(item=xunyingItem(), response=response)  # 默认ItemLoader是一个list，自定义TakeFirst()</span><br><span class="line">item_loader.add_css(&quot;title&quot;, &quot;.movie-info h1::text&quot;)</span><br><span class="line">item_loader.add_value(&quot;url&quot;, response.url)	</span><br><span class="line">movie_item = item_loader.load_item()</span><br><span class="line">yield movie_item  # 将传到piplines中</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h1 id="美食杰"><a href="#美食杰" class="headerlink" title="美食杰"></a>美食杰</h1><blockquote>
+<ul>
+<li>由于js动态生成数据，采用selenium的middleware方式进行翻页爬取<h2 id="业务代码"><a href="#业务代码" class="headerlink" title="业务代码"></a>业务代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># yield出去的request都将被middleware拦截，</span><br><span class="line">for page in range(1, self.settings.get(&apos;MAX_PAGE&apos;) + 1):</span><br><span class="line">    yield Request(url=self.base_url, callback=self.parse, meta=&#123;&apos;page&apos;: page&#125;, dont_filter=True)</span><br><span class="line"># parse解析当前页数据</span><br><span class="line">	cais = response.css(&quot;#listtyle1_list .listtyle1&quot;)</span><br><span class="line">    for cai in cais:</span><br><span class="line">        cai_item = CaiItem()  # 实例化</span><br><span class="line">        cai_item[&quot;consume&quot;] = cai.css(&quot;.c2 .li1::text&quot;).extract_first(&quot;&quot;)</span><br><span class="line">		yield  cai_item</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h2 id="middleware代码"><a href="#middleware代码" class="headerlink" title="middleware代码"></a>middleware代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">   def __init__(self, timeout=None, service_args=[]):</span><br><span class="line">       self.logger = getLogger(__name__)</span><br><span class="line">       self.timeout = timeout</span><br><span class="line">       self.browser = webdriver.PhantomJS(service_args=service_args)# phantomjs加入path</span><br><span class="line">       self.browser.set_window_size(1400, 700)</span><br><span class="line">       self.browser.set_page_load_timeout(self.timeout)</span><br><span class="line">       self.wait = WebDriverWait(self.browser, self.timeout)</span><br><span class="line">def __del__(self):</span><br><span class="line">       self.browser.close()</span><br><span class="line">    def process_request(self, request, spider):</span><br><span class="line">       self.logger.debug(&apos;PhantomJS is Starting&apos;)</span><br><span class="line">       page = request.meta.get(&apos;page&apos;)</span><br><span class="line">       try:</span><br><span class="line">           self.browser.get(request.url)</span><br><span class="line">           if page &gt; 1:</span><br><span class="line">               input = self.wait.until(</span><br><span class="line">                   EC.presence_of_element_located((By.CSS_SELECTOR, &apos;.gopage&gt;form &gt; input:nth-child(2)&apos;)))</span><br><span class="line">               submit = self.wait.until(</span><br><span class="line">                   EC.element_to_be_clickable((By.CSS_SELECTOR, &apos;.gopage&gt;form &gt; input:nth-child(3)&apos;)))</span><br><span class="line">               input.clear()</span><br><span class="line">               input.send_keys(page)</span><br><span class="line">               submit.click()</span><br><span class="line">           self.wait.until(</span><br><span class="line">               EC.text_to_be_present_in_element((By.CSS_SELECTOR, &apos;.listtyle1_page_w&gt;.current&apos;), str(page)))</span><br><span class="line">           self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, &apos;.listtyle1_list .listtyle1&apos;)))</span><br><span class="line">           return HtmlResponse(url=request.url, body=self.browser.page_source, request=request, encoding=&apos;utf-8&apos;,</span><br><span class="line">                               status=200)</span><br><span class="line">       except TimeoutException:</span><br><span class="line">           return HtmlResponse(url=request.url, status=500, request=request)</span><br><span class="line"></span><br><span class="line">   @classmethod</span><br><span class="line">   def from_crawler(cls, crawler):</span><br><span class="line">       return cls(timeout=crawler.settings.get(&apos;SELENIUM_TIMEOUT&apos;),</span><br><span class="line">                  service_args=crawler.settings.get(&apos;PHANTOMJS_SERVICE_ARGS&apos;))</span><br></pre></td></tr></table></figure>
+<h1 id="知乎问答"><a href="#知乎问答" class="headerlink" title="知乎问答"></a>知乎问答</h1><blockquote>
+<ul>
+<li>start_requests访问login接口，若有验证码使用云打码，若无编译登录js后登录</li>
+<li>解析首页所有url，获取question的url后yield到parse_question，否则递归parse</li>
+<li>parse_question中解析item的数据填充，yield获取的answer_url到parse_answer和item到piplines</li>
+<li>parse_answer中获取item的数据填充及下一页递归爬取<h2 id="全局"><a href="#全局" class="headerlink" title="全局"></a>全局</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">start_answer_url = &quot;https://www.zhihu.com/api/v4/questions/&#123;0&#125;/answers?sort_by=default&amp;include=data%5B%2A%5D.is_normal%2Cis_sticky%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccollapsed_counts%2Creviewing_comments_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Crelationship.is_author%2Cvoting%2Cis_thanked%2Cis_nothelp%2Cupvoted_followees%3Bdata%5B%2A%5D.author.is_blocking%2Cis_blocked%2Cis_followed%2Cvoteup_count%2Cmessage_thread_token%2Cbadge%5B%3F%28type%3Dbest_answerer%29%5D.topics&amp;limit=&#123;1&#125;&amp;offset=&#123;2&#125;&quot;</span><br><span class="line">phone = &apos;+86***&apos;  # 手机号</span><br><span class="line">password = &apos;***&apos;  # 密码</span><br><span class="line">client_id = &apos;c3cef7c66a1843f8b3a9e6a1e3160e20&apos;</span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;authorization&apos;: &apos;oauth &apos; + client_id,</span><br><span class="line">    &apos;Host&apos;: &apos;www.zhihu.com&apos;,</span><br><span class="line">    &apos;Origin&apos;: &apos;https://www.zhihu.com&apos;,</span><br><span class="line">    &apos;Referer&apos;: &apos;https://www.zhihu.com/signup?next=%2F&apos;,</span><br><span class="line">&#125;</span><br><span class="line"># 自定义的知乎spider单独规则</span><br><span class="line">custom_settings = &#123;</span><br><span class="line">    &quot;COOKIES_ENABLED&quot;: True,</span><br><span class="line">    &quot;DOWNLOAD_DELAY&quot; : 1.5,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h2 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">return [</span><br><span class="line">    scrapy.Request(</span><br><span class="line">        &apos;https://www.zhihu.com/api/v3/oauth/captcha?lang=en&apos;,	# 查看是否出现验证码</span><br><span class="line">        headers=self.headers,</span><br><span class="line">        callback=self.login)]</span><br><span class="line"></span><br><span class="line">captcha = &apos;&apos;</span><br><span class="line">verify = Yundama(YUNDAMA_USERNAME, YUNDAMA_PASSWORD, YUNDAMA_APP_ID, YUNDAMA_APP_KEY) # settings配置</span><br><span class="line">post_data = &#123;</span><br><span class="line">    &quot;phone_num&quot;: &quot;***&quot;,</span><br><span class="line">    &quot;password&quot;: &quot;***&quot;</span><br><span class="line">&#125;</span><br><span class="line">t = str(int(time.time() * 1000))</span><br><span class="line">req=requests.get(&quot;https://www.zhihu.com/captcha.gif?r=&#123;0&#125;&amp;type=login&quot;.format(t),params=post_data,headers=self.headers)</span><br><span class="line">captcha_info = json.loads(response.text)</span><br><span class="line">if captcha_info[&apos;show_captcha&apos;]:  # 出现验证码</span><br><span class="line">    print(&apos;出现验证码&apos;)</span><br><span class="line">    with open(&quot;aaa.jpg&quot;, &quot;wb&quot;) as f:	# 将验证码保存本地</span><br><span class="line">        f.write(req.content)</span><br><span class="line">        f.close()</span><br><span class="line">    captcha=verify.identify(file=&apos;aaa.jpg&apos;) # 通过云打码识别</span><br><span class="line">loginUrl = &apos;https://www.zhihu.com/api/v3/oauth/sign_in&apos;</span><br><span class="line">timestamp = int(time.time() * 1000)</span><br><span class="line">fp = open(&apos;XiaoJianRen/spiders/zhihu.js&apos;)</span><br><span class="line">js = fp.read()</span><br><span class="line">fp.close()</span><br><span class="line">ctx = execjs.compile(js)    #编译js,# pip install PyExecJS</span><br><span class="line">signature = ctx.call(&apos;getSignature&apos;, timestamp) #调用js代码</span><br><span class="line">t = str(int(time.time() * 1000))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">    &apos;client_id&apos;: self.client_id,</span><br><span class="line">    &apos;grant_type&apos;: &apos;password&apos;,</span><br><span class="line">    &apos;timestamp&apos;: str(timestamp),</span><br><span class="line">    &apos;source&apos;: &apos;com.zhihu.web&apos;,</span><br><span class="line">    &apos;signature&apos;: signature,</span><br><span class="line">    &apos;username&apos;: str(self.phone),</span><br><span class="line">    &apos;password&apos;: str(self.password),</span><br><span class="line">    &apos;captcha&apos;: str(captcha),</span><br><span class="line">    &apos;lang&apos;: &apos;cn&apos;,</span><br><span class="line">    &apos;ref_source&apos;: &apos;homepage&apos;,</span><br><span class="line">    &apos;utm_source&apos;: &apos;&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">yield scrapy.FormRequest(url=loginUrl, headers=self.headers, formdata=params, method=&apos;POST&apos;, callback=self.check_login)		</span><br><span class="line">	 </span><br><span class="line">HomeUrl = &apos;https://www.zhihu.com/&apos;</span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;Host&apos;: &apos;www.zhihu.com&apos;,</span><br><span class="line">    &apos;Referer&apos;: &apos;https://www.zhihu.com/&apos;,</span><br><span class="line">    &apos;User-Agent&apos;: &apos;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36&apos;</span><br><span class="line">&#125;</span><br><span class="line">print(&quot;登录成功&quot;)</span><br><span class="line">yield scrapy.Request(url=HomeUrl, headers=headers)</span><br></pre></td></tr></table></figure>
+<h2 id="解析首页url"><a href="#解析首页url" class="headerlink" title="解析首页url"></a>解析首页url</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">all_urls = response.css(&quot;a::attr(href)&quot;).extract()</span><br><span class="line">all_urls = [parse.urljoin(response.url, url) for url in all_urls]</span><br><span class="line"># 使用lambda函数对于每一个url进行过滤，如果是true放回列表，返回false去除。</span><br><span class="line">all_urls = filter(lambda x: True if x.startswith(&quot;https&quot;) else False, all_urls)</span><br><span class="line">for url in all_urls:</span><br><span class="line">    # 具体问题以及具体答案的url我们都要提取出来，或关系</span><br><span class="line">    match_obj = re.match(&quot;(.*zhihu.com/question/(\d+))(/|$).*&quot;, url)</span><br><span class="line">    if match_obj:</span><br><span class="line">        # 如果提取到question相关的页面则下载后交由提取函数进行提取</span><br><span class="line">        request_url = match_obj.group(1)</span><br><span class="line">        yield scrapy.Request(request_url, headers=self.headers, callback=self.parse_question)</span><br><span class="line">    else:</span><br><span class="line">        # 注释这里方便调试</span><br><span class="line">        pass</span><br><span class="line">        # 如果不是question页面则直接进一步跟踪</span><br><span class="line">        yield scrapy.Request(url, headers=self.headers, callback=self.parse)</span><br></pre></td></tr></table></figure>
+<h2 id="parse-question"><a href="#parse-question" class="headerlink" title="parse_question"></a>parse_question</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">match_obj = re.match(&quot;(.*zhihu.com/question/(\d+))(/|$).*&quot;, response.url)</span><br><span class="line">if match_obj:</span><br><span class="line">    question_id = str(match_obj.group(2))</span><br><span class="line"></span><br><span class="line">item_loader = XiaojianrenItemLoader(item=ZhihuQuestionItem(), response=response)</span><br><span class="line">item_loader.add_css(&quot;title&quot;, &quot;h1.QuestionHeader-title::text&quot;)</span><br><span class="line">item_loader.add_css(&quot;content&quot;, &apos;.QuestionRichText--collapsed div span::text&apos;)</span><br><span class="line">item_loader.add_value(&quot;url&quot;, response.url)</span><br><span class="line">item_loader.add_value(&quot;zhihu_id&quot;, question_id)</span><br><span class="line">item_loader.add_css(&quot;answer_num&quot;, &quot;.List-headerText span::text&quot;)</span><br><span class="line">item_loader.add_css(&quot;comments_num&quot;, &quot;.QuestionHeader-Comment button::text&quot;)</span><br><span class="line"># 这里一次把一列值提出来</span><br><span class="line">item_loader.add_css(&quot;watch_user_num&quot;, &quot;.NumberBoard-itemValue::text&quot;)</span><br><span class="line">item_loader.add_css(&quot;topics&quot;, &quot;.QuestionHeader-topics .Popover div::text&quot;)</span><br><span class="line">question_item = item_loader.load_item()</span><br></pre></td></tr></table></figure>
+<h2 id="parse-answer"><a href="#parse-answer" class="headerlink" title="parse_answer"></a>parse_answer</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ans_json = json.loads(response.text)</span><br><span class="line">is_end = ans_json[&quot;paging&quot;][&quot;is_end&quot;]</span><br><span class="line">next_url = ans_json[&quot;paging&quot;][&quot;next&quot;]</span><br><span class="line"></span><br><span class="line"># 提取answer的具体字段</span><br><span class="line">for answer in ans_json[&quot;data&quot;]:</span><br><span class="line">    answer_item = ZhihuAnswerItem()</span><br><span class="line">    answer_item[&quot;zhihu_id&quot;] = answer[&quot;id&quot;]</span><br><span class="line">    answer_item[&quot;url&quot;] = answer[&quot;url&quot;]</span><br><span class="line">    answer_item[&quot;title&quot;] = response.meta.get(&quot;title&quot;, &quot;&quot;)</span><br><span class="line">    answer_item[&quot;question_id&quot;] = answer[&quot;question&quot;][&quot;id&quot;]</span><br><span class="line">    answer_item[&quot;author_id&quot;] = answer[&quot;author&quot;][&quot;id&quot;] if &quot;id&quot; in answer[&quot;author&quot;] else None</span><br><span class="line">    answer_item[&quot;author_name&quot;] = answer[&quot;author&quot;][&quot;name&quot;] if &quot;name&quot; in answer[&quot;author&quot;] else None</span><br><span class="line">    answer_item[&quot;content&quot;] = answer[&quot;content&quot;] if &quot;content&quot; in answer else None</span><br><span class="line">    answer_item[&quot;parise_num&quot;] = answer[&quot;voteup_count&quot;]</span><br><span class="line">    answer_item[&quot;comments_num&quot;] = answer[&quot;comment_count&quot;]</span><br><span class="line">    answer_item[&quot;create_time&quot;] = answer[&quot;created_time&quot;]</span><br><span class="line">    answer_item[&quot;update_time&quot;] = answer[&quot;updated_time&quot;]</span><br><span class="line">    answer_item[&quot;crawl_time&quot;] = datetime.datetime.now()</span><br><span class="line"></span><br><span class="line">    yield answer_item</span><br><span class="line"></span><br><span class="line">if not is_end:</span><br><span class="line">    yield scrapy.Request(next_url, headers=self.headers,  callback=self.parse_answer)</span><br></pre></td></tr></table></figure>
+<h1 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h1><h2 id="item"><a href="#item" class="headerlink" title="item"></a>item</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class XiaojianrenItemLoader(ItemLoader):</span><br><span class="line">    #自定义itemloader</span><br><span class="line">    default_output_processor = TakeFirst()</span><br><span class="line">	</span><br><span class="line">class xunyingItem(scrapy.Item):	</span><br><span class="line">	def get_insert_sql(self):</span><br><span class="line">		insert_sql = &quot;&quot;&quot;</span><br><span class="line">			insert into zhihu_answer(zhihu_id, url, title,question_id, author_id, content, parise_num, comments_num,</span><br><span class="line">			  create_time, update_time, crawl_time,author_name</span><br><span class="line">			  ) VALUES (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s, %s,%s)</span><br><span class="line">			  ON DUPLICATE KEY UPDATE content=VALUES(content), comments_num=VALUES(comments_num), parise_num=VALUES(parise_num),</span><br><span class="line">			  update_time=VALUES(update_time),author_name=VALUES(author_name)</span><br><span class="line">		&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">		create_time = datetime.datetime.fromtimestamp(self[&quot;create_time&quot;]).strftime(SQL_DATETIME_FORMAT)</span><br><span class="line">		update_time = datetime.datetime.fromtimestamp(self[&quot;update_time&quot;]).strftime(SQL_DATETIME_FORMAT)</span><br><span class="line">		params = (</span><br><span class="line">			self[&quot;zhihu_id&quot;], self[&quot;url&quot;],self[&quot;title&quot;], self[&quot;question_id&quot;],</span><br><span class="line">			self[&quot;author_id&quot;], self[&quot;content&quot;], self[&quot;parise_num&quot;],</span><br><span class="line">			self[&quot;comments_num&quot;], create_time, update_time,</span><br><span class="line">			self[&quot;crawl_time&quot;].strftime(SQL_DATETIME_FORMAT),</span><br><span class="line">			self[&quot;author_name&quot;],</span><br><span class="line">		)</span><br><span class="line"></span><br><span class="line">		return insert_sql, params</span><br></pre></td></tr></table></figure>
+<h2 id="piplines"><a href="#piplines" class="headerlink" title="piplines"></a>piplines</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">class MysqlTwistedPipline(object):</span><br><span class="line">    #异步连接池插入数据库，不会阻塞</span><br><span class="line">    def __init__(self, dbpool):</span><br><span class="line">        self.dbpool = dbpool</span><br><span class="line"></span><br><span class="line">    @classmethod</span><br><span class="line">    def from_settings(cls, settings):# 初始化时即被调用静态方法</span><br><span class="line">        dbparms = dict(</span><br><span class="line">            host = settings[&quot;MYSQL_HOST&quot;],#setttings中定义</span><br><span class="line">            db = settings[&quot;MYSQL_DBNAME&quot;],</span><br><span class="line">            user = settings[&quot;MYSQL_USER&quot;],</span><br><span class="line">            passwd = settings[&quot;MYSQL_PASSWORD&quot;],</span><br><span class="line">            charset=&apos;utf8&apos;,</span><br><span class="line">            cursorclass=MySQLdb.cursors.DictCursor,</span><br><span class="line">            use_unicode=True,</span><br><span class="line">        )</span><br><span class="line">        dbpool = adbapi.ConnectionPool(&quot;MySQLdb&quot;, **dbparms)</span><br><span class="line"></span><br><span class="line">        return cls(dbpool)</span><br><span class="line"></span><br><span class="line">    def process_item(self, item, spider):</span><br><span class="line">        #使用twisted将mysql插入变成异步执行</span><br><span class="line">        query = self.dbpool.runInteraction(self.do_insert, item)</span><br><span class="line">        query.addErrback(self.handle_error, item, spider) #处理异常</span><br><span class="line"></span><br><span class="line">    def handle_error(self, failure, item, spider):</span><br><span class="line">        #处理异步插入的异常</span><br><span class="line">        print (failure)</span><br><span class="line"></span><br><span class="line">    def do_insert(self, cursor, item):</span><br><span class="line">        #执行具体的插入，不具体的如MysqlPipeline.process_item()</span><br><span class="line">        #根据不同的item 构建不同的sql语句并插入到mysql中</span><br><span class="line">        insert_sql, params = item.get_insert_sql()</span><br><span class="line">        cursor.execute(insert_sql, params)</span><br><span class="line">class MongoPipeline(object):</span><br><span class="line"></span><br><span class="line">	def __init__(self, mongo_uri, mongo_db):</span><br><span class="line">		self.mongo_uri = mongo_uri</span><br><span class="line">		self.mongo_db = mongo_db</span><br><span class="line"></span><br><span class="line">	@classmethod</span><br><span class="line">	def from_crawler(cls, crawler):</span><br><span class="line">		return cls(</span><br><span class="line">			mongo_uri=crawler.settings.get(&apos;MONGO_URI&apos;),</span><br><span class="line">			mongo_db=crawler.settings.get(&apos;MONGO_DB&apos;)</span><br><span class="line">		)</span><br><span class="line"></span><br><span class="line">	def open_spider(self, spider):</span><br><span class="line">		self.client = pymongo.MongoClient(self.mongo_uri)</span><br><span class="line">		self.db = self.client[self.mongo_db]</span><br><span class="line"></span><br><span class="line">	def process_item(self, item, spider):</span><br><span class="line">		name = item.__class__.__name__</span><br><span class="line">		self.db[name].insert(dict(item))</span><br><span class="line">		return item</span><br><span class="line"></span><br><span class="line">	def close_spider(self, spider):</span><br><span class="line">		self.client.close()</span><br></pre></td></tr></table></figure>
+<h2 id="middleware"><a href="#middleware" class="headerlink" title="middleware"></a>middleware</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">class RandomUserAgent(object):</span><br><span class="line">    &quot;&quot;&quot;根据预定义的列表随机更换用户代理&quot;&quot;&quot;</span><br><span class="line">    def __init__(self,crawler):</span><br><span class="line">        super(RandomUserAgent,self).__init__()</span><br><span class="line">        self.ua = UserAgent()</span><br><span class="line">        self.ua_type = crawler.settings.get(&quot;RANDOM_UA_TYPE&quot;,&quot;random&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @classmethod</span><br><span class="line">    def from_crawler(cls,crawler):</span><br><span class="line">        return cls(crawler)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def process_request(self,request,spider):</span><br><span class="line">        def get_ua():</span><br><span class="line">            return getattr(self.ua,self.ua_type)</span><br><span class="line">        random_ua = get_ua()</span><br><span class="line">        request.headers.setdefault(&apos;User-Agent&apos;,get_ua())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class ProxyMiddleware():</span><br><span class="line">	&quot;&quot;&quot;设置ip代理，前提run起proxy_pool&quot;&quot;&quot;</span><br><span class="line">	def __init__(self, proxy_url):</span><br><span class="line">		self.logger = logging.getLogger(__name__)</span><br><span class="line">		self.proxy_url = proxy_url</span><br><span class="line"></span><br><span class="line">	def get_random_proxy(self):</span><br><span class="line">		try:</span><br><span class="line">			response = requests.get(self.proxy_url)</span><br><span class="line">			if response.status_code == 200:</span><br><span class="line">				proxy = response.text</span><br><span class="line">				return proxy</span><br><span class="line">		except requests.ConnectionError:</span><br><span class="line">			return False</span><br><span class="line"></span><br><span class="line">	def process_request(self, request, spider):</span><br><span class="line">		if request.meta.get(&apos;retry_times&apos;):</span><br><span class="line">			proxy = self.get_random_proxy()</span><br><span class="line">			if proxy:</span><br><span class="line">				uri = &apos;https://&#123;proxy&#125;&apos;.format(proxy=proxy)</span><br><span class="line">				self.logger.debug(&apos;使用代理 &apos; + proxy)</span><br><span class="line">				request.meta[&apos;proxy&apos;] = uri</span><br><span class="line"></span><br><span class="line">	@classmethod</span><br><span class="line">	def from_crawler(cls, crawler):</span><br><span class="line">		settings = crawler.settings</span><br><span class="line">		return cls(</span><br><span class="line">			proxy_url=settings.get(&apos;PROXY_URL&apos;)</span><br><span class="line">		)</span><br></pre></td></tr></table></figure>
+<h2 id="settings"><a href="#settings" class="headerlink" title="settings"></a>settings</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"># 云打码相关配置到yundama.com申请注册</span><br><span class="line"># 普通用户信息</span><br><span class="line">YUNDAMA_USERNAME = &apos;***&apos;</span><br><span class="line">YUNDAMA_PASSWORD = &apos;***&apos;</span><br><span class="line"># 开发者申请的app信息</span><br><span class="line">YUNDAMA_APP_ID = &apos;4453&apos;</span><br><span class="line">YUNDAMA_APP_KEY = &apos;0e40de4290c1b4f2baefe7ba588496e4&apos;</span><br><span class="line">YUNDAMA_API_URL = &apos;http://api.yundama.com/api.php&apos;</span><br><span class="line"># 云打码最大尝试次数</span><br><span class="line">YUNDAMA_MAX_RETRY = 20</span><br><span class="line">ROBOTSTXT_OBEY = False</span><br><span class="line">COOKIES_ENABLED = False</span><br><span class="line">RANDOM_UA_TYPE = &quot;random&quot;</span><br><span class="line">PROXY_URL = &apos;http://localhost:5000/get&apos;</span><br><span class="line">DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="line">    &apos;XiaoJianRen.middlewares.RandomUserAgent&apos;: 10,</span><br><span class="line">    &apos;XiaoJianRen.middlewares.ProxyMiddleware&apos;: 11,</span><br><span class="line">    # &apos;XiaoJianRen.middlewares.SeleniumMiddleware&apos;: 12,# caipu时才打开</span><br><span class="line">&#125;</span><br><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">    &apos;XiaoJianRen.pipelines.MysqlTwistedPipline&apos;: 2,#连接池异步插入</span><br><span class="line">    #&apos;XiaoJianRen.pipelines.MongoPipeline&apos;: 3,</span><br><span class="line">&#125;</span><br><span class="line">DOWNLOAD_DELAY = 5</span><br><span class="line">MYSQL_HOST = &quot;127.0.0.1&quot;</span><br><span class="line">MYSQL_DBNAME = &quot;xjr&quot;</span><br><span class="line">MYSQL_USER = &quot;root&quot;</span><br><span class="line">MYSQL_PASSWORD = &quot;123456&quot;</span><br><span class="line">SQL_DATETIME_FORMAT = &quot;%Y-%m-%d %H:%M:%S&quot;</span><br><span class="line">SQL_DATE_FORMAT = &quot;%Y-%m-%d&quot;</span><br><span class="line">BASE_DIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))</span><br><span class="line">sys.path.insert(0, os.path.join(BASE_DIR, &apos;XiaoJianRen&apos;))</span><br><span class="line">LOG_LEVEL = &apos;DEBUG&apos;</span><br><span class="line">HTTPERROR_ALLOWED_CODES = [404,403,401]</span><br><span class="line">SELENIUM_TIMEOUT = 20</span><br><span class="line">MAX_PAGE = 56</span><br><span class="line">PHANTOMJS_SERVICE_ARGS = [&apos;--load-images=false&apos;, &apos;--disk-cache=true&apos;]</span><br><span class="line">MONGO_URI =&apos;localhost&apos;</span><br><span class="line">MONGO_DB = &apos;xjr&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="分布式实现"><a href="#分布式实现" class="headerlink" title="分布式实现"></a>分布式实现</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><blockquote>
+<ul>
+<li><a href="https://github.com/rmax/scrapy-redis.git" target="_blank" rel="noopener">scrapy_redis</a>    复制到项目兄弟目录</li>
+<li>192.168.56.101    # master<pre><code>redis-server /etc/redis.conf    设置密码为123456
+</code></pre> 127.0.0.1        # slave<h2 id="settings配置"><a href="#settings配置" class="headerlink" title="settings配置"></a>settings配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;</span><br><span class="line">DUPEFILTER_CLASS = &quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span><br><span class="line">REDIS_URL = &apos;redis://root:123456@192.168.56.101:6379&apos;</span><br><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">	&apos;scrapy_redis.pipelines.RedisPipeline&apos;: 301	#若注释将不存储爬取的item到redis</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h1 id="ElasticSearch存储"><a href="#ElasticSearch存储" class="headerlink" title="ElasticSearch存储"></a>ElasticSearch存储</h1><h2 id="settings-py"><a href="#settings-py" class="headerlink" title="settings.py"></a>settings.py</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">若无redis分布式请注释</span><br><span class="line"># SCHEDULER = &quot;scrapy_redis.scheduler.Scheduler&quot;</span><br><span class="line"># DUPEFILTER_CLASS = &quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span><br><span class="line"># REDIS_URL = &apos;redis://root:123456@192.168.56.101:6379&apos;</span><br><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">    &apos;XiaoJianRen.pipelines.ElasticsearchPipeline&apos;: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="伯乐在线-1"><a href="#伯乐在线-1" class="headerlink" title="伯乐在线"></a>伯乐在线</h2><h3 id="es-jobbole-py-XiaoJianRenSou-models"><a href="#es-jobbole-py-XiaoJianRenSou-models" class="headerlink" title="es_jobbole.py /XiaoJianRenSou.models"></a>es_jobbole.py /XiaoJianRenSou.models</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">from elasticsearch_dsl import DocType, Date, Nested, Boolean, \</span><br><span class="line">    analyzer, InnerObjectWrapper, Completion, Keyword, Text, Integer</span><br><span class="line">from elasticsearch_dsl.analysis import CustomAnalyzer as _CustomAnalyzer</span><br><span class="line">from elasticsearch_dsl.connections import connections</span><br><span class="line">connections.create_connection(hosts=[&quot;localhost&quot;])</span><br><span class="line">class CustomAnalyzer(_CustomAnalyzer):</span><br><span class="line">    def get_analysis_definition(self):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">ik_analyzer = CustomAnalyzer(&quot;ik_max_word&quot;, filter=[&quot;lowercase&quot;])</span><br><span class="line">class ArticleType(DocType):</span><br><span class="line">    #伯乐在线文章类型</span><br><span class="line">    suggest = Completion(analyzer=ik_analyzer)</span><br><span class="line">    title = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    create_date = Date()</span><br><span class="line">    url = Keyword()</span><br><span class="line">    url_object_id = Keyword()</span><br><span class="line">    front_image_url = Keyword()</span><br><span class="line">    front_image_path = Keyword()</span><br><span class="line">    praise_nums = Integer()</span><br><span class="line">    comment_nums = Integer()</span><br><span class="line">    fav_nums = Integer()</span><br><span class="line">    tags = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    content = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    class Meta:</span><br><span class="line">        index = &quot;jobbole&quot;</span><br><span class="line">        doc_type = &quot;article&quot;</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ArticleType.init()	#先启动elasticsearch-rtf\bin\elasticsearch后启动elasticsearch-head的cnpm run start,运行当前程序新增索引</span><br></pre></td></tr></table></figure>
+<h3 id="items"><a href="#items" class="headerlink" title="items"></a>items</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">from models.es_jobbole import ArticleType</span><br><span class="line">from elasticsearch_dsl.connections import connections</span><br><span class="line">import redis</span><br><span class="line">es = connections.create_connection(ArticleType._doc_type.using)	#连接到es</span><br><span class="line">redis_cli = redis.StrictRedis()</span><br><span class="line"></span><br><span class="line">def gen_suggests(index, info_tuple):</span><br><span class="line">	#根据字符串生成搜索建议数组</span><br><span class="line">	used_words = set()</span><br><span class="line">	suggests = []</span><br><span class="line">	for text, weight in info_tuple:</span><br><span class="line">		if text:</span><br><span class="line">			#调用es的analyze接口分析字符串</span><br><span class="line">			words = es.indices.analyze(index=index, analyzer=&quot;ik_max_word&quot;, params=&#123;&apos;filter&apos;:[&quot;lowercase&quot;]&#125;, body=text)</span><br><span class="line">			anylyzed_words = set([r[&quot;token&quot;] for r in words[&quot;tokens&quot;] if len(r[&quot;token&quot;])&gt;1])</span><br><span class="line">			new_words = anylyzed_words - used_words</span><br><span class="line">		else:</span><br><span class="line">			new_words = set()</span><br><span class="line">		if new_words:</span><br><span class="line">			suggests.append(&#123;&quot;input&quot;:list(new_words), &quot;weight&quot;:weight&#125;)</span><br><span class="line">	return suggests</span><br><span class="line">	</span><br><span class="line">class JobBoleArticleItem(scrapy.Item):# 新增方法</span><br><span class="line">    def save_to_es(self):</span><br><span class="line">        article = ArticleType()</span><br><span class="line">        article.title = self[&apos;title&apos;]</span><br><span class="line">        article.create_date = self[&quot;create_date&quot;]</span><br><span class="line">        article.content = remove_tags(self[&quot;content&quot;])</span><br><span class="line">        article.front_image_url = self[&quot;front_image_url&quot;]</span><br><span class="line">        if &quot;front_image_path&quot; in self:</span><br><span class="line">            article.front_image_path = self[&quot;front_image_path&quot;]</span><br><span class="line">        article.praise_nums = self[&quot;praise_nums&quot;]</span><br><span class="line">        article.fav_nums = self[&quot;fav_nums&quot;]</span><br><span class="line">        article.comment_nums = self[&quot;comment_nums&quot;]</span><br><span class="line">        article.url = self[&quot;url&quot;]</span><br><span class="line">        article.tags = self[&quot;tags&quot;]</span><br><span class="line">        article.meta.id = self[&quot;url_object_id&quot;]</span><br><span class="line">        article.suggest = gen_suggests(ArticleType._doc_type.index, ((article.title, 10), (article.tags, 7)))</span><br><span class="line">        article.save()</span><br><span class="line">        redis_cli.incr(&quot;jobbole_count&quot;)</span><br><span class="line">        return</span><br></pre></td></tr></table></figure>
+<h2 id="拉勾网-1"><a href="#拉勾网-1" class="headerlink" title="拉勾网"></a>拉勾网</h2><h3 id="es-lagou-XiaoJianRenSou-models"><a href="#es-lagou-XiaoJianRenSou-models" class="headerlink" title="es_lagou/XiaoJianRenSou.models"></a>es_lagou/XiaoJianRenSou.models</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">connections.create_connection(hosts=[&quot;localhost&quot;])</span><br><span class="line">class CustomAnalyzer(_CustomAnalyzer):</span><br><span class="line">    def get_analysis_definition(self):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">ik_analyzer = CustomAnalyzer(&quot;ik_max_word&quot;, filter=[&quot;lowercase&quot;])</span><br><span class="line">class LagouType(DocType):</span><br><span class="line">    suggest = Completion(analyzer=ik_analyzer)</span><br><span class="line">    title = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    url = Keyword()</span><br><span class="line">    url_object_id = Keyword()</span><br><span class="line">    salary = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    job_city = Keyword()</span><br><span class="line">    work_years = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    degree_need = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    job_type = Keyword()</span><br><span class="line">    publish_time = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    job_advantage = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    job_desc = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    job_addr = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    company_name = Keyword()</span><br><span class="line">    company_url = Keyword()</span><br><span class="line">    tags = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    crawl_time = Date()</span><br><span class="line">    class Meta:</span><br><span class="line">        index = &quot;lagou&quot;</span><br><span class="line">        doc_type = &quot;job&quot;</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    LagouType.init()</span><br></pre></td></tr></table></figure>
+<h3 id="items-1"><a href="#items-1" class="headerlink" title="items"></a>items</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">from models.es_lagou import LagouType</span><br><span class="line">class LagouJobItem(scrapy.Item):</span><br><span class="line">    def save_to_es(self):</span><br><span class="line">         job = LagouType()</span><br><span class="line">         job.title = self[&apos;title&apos;]</span><br><span class="line">         if &quot;create_date&quot; in self:</span><br><span class="line">            job.create_date = self[&quot;create_date&quot;]</span><br><span class="line">         job.url = self[&quot;url&quot;]</span><br><span class="line">         job.meta.id = self[&quot;url_object_id&quot;]</span><br><span class="line">         if &quot;salary&quot; in self:</span><br><span class="line">            job.salary = self[&quot;salary&quot;]</span><br><span class="line">         job.job_city = self[&quot;job_city&quot;]</span><br><span class="line">         if &quot;work_years&quot; in self:</span><br><span class="line">            job.work_years = self[&quot;work_years&quot;]</span><br><span class="line">         job.degree_need = self[&quot;degree_need&quot;]</span><br><span class="line">         job.job_type = self[&quot;job_type&quot;]</span><br><span class="line">         job.publish_time = self[&quot;publish_time&quot;]</span><br><span class="line">         job.job_advantage = self[&quot;job_advantage&quot;]</span><br><span class="line">         job.job_desc = self[&quot;job_desc&quot;]</span><br><span class="line">         job.job_addr = self[&quot;job_addr&quot;]</span><br><span class="line">         job.company_name = self[&quot;company_name&quot;]</span><br><span class="line">         job.company_url = self[&quot;company_url&quot;]</span><br><span class="line">         job.crawl_time = self[&quot;crawl_time&quot;]</span><br><span class="line">         job.suggest = gen_suggests(LagouType._doc_type.index, ((job.title, 10), (job.tags, 7)))</span><br><span class="line">         job.save()</span><br><span class="line">         redis_cli.incr(&quot;jobbole_count&quot;)</span><br><span class="line">         return</span><br></pre></td></tr></table></figure>
+<h2 id="知乎"><a href="#知乎" class="headerlink" title="知乎"></a>知乎</h2><h3 id="item-1"><a href="#item-1" class="headerlink" title="item"></a>item</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">from models.es_zhihu import ZhiHuQuestionType, ZhiHuAnswerType</span><br><span class="line">    def save_to_es(self):</span><br><span class="line">            question = ZhiHuQuestionType()</span><br><span class="line">            question.title = self[&apos;title&apos;]</span><br><span class="line">            question.url = self[&quot;url&quot;]</span><br><span class="line">            question.topics = self[&quot;topics&quot;]</span><br><span class="line">            try:</span><br><span class="line">                question.answer_num = extract_num(self[&quot;answer_num&quot;][0])</span><br><span class="line">            except BaseException:</span><br><span class="line">                question.answer_num = 0</span><br><span class="line">            try:</span><br><span class="line">                question.crawl_time = self[&quot;crawl_time&quot;]</span><br><span class="line">            except BaseException:</span><br><span class="line">                question.crawl_time = datetime.datetime.now().strftime(SQL_DATETIME_FORMAT)</span><br><span class="line"></span><br><span class="line">            question.comments_num = extract_num(self[&quot;comments_num&quot;][0])</span><br><span class="line">            question.watch_user_num = extract_num(self[&quot;watch_user_num&quot;][0])</span><br><span class="line">            question.click_num = extract_num(self[&quot;watch_user_num&quot;][1])</span><br><span class="line">            question.meta.id = self[&quot;zhihu_id&quot;]</span><br><span class="line">            try:</span><br><span class="line">                question.content = remove_tags(self[&quot;content&quot;])</span><br><span class="line">            except BaseException:</span><br><span class="line">                question.content =  self[&apos;title&apos;]</span><br><span class="line"></span><br><span class="line">            question.suggest = gen_suggests(ZhiHuQuestionType._doc_type.index, ((question.title, 10), (question.topics, 7)))</span><br><span class="line">            question.save()</span><br><span class="line">            redis_cli.incr(&quot;jobbole_count&quot;)</span><br><span class="line">            return</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">	def save_to_es(self):</span><br><span class="line">        answer = ZhiHuAnswerType()</span><br><span class="line">        answer.url = self[&quot;question_url&quot;]</span><br><span class="line">        answer.title = self[&quot;title&quot;]</span><br><span class="line">        answer.crawl_time = self[&quot;crawl_time&quot;]</span><br><span class="line">        answer.comments_num = self[&quot;comments_num&quot;]</span><br><span class="line">        answer.author_name = self[&quot;author_name&quot;]</span><br><span class="line">        answer.parise_num = self[&quot;parise_num&quot;]</span><br><span class="line">        answer.comments_num = self[&quot;comments_num&quot;]</span><br><span class="line">        answer.author_id = self[&quot;author_id&quot;]</span><br><span class="line">        answer.question_id = self[&quot;question_id&quot;]</span><br><span class="line">        answer.meta.id = self[&quot;zhihu_id&quot;]</span><br><span class="line">        answer.content = remove_tags(self[&quot;content&quot;])</span><br><span class="line">        answer.suggest = gen_suggests(ZhiHuQuestionType._doc_type.index, ((answer.title, 10), (answer.content, 7)))</span><br><span class="line">        answer.save()</span><br><span class="line">        redis_cli.incr(&quot;jobbole_count&quot;)</span><br><span class="line">        return</span><br></pre></td></tr></table></figure>
+<h3 id="es-zhihu-XiaoJianRenSou-models"><a href="#es-zhihu-XiaoJianRenSou-models" class="headerlink" title="es_zhihu /XiaoJianRenSou.models"></a>es_zhihu /XiaoJianRenSou.models</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">connections.create_connection(hosts=[&quot;localhost&quot;])</span><br><span class="line">class CustomAnalyzer(_CustomAnalyzer):</span><br><span class="line">    def get_analysis_definition(self):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">ik_analyzer = CustomAnalyzer(&quot;ik_max_word&quot;, filter=[&quot;lowercase&quot;])</span><br><span class="line">class ZhiHuQuestionType(DocType):</span><br><span class="line">    suggest = Completion(analyzer=ik_analyzer)</span><br><span class="line">    # 知乎的问题 item</span><br><span class="line">    zhihu_id = Keyword()</span><br><span class="line">    topics = Keyword()</span><br><span class="line">    url = Keyword()</span><br><span class="line">    title = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    content = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    answer_num = Integer()</span><br><span class="line">    comments_num = Integer()</span><br><span class="line">    watch_user_num = Integer()</span><br><span class="line">    click_num = Integer()</span><br><span class="line">    crawl_time = Date()</span><br><span class="line">    class Meta:</span><br><span class="line">        index = &quot;zhihu&quot;</span><br><span class="line">        doc_type = &quot;question&quot;</span><br><span class="line">class ZhiHuAnswerType(DocType):</span><br><span class="line">    suggest = Completion(analyzer=ik_analyzer)</span><br><span class="line">    # 知乎的问题 item</span><br><span class="line">    zhihu_id = Keyword()</span><br><span class="line">    url = Keyword()</span><br><span class="line">    title = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    content = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    comments_num = Integer()</span><br><span class="line">    parise_num = Integer()</span><br><span class="line">    author_id = Keyword()</span><br><span class="line">    question_id = Keyword()</span><br><span class="line">    click_num = Integer()</span><br><span class="line">    crawl_time = Date()</span><br><span class="line">    class Meta:</span><br><span class="line">        index = &quot;zhihu&quot;</span><br><span class="line">        doc_type = &quot;question&quot;</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    ZhiHuQuestionType.init()</span><br><span class="line">    ZhiHuAnswerType.init()</span><br></pre></td></tr></table></figure>
+<h2 id="美食杰-1"><a href="#美食杰-1" class="headerlink" title="美食杰"></a>美食杰</h2><h3 id="item-2"><a href="#item-2" class="headerlink" title="item"></a>item</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def save_to_es(self):</span><br><span class="line">    food = FoodType()</span><br><span class="line">    food.title = self[&apos;title&apos;]</span><br><span class="line">    food.author = self[&apos;author&apos;]</span><br><span class="line">    food.consume = self[&apos;consume&apos;]</span><br><span class="line">    food.description = self[&apos;description&apos;]</span><br><span class="line">    food.popularity = self[&apos;popularity&apos;]</span><br><span class="line">    food.advantage = self[&apos;advantage&apos;]</span><br><span class="line">    food.url = self[&apos;post_url&apos;]</span><br><span class="line">	food.create_date = datetime.datetime.now().date()</span><br><span class="line">    food.meta.id = self[&quot;url_object_id&quot;]</span><br><span class="line">    food.image_url = self[&apos;image_url&apos;]</span><br><span class="line">    food.suggest = gen_suggests(FoodType._doc_type.index, ((food.title, 10), (food.description, 7)))</span><br><span class="line">    food.save()</span><br><span class="line">    redis_cli.incr(&quot;jobbole_count&quot;)</span><br><span class="line">    return</span><br></pre></td></tr></table></figure>
+<h3 id="es-food-XiaoJianRenSou-models"><a href="#es-food-XiaoJianRenSou-models" class="headerlink" title="es_food /XiaoJianRenSou.models"></a>es_food /XiaoJianRenSou.models</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">connections.create_connection(hosts=[&quot;localhost&quot;])</span><br><span class="line">class CustomAnalyzer(_CustomAnalyzer):</span><br><span class="line">    def get_analysis_definition(self):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">ik_analyzer = CustomAnalyzer(&quot;ik_max_word&quot;, filter=[&quot;lowercase&quot;])</span><br><span class="line">class FoodType(DocType):</span><br><span class="line">    suggest = Completion(analyzer=ik_analyzer)</span><br><span class="line">    title = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    author = Keyword()</span><br><span class="line">    consume = Keyword()</span><br><span class="line">	create_date = Keyword()</span><br><span class="line">    description = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    popularity = Keyword()</span><br><span class="line">    advantage = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    url = Keyword()</span><br><span class="line">    url_object_id = Keyword()</span><br><span class="line">    image_url = Keyword()</span><br><span class="line">    class Meta:</span><br><span class="line">        index = &quot;meishijie&quot;</span><br><span class="line">        doc_type = &quot;food&quot;</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    FoodType.init()</span><br></pre></td></tr></table></figure>
+<h3 id="XiaoJianRenSou-view-py"><a href="#XiaoJianRenSou-view-py" class="headerlink" title="XiaoJianRenSou.view.py"></a>XiaoJianRenSou.view.py</h3><h4 id="搜索建议"><a href="#搜索建议" class="headerlink" title="搜索建议"></a>搜索建议</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">elif current_page == &quot;food&quot;:</span><br><span class="line">    re_datas = []</span><br><span class="line">    if key_words:</span><br><span class="line">        s = FoodType.search()</span><br><span class="line">        # fuzzy模糊搜索。fuzziness 编辑距离 prefix_length前面不变化的前缀长度</span><br><span class="line">        s = s.suggest(&apos;my_suggest&apos;, key_words, completion=&#123;</span><br><span class="line">            &quot;field&quot;: &quot;suggest&quot;, &quot;fuzzy&quot;: &#123;</span><br><span class="line">                &quot;fuzziness&quot;: 2</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;size&quot;: 10</span><br><span class="line">        &#125;)</span><br><span class="line">        name_set = OrderedSet()</span><br><span class="line">        suggestions = s.execute_suggest()</span><br><span class="line">        if suggestions:</span><br><span class="line">            for match in suggestions.my_suggest[0].options[:10]:</span><br><span class="line">                if match._type == &quot;food&quot;:</span><br><span class="line">                    source = match._source</span><br><span class="line">                    re_datas.append(source[&quot;title&quot;])</span><br><span class="line">        for name in name_set:</span><br><span class="line">            re_datas.append(name)</span><br><span class="line">    return HttpResponse(</span><br><span class="line">        json.dumps(re_datas),</span><br><span class="line">        content_type=&quot;application/json&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="高亮显示"><a href="#高亮显示" class="headerlink" title="高亮显示"></a>高亮显示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">elif s_type == &quot;food&quot;:</span><br><span class="line">    response = client.search(</span><br><span class="line">        index=&quot;meishijie&quot;,</span><br><span class="line">        body=&#123;</span><br><span class="line">            &quot;query&quot;: &#123;</span><br><span class="line">                &quot;multi_match&quot;: &#123;</span><br><span class="line">                    &quot;query&quot;: key_words,</span><br><span class="line">                    &quot;fields&quot;: [</span><br><span class="line">                        &quot;title&quot;,</span><br><span class="line">                        &quot;advantage&quot;,</span><br><span class="line">                        &quot;description&quot;]&#125;&#125;,</span><br><span class="line">            &quot;from&quot;: (</span><br><span class="line">                        page - 1) * 10,</span><br><span class="line">            &quot;size&quot;: 10,</span><br><span class="line">            &quot;highlight&quot;: &#123;</span><br><span class="line">                &quot;pre_tags&quot;: [&apos;&lt;span class=&quot;keyWord&quot;&gt;&apos;],</span><br><span class="line">                &quot;post_tags&quot;: [&apos;&lt;/span&gt;&apos;],</span><br><span class="line">                &quot;fields&quot;: &#123;</span><br><span class="line">                    &quot;title&quot;: &#123;&#125;,</span><br><span class="line">                    &quot;description&quot;: &#123;&#125;,</span><br><span class="line">                        &#125;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="搜索结果"><a href="#搜索结果" class="headerlink" title="搜索结果"></a>搜索结果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">elif s_type == &quot;food&quot;:</span><br><span class="line">    error_nums = 0</span><br><span class="line">    for hit in response[&quot;hits&quot;][&quot;hits&quot;]:</span><br><span class="line">        hit_dict = &#123;&#125;</span><br><span class="line">        try:</span><br><span class="line">            if &quot;title&quot; in hit[&quot;highlight&quot;]:</span><br><span class="line">                hit_dict[&quot;title&quot;] = &quot;&quot;.join(hit[&quot;highlight&quot;][&quot;title&quot;])</span><br><span class="line">            else:</span><br><span class="line">                hit_dict[&quot;title&quot;] = hit[&quot;_source&quot;][&quot;title&quot;]</span><br><span class="line">            if &quot;description&quot; in hit[&quot;highlight&quot;]:</span><br><span class="line">                hit_dict[&quot;content&quot;] = &quot;&quot;.join(hit[&quot;highlight&quot;][&quot;description&quot;])</span><br><span class="line">            else:</span><br><span class="line">                hit_dict[&quot;content&quot;] = hit[&quot;_source&quot;][&quot;description&quot;]</span><br><span class="line">            hit_dict[&quot;url&quot;] = hit[&quot;_source&quot;][&quot;url&quot;]</span><br><span class="line">            hit_dict[&quot;create_date&quot;] = hit[&quot;_source&quot;][&quot;create_date&quot;]</span><br><span class="line">            hit_dict[&quot;score&quot;] = hit[&quot;_score&quot;]</span><br><span class="line">            hit_dict[&quot;advantage&quot;] = hit[&quot;_source&quot;][&quot;advantage&quot;]</span><br><span class="line">            hit_dict[&quot;source_site&quot;] = &quot;美食杰&quot;</span><br><span class="line">            hit_list.append(hit_dict)</span><br><span class="line">        except:</span><br><span class="line">            hit_dict[&quot;title&quot;] = hit[&quot;_source&quot;][&quot;title&quot;]</span><br><span class="line">            hit_dict[&quot;create_date&quot;] = hit[&quot;_source&quot;][&quot;create_date&quot;]</span><br><span class="line">            hit_dict[&quot;content&quot;] = hit[&quot;_source&quot;][&quot;description&quot;]</span><br><span class="line">            hit_dict[&quot;url&quot;] = hit[&quot;_source&quot;][&quot;url&quot;]</span><br><span class="line">            hit_dict[&quot;score&quot;] = hit[&quot;_score&quot;]</span><br><span class="line">            hit_dict[&quot;advantage&quot;] = hit[&quot;_source&quot;][&quot;advantage&quot;]</span><br><span class="line">            hit_dict[&quot;source_site&quot;] = &quot;美食杰&quot;</span><br><span class="line">            hit_list.append(hit_dict)</span><br></pre></td></tr></table></figure>
+<h2 id="最新电影"><a href="#最新电影" class="headerlink" title="最新电影"></a>最新电影</h2><h3 id="es-movie-XiaoJianRenSou-models"><a href="#es-movie-XiaoJianRenSou-models" class="headerlink" title="es_movie/XiaoJianRenSou.models"></a>es_movie/XiaoJianRenSou.models</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">connections.create_connection(hosts=[&quot;localhost&quot;])</span><br><span class="line">class CustomAnalyzer(_CustomAnalyzer):</span><br><span class="line">    def get_analysis_definition(self):</span><br><span class="line">        return &#123;&#125;</span><br><span class="line">ik_analyzer = CustomAnalyzer(&quot;ik_max_word&quot;, filter=[&quot;lowercase&quot;])</span><br><span class="line">class MovieType(DocType):</span><br><span class="line">    suggest = Completion(analyzer=ik_analyzer)</span><br><span class="line">    title = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    url = Keyword()</span><br><span class="line">    url_object_id = Keyword()</span><br><span class="line">    create_date = Keyword()</span><br><span class="line">    front_image_url = Keyword()</span><br><span class="line">    tags = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    duration = Keyword()</span><br><span class="line">    score = Keyword()</span><br><span class="line">    description = Text(analyzer=&quot;ik_max_word&quot;)</span><br><span class="line">    image_url = Keyword()</span><br><span class="line">    class Meta:</span><br><span class="line">        index = &quot;new_movie&quot;</span><br><span class="line">        doc_type = &quot;movie&quot;</span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    MovieType.init()</span><br></pre></td></tr></table></figure>
+<h3 id="item-3"><a href="#item-3" class="headerlink" title="item"></a>item</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def save_to_es(self):</span><br><span class="line">    movie = MovieType()</span><br><span class="line">    movie.title = self[&apos;title&apos;]</span><br><span class="line">    movie.url = self[&apos;url&apos;]</span><br><span class="line">    movie.meta.id = self[&quot;url_object_id&quot;]</span><br><span class="line">    movie.create_date = self[&apos;create_date&apos;]</span><br><span class="line">    movie.front_image_url = self[&apos;front_image_url&apos;]</span><br><span class="line">    movie.tags = self[&apos;tags&apos;]</span><br><span class="line">    movie.duration = self[&apos;duration&apos;]</span><br><span class="line">    movie.score = self[&apos;score&apos;]</span><br><span class="line">    movie.description = self[&apos;description&apos;]</span><br><span class="line">    movie.suggest = gen_suggests(MovieType._doc_type.index, ((movie.title, 10), (movie.tags, 7)))</span><br><span class="line">    movie.save()</span><br><span class="line">    redis_cli.incr(&quot;jobbole_count&quot;)</span><br><span class="line">    return</span><br></pre></td></tr></table></figure>
+<h3 id="XiaoJianRenSou-views"><a href="#XiaoJianRenSou-views" class="headerlink" title="XiaoJianRenSou.views"></a>XiaoJianRenSou.views</h3><h4 id="搜索建议-1"><a href="#搜索建议-1" class="headerlink" title="搜索建议"></a>搜索建议</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">elif current_page == &quot;movie&quot;:</span><br><span class="line">    re_datas = []</span><br><span class="line">    if key_words:</span><br><span class="line">        s = MovieType.search()</span><br><span class="line">        # fuzzy模糊搜索。fuzziness 编辑距离 prefix_length前面不变化的前缀长度</span><br><span class="line">        s = s.suggest(&apos;my_suggest&apos;, key_words, completion=&#123;</span><br><span class="line">            &quot;field&quot;: &quot;suggest&quot;, &quot;fuzzy&quot;: &#123;</span><br><span class="line">                &quot;fuzziness&quot;: 2</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;size&quot;: 10</span><br><span class="line">        &#125;)</span><br><span class="line">        name_set = OrderedSet()</span><br><span class="line">        suggestions = s.execute_suggest()</span><br><span class="line">        if suggestions:</span><br><span class="line">            for match in suggestions.my_suggest[0].options[:10]:</span><br><span class="line">                source = match._source</span><br><span class="line">                re_datas.append(source[&quot;title&quot;])</span><br><span class="line">        for name in name_set:</span><br><span class="line">            re_datas.append(name)</span><br><span class="line">    return HttpResponse(</span><br><span class="line">        json.dumps(re_datas),</span><br><span class="line">        content_type=&quot;application/json&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="高亮显示-1"><a href="#高亮显示-1" class="headerlink" title="高亮显示"></a>高亮显示</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">elif s_type == &quot;movie&quot;:</span><br><span class="line">    response = client.search(</span><br><span class="line">        index=&quot;new_movie&quot;,</span><br><span class="line">        body=&#123;</span><br><span class="line">            &quot;query&quot;: &#123;</span><br><span class="line">                &quot;multi_match&quot;: &#123;</span><br><span class="line">                    &quot;query&quot;: key_words,</span><br><span class="line">                    &quot;fields&quot;: [</span><br><span class="line">                        &quot;title&quot;,</span><br><span class="line">                        &quot;tags&quot;,</span><br><span class="line">                        &quot;description&quot;]&#125;&#125;,</span><br><span class="line">            &quot;from&quot;: (page - 1) * 10,</span><br><span class="line">            &quot;size&quot;: 10,</span><br><span class="line">            &quot;highlight&quot;: &#123;</span><br><span class="line">                &quot;pre_tags&quot;: [&apos;&lt;span class=&quot;keyWord&quot;&gt;&apos;],</span><br><span class="line">                &quot;post_tags&quot;: [&apos;&lt;/span&gt;&apos;],</span><br><span class="line">                &quot;fields&quot;: &#123;</span><br><span class="line">                    &quot;title&quot;: &#123;&#125;,</span><br><span class="line">                    &quot;description&quot;: &#123;&#125;,</span><br><span class="line">                &#125;&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="搜索结果-1"><a href="#搜索结果-1" class="headerlink" title="搜索结果"></a>搜索结果</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">elif s_type == &quot;movie&quot;:</span><br><span class="line">    error_nums = 0</span><br><span class="line">    for hit in response[&quot;hits&quot;][&quot;hits&quot;]:</span><br><span class="line">        hit_dict = &#123;&#125;</span><br><span class="line">        try:</span><br><span class="line">            if &quot;title&quot; in hit[&quot;highlight&quot;]:</span><br><span class="line">                hit_dict[&quot;title&quot;] = &quot;&quot;.join(hit[&quot;highlight&quot;][&quot;title&quot;])</span><br><span class="line">            else:</span><br><span class="line">                hit_dict[&quot;title&quot;] = hit[&quot;_source&quot;][&quot;title&quot;]</span><br><span class="line">            if &quot;description&quot; in hit[&quot;highlight&quot;]:</span><br><span class="line">                hit_dict[&quot;content&quot;] = &quot;&quot;.join(hit[&quot;highlight&quot;][&quot;description&quot;])</span><br><span class="line">            else:</span><br><span class="line">                hit_dict[&quot;content&quot;] = hit[&quot;_source&quot;][&quot;description&quot;]</span><br><span class="line">            hit_dict[&quot;create_date&quot;] = hit[&quot;_source&quot;][&quot;create_date&quot;]</span><br><span class="line">            hit_dict[&quot;url&quot;] = hit[&quot;_source&quot;][&quot;url&quot;]</span><br><span class="line">            hit_dict[&quot;score&quot;] = hit[&quot;_score&quot;][&quot;score&quot;]</span><br><span class="line">            hit_dict[&quot;tags&quot;] = hit[&quot;_source&quot;][&quot;tags&quot;]</span><br><span class="line">            hit_dict[&quot;source_site&quot;] = &quot;电影网&quot;</span><br><span class="line">            hit_list.append(hit_dict)</span><br><span class="line">        except:</span><br><span class="line">            hit_dict[&quot;title&quot;] = hit[&quot;_source&quot;][&quot;title&quot;]</span><br><span class="line">            hit_dict[&quot;content&quot;] = hit[&quot;_source&quot;][&quot;description&quot;]</span><br><span class="line">            hit_dict[&quot;create_date&quot;] = hit[&quot;_source&quot;][&quot;create_date&quot;]</span><br><span class="line">            hit_dict[&quot;url&quot;] = hit[&quot;_source&quot;][&quot;url&quot;]</span><br><span class="line">            hit_dict[&quot;score&quot;] = hit[&quot;_score&quot;]</span><br><span class="line">            hit_dict[&quot;tags&quot;] = hit[&quot;_source&quot;][&quot;tags&quot;]</span><br><span class="line">            hit_dict[&quot;source_site&quot;] = &quot;电影网&quot;</span><br><span class="line">            hit_list.append(hit_dict)</span><br></pre></td></tr></table></figure>
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">aliyun需要开放安全组端口</span><br><span class="line">yum install openssl-devel bzip2-devel expat-devel gdbm-devel readline-devel sqlite-devel -y</span><br><span class="line">wget https://www.python.org/ftp/python/3.5.1/Python-3.5.1.tgz</span><br><span class="line">ls</span><br><span class="line">mv Python-3.5.1.tgz  ~</span><br><span class="line">cd .. &amp;&amp; ls</span><br><span class="line">tar -zxvf Python-3.5.1.tgz</span><br><span class="line">mv Python-3.5.1 /usr/local</span><br><span class="line">cd /usr/local/Python-3.5.1/</span><br><span class="line">./configure</span><br><span class="line">make </span><br><span class="line">make install</span><br><span class="line">ln -s /usr/local/bin/python3.5 /usr/bin/python</span><br><span class="line">python</span><br><span class="line"></span><br><span class="line">yum install virtualenv</span><br><span class="line">pip install virtualenvwrapper</span><br><span class="line">vim ~/.bash_profile  </span><br><span class="line">    #virtualenvwrapper   </span><br><span class="line">    export WORKON_HOME=$HOME/virtualenvs # 虚拟环境存放位置自己指定   </span><br><span class="line">    source /usr/bin/virtualenvwrapper.sh # 指定virtualenvwrapper的执行文件路径  </span><br><span class="line">    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python # 系统python2.7执行文件位置，根据自己环境而定   </span><br><span class="line">    export VIRTUALENVWRAPPER_VIRTUALENV_ARGS=&apos;--no-site-packages&apos; # 启动时候指定参数，就是我们用的独立于系统的安装包   </span><br><span class="line">    export PIP_VIRTUALENV_BASE=$WORKON_HOME # 告知pip virtualenv的位置   </span><br><span class="line">    export PIP_RESPECT_VIRTUALENV=true # 执行pip的时候让系统自动开启虚拟环境  </span><br><span class="line">find / -name virtualenvs </span><br><span class="line">source ~/.bash_profile  </span><br><span class="line">mkvirtualenv --python=/usr/local/bin/python3.5 XiaoJianRen</span><br><span class="line">#mkvirtualenv XiaoJianRen</span><br><span class="line">    workon 切换到环境  </span><br><span class="line">    deactivate 注销当前环境  </span><br><span class="line">    lsvirtualenv 列出所有环境  </span><br><span class="line">    rmvirtualenv 删除环境</span><br><span class="line">    cpvirtualenv 复制环境  </span><br><span class="line">    wipeenv 清除环境内所有第三方包  </span><br><span class="line">    </span><br><span class="line">yum install git-all -y    </span><br><span class="line">adduser AsherCode</span><br><span class="line">passwd AsherCode  123456			ElasticSearch必须是非管理员才可以运行</span><br><span class="line">tar -xzvf jdk-8u161-linux-x64.tar.gz </span><br><span class="line">vim /etc/profile</span><br><span class="line">    JAVA_HOME=/home/AsherCode/jdk1.8.0_161</span><br><span class="line">    PATH=/home/AsherCode/jdk1.8.0_161/bin:$PATH</span><br><span class="line">    CLASSPATH=.:/home/AsherCode/jdk1.8.0_161/lib/dt.jar:/home/AsherCode/jdk1.8.0_161/lib/tools.jar</span><br><span class="line">    export JAVA_HOME PATH CLASSPATH</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git clone https://github.com/medcl/elasticsearch-rtf.git</span><br><span class="line">    vim config/jvm.options </span><br><span class="line">        -Xms512m  </span><br><span class="line">        -Xmx512m </span><br><span class="line">    vim rtf\config\elasticsearch.yml</span><br><span class="line">        network.host: 0.0.0.0</span><br><span class="line">        http.cors.enabled: true</span><br><span class="line">        http.cors.allow-origin: &quot;*&quot;</span><br><span class="line">        http.cors.allow-methods: OPTIONS,HEAD,GET,POST,PUT,DELETE</span><br><span class="line">        http.cors.allow-headers: &quot;X-Requested-With,Content-Type,Content-Length,X-User&quot;	 </span><br><span class="line">    vi /etc/sysctl.conf &amp;&amp; sysctl -p</span><br><span class="line">        fs.file-max=655350</span><br><span class="line">    vi /etc/security/limits.conf     </span><br><span class="line">        * soft nofile 65536</span><br><span class="line">        * hard nofile 131072</span><br><span class="line">        * soft nproc 2048</span><br><span class="line">        * hard nproc 4096</span><br><span class="line">    cd elasticsearch-rtf/bin &amp;&amp; elasticsearch.bat | nohup ./elasticsearch &amp;        9200端口</span><br><span class="line">    </span><br><span class="line">git clone https://github.com/mobz/elasticsearch-head.git</span><br><span class="line">wget https://npm.taobao.org/mirrors/node/v8.0.0/node-v8.0.0-linux-x64.tar.xz</span><br><span class="line">tar -xvf  node-v8.0.0-linux-x64.tar.xz</span><br><span class="line">cd  node-v8.0.0-linux-x64/bin &amp;&amp; ls</span><br><span class="line">ln -s /home/AsherCode/node-v8.0.0-linux-x64/bin/node /usr/local/bin/node</span><br><span class="line">ln -s /home/AsherCode/node-v8.0.0-linux-x64/bin/npm /usr/local/bin/npm</span><br><span class="line">cd elasticsearch-head &amp;&amp; cnpm install</span><br><span class="line">chmod 777 elasticsearch-head/ -R</span><br><span class="line">cd elasticsearch-head/ &amp;&amp; yum install bzip2 -y</span><br><span class="line">npm install</span><br><span class="line">npm run start           9100端口</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">pip install scrapy</span><br><span class="line">pip install selenium</span><br><span class="line">pip install PyExecJS</span><br><span class="line">pip install requests</span><br><span class="line">pip install fake-useragent</span><br><span class="line">pip install Pillow </span><br><span class="line">pip install PyMySQL</span><br><span class="line">在__init.py__中</span><br><span class="line">    import pymysql</span><br><span class="line">    pymysql.install_as_MySQLdb()</span><br><span class="line">运行es_*.py 新建es实例   </span><br><span class="line">删除所有InnerObjectWrapper, </span><br><span class="line">wget http://cdn.npm.taobao.org/dist/phantomjs/phantomjs-1.9.7-linux-x86_64.tar.bz2</span><br><span class="line">tar -xjvf phantomjs-1.9.7-linux-x86_64.tar.bz2</span><br><span class="line">ln -s ~/phantomjs-1.9.7-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs</span><br><span class="line">yum install fontconfig freetype2</span><br><span class="line">phantomjs -v</span><br><span class="line">python main.py </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">pip install -i https://pypi.douban.com/simple/ django</span><br><span class="line">pip install elasticsearch==5.5.1</span><br><span class="line">pip install elasticsearch-dsl==5.4.0</span><br><span class="line">pip3 install -i https://pypi.douban.com/simple scrapy_redis</span><br><span class="line">pip3 install -i https://pypi.douban.com/simple redis pymongo </span><br><span class="line">wget http://download.redis.io/releases/redis-3.2.0.tar.gz</span><br><span class="line">tar xzf redis-3.2.0.tar.gz</span><br><span class="line">cd redis-3.2.0/</span><br><span class="line">make MALLOC=libc</span><br><span class="line">./src/redis-server redis.conf &amp;</span><br><span class="line">vim redis.conf</span><br><span class="line">    # bind 127.0.0.1 ::1</span><br><span class="line">    protected-mode no</span><br><span class="line">    daemonize no</span><br><span class="line">非管理员启动rtf，head    </span><br><span class="line">nohup python manage.py runserver 0.0.0.0:80 &amp;</span><br></pre></td></tr></table></figure>
+<p><a href="http://120.79.170.214/" target="_blank" rel="noopener">小贱人搜索引擎</a></p>
+
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>欢迎和博主一起玩耍呀-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/小贱人搜索引擎搭建笔记.html">小贱人搜索引擎搭建笔记</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
+  <p><span>发布时间:</span>2018年02月23日 - 08:02</p>
+  <p><span>最后更新:</span>2018年02月23日 - 08:02</p>
+  <p><span>原始链接:</span><a href="/post/小贱人搜索引擎搭建笔记.html" title="小贱人搜索引擎搭建笔记">http://ashercode.github.io/post/小贱人搜索引擎搭建笔记.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/小贱人搜索引擎搭建笔记.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃包辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="AsherCode 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="AsherCode 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redis/" rel="tag"><i class="fa fa-tag"></i> redis</a>
+          
+            <a href="/tags/scrapy/" rel="tag"><i class="fa fa-tag"></i> scrapy</a>
+          
+            <a href="/tags/mysql/" rel="tag"><i class="fa fa-tag"></i> mysql</a>
+          
+            <a href="/tags/selenium/" rel="tag"><i class="fa fa-tag"></i> selenium</a>
+          
+            <a href="/tags/Django/" rel="tag"><i class="fa fa-tag"></i> Django</a>
+          
+            <a href="/tags/ElasticSearch/" rel="tag"><i class="fa fa-tag"></i> ElasticSearch</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/elasticsearch搭建搜索引擎.html" rel="next" title="elasticsearch搭建搜索引擎">
+                <i class="fa fa-chevron-left"></i> elasticsearch搭建搜索引擎
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2152116" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg0MC8xMDM5Mw=="></div>
+    </div>
+
+  
+   
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AsherCode" />
+            
+              <p class="site-author-name" itemprop="name">AsherCode</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ashercode" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/u/5317695564/home" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ashercode.github.io" title="本站孪生地址" target="_blank">本站孪生地址</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#伯乐在线"><span class="nav-number">1.</span> <span class="nav-text">伯乐在线</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parse代码"><span class="nav-number">1.1.</span> <span class="nav-text">parse代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parse-detail代码"><span class="nav-number">1.2.</span> <span class="nav-text">parse_detail代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#拉勾网"><span class="nav-number">2.</span> <span class="nav-text">拉勾网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parse-job代码"><span class="nav-number">2.1.</span> <span class="nav-text">parse_job代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#items代码"><span class="nav-number">2.2.</span> <span class="nav-text">items代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#boss直聘"><span class="nav-number">3.</span> <span class="nav-text">boss直聘</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#parse-job代码-1"><span class="nav-number">3.1.</span> <span class="nav-text">parse_job代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#item代码"><span class="nav-number">3.2.</span> <span class="nav-text">item代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#80s"><span class="nav-number">4.</span> <span class="nav-text">80s</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取总页数"><span class="nav-number">4.1.</span> <span class="nav-text">获取总页数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取item元数据"><span class="nav-number">4.2.</span> <span class="nav-text">获取item元数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析详情页"><span class="nav-number">4.3.</span> <span class="nav-text">解析详情页</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#迅影网"><span class="nav-number">5.</span> <span class="nav-text">迅影网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心代码"><span class="nav-number">5.1.</span> <span class="nav-text">核心代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#美食杰"><span class="nav-number">6.</span> <span class="nav-text">美食杰</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#业务代码"><span class="nav-number">6.1.</span> <span class="nav-text">业务代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#middleware代码"><span class="nav-number">6.2.</span> <span class="nav-text">middleware代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知乎问答"><span class="nav-number">7.</span> <span class="nav-text">知乎问答</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局"><span class="nav-number">7.1.</span> <span class="nav-text">全局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录"><span class="nav-number">7.2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析首页url"><span class="nav-number">7.3.</span> <span class="nav-text">解析首页url</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parse-question"><span class="nav-number">7.4.</span> <span class="nav-text">parse_question</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parse-answer"><span class="nav-number">7.5.</span> <span class="nav-text">parse_answer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全局配置"><span class="nav-number">8.</span> <span class="nav-text">全局配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#item"><span class="nav-number">8.1.</span> <span class="nav-text">item</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#piplines"><span class="nav-number">8.2.</span> <span class="nav-text">piplines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#middleware"><span class="nav-number">8.3.</span> <span class="nav-text">middleware</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings"><span class="nav-number">8.4.</span> <span class="nav-text">settings</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分布式实现"><span class="nav-number">9.</span> <span class="nav-text">分布式实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-number">9.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#settings配置"><span class="nav-number">9.2.</span> <span class="nav-text">settings配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ElasticSearch存储"><span class="nav-number">10.</span> <span class="nav-text">ElasticSearch存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#settings-py"><span class="nav-number">10.1.</span> <span class="nav-text">settings.py</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伯乐在线-1"><span class="nav-number">10.2.</span> <span class="nav-text">伯乐在线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#es-jobbole-py-XiaoJianRenSou-models"><span class="nav-number">10.2.1.</span> <span class="nav-text">es_jobbole.py /XiaoJianRenSou.models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#items"><span class="nav-number">10.2.2.</span> <span class="nav-text">items</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拉勾网-1"><span class="nav-number">10.3.</span> <span class="nav-text">拉勾网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#es-lagou-XiaoJianRenSou-models"><span class="nav-number">10.3.1.</span> <span class="nav-text">es_lagou/XiaoJianRenSou.models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#items-1"><span class="nav-number">10.3.2.</span> <span class="nav-text">items</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#知乎"><span class="nav-number">10.4.</span> <span class="nav-text">知乎</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#item-1"><span class="nav-number">10.4.1.</span> <span class="nav-text">item</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#es-zhihu-XiaoJianRenSou-models"><span class="nav-number">10.4.2.</span> <span class="nav-text">es_zhihu /XiaoJianRenSou.models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#美食杰-1"><span class="nav-number">10.5.</span> <span class="nav-text">美食杰</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#item-2"><span class="nav-number">10.5.1.</span> <span class="nav-text">item</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#es-food-XiaoJianRenSou-models"><span class="nav-number">10.5.2.</span> <span class="nav-text">es_food /XiaoJianRenSou.models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XiaoJianRenSou-view-py"><span class="nav-number">10.5.3.</span> <span class="nav-text">XiaoJianRenSou.view.py</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索建议"><span class="nav-number">10.5.3.1.</span> <span class="nav-text">搜索建议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高亮显示"><span class="nav-number">10.5.3.2.</span> <span class="nav-text">高亮显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索结果"><span class="nav-number">10.5.3.3.</span> <span class="nav-text">搜索结果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最新电影"><span class="nav-number">10.6.</span> <span class="nav-text">最新电影</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#es-movie-XiaoJianRenSou-models"><span class="nav-number">10.6.1.</span> <span class="nav-text">es_movie/XiaoJianRenSou.models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#item-3"><span class="nav-number">10.6.2.</span> <span class="nav-text">item</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XiaoJianRenSou-views"><span class="nav-number">10.6.3.</span> <span class="nav-text">XiaoJianRenSou.views</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索建议-1"><span class="nav-number">10.6.3.1.</span> <span class="nav-text">搜索建议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高亮显示-1"><span class="nav-number">10.6.3.2.</span> <span class="nav-text">高亮显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#搜索结果-1"><span class="nav-number">10.6.3.3.</span> <span class="nav-text">搜索结果</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目部署"><span class="nav-number">11.</span> <span class="nav-text">项目部署</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AsherCode</span>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共62.3k字</span>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("mvlpA2l2DQuXENSGQgGyvWEx-gzGzoHsz", "BPLBwOm9OSqs2LtI5jIHvcSW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: -30px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 40px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- ҳ������С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>

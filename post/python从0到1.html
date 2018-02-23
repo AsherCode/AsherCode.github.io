@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="王小建">
 <meta property="og:description" content="遇见了你,就好像捡到了120斤的运气   scrapy,基础库应用,分布式爬虫,redis,Anaconda,pyspider,flask,mongodb,代理池,项目实战">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T04:49:36.532Z">
+<meta property="og:updated_time" content="2018-02-23T00:39:49.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python从0到1">
 <meta name="twitter:description" content="遇见了你,就好像捡到了120斤的运气   scrapy,基础库应用,分布式爬虫,redis,Anaconda,pyspider,flask,mongodb,代理池,项目实战">
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  11,345
+                  11,339
                 </span>
               
 
@@ -592,7 +592,6 @@ http://localhost:5000/get
 <h2 id="分布式部署"><a href="#分布式部署" class="headerlink" title="分布式部署"></a>分布式部署</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">192.168.56.101	# master </span><br><span class="line">	apt-get install -y redis-server</span><br><span class="line">	vim /etc/redis/redis.conf </span><br><span class="line">		# bind 127.0.0.1 		#所有ip可用</span><br><span class="line">		requirepass 123456		#修改服务密码</span><br><span class="line">		daemonize yes 			# 守护进程，可在后台运行</span><br><span class="line">		service redis-server restart</span><br><span class="line">		redis-cli -a 123456</span><br><span class="line">		</span><br><span class="line">	add-apt-repository ppa:fkrull/deadsnakes</span><br><span class="line">	apt-get update</span><br><span class="line">	apt-get install python3.5</span><br><span class="line">	cp /usr/bin/python /usr/bin/python_bak</span><br><span class="line">	rm /usr/bin/python</span><br><span class="line">	ln -s /usr/bin/python3.5 /usr/bin/python</span><br><span class="line"></span><br><span class="line">	apt-get install python3-pip -y</span><br><span class="line"></span><br><span class="line">	./mongod --bind_ip 0.0.0.0 --logpath ~/mongodb/log/mongodb.log --dbpath ~/mongodb/data/ -port 27017</span><br><span class="line"></span><br><span class="line">	pip install distribute</span><br><span class="line">	pip3 install -i https://pypi.douban.com/simple scrapy </span><br><span class="line">	pip3 install -i https://pypi.douban.com/simple scrapy_redis</span><br><span class="line">	pip3 install -i https://pypi.douban.com/simple redis pymongo</span><br><span class="line">	</span><br><span class="line">	上传项目到master上，修改settings.py </span><br><span class="line">		import sys		# 方便shell调试</span><br><span class="line">		import os</span><br><span class="line">		BASE_DIR = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))</span><br><span class="line">		sys.path.insert(0, os.path.join(BASE_DIR, &apos;zhihuuser_redis&apos;))</span><br><span class="line">		&apos;scrapy_redis.pipelines.RedisPipeline&apos;: 301 # 保存items到redis中</span><br><span class="line">		# SCHEDULER_PERSIST = TRUE		# 全部爬取完毕后非items队列(指纹和requests队列)不会被全部清空，默认清空</span><br><span class="line">		# SCHEDULER_FLUSH_ON_START = True  # 每次爬取前都会将指纹和requests重新清空</span><br><span class="line">		#SCHEDULER_QUEUE_CLASS = &apos;scrapy_redis.queue.FifoQueue&apos;</span><br><span class="line">		#SCHEDULER_QUEUE_CLASS = &apos;scrapy_redis.queue.LifoQueue&apos;</span><br><span class="line">		#REDIS_ITEMS_KEY = &apos;%(spider)s:items&apos;</span><br><span class="line">		#REDIS_HOST = &apos;localhost&apos;	# 无密码使用</span><br><span class="line">		#REDIS_PORT = 6379</span><br><span class="line">127.0.0.1	#slave </span><br><span class="line">	robot 访问master的mongodb</span><br><span class="line">	redisDeskTop访问master的redis</span><br></pre></td></tr></table></figure>
 <h2 id="多主机部署"><a href="#多主机部署" class="headerlink" title="多主机部署"></a>多主机部署</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">master：</span><br><span class="line">	pip3 install scrapyd	安装1.2.0 # https://pypi.python.org/pypi/scrapyd/1.2.0</span><br><span class="line">	scrapyd -h </span><br><span class="line">	#pip3 uninstall scrapyd </span><br><span class="line">	#pip3 install scrapyd&apos;==1.2.0a1&apos;</span><br><span class="line">	vim /usr/local/lib/python3.4/dist-packages/scrapyd/default_scrapyd.conf</span><br><span class="line">		bind_address = 0.0.0.0</span><br><span class="line">	scrapyd</span><br><span class="line">	</span><br><span class="line">slave:</span><br><span class="line">	http://192.168.56.101:6800/</span><br><span class="line">	进入虚拟环境目录,touch scrapyd-deploy.bat</span><br><span class="line">		@echo off</span><br><span class="line">		&quot;D:\Envs\ArticleSpider\Scripts\python.exe&quot; &quot;D:\Envs\ArticleSpider\Scripts\scrapyd-deploy&quot; %1 %2 %3 %4 %5 %6 %7 %8 %9</span><br><span class="line">	</span><br><span class="line">	pip3 install scrapyd_client</span><br><span class="line">	进入scrapy项目环境根目录 </span><br><span class="line">		scrapy.cfg 设置master的路径：url = http://192.168.56.101:6800/addversion.json</span><br><span class="line">		scrapyd-deploy		若response=200则远程部署到主机上</span><br><span class="line">		curl http://192.168.56.101:6800/listprojects.json		列出所有上传的项目</span><br><span class="line">		curl http://192.168.56.101:6800/listjobs.json?project=zhihuuser		列出正在运行的python项目</span><br><span class="line">		curl http://192.168.56.101:6800/listversions.json?project=zhihuuser		列出版本号</span><br><span class="line">		curl http://192.168.56.101:6800/schedule.json -d project=zhihuuser -d spider=zhihu		开启爬虫</span><br><span class="line">		curl http://192.168.56.101:6800/cancle.json -d project=zhuhuuser -d job=a8dd24d200bb11e8b2db080027eeb1d9		关闭爬虫，jon为id号</span><br><span class="line">	</span><br><span class="line">		http://192.168.56.101:6800/jobs		即可看到正在运行的爬虫</span><br></pre></td></tr></table></figure>
 <p><a href="https://scrapyd.readthedocs.io/en/stable/deploy.html" target="_blank" rel="noopener">scrapyd</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pip install python-scrapyd-api</span><br><span class="line">	from   scrapyd_api import ScrapydAPI</span><br><span class="line">	scrapyd=ScrapydAPI(&apos;http://192.168.56.101:6800&apos;)</span><br><span class="line">	scrapyd.cancel(&apos;project_name&apos;, &apos;14a6599ef67111e38a0e080027880ca6&apos;)</span><br><span class="line">	scrapyd.delete_project(&apos;project_name&apos;)</span><br><span class="line">	scrapyd.list_jobs(&apos;project_name&apos;)</span><br><span class="line">	scrapyd.job_status(&apos;project_name&apos;, &apos;14a6599ef67111e38a0e080027880ca6&apos;)</span><br><span class="line">	scrapyd.list_projects()</span><br><span class="line">	scrapyd.list_spiders(&apos;project_name&apos;)</span><br><span class="line">	scrapyd.list_versions(&apos;project_name&apos;):</span><br><span class="line">	scrapyd.schedule(&apos;project_name&apos;, &apos;spider_name&apos;)</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://oyx66gbka.bkt.clouddn.com/notebook.7z" target="_blank" rel="noopener">爬虫系统讲解</a></p>
 
       
     </div>
@@ -622,7 +621,7 @@ http://localhost:5000/get
   <p><span>本文标题:</span><a href="/post/python从0到1.html">python从0到1</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
   <p><span>发布时间:</span>2018年02月05日 - 12:02</p>
-  <p><span>最后更新:</span>2018年02月05日 - 12:02</p>
+  <p><span>最后更新:</span>2018年02月23日 - 08:02</p>
   <p><span>原始链接:</span><a href="/post/python从0到1.html" title="python从0到1">http://ashercode.github.io/post/python从0到1.html</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/python从0到1.html"  aria-label="复制成功！"></i></span>
   </p>
@@ -840,7 +839,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -862,7 +861,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -953,7 +952,7 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">AsherCode</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共55.7k字</span>
+  <span class="post-count">博客全站共62.3k字</span>
 </div>
   
 </div>
